@@ -27,3 +27,5 @@
 ### Miscellaneous
 * Usability / Play - testing    (Chris-shari, Mbthebtr)
 * Organization                  (C0rvus)
+
+To view the internal organization (time tables, weekly proceedings, etc.) click [here](https://www.dropbox.com/sh/iqtrrbptr452nan/AADSba24qTiD2SeTD-gF5v0ba?dl=0)
