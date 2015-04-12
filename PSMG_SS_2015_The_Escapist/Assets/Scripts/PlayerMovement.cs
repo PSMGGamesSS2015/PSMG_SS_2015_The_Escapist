@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour {
     private bool sneaking = false;
     private float jumpingSpeed = 500;
 
+
+    //TO DO: ADD: - Running only available when in danger
+
     void FixedUpdate()
     {
 
@@ -18,23 +21,39 @@ public class PlayerMovement : MonoBehaviour {
         float moveVertical = Input.GetAxis("Vertical");
         sneaking = checkSneakButton();
 
+        // All movement will be done here.
         manageMovement(turn, moveVertical, sneaking);
         
     }
 
+    // Checks if the left ctrl is pressed an resizes the player if the mode changes.
     private bool checkSneakButton()
     {
         if ((Input.GetButtonDown("Sneak") == true) && (sneaking == true))
         {
+            modifySize(sneaking);
             return false;
 
         } else if ((Input.GetButtonDown("Sneak")) && (sneaking == false)) {
+            modifySize(sneaking);
             return true;
 
         }
         else
         {
             return sneaking;
+        }
+    }
+
+    private void modifySize(bool sneaking)
+    {
+        if (sneaking == true)
+        {
+            transform.localScale += new Vector3(0, 0.5f, 0);
+        }
+        else
+        {
+            transform.localScale -= new Vector3(0, 0.5f, 0);
         }
     }
 
@@ -45,6 +64,7 @@ public class PlayerMovement : MonoBehaviour {
             movementSpeed = 2f;
             rotationSpeed = 3f;
 
+            
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
             transform.Rotate(0, (rotationSpeed * turn), 0);
 
@@ -68,6 +88,7 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
+    // Checks, if the player is on the ground for jumping (to prevent double jump etc.).
     private bool playerIsGrounded()
     {
         if (transform.position.y < 1)
