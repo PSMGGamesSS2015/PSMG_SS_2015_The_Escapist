@@ -4,7 +4,9 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
     public Rigidbody rb;
-
+    private float movementSpeed = 5f;
+    private float rotationSpeed = 10f;
+    private bool sneaking = false;
 
     void FixedUpdate()
     {
@@ -13,11 +15,9 @@ public class PlayerMovement : MonoBehaviour {
 
         float turn = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        sneaking = checkSneakButton();
 
-        move(moveVertical);
-
-        rotate(turn);
-
+        manageMovement(turn, moveVertical, sneaking);
 
 
 
@@ -27,25 +27,46 @@ public class PlayerMovement : MonoBehaviour {
         
     }
 
-    private void rotate(float turn)
+    private bool checkSneakButton()
     {
-        float rotationSpeed = 80f;
-
-        if (Input.GetKey(KeyCode.A))
+        if ((Input.GetButtonDown("Sneak") == true) && (sneaking == true))
         {
-            transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+            return false;
+
+        } else if ((Input.GetButtonDown("Sneak")) && (sneaking == false)) {
+            return true;
+
         }
-
-        if (Input.GetKey(KeyCode.D))
+        else
         {
-            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            return sneaking;
         }
     }
 
-    private void move(float input)
+    private void manageMovement(float turn, float moveVertical, bool sneaking)
     {
-        float movementSpeed = 5f;
+        if (sneaking == true)
+        {
+            movementSpeed = 2f;
+            rotationSpeed = 3f;
 
-        rb.MovePosition(transform.position + transform.forward * movementSpeed * Time.deltaTime * input);
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+            transform.Rotate(0, (rotationSpeed * turn), 0);
+
+        }
+        else
+        {
+            movementSpeed = 5f;
+            rotationSpeed = 6f;
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+            transform.Rotate(0, (rotationSpeed * turn), 0);
+
+        }
+
+
+
+
     }
+
 }
