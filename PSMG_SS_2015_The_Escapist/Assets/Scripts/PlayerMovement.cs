@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     private float movementSpeed = 5f;
     private float rotationSpeed = 10f;
     private bool sneaking = false;
+    private float jumpingSpeed = 500;
 
     void FixedUpdate()
     {
@@ -18,12 +19,6 @@ public class PlayerMovement : MonoBehaviour {
         sneaking = checkSneakButton();
 
         manageMovement(turn, moveVertical, sneaking);
-
-
-
-
-        
-
         
     }
 
@@ -64,9 +59,25 @@ public class PlayerMovement : MonoBehaviour {
 
         }
 
+        if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
+        {
+            GetComponent<Rigidbody>().AddForce(transform.up * jumpingSpeed);
+        }
 
 
 
+    }
+
+    private bool playerIsGrounded()
+    {
+        if (transform.position.y < 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
