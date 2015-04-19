@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     public Rigidbody rb;
     private float movementSpeed = 5f;
     private float rotationSpeed = 10f;
-    private bool sneaking = false;
+    public bool sneaking = false;
     private float jumpingSpeed = 500;
 
 

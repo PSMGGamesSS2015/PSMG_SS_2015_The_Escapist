@@ -7,6 +7,7 @@ public class FollowAI : MonoBehaviour {
     private Transform enemy;
     private int moveSpeed = 4; 
     private int rotationSpeed = 4;
+    public PlayerMovement test;
 
     private float range = 10f;
     private float range2 = 10f;
@@ -24,22 +25,25 @@ public class FollowAI : MonoBehaviour {
 
     void Update()
     {
-        float distance = Vector3.Distance(enemy.position, player.position);
-        if (distance >= range && distance <= range)
+        if (test.sneaking == false)
         {
-            enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-            enemy.position += enemy.forward * moveSpeed * Time.deltaTime;
-        }
-        else if (distance <= range && distance > stop)
-        {
-            enemy.rotation = Quaternion.Slerp(enemy.rotation,
-            Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-            enemy.position += enemy.forward * moveSpeed * Time.deltaTime;
-        }
-        else if (distance <= stop)
-        {
-            enemy.rotation = Quaternion.Slerp(enemy.rotation,
-            Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+            float distance = Vector3.Distance(enemy.position, player.position);
+            if (distance >= range && distance <= range2)
+            {
+                enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+                enemy.position += enemy.forward * moveSpeed * Time.deltaTime;
+            }
+            else if (distance <= range && distance > stop)
+            {
+                enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+                enemy.position += enemy.forward * moveSpeed * Time.deltaTime;
+            }
+            else if (distance <= stop)
+            {
+                enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+            }
         }
     }
 }
