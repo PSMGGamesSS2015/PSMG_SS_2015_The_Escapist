@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     public Rigidbody rb;
     private float movementSpeed = 5f;
     private float rotationSpeed = 10f;
-    private bool sneaking = false;
+    public bool sneaking = false;
     private float jumpingSpeed = 500;
 
 
@@ -66,7 +66,8 @@ public class PlayerMovement : MonoBehaviour {
 
             
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-            transform.Rotate(0, (rotationSpeed * turn), 0);
+            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
         }
         else
@@ -75,7 +76,8 @@ public class PlayerMovement : MonoBehaviour {
             rotationSpeed = 6f;
 
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-            transform.Rotate(0, (rotationSpeed * turn), 0);
+            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
         }
 
