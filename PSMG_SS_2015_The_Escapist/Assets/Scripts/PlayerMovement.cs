@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     private float movementSpeed = 5f;
     private float rotationSpeed = 10f;
     public bool sneaking = false;
+    public bool running = false;
     private float jumpingSpeed = 500;
 
 
@@ -22,21 +23,50 @@ public class PlayerMovement : MonoBehaviour {
         float turn = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         sneaking = checkSneakButton();
+        running = checkRunningButton();
 
         // All movement will be done here.
         manageMovement(turn, moveVertical, sneaking);
         
     }
 
-    // Checks if the left ctrl is pressed an resizes the player if the mode changes.
+    // Check if the left shift is pressed and resizes the player if the mode changes.
+    private bool checkRunningButton()
+    {
+        if ((Input.GetButtonDown("Run") == true) && (running == true))
+        {
+
+            sneaking = false;
+            return false;
+        } else if ((Input.GetButtonDown("Run") == true) && (running == false)){
+
+            if (sneaking == true)
+            {
+                modifySize(sneaking);
+            }
+
+            sneaking = false;
+            return true;
+        }
+        else
+        {
+            return running;
+        }
+
+        
+    }
+
+    // Checks if the left ctrl is pressed and resizes the player if the mode changes.
     private bool checkSneakButton()
     {
         if ((Input.GetButtonDown("Sneak") == true) && (sneaking == true))
         {
+            running = false;
             modifySize(sneaking);
             return false;
 
         } else if ((Input.GetButtonDown("Sneak")) && (sneaking == false)) {
+            running = false;
             modifySize(sneaking);
             return true;
 
@@ -71,7 +101,16 @@ public class PlayerMovement : MonoBehaviour {
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
+
+        } else if (running == true){
+            movementSpeed = 8f;
+            rotationSpeed = 6f;
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
         }
+
         else
         {
             movementSpeed = 5f;
