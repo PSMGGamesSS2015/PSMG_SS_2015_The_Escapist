@@ -113,8 +113,8 @@ public class PlayerMovement : MonoBehaviour {
 
         else
         {
-            movementSpeed = 5f;
-            rotationSpeed = 6f;
+            movementSpeed = 4f;
+            rotationSpeed = 5f;
 
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
