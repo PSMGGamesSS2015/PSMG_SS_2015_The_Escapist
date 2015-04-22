@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
 
+
     //TO DO: ADD: - Running only available when in danger
 
     void FixedUpdate()
