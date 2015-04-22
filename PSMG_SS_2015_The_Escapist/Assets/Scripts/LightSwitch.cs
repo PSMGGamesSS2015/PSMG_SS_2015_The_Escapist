@@ -20,7 +20,7 @@ public class LightSwitch : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == player && Input.GetButton("Use"))
+        if (other.gameObject == player && Input.GetButtonUp("Use"))
         {
             SwitchLight();
         }
