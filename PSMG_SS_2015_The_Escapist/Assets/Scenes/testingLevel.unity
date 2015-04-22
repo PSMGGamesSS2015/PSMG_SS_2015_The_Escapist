@@ -180,6 +180,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 103701907}
   - 108: {fileID: 103701906}
+  - 114: {fileID: 103701908}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -226,11 +227,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 103701905}
   m_LocalRotation: {x: .420271367, y: -.312271327, z: .156715021, w: .83743602}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 34.7000008, y: 39.0999985, z: -53.4000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651273637}
   m_RootOrder: 1
+--- !u!114 &103701908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 103701905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e023075550c1c840830e98d25d88f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1709594944}
+  isPlayerInLight: 0
 --- !u!1 &104795990
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +965,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 651273637}
-  - 114: {fileID: 651273638}
   m_Layer: 0
   m_Name: Lighting
   m_TagString: Lights
@@ -977,19 +990,6 @@ Transform:
   - {fileID: 104795992}
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &651273638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 651273636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e023075550c1c840830e98d25d88f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1709594944}
-  isPlayerInLight: 0
 --- !u!1 &742912295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,7 +1109,7 @@ Prefab:
     - {fileID: 9500000, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_IsPrefabParent: 0
---- !u!4 &858283818 stripped
+--- !u!4 &858283818
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_PrefabInternal: {fileID: 851907529}
@@ -1302,7 +1302,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995490893}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1196010314 stripped
+--- !u!1 &1196010314
 GameObject:
   m_PrefabParentObject: {fileID: 100004, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_PrefabInternal: {fileID: 851907529}
@@ -1356,6 +1356,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3a1c02f49a76442a785945b930cfd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  openAnim: {fileID: 0}
+  openAnimTime: 1
+  waitForCloseTime: 1
+  nextTriggerTime: 0
+  doorOpen: 0
 --- !u!1 &1212335755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1525,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332252702}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1338696146 stripped
+--- !u!1 &1338696146
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_PrefabInternal: {fileID: 851907529}
@@ -1623,7 +1629,7 @@ GameObject:
   - 195: {fileID: 1438133401}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2073,7 +2079,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1709594951
 MonoBehaviour:
