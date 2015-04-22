@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpingSpeed = 500;
 
 
+
     //TO DO: ADD: - Running only available when in danger
 
     void FixedUpdate()

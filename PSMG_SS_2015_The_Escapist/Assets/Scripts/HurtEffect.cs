@@ -12,7 +12,7 @@ public class HurtEffect : MonoBehaviour {
     {
          if (other.gameObject.CompareTag("Enemy"))
             {
-             displayHurtEffect = true;
+             displayHurtEffect = true; 
             }
     }
       
