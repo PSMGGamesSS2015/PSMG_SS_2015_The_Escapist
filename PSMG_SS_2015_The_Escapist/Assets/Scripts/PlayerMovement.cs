@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     private float rotationSpeed = 10f;
     public bool sneaking = false;
     public bool running = false;
+    private bool firstPersonActive = true;
     private float jumpingSpeed = 500;
 
 
@@ -24,10 +25,103 @@ public class PlayerMovement : MonoBehaviour {
         float moveVertical = Input.GetAxis("Vertical");
         sneaking = checkSneakButton();
         running = checkRunningButton();
+        firstPersonActive = isCameraFirstPerson();
 
         // All movement will be done here.
-        manageMovement(turn, moveVertical, sneaking);
+        if (firstPersonActive == true)
+        {
+            manageMovement(turn, moveVertical, sneaking);
+        }
+        else
+        {
+            //Only used in debug-mode (third-person).
+            debugMovement(turn, moveVertical, sneaking);
+        }
+
         
+    }
+
+    private void debugMovement(float turn, float moveVertical, bool sneaking)
+    {
+        if (sneaking == true)
+        {
+            movementSpeed = 2f;
+            rotationSpeed = 70f;
+
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+
+        }
+        else if (running == true)
+        {
+            movementSpeed = 8f;
+            rotationSpeed = 90f;
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+        }
+
+        else
+        {
+            movementSpeed = 4f;
+            rotationSpeed = 80f;
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+        }
+
+        if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
+        {
+            GetComponent<Rigidbody>().AddForce(transform.up * jumpingSpeed);
+        }
+
+
+    }
+
+    private bool isCameraFirstPerson()
+    {
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            return false;
+        }
+        else if (Input.GetKey(KeyCode.Alpha1))
+        {
+            return true;
+        }
+        else
+        {
+            return firstPersonActive;
+        }
     }
 
     // Check if the left shift is pressed and resizes the player if the mode changes.
