@@ -6,13 +6,12 @@
 * Daniel192                     (Daniel Hecht)
 * Julien-ur                     (Julien Wachter)
 * Toby3011                      (Tobias Zirngibl)
-* Mbthebt                       (Marlene Bauer)
 
 ## Division of labour:
 
 ### 3D
 * Animation                     (Daniel192)
-* Object creation               (Mbthebtr)
+* Object creation               (Daniel192, C0rvus, Julien-ur)
 * Modular level set             (C0rvus)
 
 ### Coding
@@ -25,7 +24,7 @@
 * Level building                (Julien-ur)
 
 ### Miscellaneous
-* Usability / Play - testing    (Chris-shari, Mbthebtr)
+* Usability / Play - testing    (Chris-shari, C0rvus)
 * Organization                  (C0rvus)
 
 To view the internal organization (time tables, weekly proceedings, etc.) click [here](https://www.dropbox.com/sh/iqtrrbptr452nan/AADSba24qTiD2SeTD-gF5v0ba?dl=0)
