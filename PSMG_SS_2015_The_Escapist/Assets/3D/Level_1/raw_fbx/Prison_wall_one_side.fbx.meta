@@ -70,7 +70,7 @@ ModelImporter:
     4300020: Prison_ground
     4300022: BaseTile_Ref
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -107,7 +107,7 @@ ModelImporter:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
