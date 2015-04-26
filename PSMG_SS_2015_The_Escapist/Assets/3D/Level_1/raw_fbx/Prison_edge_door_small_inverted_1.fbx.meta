@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: a669525aee87a944f8b0cfc98ee1707d
+timeCreated: 1430050283
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BaseTile_Ref
+    100002: Prison_door_large
+    100004: Prison_door_small
+    100006: Prison_edge
+    100008: Prison_edge_door_large_1
+    100010: Prison_edge_door_large_inverted_1
+    100012: Prison_edge_door_small_1
+    100014: Prison_edge_door_small_2
+    100016: //RootNode
+    100018: Prison_edge_door_small_inverted_1
+    100020: Prison_ground
+    100022: Prison_wall_one_side
+    100024: Prison_wall_two_side
+    400000: BaseTile_Ref
+    400002: Prison_door_large
+    400004: Prison_door_small
+    400006: Prison_edge
+    400008: Prison_edge_door_large_1
+    400010: Prison_edge_door_large_inverted_1
+    400012: Prison_edge_door_small_1
+    400014: Prison_edge_door_small_2
+    400016: //RootNode
+    400018: Prison_edge_door_small_inverted_1
+    400020: Prison_ground
+    400022: Prison_wall_one_side
+    400024: Prison_wall_two_side
+    2300000: BaseTile_Ref
+    2300002: Prison_door_large
+    2300004: Prison_door_small
+    2300006: Prison_edge
+    2300008: Prison_edge_door_large_1
+    2300010: Prison_edge_door_large_inverted_1
+    2300012: Prison_edge_door_small_1
+    2300014: Prison_edge_door_small_2
+    2300016: Prison_edge_door_small_inverted_1
+    2300018: Prison_ground
+    2300020: Prison_wall_one_side
+    2300022: Prison_wall_two_side
+    2300024: //RootNode
+    3300000: BaseTile_Ref
+    3300002: Prison_door_large
+    3300004: Prison_door_small
+    3300006: Prison_edge
+    3300008: Prison_edge_door_large_1
+    3300010: Prison_edge_door_large_inverted_1
+    3300012: Prison_edge_door_small_1
+    3300014: Prison_edge_door_small_2
+    3300016: Prison_edge_door_small_inverted_1
+    3300018: Prison_ground
+    3300020: Prison_wall_one_side
+    3300022: Prison_wall_two_side
+    3300024: //RootNode
+    4300000: Prison_door_large
+    4300002: Prison_edge_door_large_inverted_1
+    4300004: Prison_wall_two_side
+    4300006: Prison_edge_door_small_inverted_1
+    4300008: Prison_edge_door_large_1
+    4300010: Prison_edge_door_small_1
+    4300012: Prison_door_small
+    4300014: Prison_edge
+    4300016: Prison_edge_door_small_2
+    4300018: Prison_wall_one_side
+    4300020: Prison_ground
+    4300022: BaseTile_Ref
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
