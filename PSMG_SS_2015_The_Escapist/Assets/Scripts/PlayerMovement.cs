@@ -4,8 +4,8 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
     public Rigidbody rb;
-    private float movementSpeed = 5f;
-    private float rotationSpeed = 10f;
+    private float movementSpeed;
+    private float rotationSpeed;
     public bool sneaking = false;
     public bool running = false;
     private bool firstPersonActive = true;
@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (sneaking == true)
         {
-            movementSpeed = 2f;
-            rotationSpeed = 70f;
+            movementSpeed = Constants.SNEAKING_SPEED;
+            rotationSpeed = Constants.SNEAKING_ROTATION;
 
 
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
@@ -65,8 +65,8 @@ public class PlayerMovement : MonoBehaviour {
         }
         else if (running == true)
         {
-            movementSpeed = 8f;
-            rotationSpeed = 90f;
+            movementSpeed = Constants.RUNNING_SPEED;
+            rotationSpeed = Constants.RUNNING_ROTATION;
 
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
 
@@ -83,8 +83,8 @@ public class PlayerMovement : MonoBehaviour {
 
         else
         {
-            movementSpeed = 4f;
-            rotationSpeed = 80f;
+            movementSpeed = Constants.WALKING_SPEED;
+            rotationSpeed = Constants.WALKING_ROTATION;
 
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
 
@@ -187,8 +187,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (sneaking == true)
         {
-            movementSpeed = 2f;
-            rotationSpeed = 3f;
+            movementSpeed = Constants.SNEAKING_SPEED;
+            rotationSpeed = Constants.SNEAKING_ROTATION;
 
             
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
@@ -197,8 +197,8 @@ public class PlayerMovement : MonoBehaviour {
 
 
         } else if (running == true){
-            movementSpeed = 8f;
-            rotationSpeed = 6f;
+            movementSpeed = Constants.RUNNING_SPEED;
+            rotationSpeed = Constants.RUNNING_ROTATION;
 
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
@@ -207,8 +207,8 @@ public class PlayerMovement : MonoBehaviour {
 
         else
         {
-            movementSpeed = 4f;
-            rotationSpeed = 5f;
+            movementSpeed = Constants.WALKING_SPEED;
+            rotationSpeed = Constants.WALKING_ROTATION;
 
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
@@ -236,6 +236,17 @@ public class PlayerMovement : MonoBehaviour {
         {
             return false;
         }
+    }
+
+
+    public Vector3 getPlayerPosition()
+    {
+        return transform.position;
+    }
+
+    public bool sneakingIsActive()
+    {
+        return sneaking;
     }
 
 }
