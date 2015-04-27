@@ -8,21 +8,25 @@ public class PlayerMovement : MonoBehaviour {
     private float rotationSpeed;
     public bool sneaking = false;
     public bool running = false;
+
     private bool firstPersonActive = true;
-    private float jumpingSpeed = 500;
+
+    private float turn;
+    private float moveVertical;
 
 
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
 
-    //TO DO: ADD: - Running only available when in danger
 
     void FixedUpdate()
     {
 
-        rb = GetComponent<Rigidbody>();
-
-        float turn = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        turn = Input.GetAxis("Horizontal");
+        moveVertical = Input.GetAxis("Vertical");
         sneaking = checkSneakButton();
         running = checkRunningButton();
         firstPersonActive = isCameraFirstPerson();
@@ -41,97 +45,18 @@ public class PlayerMovement : MonoBehaviour {
         
     }
 
-    private void debugMovement(float turn, float moveVertical, bool sneaking)
-    {
-        if (sneaking == true)
-        {
-            movementSpeed = Constants.SNEAKING_SPEED;
-            rotationSpeed = Constants.SNEAKING_ROTATION;
+   
 
 
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-
-        }
-        else if (running == true)
-        {
-            movementSpeed = Constants.RUNNING_SPEED;
-            rotationSpeed = Constants.RUNNING_ROTATION;
-
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-        }
-
-        else
-        {
-            movementSpeed = Constants.WALKING_SPEED;
-            rotationSpeed = Constants.WALKING_ROTATION;
-
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-        }
-
-        if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
-        {
-            GetComponent<Rigidbody>().AddForce(transform.up * jumpingSpeed);
-        }
-
-
-    }
-
-    private bool isCameraFirstPerson()
-    {
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            return false;
-        }
-        else if (Input.GetKey(KeyCode.Alpha1))
-        {
-            return true;
-        }
-        else
-        {
-            return firstPersonActive;
-        }
-    }
 
     // Check if the left shift is pressed and resizes the player if the mode changes.
     private bool checkRunningButton()
     {
         if ((Input.GetButtonDown("Run") == true) && (running == true))
         {
-
             sneaking = false;
             return false;
+
         } else if ((Input.GetButtonDown("Run") == true) && (running == false)){
 
             if (sneaking == true)
@@ -183,6 +108,21 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    // Checks, if the player is on the ground for jumping (to prevent double jump etc.).
+    private bool playerIsGrounded()
+    {
+        float maxDistanceToGround = 0.6f;
+        Vector3 down = transform.TransformDirection(Vector3.down);
+        if (Physics.Raycast(transform.position, down, maxDistanceToGround))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void manageMovement(float turn, float moveVertical, bool sneaking)
     {
         if (sneaking == true)
@@ -218,35 +158,113 @@ public class PlayerMovement : MonoBehaviour {
 
         if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
         {
-            GetComponent<Rigidbody>().AddForce(transform.up * jumpingSpeed);
+            GetComponent<Rigidbody>().AddForce(transform.up * Constants.JUMPING_SPEED);
+            
         }
 
 
 
     }
 
-    // Checks, if the player is on the ground for jumping (to prevent double jump etc.).
-    private bool playerIsGrounded()
-    {
-        if (transform.position.y < 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
 
+    //Returns the player's position (to the gameController).
     public Vector3 getPlayerPosition()
     {
         return transform.position;
     }
 
+    //Returns if the sneakingmode is active or not (to the gameController).
     public bool sneakingIsActive()
     {
         return sneaking;
     }
 
+
+
+    // CAUTION: This part contains only methods for debugging the levels. This part will be removed when the game is finished.
+
+    private bool isCameraFirstPerson()
+    {
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            return false;
+        }
+        else if (Input.GetKey(KeyCode.Alpha1))
+        {
+            return true;
+        }
+        else
+        {
+            return firstPersonActive;
+        }
+    }
+
+
+    private void debugMovement(float turn, float moveVertical, bool sneaking)
+    {
+        if (sneaking == true)
+        {
+            movementSpeed = Constants.SNEAKING_SPEED;
+            rotationSpeed = Constants.DEBUG_SNEAKING_ROTATION;
+
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+
+        }
+        else if (running == true)
+        {
+            movementSpeed = Constants.RUNNING_SPEED;
+            rotationSpeed = Constants.DEBUG_RUNNING_ROTATION;
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+        }
+
+        else
+        {
+            movementSpeed = Constants.WALKING_SPEED;
+            rotationSpeed = Constants.DEBUG_WALKING_ROTATION;
+
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            }
+
+        }
+
+        if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
+        {
+            GetComponent<Rigidbody>().AddForce(transform.up * Constants.JUMPING_SPEED);
+        }
+
+
+    }
 }
