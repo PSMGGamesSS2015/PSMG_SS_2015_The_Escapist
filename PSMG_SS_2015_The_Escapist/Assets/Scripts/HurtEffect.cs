@@ -10,7 +10,7 @@ public class HurtEffect : MonoBehaviour {
 	
     void OnTriggerEnter(Collider other) 
     {
-         if (other.gameObject.CompareTag("Enemy"))
+         if (other.gameObject.CompareTag("Collider"))
             {
              displayHurtEffect = true; 
             }

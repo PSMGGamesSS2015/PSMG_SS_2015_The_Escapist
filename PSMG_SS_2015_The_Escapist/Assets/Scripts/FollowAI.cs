@@ -6,14 +6,19 @@ public class FollowAI : MonoBehaviour {
  
     private Transform player;
     private GameObject light;
+    private GameObject pplayer;
+
     private Transform enemy;
     private int rotationSpeed = 3;
     public PlayerMovement pm;
     public Shadow shadow;
+    private SphereCollider col;
 
     private float range = 10f;
     private float range2 = 10f;
     private float stop = 0;
+    public bool playerInSight = false;
+    public float fieldOfViewAngle = 110f;
 
     private Vector3 startPosition; 
     private float patrolSpeed = 2f; 
@@ -24,6 +29,7 @@ public class FollowAI : MonoBehaviour {
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
     void Awake() {
+        col = GetComponent<SphereCollider>();
         enemy = transform;
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = patrolSpeed;
@@ -33,16 +39,17 @@ public class FollowAI : MonoBehaviour {
     void Start() { 
         player = GameObject.FindWithTag("Player").transform;
         light = GameObject.FindWithTag("Lights");
+        pplayer = GameObject.FindWithTag("Player");
         pm = player.GetComponent<PlayerMovement>();
         shadow = light.GetComponent<Shadow>();
         }
 
 
     void Update() {
-        if (pm.sneaking == false && shadow.isPlayerInLight == true)
+        if (pm.sneaking == false && shadow.isPlayerInLight == true )
         {
             float distance = Vector3.Distance(enemy.position, player.position);
-            if (distance >= range && distance <= range2)
+            if (distance >= range && distance <= range2 && playerInSight)
             {
                 patrolSpeed = 5f;
                 enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
@@ -50,7 +57,7 @@ public class FollowAI : MonoBehaviour {
 
 
             }
-            else if (distance <= range && distance > stop)
+            else if (distance <= range && distance > stop && playerInSight)
             {
                 patrolSpeed = 5f;
                 enemy.rotation = Quaternion.Slerp(enemy.rotation,
@@ -63,6 +70,30 @@ public class FollowAI : MonoBehaviour {
             }
          
         }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == pplayer)
+        {
+            Vector3 direction = other.transform.position - transform.position;
+            float angle = Vector3.Angle(direction, transform.forward);
+
+            if (angle < fieldOfViewAngle * 0.5f)
+            {
+                playerInSight = true;
+                }
+         
+
+
+        }
+    }
+
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
+            playerInSight = false;
     }
 
     void Wander(){

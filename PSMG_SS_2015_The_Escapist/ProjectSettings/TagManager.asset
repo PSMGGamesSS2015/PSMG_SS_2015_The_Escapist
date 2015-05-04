@@ -7,6 +7,7 @@ TagManager:
   - Lights
   - Enemy
   - GUI
+  - Collider
   layers:
   - Default
   - TransparentFX

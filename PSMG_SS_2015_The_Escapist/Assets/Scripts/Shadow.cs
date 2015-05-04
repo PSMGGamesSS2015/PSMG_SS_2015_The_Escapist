@@ -29,7 +29,13 @@ public class Shadow : MonoBehaviour
             else if (hit.transform.tag != "Enemy")
             {
                 isPlayerInLight = false;
-        }
+        
+            }
+
+            else if (hit.transform.tag == "Collider")
+            {
+                isPlayerInLight = false;
+            }
     }
 }
     void OnGUI()
