@@ -9,9 +9,10 @@
 
 ## Division of labour:
 
-### 3D
+### 2D / 3D
 * Animation                     (Daniel192)
-* Object creation               (Daniel192, C0rvus, Julien-ur)
+* Decal creation                (qliffp)
+* Object creation               (Daniel192, C0rvus, Julien-ur, qliffp)
 * Modular level set             (C0rvus)
 
 ### Coding

@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     private float movementSpeed;
     private float rotationSpeed;
     public bool sneaking = false;
-    public bool running = false;
+    private bool running = false;
 
     private bool firstPersonActive = true;
 
@@ -130,10 +130,14 @@ public class PlayerMovement : MonoBehaviour {
             movementSpeed = Constants.SNEAKING_SPEED;
             rotationSpeed = Constants.SNEAKING_ROTATION;
 
-            
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+            
+
+
+            
+
 
 
         } else if (running == true){
@@ -154,17 +158,18 @@ public class PlayerMovement : MonoBehaviour {
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
+
+
         }
 
         if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
         {
-            GetComponent<Rigidbody>().AddForce(transform.up * Constants.JUMPING_SPEED);
+            rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
+            //GetComponent<Rigidbody>().AddForce(transform.up * Constants.JUMPING_SPEED);
             
         }
-
-
-
     }
+
 
 
 
@@ -262,7 +267,8 @@ public class PlayerMovement : MonoBehaviour {
 
         if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
         {
-            GetComponent<Rigidbody>().AddForce(transform.up * Constants.JUMPING_SPEED);
+            rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
+            //GetComponent<Rigidbody>().AddForce(transform.up * Constants.JUMPING_SPEED);
         }
 
 

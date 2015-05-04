@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 456378}
   - 33: {fileID: 3389086}
   - 23: {fileID: 2387684}
-  - 64: {fileID: 6482966}
+  - 64: {fileID: 6444290}
   m_Layer: 0
-  m_Name: Prison_ground_prefab
+  m_Name: Prison_ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,8 +24,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126588}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 6.21999979, y: -2, z: -17}
+  m_LocalRotation: {x: .707106829, y: 2.84217094e-14, z: 2.84217094e-14, w: .707106709}
+  m_LocalPosition: {x: 10.2200003, y: -0, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,7 +61,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126588}
   m_Mesh: {fileID: 4300000, guid: 24c705e8bcbc8d14c93838246920f0ac, type: 3}
---- !u!64 &6482966
+--- !u!64 &6444290
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

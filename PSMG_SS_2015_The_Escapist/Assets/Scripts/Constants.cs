@@ -20,7 +20,7 @@ public class Constants : MonoBehaviour {
     public static float DEBUG_RUNNING_ROTATION = 60f;
     //End
 
-    public static float JUMPING_SPEED = 300f;
+    public static float JUMPING_SPEED = 5;
 
 
 }
