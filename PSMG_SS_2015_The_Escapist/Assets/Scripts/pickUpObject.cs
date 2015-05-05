@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class pickUpObject : MonoBehaviour {
+public class PickupObject : MonoBehaviour {
 
     private GameObject player;
     private Rigidbody rb;

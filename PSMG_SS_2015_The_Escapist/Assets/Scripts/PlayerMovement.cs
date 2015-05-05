@@ -100,11 +100,13 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (sneaking == true)
         {
-            transform.localScale += new Vector3(0, 0.5f, 0);
+            transform.Find("player_body").localScale += new Vector3(0, 0.5f, 0);
+            transform.GetComponent<BoxCollider>().size += new Vector3(0, 0.5f, 0);
         }
         else
         {
-            transform.localScale -= new Vector3(0, 0.5f, 0);
+            transform.Find("player_body").localScale -= new Vector3(0, 0.5f, 0);
+            transform.GetComponent<BoxCollider>().size -= new Vector3(0, 0.5f, 0);
         }
     }
 
