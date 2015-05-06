@@ -1,36 +1,37 @@
 using UnityEngine;
 using System.Collections;
 
-public class HurtEffect : MonoBehaviour {
-	
-	public Texture hurtEffect;
+public class HurtEffect : MonoBehaviour
+{
 
-	private float displayTime = 5.0f;
-	private bool displayHurtEffect = false;
-	
-    void OnTriggerEnter(Collider other) 
+    public Texture hurtEffect;
+
+    private float displayTime = 5.0f;
+    public bool displayHurtEffect = false;
+
+    void OnTriggerEnter(Collider col)
     {
-         if (other.gameObject.CompareTag("Collider"))
-            {
-             displayHurtEffect = true; 
-            }
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            displayHurtEffect = true;
+        }
     }
-      
-	
-	void OnGUI ()
-	{
+
+
+    void OnGUI()
+    {
         if (displayHurtEffect)
         {
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
             StartCoroutine(StopDisplayingEffect());
         }
-        
 
-	}
-		
-	IEnumerator StopDisplayingEffect() 
-	{
-		yield return new WaitForSeconds(displayTime);
-		displayHurtEffect = false;
-	}
+
+    }
+
+    IEnumerator StopDisplayingEffect()
+    {
+        yield return new WaitForSeconds(displayTime);
+        displayHurtEffect = false;
+    }
 }

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowAI : MonoBehaviour {
+public class FollowAI : MonoBehaviour
+{
 
- 
+
     private Transform player;
     private GameObject light;
     private GameObject pplayer;
@@ -12,7 +13,6 @@ public class FollowAI : MonoBehaviour {
     private int rotationSpeed = 3;
     public PlayerMovement pm;
     public Shadow shadow;
-    private SphereCollider col;
 
     private float range = 10f;
     private float range2 = 10f;
@@ -20,33 +20,36 @@ public class FollowAI : MonoBehaviour {
     public bool playerInSight = false;
     public float fieldOfViewAngle = 110f;
 
-    private Vector3 startPosition; 
-    private float patrolSpeed = 2f; 
+    private Vector3 startPosition;
+    private float patrolSpeed = 2f;
     private float patrolRange = 40f;
     private NavMeshAgent agent;
 
 
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
-    void Awake() {
-        col = GetComponent<SphereCollider>();
+    void Awake()
+    {
+
         enemy = transform;
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = patrolSpeed;
         startPosition = this.transform.position;
-        }
-     
-    void Start() { 
+    }
+
+    void Start()
+    {
         player = GameObject.FindWithTag("Player").transform;
         light = GameObject.FindWithTag("Lights");
         pplayer = GameObject.FindWithTag("Player");
         pm = player.GetComponent<PlayerMovement>();
         shadow = light.GetComponent<Shadow>();
-        }
+    }
 
 
-    void Update() {
-        if (pm.sneaking == false && shadow.isPlayerInLight == true )
+    void Update()
+    {
+        if (pm.sneaking == false && shadow.safe == false)
         {
             float distance = Vector3.Distance(enemy.position, player.position);
             if (distance >= range && distance <= range2 && playerInSight)
@@ -68,7 +71,7 @@ public class FollowAI : MonoBehaviour {
             {
                 InvokeRepeating("Wander", 1f, 5f);
             }
-         
+
         }
     }
 
@@ -82,10 +85,7 @@ public class FollowAI : MonoBehaviour {
             if (angle < fieldOfViewAngle * 0.5f)
             {
                 playerInSight = true;
-                }
-         
-
-
+            }
         }
     }
 
@@ -96,16 +96,18 @@ public class FollowAI : MonoBehaviour {
             playerInSight = false;
     }
 
-    void Wander(){
+    void Wander()
+    {
 
         patrolSpeed = 5f;
 
         Vector3 destination = startPosition + new Vector3(Random.Range(-patrolRange, patrolRange), 0, Random.Range(-patrolRange, patrolRange));
-             NewDestination(destination);
-         }
+        NewDestination(destination);
+    }
 
-    private void NewDestination(Vector3 targetPoint){
-             agent.SetDestination (targetPoint);
-         }
-     }
-     
+    private void NewDestination(Vector3 targetPoint)
+    {
+        agent.SetDestination(targetPoint);
+    }
+}
+
