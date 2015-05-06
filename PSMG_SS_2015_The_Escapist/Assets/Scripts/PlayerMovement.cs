@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool running = false;
 
     private bool firstPersonActive = true;
+    private bool movementDisabled = false;
 
     private float turn;
     private float moveVertical;
@@ -34,7 +35,11 @@ public class PlayerMovement : MonoBehaviour {
         // All movement will be done here.
         if (firstPersonActive == true)
         {
-            manageMovement(turn, moveVertical, sneaking);
+            if (movementDisabled == false)
+            {
+                manageMovement(turn, moveVertical, sneaking);
+            }
+
         }
         else
         {
@@ -274,5 +279,11 @@ public class PlayerMovement : MonoBehaviour {
         }
 
 
+    }
+
+
+    public void disableMovement(bool disable)
+    {
+        movementDisabled = disable;
     }
 }

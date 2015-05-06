@@ -1,49 +1,112 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerCameraControl : MonoBehaviour {
+public class PlayerCameraControl : MonoBehaviour
+{
 
     private float rotationSpeed = Constants.WALKING_ROTATION;
     Camera camera;
     private float leanAngle = 35f;
+    private int counter = 0;
+    private bool leftLeaning = false;
+    private bool rightLeaning = false;
+    private bool upAndDownAllowed = true;
+    private float moveSidewards = 1;
 
-	// Use this for initialization
-	void Start () {
+    private Vector3 startPos;
+    private float startTime = 0;
 
+    // Use this for initialization
+    void Start()
+    {
         Cursor.visible = false;
         camera = gameObject.GetComponent<Camera>();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    }
 
-        lookUpAndDown();
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         leanLeftAndRight();
-        
+        lookUpAndDown();
+        if (leftLeaning == true || rightLeaning == true)
+        {
+            freezeMovement();
+        }
 
+    }
 
-	}
+    private void freezeMovement()
+    {
+        GameObject.Find("Player").GetComponent<PlayerMovement>().disableMovement(true);
+
+    }
+
 
     private void leanLeftAndRight()
     {
 
+        if ((Input.GetButton("Lean Left") == true) && (rightLeaning == false))
+        {
 
-        if (Input.GetButton("Lean Left") == true)
-        {
+            upAndDownAllowed = false;
+            if (counter == 0 && leftLeaning == false)
+            {
+                startPos = camera.transform.position;
+            }
+
+            leftLeaning = true;
+
+            if (counter < 15)
+            {
+                moveCameraLeft();
+                counter++;
+            }
+
             leanLeft();
+            startTime = Time.time;
+
+
         }
-        else if (Input.GetButton("Lean Right") == true)
+        else if ((Input.GetButton("Lean Right") == true) && (leftLeaning == false))
         {
+            
+            upAndDownAllowed = false;
+            if (counter == 0 && rightLeaning == false)
+            {
+                startPos = camera.transform.position;
+            }
+
+            rightLeaning = true;
+            if (counter < 15)
+            {
+                moveCameraRight();
+                counter++;
+            }
+
             leanRight();
+            startTime = Time.time;
         }
         else
         {
             resetCamera();
+
         }
+    }
+
+    private void moveCameraRight()
+    {
+        transform.Translate(Vector3.right * Time.deltaTime);
+    }
+
+    private void moveCameraLeft()
+    {
+        transform.Translate(Vector3.left * Time.deltaTime);
     }
 
     private void resetCamera()
     {
+        resetCameraPosition();
+
         float currentAngle = transform.rotation.eulerAngles.z;
         float targetAngle = 0f;
         float leanSpeed = 5f;
@@ -55,6 +118,32 @@ public class PlayerCameraControl : MonoBehaviour {
         float angle = Mathf.Lerp(currentAngle, targetAngle, leanSpeed * Time.deltaTime);
         Quaternion rotAngle = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, angle);
         transform.rotation = rotAngle;
+
+
+
+
+
+    }
+
+    private void resetCameraPosition()
+    {
+        if (rightLeaning == true || leftLeaning == true)
+        {
+            Vector3 velocity = Vector3.zero;
+            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, startPos, ref velocity, 0.05f);
+
+            if ((Time.time - startTime) > 2.0)
+            {
+                leftLeaning = false;
+                rightLeaning = false;
+                counter = 0;
+                upAndDownAllowed = true;
+
+                GameObject.Find("Player").GetComponent<PlayerMovement>().disableMovement(false);
+                
+            }
+
+        }
 
     }
 
@@ -91,8 +180,11 @@ public class PlayerCameraControl : MonoBehaviour {
 
     private void lookUpAndDown()
     {
-        bool upAndDownAllowed = true;
-        GetComponent<Camera>().transform.Rotate(-(Input.GetAxis("Mouse Y") * rotationSpeed), 0, 0);
-        
+        if (upAndDownAllowed == true)
+        {
+            GetComponent<Camera>().transform.Rotate(-(Input.GetAxis("Mouse Y") * rotationSpeed), 0, 0);
+        }
+
+
     }
 }

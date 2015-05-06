@@ -256,7 +256,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1709594944}
+  reflectorOne: {fileID: 0}
+  reflectorTwo: {fileID: 0}
+  reflectorThree: {fileID: 0}
   isPlayerInLight: 0
+  safe: 0
+  einsSichtbar: 0
+  zweiSichtbar: 0
+  dreiSichtbar: 0
 --- !u!1 &104795990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pm: {fileID: 0}
   shadow: {fileID: 0}
+  playerInSight: 0
+  fieldOfViewAngle: 110
 --- !u!23 &1438133397
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1925,6 +1934,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pm: {fileID: 0}
   shadow: {fileID: 0}
+  playerInSight: 0
+  fieldOfViewAngle: 110
 --- !u!23 &1524173229
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2217,7 +2228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   sneaking: 0
-  running: 0
 --- !u!54 &1709594950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2258,6 +2268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtEffect: {fileID: 2800000, guid: a138ef2989d238e40a18fbaf85758520, type: 3}
+  displayHurtEffect: 0
 --- !u!1001 &1798060181
 Prefab:
   m_ObjectHideFlags: 0
