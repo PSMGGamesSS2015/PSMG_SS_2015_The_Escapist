@@ -12,6 +12,8 @@ public class PlayerCameraControl : MonoBehaviour
     private bool rightLeaning = false;
     private bool upAndDownAllowed = true;
     private float moveSidewards = 1;
+    private int updatesForLeaning = 15;
+    private float leaningSpeed = 5f;
 
     private Vector3 startPos;
     private float startTime = 0;
@@ -56,7 +58,7 @@ public class PlayerCameraControl : MonoBehaviour
 
             leftLeaning = true;
 
-            if (counter < 15)
+            if (counter < updatesForLeaning)
             {
                 moveCameraLeft();
                 counter++;
@@ -77,7 +79,7 @@ public class PlayerCameraControl : MonoBehaviour
             }
 
             rightLeaning = true;
-            if (counter < 15)
+            if (counter < updatesForLeaning)
             {
                 moveCameraRight();
                 counter++;
@@ -109,7 +111,7 @@ public class PlayerCameraControl : MonoBehaviour
 
         float currentAngle = transform.rotation.eulerAngles.z;
         float targetAngle = 0f;
-        float leanSpeed = 5f;
+        float leanSpeed = leaningSpeed;
 
         if (currentAngle > 180)
         {
@@ -151,7 +153,7 @@ public class PlayerCameraControl : MonoBehaviour
     {
         float currentAngle = transform.rotation.eulerAngles.z;
         float targetAngle = leanAngle - 360;
-        float leanSpeed = 3;
+        float leanSpeed = leaningSpeed;
 
         if (currentAngle > 180)
         {
@@ -167,7 +169,7 @@ public class PlayerCameraControl : MonoBehaviour
     {
         float currentAngle = transform.rotation.eulerAngles.z;
         float targetAngle = leanAngle;
-        float leanSpeed = 3;
+        float leanSpeed = leaningSpeed;
 
         if (currentAngle > 180.0)
         {
