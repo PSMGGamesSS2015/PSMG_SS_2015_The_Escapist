@@ -1595,8 +1595,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 103701905}
+  light2: {fileID: 2015760648}
   pm: {fileID: 0}
-  shadow: {fileID: 0}
   playerInSight: 0
   fieldOfViewAngle: 110
 --- !u!23 &1438133397
@@ -1742,8 +1743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 103701905}
+  light2: {fileID: 2015760648}
   pm: {fileID: 0}
-  shadow: {fileID: 0}
   playerInSight: 0
   fieldOfViewAngle: 110
 --- !u!23 &1524173229

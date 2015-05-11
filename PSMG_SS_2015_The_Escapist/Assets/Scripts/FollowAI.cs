@@ -6,13 +6,16 @@ public class FollowAI : MonoBehaviour
 
 
     private Transform player;
-    private GameObject light;
+    public GameObject light;
+    public GameObject light2;
+
     private GameObject pplayer;
 
     private Transform enemy;
     private int rotationSpeed = 3;
     public PlayerMovement pm;
-    public Shadow shadow;
+    private Shadow shadow;
+    private Shadow shadow2;
 
     private float range = 10f;
     private float range2 = 10f;
@@ -40,38 +43,74 @@ public class FollowAI : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
-        light = GameObject.FindWithTag("Lights");
+        light = GameObject.Find("Sun");
+        light2 = GameObject.Find("Point light");
+
         pplayer = GameObject.FindWithTag("Player");
         pm = player.GetComponent<PlayerMovement>();
         shadow = light.GetComponent<Shadow>();
+        shadow2 = light2.GetComponent<Shadow>();
+
     }
 
 
     void Update()
     {
-        if (pm.sneaking == false && shadow.safe == false)
+        if (shadow.enabled)
         {
-            float distance = Vector3.Distance(enemy.position, player.position);
-            if (distance >= range && distance <= range2 && playerInSight)
+            if (pm.sneaking == false && shadow.safe == false)
             {
-                patrolSpeed = 5f;
-                enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-                enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+                float distance = Vector3.Distance(enemy.position, player.position);
+                if (distance >= range && distance <= range2 && playerInSight)
+                {
+                    patrolSpeed = 5f;
+                    enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+                    enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
 
 
-            }
-            else if (distance <= range && distance > stop && playerInSight)
-            {
-                patrolSpeed = 5f;
-                enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-                enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
-            }
-            else
-            {
-                InvokeRepeating("Wander", 1f, 5f);
-            }
+                }
+                else if (distance <= range && distance > stop && playerInSight)
+                {
+                    patrolSpeed = 5f;
+                    enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                    Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+                    enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    InvokeRepeating("Wander", 1f, 5f);
+                }
 
+            }
+        }
+        else
+        {
+            {
+                if (pm.sneaking == false && shadow2.safe == false)
+                {
+                    float distance = Vector3.Distance(enemy.position, player.position);
+                    if (distance >= range && distance <= range2 && playerInSight)
+                    {
+                        patrolSpeed = 5f;
+                        enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+                        enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+
+
+                    }
+                    else if (distance <= range && distance > stop && playerInSight)
+                    {
+                        patrolSpeed = 5f;
+                        enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                        Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
+                        enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        InvokeRepeating("Wander", 1f, 5f);
+                    }
+
+                }
+            }
         }
     }
 
