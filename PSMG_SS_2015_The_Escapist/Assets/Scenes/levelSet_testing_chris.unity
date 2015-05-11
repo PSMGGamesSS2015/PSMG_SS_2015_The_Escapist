@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 648527092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7808ad526c7c44ebd8b99918a78e2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 919538293313ca54b80d69178b9e7ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &648527096
@@ -1763,8 +1763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 0}
+  light2: {fileID: 0}
   pm: {fileID: 0}
-  shadow: {fileID: 0}
   playerInSight: 0
   fieldOfViewAngle: 110
 --- !u!23 &1438133397
@@ -1932,8 +1933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 0}
+  light2: {fileID: 0}
   pm: {fileID: 0}
-  shadow: {fileID: 0}
   playerInSight: 0
   fieldOfViewAngle: 110
 --- !u!23 &1524173229

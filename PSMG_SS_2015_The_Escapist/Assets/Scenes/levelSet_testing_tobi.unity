@@ -903,11 +903,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 504106077}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &648527092
+--- !u!1 &648527092 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100006, guid: eaaba384ac870f6438a5ed2b492029df, type: 3}
   m_PrefabInternal: {fileID: 1798060181}
---- !u!4 &648527093
+--- !u!4 &648527093 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400006, guid: eaaba384ac870f6438a5ed2b492029df, type: 3}
   m_PrefabInternal: {fileID: 1798060181}
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 648527092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7808ad526c7c44ebd8b99918a78e2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 919538293313ca54b80d69178b9e7ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &648527096
@@ -1051,7 +1051,7 @@ Prefab:
     - {fileID: 9500000, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_IsPrefabParent: 0
---- !u!4 &858283818
+--- !u!4 &858283818 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_PrefabInternal: {fileID: 851907529}
@@ -1244,7 +1244,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995490893}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1196010314
+--- !u!1 &1196010314 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100004, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_PrefabInternal: {fileID: 851907529}
@@ -1474,7 +1474,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332252702}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1338696146
+--- !u!1 &1338696146 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 535ff1c082c362c418769e0dd1558eb4, type: 3}
   m_PrefabInternal: {fileID: 851907529}
