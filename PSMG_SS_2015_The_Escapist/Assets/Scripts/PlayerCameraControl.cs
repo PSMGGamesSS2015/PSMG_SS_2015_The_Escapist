@@ -52,23 +52,26 @@ public class PlayerCameraControl : MonoBehaviour
 
         if ((Input.GetButton("Lean Left") == true) && (rightLeaning == false))
         {
-
-            upAndDownAllowed = false;
-            if (counter == 0 && leftLeaning == false)
+            if (GameObject.Find("Player").GetComponent<PlayerMovement>().playerIsGrounded() == true)
             {
-                startPos = camera.transform.position;
+                upAndDownAllowed = false;
+                if (counter == 0 && leftLeaning == false)
+                {
+                    startPos = camera.transform.position;
+                }
+
+                leftLeaning = true;
+
+                if (counter < updatesForLeaning)
+                {
+                    moveCameraLeft();
+                    counter++;
+                }
+
+                leanLeft();
+                startTime = Time.time;
             }
 
-            leftLeaning = true;
-
-            if (counter < updatesForLeaning)
-            {
-                moveCameraLeft();
-                counter++;
-            }
-
-            leanLeft();
-            startTime = Time.time;
 
 
         }
@@ -137,7 +140,7 @@ public class PlayerCameraControl : MonoBehaviour
             Vector3 velocity = Vector3.zero;
             camera.transform.position = Vector3.SmoothDamp(camera.transform.position, startPos, ref velocity, 0.05f);
 
-            if ((Time.time - startTime) > 2.0)
+            if ((Time.time - startTime) > 0.75)
             {
                 leftLeaning = false;
                 rightLeaning = false;

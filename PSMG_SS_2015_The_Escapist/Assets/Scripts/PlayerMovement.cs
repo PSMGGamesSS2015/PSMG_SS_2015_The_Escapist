@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     // Checks, if the player is on the ground for jumping (to prevent double jump etc.).
-    private bool playerIsGrounded()
+    public bool playerIsGrounded()
     {
         float maxDistanceToGround = 0.6f;
         Vector3 down = transform.TransformDirection(Vector3.down);
