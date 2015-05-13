@@ -4,6 +4,7 @@
 * C0rvus                        (Benedikt Hierl)
 * Chris-shari                   (Christoph Herbert)
 * Daniel192                     (Daniel Hecht)
+* qliffp                        (Oliver Pöppel)
 * Julien-ur                     (Julien Wachter)
 * Toby3011                      (Tobias Zirngibl)
 
