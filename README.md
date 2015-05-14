@@ -14,7 +14,7 @@
 * Decal creation                (qliffp)
 * Texturing                     (qliffp, C0rvus)
 
-### 2D / 3D
+### 3D
 * Animation                     (Daniel192)
 * Object creation               (Daniel192, C0rvus, Julien-ur, qliffp)
 * Modular level set             (C0rvus)
