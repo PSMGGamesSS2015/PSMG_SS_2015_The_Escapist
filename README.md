@@ -10,9 +10,12 @@
 
 ## Division of labour:
 
+### 2D
+* Decal creation                (qliffp)
+* Texturing                     (qliffp, C0rvus)
+
 ### 2D / 3D
 * Animation                     (Daniel192)
-* Decal creation                (qliffp)
 * Object creation               (Daniel192, C0rvus, Julien-ur, qliffp)
 * Modular level set             (C0rvus)
 
@@ -27,6 +30,7 @@
 
 ### Miscellaneous
 * Usability / Play - testing    (Chris-shari, C0rvus)
+* Soundsets                     (Julien-ur, Daniel192)
 * Organization                  (C0rvus)
 
 To view the internal organization (time tables, weekly proceedings, etc.) click [here](https://www.dropbox.com/sh/iqtrrbptr452nan/AADSba24qTiD2SeTD-gF5v0ba?dl=0)
