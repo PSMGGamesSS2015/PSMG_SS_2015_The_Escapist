@@ -78,21 +78,25 @@ public class PlayerCameraControl : MonoBehaviour
         else if ((Input.GetButton("Lean Right") == true) && (leftLeaning == false))
         {
             
-            upAndDownAllowed = false;
-            if (counter == 0 && rightLeaning == false)
+            if (GameObject.Find("Player").GetComponent<PlayerMovement>().playerIsGrounded() == true)
             {
-                startPos = camera.transform.position;
-            }
 
-            rightLeaning = true;
-            if (counter < updatesForLeaning)
-            {
-                moveCameraRight();
-                counter++;
-            }
+                upAndDownAllowed = false;
+                if (counter == 0 && rightLeaning == false)
+                {
+                    startPos = camera.transform.position;
+                }
 
-            leanRight();
-            startTime = Time.time;
+                rightLeaning = true;
+                if (counter < updatesForLeaning)
+                {
+                    moveCameraRight();
+                    counter++;
+                }
+
+                leanRight();
+                startTime = Time.time;
+            }
         }
         else
         {
