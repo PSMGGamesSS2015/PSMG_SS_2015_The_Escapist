@@ -19,8 +19,9 @@ public class Shadow : MonoBehaviour
     public bool midVisible;
     public bool backVisible;
 
-
-
+    /// <summary>
+    /// Assign the actual visible status of the player using three reflectors
+    /// </summary>
     void Update()
     {
        
@@ -51,13 +52,18 @@ public class Shadow : MonoBehaviour
             }
 
     }
-
+    /// <summary>
+    /// Method for GUI drawing
+    /// </summary>
     void OnGUI()
     {
             GUI.Label(new Rect(10, 10, 100, 256), "Versteckt: " + visiblePercentage + "%");
             GUI.Label(new Rect(10, 30, 100, 256), "Sicher: " + safe.ToString());
     }
 
+    /// <summary>
+    /// Checks whether the ray hits the committed reflector or an enemy 
+    /// </summary>
     bool Visibility(GameObject gameObject)
     {
         RaycastHit hit;

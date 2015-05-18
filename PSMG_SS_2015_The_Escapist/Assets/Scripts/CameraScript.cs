@@ -6,13 +6,17 @@ public class CameraScript : MonoBehaviour {
     public Camera firstPerson;
     public Camera thirdPerson;
 
-	// Use this for initialization
-	void Start () {
+    /// <summary>
+    /// Initalisation
+    /// </summary>
+    void Start () {
         firstPerson.enabled = false;
         thirdPerson.enabled = true;
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+	/// Changing the camera view by pressing "1" and "2"
+	/// </summary>
 	void Update () {
         if (Input.GetKeyDown("2"))
         {

@@ -8,6 +8,9 @@ public class HurtEffect : MonoBehaviour
 
     public bool displayHurtEffect = false;
 
+    /// <summary>
+    /// Check if enemy hit player
+    /// </summary>
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Enemy"))
@@ -16,7 +19,9 @@ public class HurtEffect : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// GUI Method for drawing HurtEffect
+    /// </summary>
     void OnGUI()
     {
         if (displayHurtEffect)
@@ -28,6 +33,9 @@ public class HurtEffect : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method for displaying the HurtEffect for a specific time
+    /// </summary>
     IEnumerator StopDisplayingEffect()
     {
         yield return new WaitForSeconds(Constants.DISPLAY_TIME);

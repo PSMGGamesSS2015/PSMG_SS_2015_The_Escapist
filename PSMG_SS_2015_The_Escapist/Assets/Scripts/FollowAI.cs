@@ -22,6 +22,10 @@ public class FollowAI : MonoBehaviour
 
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
+
+    /// <summary>
+    /// Initialisation
+    /// </summary>
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -41,7 +45,9 @@ public class FollowAI : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Describes the actions of the enemy when player is in sight or not in sight
+    /// </summary>
     void Update()
     {
         if (shadowLightOne.enabled)
@@ -98,6 +104,9 @@ public class FollowAI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if player reaches the sight of the enemy 
+    /// </summary>
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject == player)
@@ -112,19 +121,27 @@ public class FollowAI : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Check if player leaves the sight of the enemy
+    /// </summary>
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject == player)
             playerInSight = false;
     }
 
+    /// <summary>
+    /// Wandering to a random destination point
+    /// </summary>
     void Wander()
     {
         Vector3 destination = startPosition + new Vector3(Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE), 0, Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE));
         NewDestination(destination);
     }
 
+    /// <summary>
+    /// Set new destination
+    /// </summary>
     private void NewDestination(Vector3 targetPoint)
     {
         agent.SetDestination(targetPoint);
