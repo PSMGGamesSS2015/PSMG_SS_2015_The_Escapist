@@ -18,8 +18,8 @@ public class PlayerCameraControl : MonoBehaviour
     private Vector3 startPos;
     private float startTime = 0;
 
-    private int maxLookUp = 50;
-    private int maxLookDown = 310;
+    private int maxLookUp = 60;
+    private int maxLookDown = 300;
 
     // Use this for initialization
     void Start()
@@ -194,6 +194,8 @@ public class PlayerCameraControl : MonoBehaviour
     {
         if (upAndDownAllowed == true)
         {
+
+
             if (transform.localEulerAngles.x < maxLookUp || transform.localEulerAngles.x > maxLookDown)
             {
                 GetComponent<Camera>().transform.Rotate(-(Input.GetAxis("Mouse Y") * rotationSpeed), 0, 0);
@@ -203,11 +205,19 @@ public class PlayerCameraControl : MonoBehaviour
             {
                 if (transform.localEulerAngles.x < 180)
                 {
-                    GetComponent<Camera>().transform.Rotate((-1), 0, 0);
+                    if (Input.GetAxis("Mouse Y") > 0)
+                    {
+                        GetComponent<Camera>().transform.Rotate(-(Input.GetAxis("Mouse Y") * rotationSpeed), 0, 0);
+                    }
+
                 }
                 else
                 {
-                    GetComponent<Camera>().transform.Rotate(1, 0, 0);
+                    if (Input.GetAxis("Mouse Y") < 0)
+                    {
+                        GetComponent<Camera>().transform.Rotate(-(Input.GetAxis("Mouse Y") * rotationSpeed), 0, 0);
+                    }
+
                 }
             }
 
@@ -216,4 +226,5 @@ public class PlayerCameraControl : MonoBehaviour
 
 
     }
+
 }
