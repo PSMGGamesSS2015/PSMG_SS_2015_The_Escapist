@@ -22,5 +22,16 @@ public class Constants : MonoBehaviour {
 
     public static float JUMPING_SPEED = 5;
 
+    //Constants for the FollowAI
+    public static float AI_ROTATION_SPEED = 3f;
+    public static float AI_RANGE = 10f;
+    public static float AI_STOP = 0f;
+    public static float AI_NORMAL_SPEED = 2f;
+    public static float AI_CHASING_SPEED = 5f;
+    public static float AI_VIEW_ANGLE = 110f;
+    public static float AI_PATROL_RANGE = 40f;
+
+    //Constants for the HurtEeffect
+    public static float DISPLAY_TIME = 5f;
 
 }

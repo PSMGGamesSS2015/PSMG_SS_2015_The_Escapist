@@ -3,78 +3,58 @@ using System.Collections;
 
 public class FollowAI : MonoBehaviour
 {
-
-
-    private Transform player;
-    public GameObject light;
-    public GameObject light2;
-
-    private GameObject pplayer;
-
+    public GameObject testLightOne;
+    public GameObject testLightTwo;
     private Transform enemy;
-    private int rotationSpeed = 3;
-    public PlayerMovement pm;
-    private Shadow shadow;
-    private Shadow shadow2;
-
-    private float range = 10f;
-    private float range2 = 10f;
-    private float stop = 0;
-    public bool playerInSight = false;
-    public float fieldOfViewAngle = 110f;
-
-    private Vector3 startPosition;
-    private float patrolSpeed = 2f;
-    private float patrolRange = 40f;
+    private GameObject player;
     private NavMeshAgent agent;
+    private Vector3 startPosition;
 
+    private PlayerMovement playerMovement;
+    private Shadow shadowLightOne;
+    private Shadow shadowLightTwo;
+
+    public bool playerInSight = false;
 
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
-    void Awake()
-    {
-
-        enemy = transform;
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = patrolSpeed;
-        startPosition = this.transform.position;
-    }
-
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
-        light = GameObject.Find("Sun");
-        light2 = GameObject.Find("Point light");
+        player = GameObject.FindWithTag("Player");
+        testLightOne = GameObject.Find("Sun");
+        testLightTwo = GameObject.Find("Point light");
+        agent = gameObject.GetComponent<NavMeshAgent>();
 
-        pplayer = GameObject.FindWithTag("Player");
-        pm = player.GetComponent<PlayerMovement>();
-        shadow = light.GetComponent<Shadow>();
-        shadow2 = light2.GetComponent<Shadow>();
+        playerMovement = player.GetComponent<PlayerMovement>();
+        shadowLightOne = testLightOne.GetComponent<Shadow>();
+        shadowLightTwo = testLightTwo.GetComponent<Shadow>();
+
+        enemy = transform;
+        agent.speed = Constants.AI_NORMAL_SPEED;
+        startPosition = this.transform.position;
 
     }
 
 
     void Update()
     {
-        if (shadow.enabled)
+        if (shadowLightOne.enabled)
         {
-            if (pm.sneaking == false && shadow.safe == false)
+            if (playerMovement.sneaking == false && shadowLightOne.safe == false)
             {
-                float distance = Vector3.Distance(enemy.position, player.position);
-                if (distance >= range && distance <= range2 && playerInSight)
+                float distance = Vector3.Distance(enemy.position, player.transform.position);
+                if (distance == Constants.AI_RANGE && playerInSight)
                 {
-                    patrolSpeed = 5f;
-                    enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-                    enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+                    enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                    enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
 
 
                 }
-                else if (distance <= range && distance > stop && playerInSight)
+                else if (distance <= Constants.AI_RANGE && distance > Constants.AI_STOP && playerInSight)
                 {
-                    patrolSpeed = 5f;
                     enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                    Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-                    enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+                    Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                    enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
                 }
                 else
                 {
@@ -86,23 +66,21 @@ public class FollowAI : MonoBehaviour
         else
         {
             {
-                if (pm.sneaking == false && shadow2.safe == false)
+                if (playerMovement.sneaking == false && shadowLightTwo.safe == false)
                 {
-                    float distance = Vector3.Distance(enemy.position, player.position);
-                    if (distance >= range && distance <= range2 && playerInSight)
+                    float distance = Vector3.Distance(enemy.position, player.transform.position);
+                    if (distance == Constants.AI_RANGE && playerInSight)
                     {
-                        patrolSpeed = 5f;
-                        enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-                        enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+                        enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                        enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
 
 
                     }
-                    else if (distance <= range && distance > stop && playerInSight)
+                    else if (distance <= Constants.AI_RANGE && distance > Constants.AI_STOP && playerInSight)
                     {
-                        patrolSpeed = 5f;
                         enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                        Quaternion.LookRotation(player.position - enemy.position), rotationSpeed * Time.deltaTime);
-                        enemy.position += enemy.forward * patrolSpeed * Time.deltaTime;
+                        Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                        enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
                     }
                     else
                     {
@@ -116,12 +94,12 @@ public class FollowAI : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == pplayer)
+        if (other.gameObject == player)
         {
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
-            if (angle < fieldOfViewAngle * 0.5f)
+            if (angle < Constants.AI_VIEW_ANGLE * 0.5f)
             {
                 playerInSight = true;
             }
@@ -131,16 +109,13 @@ public class FollowAI : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
+        if (other.gameObject == player)
             playerInSight = false;
     }
 
     void Wander()
     {
-
-        patrolSpeed = 5f;
-
-        Vector3 destination = startPosition + new Vector3(Random.Range(-patrolRange, patrolRange), 0, Random.Range(-patrolRange, patrolRange));
+        Vector3 destination = startPosition + new Vector3(Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE), 0, Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE));
         NewDestination(destination);
     }
 

@@ -6,7 +6,6 @@ public class HurtEffect : MonoBehaviour
 
     public Texture hurtEffect;
 
-    private float displayTime = 5.0f;
     public bool displayHurtEffect = false;
 
     void OnTriggerEnter(Collider col)
@@ -31,7 +30,7 @@ public class HurtEffect : MonoBehaviour
 
     IEnumerator StopDisplayingEffect()
     {
-        yield return new WaitForSeconds(displayTime);
+        yield return new WaitForSeconds(Constants.DISPLAY_TIME);
         displayHurtEffect = false;
     }
 }
