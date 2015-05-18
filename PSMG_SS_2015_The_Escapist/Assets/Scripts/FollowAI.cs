@@ -5,12 +5,16 @@ public class FollowAI : MonoBehaviour
 {
     public GameObject testLightOne;
     public GameObject testLightTwo;
-    private Transform enemy;
     private GameObject player;
+
+    private Transform enemy;
+    
     private NavMeshAgent agent;
+
     private Vector3 startPosition;
 
     private PlayerMovement playerMovement;
+
     private Shadow shadowLightOne;
     private Shadow shadowLightTwo;
 
@@ -23,9 +27,11 @@ public class FollowAI : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         testLightOne = GameObject.Find("Sun");
         testLightTwo = GameObject.Find("Point light");
+
         agent = gameObject.GetComponent<NavMeshAgent>();
 
         playerMovement = player.GetComponent<PlayerMovement>();
+
         shadowLightOne = testLightOne.GetComponent<Shadow>();
         shadowLightTwo = testLightTwo.GetComponent<Shadow>();
 

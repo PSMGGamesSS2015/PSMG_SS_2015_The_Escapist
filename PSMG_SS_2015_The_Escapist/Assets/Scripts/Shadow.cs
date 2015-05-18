@@ -6,60 +6,56 @@ public class Shadow : MonoBehaviour
 
     public GameObject player;
 
-    public GameObject reflectorOne;
-    public GameObject reflectorTwo;
-    public GameObject reflectorThree;
+    public GameObject frontReflector;
+    public GameObject midReflector;
+    public GameObject backReflector;
 
-    private int visiblePercentage;
-    float fieldOfViewRange = 60;
-    float rayRange = 180f;
+    private float visiblePercentage;
 
     public bool isPlayerInLight;
     public bool safe = false;
 
-    public bool einsSichtbar;
-    public bool zweiSichtbar;
-    public bool dreiSichtbar;
+    public bool frontVisible;
+    public bool midVisible;
+    public bool backVisible;
 
 
 
     void Update()
     {
        
-            if (Visibility(reflectorOne)) einsSichtbar = true;
-            else einsSichtbar = false;
-            if (Visibility(reflectorTwo)) zweiSichtbar = true;
-            else zweiSichtbar = false;
-            if (Visibility(reflectorThree)) dreiSichtbar = true;
-            else dreiSichtbar = false;
+            if (Visibility(frontReflector)) frontVisible = true;
+            else frontVisible = false;
 
-            if (einsSichtbar)
+            if (Visibility(midReflector)) midVisible = true;
+            else midVisible = false;
+
+            if (Visibility(backReflector)) backVisible = true;
+            else backVisible = false;
+
+            if (frontVisible)
             {
-                visiblePercentage = 0; safe = false;
+                visiblePercentage = Constants.FULL_VISIBLE; safe = false;
             }
-            else if (!einsSichtbar && zweiSichtbar)
+            else if (!frontVisible && midVisible)
             {
-                visiblePercentage = 33; safe = false;
+                visiblePercentage = Constants.SLIGHTLY_COVERED; safe = false;
             }
-            else if (!einsSichtbar && !zweiSichtbar && dreiSichtbar)
+            else if (!frontVisible && !midVisible && backVisible)
             {
-                visiblePercentage = 66; safe = true;
+                visiblePercentage = Constants.MOSTLY_COVERED; safe = true;
             }
             else
             {
-                visiblePercentage = 100; safe = true;
+                visiblePercentage = Constants.FULL_COVERED; safe = true;
             }
-      
-
 
     }
 
     void OnGUI()
     {
-       
             GUI.Label(new Rect(10, 10, 100, 256), "Versteckt: " + visiblePercentage + "%");
             GUI.Label(new Rect(10, 30, 100, 256), "Sicher: " + safe.ToString());
-        
     }
 
     bool Visibility(GameObject gameObject)
@@ -80,9 +76,9 @@ public class Shadow : MonoBehaviour
             }
         }
 
-        if ((Vector3.Angle(rayDirection, transform.forward)) < fieldOfViewRange)
+        if ((Vector3.Angle(rayDirection, transform.forward)) < Constants.FIELD_OF_VIEW_RANGE)
         {
-            if (Physics.Raycast(transform.position, rayDirection, out hit, rayRange))
+            if (Physics.Raycast(transform.position, rayDirection, out hit, Constants.RAY_RANGE))
             {
                 if (hit.collider.tag == "Player")
                 {

@@ -3,15 +3,16 @@ using System.Collections;
 
 public class LightSwitch : MonoBehaviour {
 
-    public Light sun;
-    public Light pointLight;
-    private Shadow shadowScript;
-    private Shadow shadowScript2;
-
-    private bool test;
-
     private GameObject player;
+
     private Animation switchAnim;
+
+    public Light sunLight;
+    public Light switchedSunLight;
+
+    private Shadow shadowSunLight;
+    private Shadow shadowSwitchedSunLight;
+
     private float switchAnimTime = 0.5f;
     private float nextSwitchTime;
     private bool switchOn = false;
@@ -22,11 +23,11 @@ public class LightSwitch : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         switchAnim = GetComponent<Animation>();
 
-        shadowScript = sun.GetComponent<Shadow>();
-        shadowScript2 = pointLight.GetComponent<Shadow>();
+        shadowSunLight = sunLight.GetComponent<Shadow>();
+        shadowSwitchedSunLight = switchedSunLight.GetComponent<Shadow>();
 
-        shadowScript.enabled = true;
-        shadowScript2.enabled = false;
+        shadowSunLight.enabled = true;
+        shadowSwitchedSunLight.enabled = false;
     }
 
     void OnTriggerStay(Collider other)
@@ -46,14 +47,14 @@ public class LightSwitch : MonoBehaviour {
 
             switchAnim.Play();
 
-            sun.enabled = !sun.enabled;
+            sunLight.enabled = !sunLight.enabled;
 
-            if (sun.enabled) shadowScript.enabled = true;
-            else shadowScript.enabled = false;
+            if (sunLight.enabled) shadowSunLight.enabled = true;
+            else shadowSunLight.enabled = false;
 
-            pointLight.enabled = !pointLight.enabled;
-            if (pointLight.enabled) shadowScript2.enabled = true;
-            else shadowScript2.enabled = false;
+            switchedSunLight.enabled = !switchedSunLight.enabled;
+            if (switchedSunLight.enabled) shadowSwitchedSunLight.enabled = true;
+            else shadowSwitchedSunLight.enabled = false;
 
             switchOn = !switchOn;
 

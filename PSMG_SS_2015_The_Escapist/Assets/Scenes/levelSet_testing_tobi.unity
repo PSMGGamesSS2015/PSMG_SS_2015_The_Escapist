@@ -243,7 +243,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651273637}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &103701908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,14 +256,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1709594944}
-  reflectorOne: {fileID: 2027053467}
-  reflectorTwo: {fileID: 1670715970}
-  reflectorThree: {fileID: 1201041422}
+  frontReflector: {fileID: 2027053467}
+  midReflector: {fileID: 1670715970}
+  backReflector: {fileID: 1201041422}
   isPlayerInLight: 0
   safe: 0
-  einsSichtbar: 0
-  zweiSichtbar: 0
-  dreiSichtbar: 0
+  frontVisible: 0
+  midVisible: 0
+  backVisible: 0
 --- !u!1 &136295628
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,9 +986,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 7.07000017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2012419897}
   - {fileID: 103701907}
   - {fileID: 2015760649}
+  - {fileID: 2012419897}
   - {fileID: 1703338542}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1087,8 +1087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348562dcc299ddc43b7f11bf90e524f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sun: {fileID: 103701906}
-  pointLight: {fileID: 2015760650}
+  sunLight: {fileID: 103701906}
+  switchedSunLight: {fileID: 2015760650}
 --- !u!135 &911338886
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1310,7 +1310,7 @@ GameObject:
   - 65: {fileID: 1201041425}
   - 23: {fileID: 1201041424}
   m_Layer: 0
-  m_Name: 3
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1327,7 +1327,7 @@ Transform:
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children: []
   m_Father: {fileID: 1709594948}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!23 &1201041424
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1578,7 +1578,7 @@ GameObject:
   - 54: {fileID: 1438133402}
   - 65: {fileID: 1438133398}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1595,8 +1595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testLightOne: {fileID: 0}
-  testLightTwo: {fileID: 0}
+  testLightOne: {fileID: 103701905}
+  testLightTwo: {fileID: 2015760648}
   playerInSight: 0
 --- !u!23 &1438133397
 MeshRenderer:
@@ -1741,8 +1741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testLightOne: {fileID: 0}
-  testLightTwo: {fileID: 0}
+  testLightOne: {fileID: 103701905}
+  testLightTwo: {fileID: 2015760648}
   playerInSight: 0
 --- !u!23 &1524173229
 MeshRenderer:
@@ -2013,7 +2013,7 @@ GameObject:
   - 65: {fileID: 1670715972}
   - 23: {fileID: 1670715971}
   m_Layer: 0
-  m_Name: 2
+  m_Name: Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2073,7 +2073,7 @@ Transform:
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children: []
   m_Father: {fileID: 1709594948}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1703338540
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,9 +2210,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 50193302}
+  - {fileID: 2027053468}
   - {fileID: 1670715974}
   - {fileID: 1201041423}
-  - {fileID: 2027053468}
   m_Father: {fileID: 1288025155}
   m_RootOrder: 0
 --- !u!114 &1709594949
@@ -2254,8 +2254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a45971691af254b98f8122dabfc772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera1: {fileID: 477709053}
-  camera2: {fileID: 50193306}
+  firstPerson: {fileID: 50193306}
+  thirdPerson: {fileID: 477709053}
 --- !u!114 &1709594953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2454,7 +2454,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651273637}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!108 &2012419898
 Light:
   m_ObjectHideFlags: 0
@@ -2498,7 +2498,7 @@ GameObject:
   - 108: {fileID: 2015760650}
   - 114: {fileID: 2015760651}
   m_Layer: 0
-  m_Name: Point light
+  m_Name: Switched Sun
   m_TagString: Lights
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2515,7 +2515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651273637}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!108 &2015760650
 Light:
   m_ObjectHideFlags: 0
@@ -2560,14 +2560,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1709594944}
-  reflectorOne: {fileID: 2027053467}
-  reflectorTwo: {fileID: 1670715970}
-  reflectorThree: {fileID: 1201041422}
+  frontReflector: {fileID: 2027053467}
+  midReflector: {fileID: 1670715970}
+  backReflector: {fileID: 1201041422}
   isPlayerInLight: 0
   safe: 0
-  einsSichtbar: 0
-  zweiSichtbar: 0
-  dreiSichtbar: 0
+  frontVisible: 0
+  midVisible: 0
+  backVisible: 0
 --- !u!1 &2027053467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,7 +2580,7 @@ GameObject:
   - 65: {fileID: 2027053470}
   - 23: {fileID: 2027053469}
   m_Layer: 0
-  m_Name: 1
+  m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2597,7 +2597,7 @@ Transform:
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children: []
   m_Father: {fileID: 1709594948}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!23 &2027053469
 MeshRenderer:
   m_ObjectHideFlags: 0

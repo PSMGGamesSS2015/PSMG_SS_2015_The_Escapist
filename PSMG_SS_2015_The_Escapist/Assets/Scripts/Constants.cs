@@ -34,4 +34,14 @@ public class Constants : MonoBehaviour {
     //Constants for the HurtEeffect
     public static float DISPLAY_TIME = 5f;
 
+    //Constants for Shadow
+    public static float FIELD_OF_VIEW_RANGE = 60f;
+    public static float RAY_RANGE = 180f;
+    public static float FULL_VISIBLE = 0f;
+    public static float SLIGHTLY_COVERED = 33f;
+    public static float MOSTLY_COVERED = 66f;
+    public static float FULL_COVERED = 100f;
+
+    //Constants for LightSwitch
+    public static float SWITCH_ANIM_TIME = 0.5f;
 }
