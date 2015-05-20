@@ -3,6 +3,8 @@ using System.Collections;
 
 public class OpenDoor : MonoBehaviour {
 
+    public bool closeAutomatic = false;
+
     private GameObject player;
     private Animation openAnim;
     private float openAnimTime = 1f;
@@ -20,7 +22,7 @@ public class OpenDoor : MonoBehaviour {
     {
         if (other.gameObject == player)
         {
-            StopCoroutine("triggerCloseDoor");
+            if (closeAutomatic) StopCoroutine("triggerCloseDoor");
 
             if (Input.GetButton("Use"))
             {
@@ -31,7 +33,7 @@ public class OpenDoor : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player && doorOpen)
+        if (other.gameObject == player && doorOpen && closeAutomatic)
         {
             StartCoroutine("triggerCloseDoor");
         }

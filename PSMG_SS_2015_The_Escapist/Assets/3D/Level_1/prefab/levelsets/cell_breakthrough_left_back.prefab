@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3364492}
   - 23: {fileID: 2385650}
   - 64: {fileID: 6471434}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_door_large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420194}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cell_breakthrough_left_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 33: {fileID: 3320756}
   - 23: {fileID: 2354116}
   - 64: {fileID: 6415576}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,10 @@ GameObject:
   - 33: {fileID: 3363484}
   - 23: {fileID: 2355530}
   - 64: {fileID: 6459690}
-  m_Layer: 0
+  - 111: {fileID: 11159514}
+  - 65: {fileID: 6566234}
+  - 114: {fileID: 11405080}
+  m_Layer: 9
   m_Name: Door_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +83,7 @@ GameObject:
   - 33: {fileID: 3357772}
   - 23: {fileID: 2311774}
   - 64: {fileID: 6426452}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_wall_one_side_breaktrough 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +101,7 @@ GameObject:
   - 33: {fileID: 3383306}
   - 23: {fileID: 2380056}
   - 64: {fileID: 6462386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_edge 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +119,7 @@ GameObject:
   - 33: {fileID: 3330092}
   - 23: {fileID: 2339184}
   - 64: {fileID: 6468366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_edge 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +137,7 @@ GameObject:
   - 33: {fileID: 3338114}
   - 23: {fileID: 2372398}
   - 64: {fileID: 6421766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_wall_one_side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +155,7 @@ GameObject:
   - 33: {fileID: 3317710}
   - 23: {fileID: 2367034}
   - 64: {fileID: 6425930}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_edge 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +173,7 @@ GameObject:
   - 33: {fileID: 3356150}
   - 23: {fileID: 2305888}
   - 64: {fileID: 6463722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_wall_one_side 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +191,7 @@ GameObject:
   - 33: {fileID: 3339608}
   - 23: {fileID: 2393090}
   - 64: {fileID: 6477770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prison_wall_one_side 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +205,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118774}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 0, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459848}
@@ -308,7 +311,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104426}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 1.98999977, y: .75, z: 0}
+  m_LocalPosition: {x: 2, y: .75, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 420194}
@@ -767,6 +770,45 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 602f22a6b78d8fd48a237cb4dca21a98, type: 3}
+--- !u!65 &6566234
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -.75, y: 4.22508001, z: 2.33886123}
+  m_Center: {x: .0285639726, y: 2.10967898, z: -1.16943252}
+--- !u!111 &11159514
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150208}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: db9983cdab0f1a849bbe5eee59179978, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: db9983cdab0f1a849bbe5eee59179978, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &11405080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeAutomatic: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

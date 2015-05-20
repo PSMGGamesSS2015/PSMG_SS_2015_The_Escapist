@@ -125,64 +125,7 @@ AnimationClip:
   m_CompressedRotationCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
-  m_FloatCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1.44000006
-        inSlope: 7.73999977
-        outSlope: 7.73999977
-        tangentMode: 10
-      - time: .333333343
-        value: 4.01999998
-        inSlope: 7.73999977
-        outSlope: 7.73999977
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Size.x
-    path: 
-    classID: 65
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 2.41000009
-        inSlope: 4.70999956
-        outSlope: 4.70999956
-        tangentMode: 10
-      - time: .333333343
-        value: 3.98000002
-        inSlope: 4.70999956
-        outSlope: 4.70999956
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Size.z
-    path: 
-    classID: 65
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1.00960636
-        inSlope: -.388819098
-        outSlope: -.388819098
-        tangentMode: 10
-      - time: .333333343
-        value: .879999995
-        inSlope: -.388819098
-        outSlope: -.388819098
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Center.z
-    path: 
-    classID: 65
-    script: {fileID: 0}
+  m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -210,63 +153,6 @@ AnimationClip:
     m_HeightFromFeet: 0
     m_Mirror: 0
   m_EditorCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1.44000006
-        inSlope: 7.73999977
-        outSlope: 7.73999977
-        tangentMode: 10
-      - time: .333333343
-        value: 4.01999998
-        inSlope: 7.73999977
-        outSlope: 7.73999977
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Size.x
-    path: 
-    classID: 65
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 2.41000009
-        inSlope: 4.70999956
-        outSlope: 4.70999956
-        tangentMode: 10
-      - time: .333333343
-        value: 3.98000002
-        inSlope: 4.70999956
-        outSlope: 4.70999956
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Size.z
-    path: 
-    classID: 65
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1.00960636
-        inSlope: -.388819098
-        outSlope: -.388819098
-        tangentMode: 10
-      - time: .333333343
-        value: .879999995
-        inSlope: -.388819098
-        outSlope: -.388819098
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Center.z
-    path: 
-    classID: 65
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
