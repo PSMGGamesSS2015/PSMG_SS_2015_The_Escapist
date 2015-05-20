@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 456378}
   - 33: {fileID: 3389086}
   - 23: {fileID: 2387684}
-  - 64: {fileID: 6444290}
+  - 65: {fileID: 6596140}
   m_Layer: 0
   m_Name: Prison_ground
   m_TagString: Untagged
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126588}
   m_Mesh: {fileID: 4300000, guid: 24c705e8bcbc8d14c93838246920f0ac, type: 3}
---- !u!64 &6444290
-MeshCollider:
+--- !u!65 &6596140
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 24c705e8bcbc8d14c93838246920f0ac, type: 3}
+  m_Size: {x: 2, y: 1.99999976, z: .24999997}
+  m_Center: {x: 8.47032846e-22, y: 0, z: .124999985}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

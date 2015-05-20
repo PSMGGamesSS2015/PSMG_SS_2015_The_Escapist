@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 488924}
   - 33: {fileID: 3309370}
   - 23: {fileID: 2312758}
-  - 64: {fileID: 6493862}
+  - 65: {fileID: 6539110}
   m_Layer: 0
   m_Name: Prison_wall_one_side_breaktrough
   m_TagString: Untagged
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103710}
   m_Mesh: {fileID: 4300000, guid: cd5cd378330e942449a99e2a0a426d55, type: 3}
---- !u!64 &6493862
-MeshCollider:
+--- !u!65 &6539110
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: cd5cd378330e942449a99e2a0a426d55, type: 3}
+  m_Size: {x: .250000298, y: 2.00000024, z: 3.00000024}
+  m_Center: {x: .0080827754, y: -3.21043636e-08, z: .530539036}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

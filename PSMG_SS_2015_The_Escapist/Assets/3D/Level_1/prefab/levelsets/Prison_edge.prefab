@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 499322}
   - 33: {fileID: 3315898}
   - 23: {fileID: 2348254}
-  - 64: {fileID: 6446508}
+  - 65: {fileID: 6525842}
   m_Layer: 9
   m_Name: Prison_edge
   m_TagString: Untagged
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195552}
   m_Mesh: {fileID: 4300014, guid: d4276ed87d9704c4a97ec41c17b5e5bd, type: 3}
---- !u!64 &6446508
-MeshCollider:
+--- !u!65 &6525842
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300014, guid: d4276ed87d9704c4a97ec41c17b5e5bd, type: 3}
+  m_Size: {x: 2, y: 1.99999988, z: 2.99999952}
+  m_Center: {x: 7.10779227e-16, y: 2.98023188e-08, z: .49999994}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

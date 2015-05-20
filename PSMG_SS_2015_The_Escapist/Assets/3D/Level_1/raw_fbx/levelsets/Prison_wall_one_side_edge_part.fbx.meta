@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ae71a55bcd26c504eb864fbcf5da2acb
-timeCreated: 1431535231
+guid: 88572428f8e562048a32e3eb0960a6aa
+timeCreated: 1432145482
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Prison_wall_two_side_breaktrough
+    4300000: Prison_wall_one_side_edge_part
   materials:
     importMaterials: 1
     materialName: 0

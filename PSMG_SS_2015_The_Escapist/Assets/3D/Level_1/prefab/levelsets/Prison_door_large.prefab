@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 422426}
   - 33: {fileID: 3302438}
   - 23: {fileID: 2367200}
-  - 64: {fileID: 6495586}
+  - 65: {fileID: 6536052}
   m_Layer: 9
   m_Name: Prison_door_large
   m_TagString: Untagged
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123044}
   m_Mesh: {fileID: 4300000, guid: b893cadba0c323a4b812708b2b530333, type: 3}
---- !u!64 &6495586
-MeshCollider:
+--- !u!65 &6536052
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: b893cadba0c323a4b812708b2b530333, type: 3}
+  m_Size: {x: 2, y: 1.99999976, z: 2.99999952}
+  m_Center: {x: 0, y: 0, z: .49999994}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

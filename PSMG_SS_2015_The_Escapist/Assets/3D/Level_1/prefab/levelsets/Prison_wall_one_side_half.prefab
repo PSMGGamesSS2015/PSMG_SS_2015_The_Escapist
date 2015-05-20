@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 480670}
   - 33: {fileID: 3312430}
   - 23: {fileID: 2369792}
-  - 64: {fileID: 6476328}
+  - 65: {fileID: 6598034}
   m_Layer: 0
   m_Name: Prison_wall_one_side_half
   m_TagString: Untagged
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105450}
   m_Mesh: {fileID: 4300000, guid: f371d3bc4d79b0b41b7a746416e1af6d, type: 3}
---- !u!64 &6476328
-MeshCollider:
+--- !u!65 &6598034
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: f371d3bc4d79b0b41b7a746416e1af6d, type: 3}
+  m_Size: {x: 2.00000024, y: 2.00000048, z: 3.00000024}
+  m_Center: {x: -2.98023437e-08, y: -5.96046448e-08, z: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
