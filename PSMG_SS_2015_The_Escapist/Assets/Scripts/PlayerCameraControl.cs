@@ -14,26 +14,24 @@ public class PlayerCameraControl : MonoBehaviour
     private float moveSidewards = 1;
     private int updatesForLeaning = 15;
     private float leaningSpeed = 5f;
-
     private Vector3 startPos;
     private float startTime = 0;
-
     private int maxLookUp = 60;
     private int maxLookDown = 300;
 
-    // Use this for initialization
+    /// <summary>
+    /// The cursor will be set to invisible and the camera of the player will be found.
+    /// </summary>
     void Start()
     {
         Cursor.visible = false;
         camera = gameObject.GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         leanLeftAndRight();
         lookUpAndDown();
-        Debug.Log(GameObject.Find("Player").GetComponent<PlayerMovement>().playerIsGrounded());
         if (leftLeaning == true || rightLeaning == true)
         {
             freezeMovement();
@@ -41,17 +39,23 @@ public class PlayerCameraControl : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// All movement of the player will be freezed for about a second.
+    /// </summary>
     private void freezeMovement()
     {
         GameObject.Find("Player").GetComponent<PlayerMovement>().disableMovement(true);
 
     }
 
-
+    /// <summary>
+    /// This method handles the leaning of the player by pressing the key "q" or "e". That will also restricts the movement of the camera during leaning.
+    /// </summary>
     private void leanLeftAndRight()
     {
 
-        if ((Input.GetButton("Lean Left") == true) && (rightLeaning == false))
+        // This part is for leaning left.
+        if (Input.GetButton("Lean Left") == true)
         {
 
             if (GameObject.Find("Player").GetComponent<PlayerMovement>().playerIsGrounded() == true)
@@ -69,15 +73,13 @@ public class PlayerCameraControl : MonoBehaviour
                     moveCameraLeft();
                     counter++;
                 }
-
                 leanLeft();
                 startTime = Time.time;
             }
 
 
-
-        }
-        else if ((Input.GetButton("Lean Right") == true) && (leftLeaning == false))
+        // This part is for leaning right.
+        } else if (Input.GetButton("Lean Right") == true)
         {
             
             if (GameObject.Find("Player").GetComponent<PlayerMovement>().playerIsGrounded() == true)
@@ -99,68 +101,36 @@ public class PlayerCameraControl : MonoBehaviour
                 leanRight();
                 startTime = Time.time;
             }
-        }
-        else
+
+
+         //This method resets the position of the camera to its origin before the leaning.
+        } else
         {
             resetCamera();
 
         }
     }
 
+    /// <summary>
+    /// Moves the camera to the right side. (Does not handles the rotation!)
+    /// </summary>
     private void moveCameraRight()
     {
         transform.Translate(Vector3.right * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Moves the camera to the left side. (Does not handles the rotation!)
+    /// </summary>
     private void moveCameraLeft()
     {
         transform.Translate(Vector3.left * Time.deltaTime);
     }
 
-    private void resetCamera()
-    {
-        resetCameraPosition();
 
-        float currentAngle = transform.rotation.eulerAngles.z;
-        float targetAngle = 0f;
-        float leanSpeed = leaningSpeed;
-
-        if (currentAngle > 180)
-        {
-            targetAngle = 360;
-        }
-        float angle = Mathf.Lerp(currentAngle, targetAngle, leanSpeed * Time.deltaTime);
-        Quaternion rotAngle = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, angle);
-        transform.rotation = rotAngle;
-
-
-
-
-
-    }
-
-    private void resetCameraPosition()
-    {
-        if (rightLeaning == true || leftLeaning == true)
-        {
-            Vector3 velocity = Vector3.zero;
-            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, startPos, ref velocity, 0.05f);
-
-            if ((Time.time - startTime) > 0.75)
-            {
-                leftLeaning = false;
-                rightLeaning = false;
-                counter = 0;
-                upAndDownAllowed = true;
-
-                GameObject.Find("Player").GetComponent<PlayerMovement>().disableMovement(false);
-                
-            }
-
-        }
-
-    }
-
+    /// <summary>
+    /// This method handles the leaning of the player (rotation, not the position) to the right.
+    /// </summary>
     private void leanRight()
     {
         float currentAngle = transform.rotation.eulerAngles.z;
@@ -177,6 +147,9 @@ public class PlayerCameraControl : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// This method handles the leaning of the player (rotation, not the position) to the left.
+    /// </summary>
     private void leanLeft()
     {
         float currentAngle = transform.rotation.eulerAngles.z;
@@ -192,19 +165,67 @@ public class PlayerCameraControl : MonoBehaviour
         transform.rotation = rotAngle;
     }
 
+    /// <summary>
+    /// This method resets the position and the rotation of the camera to the starting position before the leaning.
+    /// </summary>
+    private void resetCamera()
+    {
+        resetCameraPosition();
+        float currentAngle = transform.rotation.eulerAngles.z;
+        float targetAngle = 0f;
+        float leanSpeed = leaningSpeed;
+
+        if (currentAngle > 180)
+        {
+            targetAngle = 360;
+        }
+        float angle = Mathf.Lerp(currentAngle, targetAngle, leanSpeed * Time.deltaTime);
+        Quaternion rotAngle = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, angle);
+        transform.rotation = rotAngle;
+
+    }
+
+    /// <summary>
+    /// The position (not the rotation) of the camera will be reset.
+    /// </summary>
+    private void resetCameraPosition()
+    {
+        if (rightLeaning == true || leftLeaning == true)
+        {
+            Vector3 velocity = Vector3.zero;
+            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, startPos, ref velocity, 0.05f);
+
+            if ((Time.time - startTime) > 0.75)
+            {
+                leftLeaning = false;
+                rightLeaning = false;
+                counter = 0;
+                upAndDownAllowed = true;
+
+                GameObject.Find("Player").GetComponent<PlayerMovement>().disableMovement(false);
+            }
+        }
+    }
+
+
+
+    /// <summary>
+    /// The camera movement up and down will be handled with this method. It also limits the angle up and down.
+    /// </summary>
     private void lookUpAndDown()
     {
         if (upAndDownAllowed == true)
         {
-
-
+            // This part handles the normal case of the camera, no limits for the movement are reached.
             if (transform.localEulerAngles.x < maxLookUp || transform.localEulerAngles.x > maxLookDown)
             {
                 GetComponent<Camera>().transform.Rotate(-(Input.GetAxis("Mouse Y") * rotationSpeed), 0, 0);
             }
 
+            // This part handles the case that the camera is reaching one of the boundaries.
             if (transform.localEulerAngles.x >= maxLookUp && transform.localEulerAngles.x < maxLookDown)
             {
+                // This part is for the case the camera has reached the limit to look down.
                 if (transform.localEulerAngles.x < 180)
                 {
                     if (Input.GetAxis("Mouse Y") > 0)
@@ -213,6 +234,7 @@ public class PlayerCameraControl : MonoBehaviour
                     }
 
                 }
+                // This part is for the case the camera has reached the limit to look up.
                 else
                 {
                     if (Input.GetAxis("Mouse Y") < 0)
@@ -222,11 +244,6 @@ public class PlayerCameraControl : MonoBehaviour
 
                 }
             }
-
-            
         }
-
-
     }
-
 }

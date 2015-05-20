@@ -8,10 +8,8 @@ public class PlayerMovement : MonoBehaviour {
     private float rotationSpeed;
     public bool sneaking = false;
     private bool running = false;
-
     private bool firstPersonActive = true;
     private bool movementDisabled = false;
-
     private float turn;
     private float moveVertical;
 
@@ -25,11 +23,10 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-
         turn = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        sneaking = checkSneakButton();
-        running = checkRunningButton();
+        sneaking = checkSneakMode();
+        running = checkRunningMode();
         firstPersonActive = isCameraFirstPerson();
 
         // All movement will be done here.
@@ -50,12 +47,12 @@ public class PlayerMovement : MonoBehaviour {
         
     }
 
-   
 
-
-
-    // Check if the left shift is pressed and resizes the player if the mode changes.
-    private bool checkRunningButton()
+    /// <summary>
+    /// This method checks if the running button has been pressed. Depending on which button has been pressed, it will return true or false. It also modifiys the size of the player.
+    /// </summary>
+    /// <returns>Bool: Running mode active or not.</returns>
+    private bool checkRunningMode()
     {
         if ((Input.GetButtonDown("Run") == true) && (running == true))
         {
@@ -80,8 +77,11 @@ public class PlayerMovement : MonoBehaviour {
         
     }
 
-    // Checks if the left ctrl is pressed and resizes the player if the mode changes.
-    private bool checkSneakButton()
+    /// <summary>
+    /// This method checks if the sneaking button has been pressed. Depending on which button has been pressed, it will return true or false. It also modifiys the size of the player.
+    /// </summary>
+    /// <returns>Bool: Sneaking mode active or not.</returns>
+    private bool checkSneakMode()
     {
         if ((Input.GetButtonDown("Sneak") == true) && (sneaking == true))
         {
@@ -101,6 +101,10 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// This method modifies the size of the player. The method will maybe not needed in the future developing process.
+    /// </summary>
+    /// <param name="sneaking"></param>
     private void modifySize(bool sneaking)
     {
         if (sneaking == true)
@@ -115,7 +119,10 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    // Checks, if the player is on the ground for jumping (to prevent double jump etc.).
+    /// <summary>
+    /// This method checks via RayCast if the player is on the ground or not.
+    /// </summary>
+    /// <returns>Bool: Player on ground or not.</returns>
     public bool playerIsGrounded()
     {
         float maxDistanceToGround = 0.1f;
@@ -130,6 +137,12 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// This method handles the movement of the player depending on which movement mode is active (running, walking, sneaking). It also does the jumping.
+    /// </summary>
+    /// <param name="turn"></param>
+    /// <param name="moveVertical"></param>
+    /// <param name="sneaking"></param>
     private void manageMovement(float turn, float moveVertical, bool sneaking)
     {
         if (sneaking == true)
@@ -174,19 +187,32 @@ public class PlayerMovement : MonoBehaviour {
 
 
 
-    //Returns the player's position (to the gameController).
+    /// <summary>
+    /// Returning the player's position (for GameController).
+    /// </summary>
+    /// <returns>Vector3: Player's Position</returns>
     public Vector3 getPlayerPosition()
     {
         return transform.position;
     }
 
-    //Returns if the sneakingmode is active or not (to the gameController).
+    /// <summary>
+    /// Returns if the sneakingMode is active or not (for GameController).
+    /// </summary>
+    /// <returns>Bool: Sneaking Mode active or not.</returns>
     public bool sneakingIsActive()
     {
         return sneaking;
     }
 
-
+    /// <summary>
+    /// This method disables all movement of the player.
+    /// </summary>
+    /// <param name="disable"></param>
+    public void disableMovement(bool disable)
+    {
+        movementDisabled = disable;
+    }
 
     // CAUTION: This part contains only methods for debugging the levels. This part will be removed when the game is finished.
 
@@ -206,7 +232,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-
+    // ONLY FOR DEBUGGING!!! Do not change.
     private void debugMovement(float turn, float moveVertical, bool sneaking)
     {
         if (sneaking == true)
@@ -269,15 +295,11 @@ public class PlayerMovement : MonoBehaviour {
         if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
         {
             rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
-            //GetComponent<Rigidbody>().AddForce(transform.up * Constants.JUMPING_SPEED);
         }
 
 
     }
 
 
-    public void disableMovement(bool disable)
-    {
-        movementDisabled = disable;
-    }
+
 }
