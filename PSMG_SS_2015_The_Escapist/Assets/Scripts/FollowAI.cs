@@ -16,8 +16,17 @@ public class FollowAI : MonoBehaviour
 
     private Shadow shadowLightOne;
 
+    public Transform[] waypoint;
+    public bool loop = true;
+    public float dampingLook= 6.0f;          
+    public float pauseDuration = 0;     
+    private float curTime;
+    private int currentWaypoint = 0;
+    private CharacterController character;
+    
 
     public bool playerInSight = false;
+
 
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
@@ -27,6 +36,7 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Start()
     {
+        character = GetComponent<CharacterController>();
         player = GameObject.FindWithTag("Player");
         testLightOne = GameObject.Find("Sun");
 
@@ -47,34 +57,69 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
-       
-            if (playerMovement.sneaking == false && shadowLightOne.safe == false)
+
+        if (playerMovement.sneaking == false && shadowLightOne.safe == false)
+        {
+            float distance = Vector3.Distance(enemy.position, player.transform.position);
+            if (distance == Constants.AI_RANGE && playerInSight)
             {
-                float distance = Vector3.Distance(enemy.position, player.transform.position);
-                if (distance == Constants.AI_RANGE && playerInSight)
-                {
-                    enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                    enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
+                enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
 
 
-                }
-                else if (distance <= Constants.AI_RANGE && distance > Constants.AI_STOP && playerInSight)
-                {
-                    enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                    Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                    enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
+            }
+            else if (distance <= Constants.AI_RANGE && distance > Constants.AI_STOP && playerInSight)
+            {
+                enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
+            }
+        }
+            
+           if (currentWaypoint < waypoint.Length)
+            {
+                    patrol();
                 }
                 else
                 {
-                    InvokeRepeating("Wander", 1f, 5f);
+                    if (loop)
+                    {
+                        currentWaypoint = 0;
+                    }
                 }
-
             
         }
-       
+    
+ 
+        void patrol(){
+ 
+         Vector3 target = waypoint[currentWaypoint].position;
+         target.y = transform.position.y; 
+         Vector3 moveDirection = target - transform.position;
+  
+         if(moveDirection.magnitude < 0.5f){
+             
+         if (curTime == 0)
+             curTime = Time.time;
          
+         if ((Time.time - curTime) >= pauseDuration){
+             
+             currentWaypoint++;
+             curTime = 0;
+         }
+          }else{
+         var rotation= Quaternion.LookRotation(target - transform.position);
+         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
+         character.Move(moveDirection.normalized * Constants.AI_NORMAL_SPEED * Time.deltaTime);
+     }  
+ }
+ 
+            
         
-    }
+           
+        
+       
+
 
     /// <summary>
     /// Check if player reaches the sight of the enemy 
@@ -105,18 +150,8 @@ public class FollowAI : MonoBehaviour
     /// <summary>
     /// Wandering to a random destination point
     /// </summary>
-    void Wander()
-    {
-        Vector3 destination = startPosition + new Vector3(Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE), 0, Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE));
-        NewDestination(destination);
-    }
-
-    /// <summary>
-    /// Set new destination
-    /// </summary>
-    private void NewDestination(Vector3 targetPoint)
-    {
-        agent.SetDestination(targetPoint);
-    }
+   
+  
+    
 }
 
