@@ -4,7 +4,6 @@ using System.Collections;
 public class FollowAI : MonoBehaviour
 {
     public GameObject testLightOne;
-    public GameObject testLightTwo;
     private GameObject player;
 
     private Transform enemy;
@@ -16,7 +15,7 @@ public class FollowAI : MonoBehaviour
     private PlayerMovement playerMovement;
 
     private Shadow shadowLightOne;
-    private Shadow shadowLightTwo;
+
 
     public bool playerInSight = false;
 
@@ -30,14 +29,12 @@ public class FollowAI : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         testLightOne = GameObject.Find("Sun");
-        testLightTwo = GameObject.Find("Point light");
 
         agent = gameObject.GetComponent<NavMeshAgent>();
 
         playerMovement = player.GetComponent<PlayerMovement>();
 
         shadowLightOne = testLightOne.GetComponent<Shadow>();
-        shadowLightTwo = testLightTwo.GetComponent<Shadow>();
 
         enemy = transform;
         agent.speed = Constants.AI_NORMAL_SPEED;
@@ -50,8 +47,7 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (shadowLightOne.enabled)
-        {
+       
             if (playerMovement.sneaking == false && shadowLightOne.safe == false)
             {
                 float distance = Vector3.Distance(enemy.position, player.transform.position);
@@ -73,35 +69,11 @@ public class FollowAI : MonoBehaviour
                     InvokeRepeating("Wander", 1f, 5f);
                 }
 
-            }
+            
         }
-        else
-        {
-            {
-                if (playerMovement.sneaking == false && shadowLightTwo.safe == false)
-                {
-                    float distance = Vector3.Distance(enemy.position, player.transform.position);
-                    if (distance == Constants.AI_RANGE && playerInSight)
-                    {
-                        enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                        enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
-
-
-                    }
-                    else if (distance <= Constants.AI_RANGE && distance > Constants.AI_STOP && playerInSight)
-                    {
-                        enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                        Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                        enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
-                    }
-                    else
-                    {
-                        InvokeRepeating("Wander", 1f, 5f);
-                    }
-
-                }
-            }
-        }
+       
+         
+        
     }
 
     /// <summary>
