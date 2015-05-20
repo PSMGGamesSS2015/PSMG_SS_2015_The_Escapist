@@ -6,50 +6,98 @@ public class Shadow : MonoBehaviour
 
     public GameObject player;
 
-    public GameObject frontReflector;
-    public GameObject midReflector;
-    public GameObject backReflector;
+    public GameObject faceLeftReflector;
+    public GameObject faceRightReflector;
+    public GameObject headTopReflector;
+    public GameObject shoulderLeftReflector;
+    public GameObject shoulderRightReflector;
+    public GameObject buttReflector;
+    public GameObject leftBreastReflector;
+    public GameObject rightBreastReflector;
+    // public GameObject leftArmReflector;
+    // public GameObject rightArmReflector;
+    public GameObject waistReflector;
+    public GameObject leftFootReflector;
+    public GameObject rightFootReflector;
 
-    private float visiblePercentage;
+    public float visiblePercentage;
 
-    public bool isPlayerInLight;
     public bool safe = false;
 
-    public bool frontVisible;
-    public bool midVisible;
-    public bool backVisible;
+
+    public bool headInShadow;
+    public bool frontInShadow;
+    public bool leftSideInShadow;
+    public bool rightSideInShadow;
+    public bool backInShadow;
+
 
     /// <summary>
-    /// Assign the actual visible status of the player using three reflectors
+    /// Assign the actual visible status of the player using body reflectors
     /// </summary>
     void Update()
     {
-       
-            if (Visibility(frontReflector)) frontVisible = true;
-            else frontVisible = false;
 
-            if (Visibility(midReflector)) midVisible = true;
-            else midVisible = false;
+        if (Covered(faceLeftReflector) && Covered(faceRightReflector) && Covered(headTopReflector)) headInShadow = true;
+        else headInShadow = false;
 
-            if (Visibility(backReflector)) backVisible = true;
-            else backVisible = false;
+        if (Covered(leftFootReflector) && Covered(rightFootReflector) && Covered(leftBreastReflector) &&
+            Covered(rightFootReflector) && Covered(waistReflector)) frontInShadow = true;
+        else frontInShadow = false;
 
-            if (frontVisible)
-            {
-                visiblePercentage = Constants.FULL_VISIBLE; safe = false;
-            }
-            else if (!frontVisible && midVisible)
-            {
-                visiblePercentage = Constants.SLIGHTLY_COVERED; safe = false;
-            }
-            else if (!frontVisible && !midVisible && backVisible)
-            {
-                visiblePercentage = Constants.MOSTLY_COVERED; safe = true;
-            }
-            else
-            {
-                visiblePercentage = Constants.FULL_COVERED; safe = true;
-            }
+        // if (Covered(leftArmReflector)) leftSideInShadow = true;
+        //else leftSideInShadow = false;
+
+        //            if (Covered(rightArmReflector)) rightSideInShadow = true;
+        //          else rightSideInShadow = false;
+
+        if (Covered(shoulderLeftReflector) && Covered(shoulderRightReflector) && Covered(buttReflector)) backInShadow = true;
+        else backInShadow = false;
+
+        //
+        // Large InShadow Check - trying to shorten the code 
+        //
+
+        // HeadInShadow
+        if (headInShadow && !frontInShadow && !backInShadow)
+        {
+            visiblePercentage = Constants.HEAD_COVERED; safe = false;
+        }
+
+        else if (headInShadow && frontInShadow && !backInShadow)
+        {
+            visiblePercentage = Constants.HEAD_COVERED + Constants.FRONT_COVERED; safe = true;
+        }
+
+        else if (headInShadow && !frontInShadow && backInShadow)
+        {
+            visiblePercentage = Constants.HEAD_COVERED + Constants.BACK_COVERED; safe = true;
+        }
+
+        else if (!headInShadow && frontInShadow && !backInShadow)
+        {
+            visiblePercentage = Constants.FRONT_COVERED; safe = false;
+        }
+        else if (!headInShadow && frontInShadow && backInShadow)
+        {
+            visiblePercentage = Constants.FRONT_COVERED + Constants.BACK_COVERED; safe = true;
+        }
+        else if (!headInShadow && !frontInShadow && backInShadow)
+        {
+            visiblePercentage = Constants.BACK_COVERED; safe = false;
+        }
+
+
+        // All Reflectors combined
+        else if (frontInShadow && headInShadow && backInShadow)
+        {
+            visiblePercentage = Constants.FULL_COVERED; safe = true;
+        }
+
+        else
+        {
+            visiblePercentage = Constants.FULL_VISIBLE; safe = false;
+        }
 
     }
     /// <summary>
@@ -57,14 +105,14 @@ public class Shadow : MonoBehaviour
     /// </summary>
     void OnGUI()
     {
-            GUI.Label(new Rect(10, 10, 100, 256), "Versteckt: " + visiblePercentage + "%");
-            GUI.Label(new Rect(10, 30, 100, 256), "Sicher: " + safe.ToString());
+        GUI.Label(new Rect(10, 10, 120, 256), "Versteckt: " + visiblePercentage + "%");
+        GUI.Label(new Rect(10, 30, 100, 256), "Sicher: " + safe.ToString());
     }
 
     /// <summary>
     /// Checks whether the ray hits the committed reflector or an enemy 
     /// </summary>
-    bool Visibility(GameObject gameObject)
+    bool Covered(GameObject gameObject)
     {
         RaycastHit hit;
         Vector3 rayDirection = gameObject.transform.position - transform.position;
@@ -74,10 +122,6 @@ public class Shadow : MonoBehaviour
             if (hit.collider.tag == "Player")
             {
 
-                return true;
-            }
-            else if (hit.transform.tag == "Enemy")
-            {
                 return false;
             }
         }
@@ -88,18 +132,15 @@ public class Shadow : MonoBehaviour
             {
                 if (hit.collider.tag == "Player")
                 {
-                    return true;
-                }
-                else if (hit.transform.tag == "Enemy")
-                {
                     return false;
                 }
+
 
             }
         }
 
 
-        return false;
+        return true;
 
     }
 }
