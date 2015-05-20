@@ -33,6 +33,7 @@ public class PlayerCameraControl : MonoBehaviour
     {
         leanLeftAndRight();
         lookUpAndDown();
+        Debug.Log(GameObject.Find("Player").GetComponent<PlayerMovement>().playerIsGrounded());
         if (leftLeaning == true || rightLeaning == true)
         {
             freezeMovement();
@@ -52,6 +53,7 @@ public class PlayerCameraControl : MonoBehaviour
 
         if ((Input.GetButton("Lean Left") == true) && (rightLeaning == false))
         {
+
             if (GameObject.Find("Player").GetComponent<PlayerMovement>().playerIsGrounded() == true)
             {
                 upAndDownAllowed = false;
