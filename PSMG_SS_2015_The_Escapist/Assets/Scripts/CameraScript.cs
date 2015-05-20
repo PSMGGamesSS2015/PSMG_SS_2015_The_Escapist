@@ -10,6 +10,8 @@ public class CameraScript : MonoBehaviour {
     /// Initalisation
     /// </summary>
     void Start () {
+        firstPerson = GameObject.Find("Main Camera").GetComponent<Camera>();
+        thirdPerson = GameObject.Find("Camera").GetComponent<Camera>();
         firstPerson.enabled = false;
         thirdPerson.enabled = true;
 	}
