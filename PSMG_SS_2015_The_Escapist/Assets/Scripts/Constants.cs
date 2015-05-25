@@ -12,7 +12,7 @@ public class Constants : MonoBehaviour {
     public static float WALKING_ROTATION = 1f;
     public static float RUNNING_ROTATION = 1f;
 
-    public static float VERTICAL_ROTATION = 175f;
+    public static float VERTICAL_ROTATION = 150f;
 
     //This Constants will be removed (only for debugging).
     public static float DEBUG_SNEAKING_ROTATION = 40f;
