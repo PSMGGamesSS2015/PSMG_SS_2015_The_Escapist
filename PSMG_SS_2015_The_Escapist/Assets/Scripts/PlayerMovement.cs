@@ -61,11 +61,6 @@ public class PlayerMovement : MonoBehaviour {
 
         } else if ((Input.GetButtonDown("Run") == true) && (running == false)){
 
-            if (sneaking == true)
-            {
-                modifySize(sneaking);
-            }
-
             sneaking = false;
             return true;
         }
@@ -86,12 +81,10 @@ public class PlayerMovement : MonoBehaviour {
         if ((Input.GetButtonDown("Sneak") == true) && (sneaking == true))
         {
             running = false;
-            modifySize(sneaking);
             return false;
 
         } else if ((Input.GetButtonDown("Sneak")) && (sneaking == false)) {
             running = false;
-            modifySize(sneaking);
             return true;
 
         }

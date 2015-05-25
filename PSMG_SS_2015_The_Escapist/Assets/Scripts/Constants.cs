@@ -4,13 +4,13 @@ using System.Collections;
 public class Constants : MonoBehaviour {
 
     //Constants for the playerMovement
-    public static float SNEAKING_SPEED = 2f;
-    public static float WALKING_SPEED = 5f;
-    public static float RUNNING_SPEED = 8f;
+    public static float SNEAKING_SPEED = 1f;
+    public static float WALKING_SPEED = 3f;
+    public static float RUNNING_SPEED = 5f;
 
-    public static float SNEAKING_ROTATION = 3f;
-    public static float WALKING_ROTATION = 4f;
-    public static float RUNNING_ROTATION = 5f;
+    public static float SNEAKING_ROTATION = 1f;
+    public static float WALKING_ROTATION = 1f;
+    public static float RUNNING_ROTATION = 1f;
 
     public static float VERTICAL_ROTATION = 175f;
 
