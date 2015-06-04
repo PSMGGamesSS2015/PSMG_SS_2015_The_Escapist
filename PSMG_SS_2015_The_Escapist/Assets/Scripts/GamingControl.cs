@@ -3,15 +3,24 @@ using System.Collections;
 
 public class GamingControl : MonoBehaviour {
 
+    public bool hairpinActive = false;
+
     private GameObject player;
     private Vector3 currentPosition = new Vector3(0f, 0f, 0f);
     private bool sneakingActive = false;
-
 
     // Initialize the GameObject that shall deliver values.
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        
+        //For Debugging! Finds all Audiolisteners.
+        AudioListener[] myListeners = GameObject.FindObjectsOfType<AudioListener>();
+        foreach (AudioListener hidden in myListeners)
+        {
+            //Debug.Log("Found:  " + hidden.gameObject);
+        }
+
     }
 
     // All variables get their value here.

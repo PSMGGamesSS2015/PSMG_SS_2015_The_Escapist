@@ -49,7 +49,7 @@ public class PlayerCameraControl : MonoBehaviour
     }
 
     /// <summary>
-    /// This method handles the leaning of the player by pressing the key "q" or "e". That will also restricts the movement of the camera during leaning.
+    /// This method handles the leaning of the player by pressing the Key "q" or "e". That will also restricts the movement of the camera during leaning.
     /// </summary>
     private void leanLeftAndRight()
     {

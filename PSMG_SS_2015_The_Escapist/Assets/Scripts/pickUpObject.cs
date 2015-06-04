@@ -6,7 +6,6 @@ public class PickupObject : MonoBehaviour {
     private GameObject player;
     private Rigidbody rb;
     private Transform prevParent;
-    private float movementDampTime = 0.15f;
     private bool pickedUp = false;
 
     void Awake()
