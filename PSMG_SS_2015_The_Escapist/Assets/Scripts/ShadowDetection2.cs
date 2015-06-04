@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShadowDetection2 : MonoBehaviour
 {
-
+    public Camera detector;
     public Color surfaceColor;
     public float brightness1; // http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color 
     public float brightness2; // http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
@@ -39,17 +39,17 @@ public class ShadowDetection2 : MonoBehaviour
     void GetRenderTexture()
     {
         RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
-        GetComponent<Camera>().targetTexture = rt;
+        detector.targetTexture = rt;
         Texture2D render = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
 
-        GetComponent<Camera>().Render();
+        detector.Render();
         RenderTexture.active = rt;
         render.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
-
+       
         Color surfaceColor = render.GetPixel(0, 0);
 
         Destroy(rt);
-        GetComponent<Camera>().targetTexture = null;
+        detector.targetTexture = null;
         RenderTexture.active = null; // JC: added to avoid errors
 
         // APPLY

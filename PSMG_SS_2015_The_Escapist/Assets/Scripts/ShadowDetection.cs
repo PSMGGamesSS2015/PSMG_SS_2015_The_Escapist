@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ShadowDetection : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ShadowDetection : MonoBehaviour
 
     void Update()
     {
+        
         Raycast();
 
         // BRIGHTNESS APPROX
@@ -22,6 +24,12 @@ public class ShadowDetection : MonoBehaviour
 
     void OnGUI()
     {
+        //showDebugHUD();
+        showHUD();
+    }
+
+    void showDebugHUD()
+    {
         GUILayout.BeginArea(new Rect(10f, 10f, Screen.width, Screen.height));
 
         GUILayout.Label("R = " + string.Format("{0:0.00}", surfaceColor.r));
@@ -32,6 +40,15 @@ public class ShadowDetection : MonoBehaviour
         GUILayout.Label("Brightness = " + string.Format("{0:0.00}", brightness2));
 
         GUILayout.EndArea();
+    }
+
+    void showHUD()
+    {
+        int hiddenPercentage = (int)(Math.Max(0, (Math.Min(100, ((100 - ((brightness2 * 250) - 50))) + 0.5))));
+        bool safe = (hiddenPercentage > 70) ? true : false;
+
+        GUI.Label(new Rect(10, 10, 120, 256), "Versteckt: " + hiddenPercentage + "%");
+        GUI.Label(new Rect(10, 30, 100, 256), "Sicher: " + safe.ToString());
     }
 
     void Raycast()
@@ -48,7 +65,8 @@ public class ShadowDetection : MonoBehaviour
             Renderer hitRenderer = hitInfo.collider.GetComponent<Renderer>();
 
             // GET LIGHTMAP APPLIED TO OBJECT
-            Debug.Log(LightmapSettings.lightmaps.Length + " " + hitRenderer.lightmapIndex);
+
+            //Debug.Log(LightmapSettings.lightmaps.Length + " " + hitRenderer.lightmapIndex);
             LightmapData lightmapData = LightmapSettings.lightmaps[hitRenderer.lightmapIndex];
 
             // STORE LIGHTMAP TEXTURE
