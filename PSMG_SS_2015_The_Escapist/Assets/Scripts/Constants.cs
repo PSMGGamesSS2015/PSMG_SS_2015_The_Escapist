@@ -29,7 +29,7 @@ public class Constants : MonoBehaviour {
     public static float AI_NORMAL_SPEED = 1f;
     public static float AI_CHASING_SPEED = 3f;
     public static float AI_VIEW_ANGLE = 110f;
-    public static float AI_PATROL_RANGE = 40f;
+    public static float AI_PATROL_RANGE = 20f;
 
     //Constants for the HurtEeffect
     public static float DISPLAY_TIME = 5f;
