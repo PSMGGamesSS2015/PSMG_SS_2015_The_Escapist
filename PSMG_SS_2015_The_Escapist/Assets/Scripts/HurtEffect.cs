@@ -49,7 +49,7 @@ public class HurtEffect : MonoBehaviour
             style = new GUIStyle();
             style.fontSize = 72;
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
-            GUI.Label(new Rect(100, 100, 120, 256), "Du bist deinen Verletzungen erliegen!", style);
+            GUI.Label(new Rect(100, 100, 120, 256), "Du bist deinen Verletzungen erlegen!", style);
 
         }
 
