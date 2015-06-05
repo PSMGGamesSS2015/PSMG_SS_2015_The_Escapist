@@ -24,7 +24,7 @@ public class FollowAI : MonoBehaviour
     public Transform[] waypoint;
     public bool loop = true;
     public float dampingLook = 6.0f;
-    public float pauseDuration = 0;
+    private float pauseDuration = 3.0f;
     private float curTime;
     public int currentWaypoint = 0;
     private CharacterController character;
