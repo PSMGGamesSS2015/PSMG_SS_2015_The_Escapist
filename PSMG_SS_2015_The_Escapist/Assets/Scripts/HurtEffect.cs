@@ -5,17 +5,31 @@ public class HurtEffect : MonoBehaviour
 {
 
     public Texture hurtEffect;
+    private int counter = 0;
+
+    private GUIStyle style;
 
     public bool displayHurtEffect = false;
+    public bool displayDead = false;
 
     /// <summary>
     /// Check if enemy hit player
     /// </summary>
     void OnTriggerEnter(Collider col)
     {
+
         if (col.gameObject.CompareTag("Enemy"))
         {
-            displayHurtEffect = true;
+            if (counter == 2)
+            {
+                displayDead = true;
+                StartCoroutine(WaitForRestart());
+            }
+            else
+            {
+                counter++;
+                displayHurtEffect = true;
+            }
         }
     }
 
@@ -30,6 +44,15 @@ public class HurtEffect : MonoBehaviour
             StartCoroutine(StopDisplayingEffect());
         }
 
+        if (displayDead)
+        {
+            style = new GUIStyle();
+            style.fontSize = 72;
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
+            GUI.Label(new Rect(100, 100, 120, 256), "Du bist deinen Verletzungen erliegen!", style);
+
+        }
+
 
     }
 
@@ -39,6 +62,16 @@ public class HurtEffect : MonoBehaviour
     IEnumerator StopDisplayingEffect()
     {
         yield return new WaitForSeconds(Constants.DISPLAY_TIME);
+        
+        counter = 0;
         displayHurtEffect = false;
+    }
+
+    IEnumerator WaitForRestart()
+    {
+        yield return new WaitForSeconds(3.0f);
+        Application.LoadLevel(Application.loadedLevel);
+        
+       
     }
 }
