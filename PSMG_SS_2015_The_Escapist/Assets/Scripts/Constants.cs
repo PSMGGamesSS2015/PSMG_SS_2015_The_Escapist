@@ -24,11 +24,11 @@ public class Constants : MonoBehaviour {
 
     //Constants for the FollowAI
     public static float AI_ROTATION_SPEED = 3f;
-    public static float AI_RANGE = 10f;
+    public static float AI_RANGE = 15f;
     public static float AI_STOP = 0f;
     public static float AI_NORMAL_SPEED = 1f;
-    public static float AI_CHASING_SPEED = 3f;
-    public static float AI_VIEW_ANGLE = 110f;
+    public static float AI_CHASING_SPEED = 2.5f;
+    public static float AI_VIEW_ANGLE = 130f;
     public static float AI_PATROL_RANGE = 20f;
 
     //Constants for the HurtEeffect
