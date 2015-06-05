@@ -24,7 +24,7 @@ public class FollowAI : MonoBehaviour
     public Transform[] waypoint;
     public bool loop = true;
     public float dampingLook = 6.0f;
-    public float pauseDuration = 2;
+    public float pauseDuration = 0;
     private float curTime;
     public int currentWaypoint = 0;
     private CharacterController character;
@@ -60,7 +60,7 @@ public class FollowAI : MonoBehaviour
 
         enemy = transform;
         agent.speed = Constants.AI_NORMAL_SPEED;
-        startPosition = this.transform.position;
+        startPosition = character.transform.position;
 
     }
 
@@ -69,21 +69,26 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        switch (currentBehavior)
-        {
-            case EnemyBehavior.patrol:
-                patrol();
-                break;
+        checkState();
+        
+    }
 
-            case EnemyBehavior.chase:
-                chase();
-                break;
-                
-            case EnemyBehavior.search:
-                InvokeRepeating("Search", 0, 2);
-                StartCoroutine("startRoutine");
-                break;
-            
+    void checkState()
+    {
+        if (currentBehavior == EnemyBehavior.patrol)
+        {
+            patrol();
+        }
+        else if (currentBehavior == EnemyBehavior.chase)
+        {
+
+            chase();
+        }
+
+        else if (currentBehavior == EnemyBehavior.search)
+        {
+            InvokeRepeating("Search", 0, 2);
+            StartCoroutine("startRoutine");
         }
     }
 
@@ -102,7 +107,9 @@ public class FollowAI : MonoBehaviour
             CancelInvoke("Search");
             StopCoroutine("startRoutine"); 
             test = false;
+            patrol();
             currentBehavior = EnemyBehavior.patrol;
+            
         }
     }
 
@@ -140,47 +147,45 @@ public class FollowAI : MonoBehaviour
 
     private void patrol()
     {
-        if (currentWaypoint < waypoint.Length)
-        {
-            patrolWay();
-            Debug.Log("test");
-        }
-        else
-        {
-            if (loop)
+        
+            if (currentWaypoint < waypoint.Length)
             {
-                currentWaypoint = 0;
-            }
-        }
-    }
+                patrolWay();
 
+            }
+            else
+            {
+                if (loop)
+                {
+                    currentWaypoint = 0;
+                }
+            }
+        
+    }
     void patrolWay()
     {
 
-        Vector3 target = waypoint[currentWaypoint].position;
-        target.y = transform.position.y;
-        Vector3 moveDirection = target - transform.position;
-
-        if (moveDirection.magnitude < 0.5f)
-        {
-
-            if (curTime == 0)
-                curTime = Time.time;
-
-            if ((Time.time - curTime) >= pauseDuration)
-            {
-                currentWaypoint++;
-                curTime = 0;
-            }
-        }
-        else
-        {
-            var rotation = Quaternion.LookRotation(target - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
-            character.Move(moveDirection.normalized * Constants.AI_NORMAL_SPEED * Time.deltaTime);
-        }
        
-    }
+   Vector3 target = waypoint[currentWaypoint].position;
+         target.y = transform.position.y; 
+   Vector3 moveDirection = target - transform.position;
+ 
+  if(moveDirection.magnitude < 0.5){  
+     if (curTime == 0)
+        curTime = Time.time; 
+     if ((Time.time - curTime) >= pauseDuration){
+        currentWaypoint++;
+        curTime = 0;
+     }
+  }else{        
+  
+  var rotation = Quaternion.LookRotation(target - transform.position);
+  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
+  character.Move(moveDirection.normalized * Constants.AI_NORMAL_SPEED * Time.deltaTime);
+  } 
+ }
+       
+        
 
 
 
@@ -201,6 +206,7 @@ public class FollowAI : MonoBehaviour
 
             if (angle < Constants.AI_VIEW_ANGLE * 0.5f)
             {
+                CancelInvoke("patrol");
                 currentBehavior = EnemyBehavior.chase;
                 playerInSight = true;
                 hasSeenPlayer = true;
