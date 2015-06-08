@@ -12216,7 +12216,6 @@ MonoBehaviour:
   - {fileID: 106470531}
   loop: 1
   dampingLook: 6
-  pauseDuration: 0
   currentWaypoint: 0
   currentBehavior: 0
   playerInSight: 0
@@ -17507,6 +17506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtEffect: {fileID: 2800000, guid: a138ef2989d238e40a18fbaf85758520, type: 3}
   displayHurtEffect: 0
+  displayDead: 0
 --- !u!54 &1294291644
 Rigidbody:
   m_ObjectHideFlags: 0
