@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour {
     private float turn;
     private float moveVertical;
 
-
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
