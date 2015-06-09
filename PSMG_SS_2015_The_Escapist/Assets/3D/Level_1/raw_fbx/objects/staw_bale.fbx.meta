@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d0b7beef0c99bb5479a84b3aedf429e2
-timeCreated: 1433883762
+guid: d6cc579b1116c1f43a5715cba71d9888
+timeCreated: 1433882375
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: fork
+    4300000: straw_bale
   materials:
     importMaterials: 1
     materialName: 0
