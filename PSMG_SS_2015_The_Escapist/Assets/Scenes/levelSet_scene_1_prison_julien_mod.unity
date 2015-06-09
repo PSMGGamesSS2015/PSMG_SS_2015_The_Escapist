@@ -70,7 +70,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 1024
   m_LightmapSnapshot: {fileID: 112000000, guid: efa975b83342fb64da285e64b09b7565,
     type: 2}
-  m_RuntimeCPUUsage: 25
+  m_RuntimeCPUUsage: 100
 --- !u!196 &5
 NavMeshSettings:
   serializedVersion: 2
@@ -11937,7 +11937,6 @@ MonoBehaviour:
   - {fileID: 106470531}
   loop: 1
   dampingLook: 6
-  pauseDuration: 2
   currentWaypoint: 0
   currentBehavior: 0
   playerInSight: 0
@@ -17143,6 +17142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtEffect: {fileID: 2800000, guid: a138ef2989d238e40a18fbaf85758520, type: 3}
   displayHurtEffect: 0
+  displayDead: 0
 --- !u!54 &1294291644
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17195,6 +17195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964813e3d5c9ce84385c346b502aad8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detector: {fileID: 0}
   surfaceColor: {r: 0, g: 0, b: 0, a: 0}
   brightness1: 0
   brightness2: 0
