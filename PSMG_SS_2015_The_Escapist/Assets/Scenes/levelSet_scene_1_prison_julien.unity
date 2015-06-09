@@ -17457,6 +17457,7 @@ GameObject:
   - 114: {fileID: 1294291646}
   - 114: {fileID: 1294291643}
   - 114: {fileID: 1294291647}
+  - 95: {fileID: 1294291648}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -17563,6 +17564,23 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967039
+--- !u!95 &1294291648
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1294291640}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1300365188
 GameObject:
   m_ObjectHideFlags: 0
