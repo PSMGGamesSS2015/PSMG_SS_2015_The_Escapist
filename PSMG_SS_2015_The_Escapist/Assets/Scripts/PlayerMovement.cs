@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     private float movementSpeed;
     private float rotationSpeed;
     public bool sneaking = false;
-    private bool running = false;
+    public bool running = false;
     private bool firstPersonActive = true;
     private bool movementDisabled = false;
     private float turn;
@@ -196,6 +196,15 @@ public class PlayerMovement : MonoBehaviour {
     public bool sneakingIsActive()
     {
         return sneaking;
+    }
+
+    /// <summary>
+    /// Returns if the runningMode is active or not (for GameController).
+    /// </summary>
+    /// <returns>Bool: Running Mode active or not.</returns>
+    public bool runningIsActive()
+    {
+        return running;
     }
 
     /// <summary>

@@ -5,8 +5,8 @@ public class Constants : MonoBehaviour {
 
     //Constants for the playerMovement
     public static float SNEAKING_SPEED = 1f;
-    public static float WALKING_SPEED = 3f;
-    public static float RUNNING_SPEED = 5f;
+    public static float WALKING_SPEED = 2f;
+    public static float RUNNING_SPEED = 3.5f;
 
     public static float SNEAKING_ROTATION = 1f;
     public static float WALKING_ROTATION = 1f;

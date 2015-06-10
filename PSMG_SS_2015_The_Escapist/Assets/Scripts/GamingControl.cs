@@ -8,6 +8,7 @@ public class GamingControl : MonoBehaviour {
     private GameObject player;
     private Vector3 currentPosition = new Vector3(0f, 0f, 0f);
     private bool sneakingActive = false;
+    private bool runningActive = false;
 
     // Initialize the GameObject that shall deliver values.
     void Awake()
@@ -28,6 +29,7 @@ public class GamingControl : MonoBehaviour {
     {
         currentPosition = player.GetComponent<PlayerMovement>().getPlayerPosition();
         sneakingActive = player.GetComponent<PlayerMovement>().sneakingIsActive();
+        runningActive = player.GetComponent<PlayerMovement>().runningIsActive();
     }
 
 
@@ -39,5 +41,10 @@ public class GamingControl : MonoBehaviour {
     public bool isSneakingActive()
     {
         return sneakingActive;
+    }
+
+    public bool isRunningActive()
+    {
+        return runningActive;
     }
 }
