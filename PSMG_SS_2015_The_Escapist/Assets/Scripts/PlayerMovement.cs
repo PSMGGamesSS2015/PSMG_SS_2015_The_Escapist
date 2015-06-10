@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool movementDisabled = false;
     private float turn;
     private float moveVertical;
+    public bool playerGrounded = true;
 
 
     void Awake()
@@ -122,10 +123,12 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 down = transform.TransformDirection(Vector3.down);
         if (Physics.Raycast(transform.position, down, maxDistanceToGround))
         {
+            playerGrounded = true;
             return true;
         }
         else
         {
+            playerGrounded = false;
             return false;
         }
     }
@@ -205,6 +208,11 @@ public class PlayerMovement : MonoBehaviour {
     public bool runningIsActive()
     {
         return running;
+    }
+
+    public bool isPlayerGrounded()
+    {
+        return playerGrounded;
     }
 
     /// <summary>
