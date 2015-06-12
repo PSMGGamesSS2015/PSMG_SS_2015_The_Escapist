@@ -215,6 +215,11 @@ public class PlayerMovement : MonoBehaviour {
         return playerGrounded;
     }
 
+    public bool isMovementDisabled()
+    {
+        return movementDisabled;
+    }
+
     /// <summary>
     /// This method disables all movement of the player.
     /// </summary>

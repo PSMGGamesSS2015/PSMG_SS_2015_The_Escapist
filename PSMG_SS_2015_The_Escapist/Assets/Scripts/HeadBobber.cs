@@ -10,6 +10,7 @@ public class HeadBobber : MonoBehaviour {
     private bool isSneakingActive = false;
     private bool isRunningActive = false;
     private bool headBobAllowed = true;
+    private bool isMovementDisabled = false;
     GamingControl control;
 
 
@@ -63,7 +64,8 @@ public class HeadBobber : MonoBehaviour {
 
     private void checkMovementMode()
     {
-        if (control.isPlayerGrounded() == true)
+        isMovementDisabled = control.isMovementDisabled();
+        if ((control.isPlayerGrounded() == true) && (isMovementDisabled == false))
         {
             headBobAllowed = true;
             isSneakingActive = control.isSneakingActive();

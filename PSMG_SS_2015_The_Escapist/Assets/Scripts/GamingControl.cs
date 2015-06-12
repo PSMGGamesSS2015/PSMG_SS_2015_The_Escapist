@@ -10,6 +10,7 @@ public class GamingControl : MonoBehaviour {
     private bool sneakingActive = false;
     private bool runningActive = false;
     private bool playerGrounded = true;
+    private bool movementDisabled = false;
 
     // Initialize the GameObject that shall deliver values.
     void Awake()
@@ -32,6 +33,7 @@ public class GamingControl : MonoBehaviour {
         sneakingActive = player.GetComponent<PlayerMovement>().sneakingIsActive();
         runningActive = player.GetComponent<PlayerMovement>().runningIsActive();
         playerGrounded = player.GetComponent<PlayerMovement>().isPlayerGrounded();
+        movementDisabled = player.GetComponent<PlayerMovement>().isMovementDisabled();
     }
 
 
@@ -54,4 +56,10 @@ public class GamingControl : MonoBehaviour {
     {
         return playerGrounded;
     }
+
+    public bool isMovementDisabled()
+    {
+        return movementDisabled;
+    }
+
 }
