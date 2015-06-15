@@ -31,6 +31,9 @@ public class FollowAI : MonoBehaviour
 
     public EnemyBehavior currentBehavior = EnemyBehavior.patrol;
 
+    //Added by Chris
+    private Animator anim;
+
     public bool playerInSight = false;
 
     public bool hasSeenPlayer = false;
@@ -52,6 +55,9 @@ public class FollowAI : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         testLightOne = GameObject.Find("Sun");
 
+        //Added by Chris
+        anim = GetComponent<Animator>();
+
         agent = gameObject.GetComponent<NavMeshAgent>();
 
         playerMovement = player.GetComponent<PlayerMovement>();
@@ -70,7 +76,31 @@ public class FollowAI : MonoBehaviour
     void Update()
     {
         checkState();
+
+        //Added by Chris
+        animate();
         
+    }
+
+    //Added by Chris
+    private void animate()
+    {
+        bool patroling = true;
+        bool chasing = false;
+        bool searching = false;
+        if (currentBehavior == EnemyBehavior.patrol)
+        {
+            patroling = true;
+            anim.SetBool("IsPatroling", patroling);
+        }
+        else if (currentBehavior == EnemyBehavior.search)
+        {
+
+        }
+        else if (currentBehavior == EnemyBehavior.chase)
+        {
+
+        }
     }
 
     void checkState()
