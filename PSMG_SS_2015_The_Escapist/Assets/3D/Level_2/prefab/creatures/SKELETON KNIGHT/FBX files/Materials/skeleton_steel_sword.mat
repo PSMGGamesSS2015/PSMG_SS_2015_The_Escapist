@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: skeleton_steel_sword
+  m_Shader: {fileID: 23, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: a769f9a4edb0d9944847d16f5fa9f05d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: b8beaa020a867244b9b30ee9097a98ba, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 8900000, guid: 1ee0a0d3b00631342a1371b9fd3ec1bb, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: .47986412
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .447761178, g: .447761178, b: .447761178, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .328358233, g: .328358233, b: .328358233, a: 1}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: .111940324, g: .111940324, b: .111940324, a: .501960814}
+--- !u!1002 &2100001
+EditorExtensionImpl:
+  serializedVersion: 6

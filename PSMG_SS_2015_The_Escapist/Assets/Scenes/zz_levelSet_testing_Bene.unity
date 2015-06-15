@@ -509,6 +509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   sneaking: 0
+  running: 0
+  playerGrounded: 1
 --- !u!54 &1709594950
 Rigidbody:
   m_ObjectHideFlags: 0
