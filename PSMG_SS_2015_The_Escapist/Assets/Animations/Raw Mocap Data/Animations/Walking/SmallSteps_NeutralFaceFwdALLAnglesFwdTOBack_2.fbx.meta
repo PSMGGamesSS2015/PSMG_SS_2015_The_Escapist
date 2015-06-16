@@ -178,15 +178,15 @@ ModelImporter:
     - serializedVersion: 16
       name: SmallSteps_NeutralFaceFwdALLAnglesFwdTOBack_2
       takeName: _182_183B_a_U1_M_P_SmallSteps_NeutralFaceFwdALLAnglesFwdTOBack__Fb_p0-180_No_0_2
-      firstFrame: 59
-      lastFrame: 629
+      firstFrame: 84
+      lastFrame: 203
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
