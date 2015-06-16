@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: ff2e9e2dbc9da4a409c28cd06fca86ed
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: bare_foot
+    100002: boots
+    100004: Factice001
+    100006: Factice002
+    100008: Factice006
+    100010: Factice007
+    100012: haircut_A
+    100014: haircut_B
+    100016: intestine_A_001
+    100018: intestine_A_002
+    100020: intestine_A_003
+    100022: intestine_A_004
+    100024: intestine_A_005
+    100026: intestine_A_006
+    100028: intestine_A_007
+    100030: intestine_A_008
+    100032: intestine_A_009
+    100034: intestine_A_010
+    100036: intestine_B_001
+    100038: intestine_B_002
+    100040: intestine_B_003
+    100042: intestine_B_004
+    100044: intestine_B_005
+    100046: intestine_B_006
+    100048: intestine_B_007
+    100050: intestine_B_008
+    100052: intestine_B_009
+    100054: intestine_B_010
+    100056: intestine_C_001
+    100058: intestine_C_002
+    100060: intestine_C_003
+    100062: intestine_C_004
+    100064: intestine_C_005
+    100066: intestine_C_006
+    100068: intestine_C_007
+    100070: intestine_C_008
+    100072: intestine_C_009
+    100074: intestine_C_010
+    100076: intestines
+    100078: pants
+    100080: rustied_sword
+    100082: rusty_axe
+    100084: shirt
+    100086: //RootNode
+    100088: UNDEAD
+    100090: UNDEAD_
+    100092: UNDEAD_ Head
+    100094: UNDEAD_ L Calf
+    100096: UNDEAD_ L Clavicle
+    100098: UNDEAD_ L Finger0
+    100100: UNDEAD_ L Finger01
+    100102: UNDEAD_ L Finger02
+    100104: UNDEAD_ L Finger1
+    100106: UNDEAD_ L Finger11
+    100108: UNDEAD_ L Finger12
+    100110: UNDEAD_ L Foot
+    100112: UNDEAD_ L Forearm
+    100114: UNDEAD_ L Hand
+    100116: UNDEAD_ L Thigh
+    100118: UNDEAD_ L Toe0
+    100120: UNDEAD_ L UpperArm
+    100122: UNDEAD_ Neck
+    100124: UNDEAD_ Pelvis
+    100126: UNDEAD_ Queue de cheval 1
+    100128: UNDEAD_ R Calf
+    100130: UNDEAD_ R Clavicle
+    100132: UNDEAD_ R Finger0
+    100134: UNDEAD_ R Finger01
+    100136: UNDEAD_ R Finger02
+    100138: UNDEAD_ R Finger1
+    100140: UNDEAD_ R Finger11
+    100142: UNDEAD_ R Finger12
+    100144: UNDEAD_ R Foot
+    100146: UNDEAD_ R Forearm
+    100148: UNDEAD_ R Hand
+    100150: UNDEAD_ R Thigh
+    100152: UNDEAD_ R Toe0
+    100154: UNDEAD_ R UpperArm
+    100156: UNDEAD_ Spine
+    100158: UNDEAD_ Spine1
+    400000: bare_foot
+    400002: boots
+    400004: Factice001
+    400006: Factice002
+    400008: Factice006
+    400010: Factice007
+    400012: haircut_A
+    400014: haircut_B
+    400016: intestine_A_001
+    400018: intestine_A_002
+    400020: intestine_A_003
+    400022: intestine_A_004
+    400024: intestine_A_005
+    400026: intestine_A_006
+    400028: intestine_A_007
+    400030: intestine_A_008
+    400032: intestine_A_009
+    400034: intestine_A_010
+    400036: intestine_B_001
+    400038: intestine_B_002
+    400040: intestine_B_003
+    400042: intestine_B_004
+    400044: intestine_B_005
+    400046: intestine_B_006
+    400048: intestine_B_007
+    400050: intestine_B_008
+    400052: intestine_B_009
+    400054: intestine_B_010
+    400056: intestine_C_001
+    400058: intestine_C_002
+    400060: intestine_C_003
+    400062: intestine_C_004
+    400064: intestine_C_005
+    400066: intestine_C_006
+    400068: intestine_C_007
+    400070: intestine_C_008
+    400072: intestine_C_009
+    400074: intestine_C_010
+    400076: intestines
+    400078: pants
+    400080: rustied_sword
+    400082: rusty_axe
+    400084: shirt
+    400086: UNDEAD
+    400088: //RootNode
+    400090: UNDEAD_
+    400092: UNDEAD_ Head
+    400094: UNDEAD_ L Calf
+    400096: UNDEAD_ L Clavicle
+    400098: UNDEAD_ L Finger0
+    400100: UNDEAD_ L Finger01
+    400102: UNDEAD_ L Finger02
+    400104: UNDEAD_ L Finger1
+    400106: UNDEAD_ L Finger11
+    400108: UNDEAD_ L Finger12
+    400110: UNDEAD_ L Foot
+    400112: UNDEAD_ L Forearm
+    400114: UNDEAD_ L Hand
+    400116: UNDEAD_ L Thigh
+    400118: UNDEAD_ L Toe0
+    400120: UNDEAD_ L UpperArm
+    400122: UNDEAD_ Neck
+    400124: UNDEAD_ Pelvis
+    400126: UNDEAD_ Queue de cheval 1
+    400128: UNDEAD_ R Calf
+    400130: UNDEAD_ R Clavicle
+    400132: UNDEAD_ R Finger0
+    400134: UNDEAD_ R Finger01
+    400136: UNDEAD_ R Finger02
+    400138: UNDEAD_ R Finger1
+    400140: UNDEAD_ R Finger11
+    400142: UNDEAD_ R Finger12
+    400144: UNDEAD_ R Foot
+    400146: UNDEAD_ R Forearm
+    400148: UNDEAD_ R Hand
+    400150: UNDEAD_ R Thigh
+    400152: UNDEAD_ R Toe0
+    400154: UNDEAD_ R UpperArm
+    400156: UNDEAD_ Spine
+    400158: UNDEAD_ Spine1
+    2300000: haircut_A
+    2300002: haircut_B
+    2300004: rustied_sword
+    2300006: rusty_axe
+    3300000: haircut_A
+    3300002: haircut_B
+    3300004: rustied_sword
+    3300006: rusty_axe
+    4300000: UNDEAD
+    4300002: rustied_sword
+    4300004: rusty_axe
+    4300006: haircut_A
+    4300008: haircut_B
+    4300010: shirt
+    4300012: pants
+    4300014: boots
+    4300016: intestines
+    4300018: bare_foot
+    7400000: Take 001
+    11100000: //RootNode
+    13700000: bare_foot
+    13700002: boots
+    13700004: intestines
+    13700006: pants
+    13700008: shirt
+    13700010: UNDEAD
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
