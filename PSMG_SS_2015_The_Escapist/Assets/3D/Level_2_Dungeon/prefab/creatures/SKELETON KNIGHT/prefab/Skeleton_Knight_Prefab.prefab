@@ -1743,7 +1743,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100036}
-  m_LocalRotation: {x: -.492832512, y: .402405292, z: -.537981391, w: .552957535}
+  m_LocalRotation: {x: -.492832541, y: .402405322, z: -.537981451, w: .552957594}
   m_LocalPosition: {x: -.054743588, y: .0204907805, z: .00392717123}
   m_LocalScale: {x: 1, y: 1.00000012, z: 1}
   m_Children: []
@@ -3015,9 +3015,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
+    m_Center: {x: .000279992819, y: .00175607204, z: .00854769722}
+    m_Extent: {x: .272912592, y: .138157293, z: .120741993}
+  m_DirtyAABB: 0
 --- !u!1002 &13700001
 EditorExtensionImpl:
   serializedVersion: 6

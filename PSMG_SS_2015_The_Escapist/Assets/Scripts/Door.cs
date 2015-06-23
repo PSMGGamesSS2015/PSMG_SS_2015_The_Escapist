@@ -5,11 +5,15 @@ using System.Collections.Generic;
 public class Door : MonoBehaviour {
 
     public bool locked = false;
+    public AudioClip lockedSound;
+    public AudioClip openSound;
+    public AudioClip closeSound;
 
     private GameObject player;
     private GamingControl gamingControl;
     private LockpickSystem lockpickSystem;
     private Animation openAnim;
+    private AudioSource audioSource;
     private float openAnimTime = 1f;
     private float nextTriggerTime;
     private bool doorInRange = false;
@@ -21,6 +25,7 @@ public class Door : MonoBehaviour {
         openAnim = GetComponent<Animation>();
         gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
         lockpickSystem = GetComponent<LockpickSystem>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,11 +50,15 @@ public class Door : MonoBehaviour {
                     else if (Input.GetButtonDown("Use"))
                     {
                         Debug.Log("This Door is locked! Press F to use your hairpin!");
+                        audioSource.clip = lockedSound;
+                        audioSource.Play();
                     }
                 }
                 else if (Input.GetButtonDown("Use"))
                 {
                     Debug.Log("You need a Key for this door!");
+                    audioSource.clip = lockedSound;
+                    audioSource.Play();
                 }
             }
         }
@@ -80,6 +89,9 @@ public class Door : MonoBehaviour {
 
             openAnim.Play();
 
+            audioSource.clip = openSound;
+            audioSource.Play();
+
             doorOpen = true;
             nextTriggerTime = Time.time + openAnimTime;
         }
@@ -93,6 +105,9 @@ public class Door : MonoBehaviour {
             openAnim["openDoor"].time = openAnim["openDoor"].length;
 
             GetComponent<Animation>().Play();
+
+            audioSource.clip = closeSound;
+            audioSource.Play();
 
             doorOpen = false;
             nextTriggerTime = Time.time + openAnimTime;

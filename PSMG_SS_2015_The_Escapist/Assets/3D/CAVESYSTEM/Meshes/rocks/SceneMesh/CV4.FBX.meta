@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: e8d1b71c9f3d7774d8f1fa4eb32c26f2
+timeCreated: 1423685420
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: CV4
+    100002: //RootNode
+    100004: UCX_CV4_00
+    100006: UCX_CV4_00 1
+    100008: UCX_CV4_00 10
+    100010: UCX_CV4_00 11
+    100012: UCX_CV4_00 12
+    100014: UCX_CV4_00 13
+    100016: UCX_CV4_00 14
+    100018: UCX_CV4_00 2
+    100020: UCX_CV4_00 3
+    100022: UCX_CV4_00 4
+    100024: UCX_CV4_00 5
+    100026: UCX_CV4_00 6
+    100028: UCX_CV4_00 7
+    100030: UCX_CV4_00 8
+    100032: UCX_CV4_00 9
+    400000: //RootNode
+    400002: CV4
+    400004: UCX_CV4_00
+    400006: UCX_CV4_00 1
+    400008: UCX_CV4_00 10
+    400010: UCX_CV4_00 11
+    400012: UCX_CV4_00 12
+    400014: UCX_CV4_00 13
+    400016: UCX_CV4_00 14
+    400018: UCX_CV4_00 2
+    400020: UCX_CV4_00 3
+    400022: UCX_CV4_00 4
+    400024: UCX_CV4_00 5
+    400026: UCX_CV4_00 6
+    400028: UCX_CV4_00 7
+    400030: UCX_CV4_00 8
+    400032: UCX_CV4_00 9
+    2300000: CV4
+    2300002: UCX_CV4_00
+    2300004: UCX_CV4_00 1
+    2300006: UCX_CV4_00 10
+    2300008: UCX_CV4_00 11
+    2300010: UCX_CV4_00 12
+    2300012: UCX_CV4_00 13
+    2300014: UCX_CV4_00 14
+    2300016: UCX_CV4_00 2
+    2300018: UCX_CV4_00 3
+    2300020: UCX_CV4_00 4
+    2300022: UCX_CV4_00 5
+    2300024: UCX_CV4_00 6
+    2300026: UCX_CV4_00 7
+    2300028: UCX_CV4_00 8
+    2300030: UCX_CV4_00 9
+    2300032: //RootNode
+    3300000: CV4
+    3300002: UCX_CV4_00
+    3300004: UCX_CV4_00 1
+    3300006: UCX_CV4_00 10
+    3300008: UCX_CV4_00 11
+    3300010: UCX_CV4_00 12
+    3300012: UCX_CV4_00 13
+    3300014: UCX_CV4_00 14
+    3300016: UCX_CV4_00 2
+    3300018: UCX_CV4_00 3
+    3300020: UCX_CV4_00 4
+    3300022: UCX_CV4_00 5
+    3300024: UCX_CV4_00 6
+    3300026: UCX_CV4_00 7
+    3300028: UCX_CV4_00 8
+    3300030: UCX_CV4_00 9
+    3300032: //RootNode
+    4300000: CV4
+    4300002: UCX_CV4_00
+    4300004: UCX_CV4_00
+    4300006: UCX_CV4_00
+    4300008: UCX_CV4_00
+    4300010: UCX_CV4_00
+    4300012: UCX_CV4_00
+    4300014: UCX_CV4_00
+    4300016: UCX_CV4_00
+    4300018: UCX_CV4_00
+    4300020: UCX_CV4_00
+    4300022: UCX_CV4_00
+    4300024: UCX_CV4_00
+    4300026: UCX_CV4_00
+    4300028: UCX_CV4_00
+    4300030: UCX_CV4_00
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

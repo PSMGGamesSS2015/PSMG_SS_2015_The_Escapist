@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: ad7f53347903299448427c567cbdd516
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    2800000: __AssetImporterPreview
+    4300000: wall_2_nolod
+    4300002: column_hi
+    4300004: floor
+    4300006: metallrust_hi
+    4300008: lisen_hi
+    4300010: ceil_hi
+    4300012: beam_hi
+    4300014: floor_restangle_nolod
+    4300016: column_central_hi
+    4300018: ceil_central_hi
+    4300020: beam_central_hi
+    4300022: ceil_corner_hi
+    4300024: floor_corner
+    4300026: beam_corner_hi
+    4300028: column_broken_hi
+    4300030: infected_column_hi
+    4300032: wall_bay_2_hi
+    4300034: bay_out_hi
+    4300036: bay_hi
+    4300038: lisen_bay_hi
+    4300040: floor_bay_nolod
+    4300042: wall_door_wall_hi
+    4300044: wall_door_floor_nolod
+    4300046: wall_door_out_hi
+    4300048: wall_door_lisen_hi
+    4300050: gargul_hi
+    4300052: corridor_door_floor_nolod
+    4300054: corridor_door_lisen_hi
+    4300056: corridor_door_out_hi
+    4300058: corridor_door_beam_hi
+    4300060: corridor_door_ceil_hi
+    4300062: corridor_door_wall_hi
+    4300064: corridor_small_floor_nolod
+    4300066: corridor_small_wall_hi
+    4300068: corridor_small_cros_floor_nolod
+    4300070: corridor_small_cros_wall_hi
+    4300072: corridor_ceil_hi
+    4300074: corridor_floor_nolod
+    4300076: corridor_end_lisen_hi
+    4300078: torch_hi
+    4300080: torch_ring_hi
+    4300082: corridor_t_cros_ceil_hi
+    4300084: corridor_t_cros_beam_hi
+    4300086: corridor_t_cros_lisen_hi
+    4300088: corridor_t_cros_wall_nolod
+    4300090: corridor_corner_lisen_hi
+    4300092: corridor_corner_wall_nolod
+    4300094: corridor_corner_beam_hi
+    4300096: corridor_corner_ceil_hi
+    4300098: corridor_cros_beam_hi
+    4300100: corridor_cros_ceil_hi
+    4300102: external_corner_beam_hi
+    4300104: seil_nolod
+    4300106: floor_restangle
+    4300108: column
+    4300110: wall
+    4300112: wall_door
+    4300114: wall_bay
+    4300116: corner
+    4300118: corridor_small
+    4300120: ceil
+    4300122: torch
+    4300124: ring
+    4300126: corridor_small_cross
+    4300128: column_broken
+    4300130: corridor_door
+    4300132: corridor
+    4300134: polySurface47
+    4300136: corridor_corner
+    4300138: corridor_tcross
+    4300140: corridor_cross
+    4300142: out_corner
+    4300144: corridor_end
+    4300146: stairs
+    4300148: stair
+    4300150: polySurface29
+    4300152: polySurface30
+    4300154: polySurface31
+    4300156: wall_door_big
+    4300158: corridor_door_big
+    4300160: corridor_small_big
+    4300162: corridor_small_big1
+    4300164: corridor_small_cross_big
+    4300166: corridor_small_end_big
+    4300168: corridor_small_end
+    4300170: wall_grilldoor
+    4300172: grilldoor
+    4300174: corridor_grilldoor
+    4300176: corridor_grilldoor_big
+    4300178: grilldoor_big
+    4300180: wall_grilldoor_big
+    4300182: well
+    4300184: gr_wall
+    4300186: gr_corner
+    4300188: gr_wall_door_big
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 0
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

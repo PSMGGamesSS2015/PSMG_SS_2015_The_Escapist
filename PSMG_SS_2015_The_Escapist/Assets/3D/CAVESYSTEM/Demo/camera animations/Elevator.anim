@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Elevator
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 59.112999, y: 113.209999, z: -6.04990005}
+        inSlope: {x: -.311800003, y: 3.46950006, z: .0425899997}
+        outSlope: {x: -.311800003, y: 3.46950006, z: .0425899997}
+        tangentMode: 0
+      - time: 10
+        value: {x: 55.9949989, y: 147.904999, z: -5.62400007}
+        inSlope: {x: -.13804996, y: 1.18783331, z: .0127283344}
+        outSlope: {x: -.13804996, y: 1.18783331, z: .0127283344}
+        tangentMode: 0
+      - time: 40
+        value: {x: 57.0660019, y: 115.089996, z: -6.13800001}
+        inSlope: {x: .0357000977, y: -1.09383345, z: -.0171333309}
+        outSlope: {x: .0357000977, y: -1.09383345, z: -.0171333309}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: 
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 1
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - path: 0
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 40
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 59.112999
+        inSlope: -.311800003
+        outSlope: -.311800003
+        tangentMode: 10
+      - time: 10
+        value: 55.9949989
+        inSlope: -.13804996
+        outSlope: -.13804996
+        tangentMode: 10
+      - time: 40
+        value: 57.0660019
+        inSlope: .0357000977
+        outSlope: .0357000977
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.x
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 113.209999
+        inSlope: 3.46950006
+        outSlope: 3.46950006
+        tangentMode: 10
+      - time: 10
+        value: 147.904999
+        inSlope: 1.18783331
+        outSlope: 1.18783331
+        tangentMode: 10
+      - time: 40
+        value: 115.089996
+        inSlope: -1.09383345
+        outSlope: -1.09383345
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.y
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -6.04990005
+        inSlope: .0425899997
+        outSlope: .0425899997
+        tangentMode: 10
+      - time: 10
+        value: -5.62400007
+        inSlope: .0127283344
+        outSlope: .0127283344
+        tangentMode: 10
+      - time: 40
+        value: -6.13800001
+        inSlope: -.0171333309
+        outSlope: -.0171333309
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.z
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 1
+  m_HasMotionFloatCurves: 0
+  m_GenerateMotionCurves: 0
+  m_Events: []

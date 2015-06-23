@@ -1,0 +1,107 @@
+fileFormatVersion: 2
+guid: c9dfac0100d1f464d85a7bcdd4678318
+timeCreated: 1424627054
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: ropelong01
+    100002: ropelong02
+    100004: ropelong03
+    100006: ropelong04
+    100008: ropelong05
+    100010: ropelong06
+    100012: ropelong07
+    100014: ropelong08
+    100016: //RootNode
+    400000: ropelong01
+    400002: ropelong02
+    400004: ropelong03
+    400006: ropelong04
+    400008: ropelong05
+    400010: ropelong06
+    400012: ropelong07
+    400014: ropelong08
+    400016: //RootNode
+    2300000: ropelong01
+    2300002: ropelong02
+    2300004: ropelong03
+    2300006: ropelong04
+    2300008: ropelong05
+    2300010: ropelong06
+    2300012: ropelong07
+    2300014: ropelong08
+    3300000: ropelong01
+    3300002: ropelong02
+    3300004: ropelong03
+    3300006: ropelong04
+    3300008: ropelong05
+    3300010: ropelong06
+    3300012: ropelong07
+    3300014: ropelong08
+    4300000: ropelong01
+    4300002: ropelong02
+    4300004: ropelong03
+    4300006: ropelong04
+    4300008: ropelong05
+    4300010: ropelong06
+    4300012: ropelong07
+    4300014: ropelong08
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1 @@
+To create a beautiful caves - just drag the prefab to the scene. If you have a problem with moving prefab on scene (low performance) - select prefab, turn off the group: "_Addons", then place prefab in the right place, after all just turn on "_Addons".

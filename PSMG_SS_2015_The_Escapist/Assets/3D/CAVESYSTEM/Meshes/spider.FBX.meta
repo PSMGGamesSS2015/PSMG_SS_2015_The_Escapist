@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: 0eaf7e7f266115b418740256d7400cca
+timeCreated: 1425838754
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: CATRigHub001
+    100002: CATRigHub001Bone001
+    100004: CATRigLLeg1
+    100006: CATRigLLeg1 1
+    100008: CATRigLLeg1 2
+    100010: CATRigLLeg1 3
+    100012: CATRigLLeg2
+    100014: CATRigLLeg2 1
+    100016: CATRigLLeg2 2
+    100018: CATRigLLeg2 3
+    100020: CATRigLLegAnkle
+    100022: CATRigLLegAnkle 1
+    100024: CATRigLLegAnkle 2
+    100026: CATRigLLegAnkle 3
+    100028: CATRigLLegPlatform
+    100030: CATRigLLegPlatform 1
+    100032: CATRigLLegPlatform 2
+    100034: CATRigLLegPlatform 3
+    100036: CATRigRLeg1
+    100038: CATRigRLeg1 1
+    100040: CATRigRLeg1 2
+    100042: CATRigRLeg1 3
+    100044: CATRigRLeg2
+    100046: CATRigRLeg2 1
+    100048: CATRigRLeg2 2
+    100050: CATRigRLeg2 3
+    100052: CATRigRLegAnkle
+    100054: CATRigRLegAnkle 1
+    100056: CATRigRLegAnkle 2
+    100058: CATRigRLegAnkle 3
+    100060: CATRigRLegPlatform
+    100062: CATRigRLegPlatform 1
+    100064: CATRigRLegPlatform 2
+    100066: CATRigRLegPlatform 3
+    100068: Spider
+    100070: //RootNode
+    100072: Spider001
+    100074: spider001
+    400000: CATRigHub001
+    400002: CATRigHub001Bone001
+    400004: CATRigLLeg1
+    400006: CATRigLLeg1 1
+    400008: CATRigLLeg1 2
+    400010: CATRigLLeg1 3
+    400012: CATRigLLeg2
+    400014: CATRigLLeg2 1
+    400016: CATRigLLeg2 2
+    400018: CATRigLLeg2 3
+    400020: CATRigLLegAnkle
+    400022: CATRigLLegAnkle 1
+    400024: CATRigLLegAnkle 2
+    400026: CATRigLLegAnkle 3
+    400028: CATRigLLegPlatform
+    400030: CATRigLLegPlatform 1
+    400032: CATRigLLegPlatform 2
+    400034: CATRigLLegPlatform 3
+    400036: CATRigRLeg1
+    400038: CATRigRLeg1 1
+    400040: CATRigRLeg1 2
+    400042: CATRigRLeg1 3
+    400044: CATRigRLeg2
+    400046: CATRigRLeg2 1
+    400048: CATRigRLeg2 2
+    400050: CATRigRLeg2 3
+    400052: CATRigRLegAnkle
+    400054: CATRigRLegAnkle 1
+    400056: CATRigRLegAnkle 2
+    400058: CATRigRLegAnkle 3
+    400060: CATRigRLegPlatform
+    400062: CATRigRLegPlatform 1
+    400064: CATRigRLegPlatform 2
+    400066: CATRigRLegPlatform 3
+    400068: Spider
+    400070: //RootNode
+    400072: Spider001
+    400074: spider001
+    4300000: spider001
+    7400000: spider
+    9500000: //RootNode
+    13700000: spider001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
