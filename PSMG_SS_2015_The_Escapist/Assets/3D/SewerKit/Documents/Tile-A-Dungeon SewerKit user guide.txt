@@ -1,0 +1,256 @@
+Thanks for purchasing this pakage, I hope you are going to have as much fun building your levels,
+as I had compiling this package. 
+
+Take a quick tour through all the prefabs, I have only used a small portion of what you have just purchased,
+so taking a quick browse, is going to make you even happier about your purchase, plus,
+place a reminder to what buildingblocks you have at your disposal.
+
+The purpose of the largse selection of variations is so that two areas does not have to be exactly the same
+even if the dsign and layout is the same and another.
+
+
+NB!!!            ***  Please could you rate and possibly review the package  ***
+It really assist others in making informed purchases when spending there hard earned money :)
+
+
+
+v1.9 --- Modern Electric UPDATE ---
+
+
+After the very successfull "From the Sewers it Came" campaign on the Unity Asset Store
+I wanted to give a small present to all the people that had purchased during the SALE and before.
+
+I added an extra texture sheet with a bunch of more currentday type meshes & prefabs
+
+These new prefabs can be found in the follorwing directory
+
+3DForge\TaD\SewerKit\Prefabs\Electric
+
+ - Assortment of Electrical Boxes
+ - Assortment of Cables from small to large items
+ - Assortment of electrical lights in blue, red, green, yellow & white
+ - Assortment of nice thin Steel ralings to be more current day type style
+
+Meshes 71
+Prefabs 102
+Particles 4 (Insects)
+
+
+                 ************
+
+
+v1.8.1 --- Deeper Down - FLOOR UPDATE ---
+
+I had user requests that asked what can be done about the clean smooth floors.
+
+Solution was to use the already included
+Assets\3DForge\TaD\SewerKit\Prefabs\Ruined\Rubble\ ... tiles was used and distributed all over
+at random to give an even rougher rundown look that suits the rugged look.
+
+The Empty game object that contains all those newly placed items is FLOOR TILES,
+meaning if you dont want it, then easy, just hide or delete that object that contains them.
+These dont have coliders so that they have no inflence on movement across them and purely cosmetic.
+
+The Deeper Down live Web Demo can be viewed to see this updates scene baked and in action
+
+
+                 ************
+
+
+v1.8 --- Deeper Down - FPS UPDATE ---
+
+I added a large selection of FPS optimized meshed and prefabs enabling the users to build cool
+levels and game scenes using the vertical space as well,
+so that rooms and passges can be above and below adding so many more interesting options.
+
+333 new meshes
+450 new prefabs
+
+Most sits in the Assets\3DForge\TaD\SewerKit\Prefabs\FPS directory
+
+For those who already own the package and want to see the new parts
+They can 100% be used for Top Down as well (just hide the roofs or use the prefabs that dont have them included)
+they do have more polygons, so if that is a concern, then use the other ones in the tiles section.
+
+
+                 ************
+
+
+v1.7 --- Thief's Guild Top Down Demo ---
+
+This is a fullfillment of user requested to add an example of the Top Down Demo Scene.
+
+
+                 ************
+
+
+v1.6 --- Straight Ralings added ---
+
+This is a fullfillment of user requested meshes and pre-fabs addition that adds 2m, 4m, 6m, 8m & 10m straight railings
+to the existing ralings folder.
+
+Sew_Rail_Wooden_2
+Sew_Rail_Wooden_4
+Sew_Rail_Wooden_6
+Sew_Rail_Wooden_8
+Sew_Rail_Wooden_10
+
+
+                 ************
+
+
+v1.5 --- Large Open Area Tiles ---
+
+This is a fullfillment of user requested meshes and pre-fabs addition that will enable the building of large open areas.
+
+I have added 6m x 6m & 10m x 10m tile meshes and Pre-fabs to
+/2m Canal
+/6m Canal
+/Base Tiles
+for each of the the two groups
+
+These new tiles all contain the word "basic" in them.
+A second version of each was also added that includes the matching roof pre-fabs for FPS gameplay usage
+
+NB!!! Look at DEMO Scene Walkway Area walls to see small pillars used to plug the open corners that could appear when using these tiles.
+This is one of many items that can be used to plug the hole.
+
+
+                 ************
+
+
+v1.4 --- Arches and Doors ---
+
+This is a fullfillment of user requested meshes and pre-fabs addition.
+
+I have added the Keystones, Completed arches as well as a few stronger looking doors and doors that match these completed arches
+The Keystone piece can easily be daade to other parts using vertice snapping to click it into it's place
+
+
+                 ************
+
+
+v1.3 --- And Let the Roofs be complete ---
+
+I Have added roof prefabs to all the 6m x 6m tiles.
+The tiles each have a version witout and a version with the roof prefab added inside of it.
+The ones without are for Top-Down use
+If you want to test both, but with the same layout and not doing the work twice,
+then build with the tiles that include the roofs for the FPS scene, then " Save Scene As " and give it a new name.
+On this duplicate scene, just go into each tile prefab, and delete the roof prefab inside each tile prefab.
+
+* Special Note *
+
+Please check on FPS demo and have a look at the black blocking strips that were used. (prefab can be found in toolbox)
+Bottom/Underneath, non visable polygons were culled for Top-Down use of the tile to reduce geometry that loads
+Through these hole, unwanted snippets might appear.
+Add these black surfaces with the normal facing the playing area.
+Make one with the required height, and just duplicate, it goed quite fast once the first few are made
+
+It is stated next to the 6m tiles that they are for mobile.
+If peformance start to suffer, use the tiles without the roofs and just adjust the background colour setting on your camera to black.
+
+
+                 ************
+
+
+v1.2 --- And Let there be Roofs ---
+
+I Have added roof prefabs to all the 10m x 10m tiles.
+The tiles each have a version witout and a version with the roof prefab added inside of it.
+The ones without are for Top-Down use
+If you want to test both, but with the same layout and not doing the work twice,
+then build with the tiles that include the roofs for the FPS scene, then " Save Scene As " and give it a new name.
+On this duplicate scene, just go into each tile prefab, and delete the roof prefab inside each tile prefab.
+
+* Special Note *
+
+Please check on FPS demo and have a look at the black blocking strips that were used. (prefab can be found in toolbox)
+Bottom/Underneath, non visable polygons were culled for Top-Down use of the tile to reduce geometry that loads
+Through these hole, unwanted snippets might appear.
+Add these black surfaces with the normal facing the playing area.
+Make one with the required height, and just duplicate, it goed quite fast once the first few are made
+
+
+                 ************
+
+
+The main concept behind the Larger Tiles is that you can quicker and easier build large section without placing 100's of tiles,
+together with only one texture to load you should get very low drawcalls for Mobile as well as Desktop.
+
+
+Mobile & Desktop:
+I have seperated the groups with the 6m x 6m tiles labled as Mobile and the 10m x 10m tiles as PC
+There is no stopping you using either one for the other platform. The smaller tiles just have less geometry that loads into memory.
+There are soo many configurations of PC's and tablets these days, that it is not a hard and fast rule laid in stone.
+I also felt that the users would appreciate getting both the tile sets in one purchased package instead of two seperate ones.
+
+
+For optimization I have culled all polygons that are not visable, to lower the resourse usage further.
+
+Also, all the screenshots and DEMOS that you have seen has been achieved with a Diffuse map only,
+so no special shaders are required that to make your game look great and save you further system resources.
+
+
+The scene that was used for the online DEMOS and the screenshots are included in this package,
+as well as a never before seen basic scene to provide an example of the walkway tile usage
+to build underground walkways across large water bodies, it is quick, easy, and fun.
+
+
+There is a 6m x 6m tile set as well as a 10m x 10m tile set:
+I have constructed a wide selection of possible tile designs to assist in building the largest possible selection scenes.
+
+Should you encounter an area that you need that extra special tile that I have not included,
+then you can construct it out of the spare parts that I have placed in the following directory under prefabs
+... \3DForge\TaD\SewerKit\Prefabs\SewerKit Toolbox
+If you feel that this tile design needs to be made as another single mesh and prefab,
+and would like to see it become part of the pack for others even to enjoy,
+then please email me a couple of screenshots as you have combined it out of smaller parts
+and if it suits the overall look at feel of the pack I will include it in future updates.
+
+
+There is a good selection of variations of items, sometimes with pillars on ends and then also without,
+that is so you have option to use when there would have been a Z-fighting problem if only one set was included
+
+
+NB:
+Using the MeshCombine function via code or the SimpleMeshCobine tool on the asset store alone or in combination with Batching
+you will experience great joy to see the draw calls drop tremendously.
+The largest drawcalls taker in my experience are lights, switch them off,
+Meshcombine the whole dungoen and you will have only a few Draw calls on your plate,
+so use them carefully, you could also use two different colured directional lights from two different angles to create atmospheric scenes.
+Set the ambient light a bit higher and yu would require less light sources.
+
+
+Doors and gates:
+The door items have been exported with the Y Axis being the rotational axis.
+This will enable you to have them open and close easily with code.
+
+
+Vertice-Snap is your freind:
+Because the tile are completely modular, a tile editor such as Tile Ed would assit in building levels.
+But because the tiles are large and you would place not that many manual placment is done with eaze.
+For those who don't know, holding down "V" while useing the move function will have the object you have selected
+snap to the closest neigbouring object's vertices enabling you to click the tiles together in a matter of seconds.
+
+ProGrids 2:
+Using 1.0 as a setting would have it work in all three axis
+
+Once you have picked up on all the small trick you won't want to go without it.
+
+PS !!! Many meshes have single polygons left in strategic spots; bittom middle, end middel and so forth of items.
+Use these as handles to snap them onto the desired spots in your level, it will make them much easier to acurately place.
+
+
+Colliders have already been added to most of the geometry which will save you hours of work,
+so, what you waiting for, dive in and build some cool levels for your next poject.
+
+Send some screenshots to info@3dforge.co.za of your work and I will showcase them on the website
+
+
+Enjoy
+Cobus
+info@3dforge.co.za
+
+You are allowed to use the textures with the 3D model but not extract and resell the texture itself
+One or more textures on these 3D models have been created with images from CGTextures.com
