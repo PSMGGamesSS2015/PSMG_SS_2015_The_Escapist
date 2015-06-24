@@ -14,9 +14,6 @@
 *.pidb
 *.booproj
 
-#AssetPacks
-*/Assets/3D/DecrepitDungeon
-
 #Further annoying UnityVS files
 */Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll
 */Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll.meta
