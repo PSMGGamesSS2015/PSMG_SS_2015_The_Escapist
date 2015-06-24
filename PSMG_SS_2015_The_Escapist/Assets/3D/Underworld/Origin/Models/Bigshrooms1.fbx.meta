@@ -3,7 +3,12 @@ guid: 3db743de06cf2ed43bfcc75e99bc3295
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Shrooms1_300tris_polySurface1
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

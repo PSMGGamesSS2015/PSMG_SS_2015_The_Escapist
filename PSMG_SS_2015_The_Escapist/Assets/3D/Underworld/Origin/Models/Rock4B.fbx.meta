@@ -3,8 +3,13 @@ guid: abbefe9d1c2118f4a91daf89381282dd
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Rock4B_300_tris_Group62438
     4300002: polySurface5
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

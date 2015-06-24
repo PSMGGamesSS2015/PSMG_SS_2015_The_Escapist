@@ -3,9 +3,20 @@ guid: 30f68dba37d6a744cb434d446c88ae9f
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: door
+    100004: hinge
+    400000: //RootNode
+    400002: door
+    400004: hinge
+    2300000: door
+    2300002: hinge
+    3300000: door
+    3300002: hinge
     4300000: door
     4300002: door1
     4300004: hinge
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

@@ -3,7 +3,12 @@ guid: 70ec803de5451a34898a4f1dd54a7d4f
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: cave_el15C_4k_Group59393
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

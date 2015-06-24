@@ -3,7 +3,12 @@ guid: ce67a27cb5bbf6949b37015a8fa352b1
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Rock2_LOD_2
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

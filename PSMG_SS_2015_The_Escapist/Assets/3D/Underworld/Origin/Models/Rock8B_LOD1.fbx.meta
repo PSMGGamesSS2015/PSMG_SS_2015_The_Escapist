@@ -3,7 +3,12 @@ guid: f12ba7a17758ed647b89cc8dd4dc2905
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Rock8B_150tris_Group56880
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

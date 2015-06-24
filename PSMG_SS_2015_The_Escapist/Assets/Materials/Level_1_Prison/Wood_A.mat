@@ -121,7 +121,7 @@ Material:
       data:
         first:
           name: _EmissionScaleUI
-        second: 1
+        second: .0299999993
       data:
         first:
           name: _Mode
@@ -134,7 +134,7 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: .338235319, g: .338235319, b: .338235319, a: 1}
+        second: {r: .0101470593, g: .0101470593, b: .0101470593, a: .0299999993}
       data:
         first:
           name: _Color

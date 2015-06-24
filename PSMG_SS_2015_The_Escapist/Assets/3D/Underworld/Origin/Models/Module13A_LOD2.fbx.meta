@@ -3,7 +3,12 @@ guid: 2f47579f4e889aa429e286b975e8a4ac
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: cave_el13_6k_polySurface3
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

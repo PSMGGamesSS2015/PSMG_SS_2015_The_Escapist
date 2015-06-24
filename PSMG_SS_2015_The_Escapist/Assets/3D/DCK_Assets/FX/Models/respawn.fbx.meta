@@ -3,8 +3,19 @@ guid: 7201a10349ccc474aa136393b33abb76
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: respawn
+    100004: stripes
+    400000: //RootNode
+    400002: respawn
+    400004: stripes
+    2300000: respawn
+    2300002: stripes
+    3300000: respawn
+    3300002: stripes
     4300000: respawn
     4300002: stripes
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
