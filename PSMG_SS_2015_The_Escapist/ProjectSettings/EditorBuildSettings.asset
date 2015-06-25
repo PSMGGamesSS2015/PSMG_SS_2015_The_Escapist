@@ -6,6 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/main_menu.unity
-  - enabled: 1
-    path: Assets/Scenes/TestingLevels/levelSet_scene_1_prison_julien.unity
+    path: Assets/Scenes/menu.unity

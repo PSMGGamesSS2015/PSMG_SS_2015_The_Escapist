@@ -301,62 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: .70588237
-    m_HighlightedColor:
-      r: .521568656
-      g: .521568656
-      b: .521568656
-      a: 1
-    m_PressedColor:
-      r: .784313738
-      g: .784313738
-      b: .784313738
-      a: 1
-    m_DisabledColor:
-      r: .784313738
-      g: .784313738
-      b: .784313738
-      a: .501960814
-    m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: 4e6f726d616c
-    m_HighlightedTrigger: 486967686c696768746564
-    m_PressedTrigger: 50726573736564
-    m_DisabledTrigger: 44697361626c6564
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 179195590}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1766970049}
-        m_MethodName: 6f7074696f6e
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 556e697479456e67696e652e4f626a6563742c20556e697479456e67696e65
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
 --- !u!114 &179195590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,20 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!222 &179195591
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -468,24 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1766970049}
-          m_MethodName: 706c6179536f756e64
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 179195592}
-            m_ObjectArgumentAssemblyTypeName: 556e697479456e67696e652e417564696f536f757263652c20556e697479456e67696e65
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: 556e697479456e67696e652e4576656e7453797374656d732e4576656e74547269676765722b547269676765724576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
-  delegates: []
 --- !u!4 &244846987 stripped
 Transform:
   m_PrefabParentObject: {fileID: 446382, guid: 229f0153d494e7041a0322acca8c9279, type: 2}
@@ -855,62 +767,6 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor:
-      r: 1
-      g: 1
-      b: 1
-      a: .70588237
-    m_HighlightedColor:
-      r: .521568656
-      g: .521568656
-      b: .521568656
-      a: 1
-    m_PressedColor:
-      r: .784313738
-      g: .784313738
-      b: .784313738
-      a: 1
-    m_DisabledColor:
-      r: .784313738
-      g: .784313738
-      b: .784313738
-      a: .501960814
-    m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: 4e6f726d616c
-    m_HighlightedTrigger: 486967686c696768746564
-    m_PressedTrigger: 50726573736564
-    m_DisabledTrigger: 44697361626c6564
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 440339585}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1766970049}
-        m_MethodName: 6f7074696f6e
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 556e697479456e67696e652e4f626a6563742c20556e697479456e67696e65
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: 556e697479456e67696e652e55492e427574746f6e2b427574746f6e436c69636b65644576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
 --- !u!114 &440339585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,20 +778,6 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!222 &440339586
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1022,24 +864,6 @@ MonoBehaviour:
   m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1766970049}
-          m_MethodName: 706c6179536f756e64
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 440339587}
-            m_ObjectArgumentAssemblyTypeName: 556e697479456e67696e652e417564696f536f757263652c20556e697479456e67696e65
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: 556e697479456e67696e652e4576656e7453797374656d732e4576656e74547269676765722b547269676765724576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
-  delegates: []
 --- !u!1 &440967344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,7 +1884,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -284, y: 249}
+  m_AnchoredPosition: {x: -265, y: 300}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &867895426
@@ -4533,6 +4357,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionmenu: 0
   menu: 1
+  ResX: 0
+  ResY: 0
+  Fullscreen: 0
 --- !u!4 &1766970050
 Transform:
   m_ObjectHideFlags: 0
@@ -5149,24 +4976,6 @@ MonoBehaviour:
   m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1766970049}
-          m_MethodName: 706c6179536f756e64
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2014598631}
-            m_ObjectArgumentAssemblyTypeName: 556e697479456e67696e652e417564696f536f757263652c20556e697479456e67696e65
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: 556e697479456e67696e652e4576656e7453797374656d732e4576656e74547269676765722b547269676765724576656e742c20556e697479456e67696e652e55492c2056657273696f6e3d312e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
-  delegates: []
 --- !u!1 &2027184854
 GameObject:
   m_ObjectHideFlags: 0
