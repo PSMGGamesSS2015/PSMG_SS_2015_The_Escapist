@@ -6,6 +6,9 @@ public class CameraScript : MonoBehaviour {
     public Camera firstPerson;
     public Camera thirdPerson;
 
+
+
+
     /// <summary>
     /// Initalisation
     /// </summary>
