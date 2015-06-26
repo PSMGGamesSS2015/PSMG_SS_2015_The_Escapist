@@ -650,21 +650,21 @@ LODGroup:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16202262}
+  serializedVersion: 2
   m_LocalReferencePoint: {x: 0, y: 8.95287323, z: 0}
   m_Size: 32.7468529
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
   m_LODs:
   - screenRelativeHeight: .600000024
-    fadeMode: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 0}
   - screenRelativeHeight: .300000012
-    fadeMode: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1981827812}
   - screenRelativeHeight: .100000001
-    fadeMode: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 200319961}
@@ -5563,7 +5563,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 114
+  m_RootOrder: 115
 --- !u!1001 &368583633
 Prefab:
   m_ObjectHideFlags: 0
@@ -10661,6 +10661,7 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &689396493 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 91d652779ec7140488b6b8e360497937, type: 2}
@@ -11920,6 +11921,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!1001 &786784075
 Prefab:
   m_ObjectHideFlags: 0
@@ -26276,7 +26278,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbe725e8e7dc0264982a87be5dae2637, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -.707106829
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbe725e8e7dc0264982a87be5dae2637, type: 3}
       propertyPath: m_LocalRotation.y
@@ -26288,7 +26290,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbe725e8e7dc0264982a87be5dae2637, type: 3}
       propertyPath: m_LocalRotation.w
-      value: .707106709
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbe725e8e7dc0264982a87be5dae2637, type: 3}
       propertyPath: m_RootOrder
