@@ -1,0 +1,192 @@
+fileFormatVersion: 2
+guid: ff41636f7ba491c4785b3cd72e0a8091
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: segment_A
+    100004: segment_B
+    100006: segmentCap_A
+    100008: segmentCorner_A
+    100010: capWindow
+    100012: doorsBig_A.L
+    100014: doorsBig_A.R
+    100016: Point.000
+    100018: capWindow_A
+    100020: capWindow_B
+    100022: floorPlane_small
+    100024: floorPlane_small.001
+    100026: wall_A
+    100028: floorPlane_big
+    100030: wallCorner_A
+    100032: wall_A_end
+    100034: wall_A_half
+    100036: wallCorner_A_half
+    100038: Point
+    100040: floorPlane_small_half
+    100042: light_A
+    100044: light_B
+    100046: light_stand
+    100048: UCX_wall_A_half
+    100050: UCX_wallCorner_A_half
+    400000: //RootNode
+    400002: segment_A
+    400004: segment_B
+    400006: segmentCap_A
+    400008: segmentCorner_A
+    400010: capWindow
+    400012: doorsBig_A.L
+    400014: doorsBig_A.R
+    400016: Point.000
+    400018: capWindow_A
+    400020: capWindow_B
+    400022: floorPlane_small
+    400024: floorPlane_small.001
+    400026: wall_A
+    400028: floorPlane_big
+    400030: wallCorner_A
+    400032: wall_A_end
+    400034: wall_A_half
+    400036: wallCorner_A_half
+    400038: Point
+    400040: floorPlane_small_half
+    400042: light_A
+    400044: light_B
+    400046: light_stand
+    400048: UCX_wall_A_half
+    400050: UCX_wallCorner_A_half
+    2300000: //RootNode
+    2300002: segment_A
+    2300004: segment_B
+    2300006: segmentCap_A
+    2300008: segmentCorner_A
+    2300010: capWindow
+    2300012: doorsBig_A.L
+    2300014: doorsBig_A.R
+    2300016: capWindow_A
+    2300018: capWindow_B
+    2300020: floorPlane_small
+    2300022: floorPlane_small.001
+    2300024: wall_A
+    2300026: floorPlane_big
+    2300028: wallCorner_A
+    2300030: wall_A_end
+    2300032: wall_A_half
+    2300034: wallCorner_A_half
+    2300036: floorPlane_small_half
+    2300038: light_A
+    2300040: light_B
+    2300042: light_stand
+    2300044: UCX_wall_A_half
+    2300046: UCX_wallCorner_A_half
+    3300000: //RootNode
+    3300002: segment_A
+    3300004: segment_B
+    3300006: segmentCap_A
+    3300008: segmentCorner_A
+    3300010: capWindow
+    3300012: doorsBig_A.L
+    3300014: doorsBig_A.R
+    3300016: capWindow_A
+    3300018: capWindow_B
+    3300020: floorPlane_small
+    3300022: floorPlane_small.001
+    3300024: wall_A
+    3300026: floorPlane_big
+    3300028: wallCorner_A
+    3300030: wall_A_end
+    3300032: wall_A_half
+    3300034: wallCorner_A_half
+    3300036: floorPlane_small_half
+    3300038: light_A
+    3300040: light_B
+    3300042: light_stand
+    3300044: UCX_wall_A_half
+    3300046: UCX_wallCorner_A_half
+    4300000: wallPlane
+    4300002: segment_B
+    4300004: segment_A
+    4300006: segmentCap_A
+    4300008: segmentCorner_A
+    4300010: capWindow
+    4300012: doorsBig_A.L
+    4300014: doorsBig_A.R
+    4300016: capWindow_B
+    4300018: capWindow_A
+    4300020: wall_A
+    4300022: floorPlane_small.001
+    4300024: floorPlane_small
+    4300026: floorPlane_big
+    4300028: wallCorner_A
+    4300030: wall_A_end
+    4300032: wall_A_half
+    4300034: wallCorner_A_half
+    4300036: floorPlane_small_half
+    4300038: light_stand
+    4300040: light_B
+    4300042: light_A
+    4300044: UCX_wallCorner_A_half
+    4300046: UCX_wall_A_half
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .200000003
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
