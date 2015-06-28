@@ -5024,7 +5024,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: eb7924883d6858545bdd5b406fcd4681, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -12536,7 +12536,12 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: .0590000004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9500000, guid: 64aaa90e88543434a9f45078f93e0689, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 64aaa90e88543434a9f45078f93e0689, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 64aaa90e88543434a9f45078f93e0689, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &846125757 stripped

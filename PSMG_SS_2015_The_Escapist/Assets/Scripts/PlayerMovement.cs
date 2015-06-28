@@ -14,10 +14,13 @@ public class PlayerMovement : MonoBehaviour {
     private float moveVertical;
     public bool playerGrounded = true;
 
+    private Animator anim;
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -141,6 +144,23 @@ public class PlayerMovement : MonoBehaviour {
     /// <param name="sneaking"></param>
     private void manageMovement(float turn, float moveVertical, bool sneaking)
     {
+        if (moveVertical == 0)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("Sneaking", false);
+
+            anim.SetBool("Idling", true);
+        }
+
+
+        if (moveVertical != 0)
+        {
+            anim.SetBool("Walking", true);
+            anim.SetBool("Idling", false);
+        }
+
+
         if (sneaking == true)
         {
             movementSpeed = Constants.SNEAKING_SPEED;
@@ -161,21 +181,23 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
         }
 
+
         else
         {
             movementSpeed = Constants.WALKING_SPEED;
             rotationSpeed = Constants.WALKING_ROTATION;
 
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
 
         }
 
+
         if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
         {
             rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
+
             
         }
     }
