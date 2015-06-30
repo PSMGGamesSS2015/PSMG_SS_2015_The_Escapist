@@ -17,14 +17,14 @@ public class FollowAI : MonoBehaviour
 
     private Vector3 startPosition;
 
-    private PlayerMovement playerMovement;
+   private PlayerMovement playerMovement;
 
-    private Shadow shadowLightOne;
+    Shadow shadowLightOne;
 
     public Transform[] waypoint;
     public bool loop = true;
     public float dampingLook = 6.0f;
-    private float pauseDuration = 3.0f;
+    public float pauseDuration = 3.0f;
     private float curTime;
     public int currentWaypoint = 0;
     private CharacterController character;
@@ -38,11 +38,7 @@ public class FollowAI : MonoBehaviour
 
     public bool hasSeenPlayer = false;
 
-    public bool test = false;
-
-    public int counter = 0;
-
-
+    public bool test;
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
 
@@ -58,14 +54,14 @@ public class FollowAI : MonoBehaviour
         //Added by Chris
         anim = GetComponent<Animator>();
 
-        agent = gameObject.GetComponent<NavMeshAgent>();
+       agent = gameObject.GetComponent<NavMeshAgent>();
 
         playerMovement = player.GetComponent<PlayerMovement>();
 
-        shadowLightOne = testLightOne.GetComponent<Shadow>();
+       //shadowLightOne = testLightOne.GetComponent<Shadow>();
 
         enemy = transform;
-        agent.speed = Constants.AI_NORMAL_SPEED;
+       //agent.speed = Constants.AI_NORMAL_SPEED;
         startPosition = character.transform.position;
 
     }
@@ -87,7 +83,8 @@ public class FollowAI : MonoBehaviour
     {
         bool patroling = true;
         bool chasing = false;
-        bool searching = false;
+       bool searching = false;
+
         if (currentBehavior == EnemyBehavior.patrol)
         {
             patroling = true;
@@ -125,7 +122,7 @@ public class FollowAI : MonoBehaviour
     IEnumerator startRoutine()
     {
         yield return new WaitForSeconds(5f);
-        test = true;
+       test = true;
         nextState();
     }
 
@@ -145,7 +142,7 @@ public class FollowAI : MonoBehaviour
 
    
 
-    private void Search()
+   private void Search()
     {
         Vector3 destination = startPosition - new Vector3(UnityEngine.Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE), 0, UnityEngine.Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE));
         NewDestination(destination);
@@ -156,9 +153,9 @@ public class FollowAI : MonoBehaviour
 
     }
 
-    private void chase()
+   private void chase()
     {
-        if (playerMovement.sneaking == false && shadowLightOne.safe == false)
+        if (playerMovement.sneaking == false )// && shadowLightOne.safe == false)
         {
             float distance = Vector3.Distance(enemy.position, player.transform.position);
             if (distance == Constants.AI_RANGE && playerInSight)
@@ -210,7 +207,7 @@ public class FollowAI : MonoBehaviour
   }else{        
   
   var rotation = Quaternion.LookRotation(target - transform.position);
-  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
+  transform.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(target - enemy.position), dampingLook * Time.deltaTime);
   character.Move(moveDirection.normalized * Constants.AI_NORMAL_SPEED * Time.deltaTime);
   } 
  }
@@ -223,7 +220,7 @@ public class FollowAI : MonoBehaviour
 
 
 
-
+    /*
     /// <summary>
     /// Check if player reaches the sight of the enemy 
     /// </summary>
@@ -268,6 +265,6 @@ public class FollowAI : MonoBehaviour
     /// </summary>
 
 
-
+    */
 }
 
