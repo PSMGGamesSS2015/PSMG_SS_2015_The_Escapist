@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     bool sound = false;
     bool video = false;
 
-    int sfxVol = 6;
+    int overallVol = 6;
     int musicVol = 6;
 
     int fieldOfView = 80;
@@ -120,11 +120,11 @@ public class MenuManager : MonoBehaviour
 
 
 
-            sfxVol = (int)GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2, 100, 30), sfxVol, 0.0f, 10.0f);
-            GUI.Label(new Rect(Screen.width / 2 - 50 + 110, Screen.height / 2 - 5, 100, 30), "SFX: " + sfxVol);
+            overallVol = (int)GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2, 100, 30), overallVol, 0.0f, 10.0f);
+            GUI.Label(new Rect(Screen.width / 2 - 50 + 110, Screen.height / 2 - 5, 100, 30), "Overall: " + overallVol);
+            AudioListener.volume = overallVol / 10.0f;
 
-            musicVol = (int)GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 30, 100, 30), musicVol, 0.0f, 10.0f);
-            GUI.Label(new Rect(Screen.width / 2 - 50 + 110, Screen.height / 2 + 25, 100, 30), "Music: " + musicVol);
+           
 
             if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 90, 100, 30), "Back"))
             {
