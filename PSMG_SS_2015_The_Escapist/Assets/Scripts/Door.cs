@@ -84,8 +84,11 @@ public class Door : MonoBehaviour {
     {
         if (Time.time > nextTriggerTime)
         {
-            openAnim["openDoor"].speed = 1;
-            openAnim["openDoor"].time = 0;
+            foreach(AnimationState state in openAnim)
+            {
+                state.speed = 1;
+                state.time = 0;
+            }
 
             openAnim.Play();
 
@@ -101,10 +104,12 @@ public class Door : MonoBehaviour {
     {
         if (Time.time > nextTriggerTime)
         {
-            openAnim["openDoor"].speed = -1;
-            openAnim["openDoor"].time = openAnim["openDoor"].length;
+            foreach(AnimationState state in openAnim) {
+	            state.speed = -1;
+                state.time = state.length;
+            }
 
-            GetComponent<Animation>().Play();
+            openAnim.Play();
 
             audioSource.clip = closeSound;
             audioSource.Play();
