@@ -12,7 +12,7 @@ public class ReplaceGameObjects : ScriptableWizard {
 
     public GameObject Prefab;
     public GameObject[] ObjectsToReplace;
-    public bool KeepOriginalNames = true;
+    public bool KeepOriginalNames = false;
     [MenuItem("Custom/Replace GameObjects")]
 
     static void CreateWizard()
@@ -32,7 +32,7 @@ public class ReplaceGameObjects : ScriptableWizard {
             newObject.transform.localRotation = go.transform.localRotation;
             newObject.transform.localScale = go.transform.localScale;
             if (KeepOriginalNames) newObject.transform.name = go.transform.name;
-            DestroyImmediate(go);
+            Undo.DestroyObjectImmediate(go);
         }
     }
 }
