@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Walking", false);
                 anim.SetBool("Running", false);
                 anim.SetBool("Sneaking", false);
-
+                anim.SetBool("Walking Backwards", false);
                 anim.SetBool("Idling", true);
                 movementSpeed = Constants.WALKING_SPEED;
                 rotationSpeed = Constants.WALKING_ROTATION;
@@ -136,12 +136,23 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
+        if (moveVertical < 0)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("Sneaking", false);
+            anim.SetBool("Idling", false);
+            anim.SetBool("Walking Backwards", true);
+            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+        }
 
-        if (moveVertical != 0)
+        if (moveVertical > 0)
         {
             if ((sneaking == false) && (running == false)) {
             anim.SetBool("Walking", true);
             anim.SetBool("Idling", false);
+            anim.SetBool("Walking Backwards", false);
             movementSpeed = Constants.WALKING_SPEED;
             rotationSpeed = Constants.WALKING_ROTATION;
 
@@ -151,7 +162,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
 
-        if (moveVertical != 0)
+        if (moveVertical > 0)
         {
             if ((sneaking == true) && (running == false))
             {
@@ -162,6 +173,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Running", false);
                 anim.SetBool("Sneaking", true);
                 anim.SetBool("Idling", false);
+                anim.SetBool("Walking Backwards", false);
                 //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
@@ -169,7 +181,7 @@ public class PlayerMovement : MonoBehaviour {
 
         }
 
-        if (moveVertical != 0)
+        if (moveVertical > 0)
         {
             if ((sneaking == false) && (running == true)) {
 
