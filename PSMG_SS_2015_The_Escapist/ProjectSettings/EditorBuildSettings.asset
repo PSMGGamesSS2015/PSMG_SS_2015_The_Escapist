@@ -8,4 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu.unity
   - enabled: 1
-    path: Assets/Scenes/Level_1_Prison.unity
+    path: Assets/Scenes/zz_Bene_Level_1_Prison.unity
