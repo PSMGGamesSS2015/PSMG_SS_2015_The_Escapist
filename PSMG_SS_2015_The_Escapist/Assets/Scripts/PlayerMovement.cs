@@ -58,21 +58,17 @@ public class PlayerMovement : MonoBehaviour {
     /// <returns>Bool: Running mode active or not.</returns>
     private bool checkRunningMode()
     {
-        if ((Input.GetButtonDown("Run") == true) && (running == true))
+
+        if (Input.GetButton("Run") == true)
         {
-            sneaking = false;
-            return false;
-
-        } else if ((Input.GetButtonDown("Run") == true) && (running == false)){
-
             sneaking = false;
             return true;
         }
         else
         {
-            return running;
+            anim.SetBool("Running", false);
+            return false;
         }
-
         
     }
 
@@ -82,39 +78,19 @@ public class PlayerMovement : MonoBehaviour {
     /// <returns>Bool: Sneaking mode active or not.</returns>
     private bool checkSneakMode()
     {
-        if ((Input.GetButtonDown("Sneak") == true) && (sneaking == true))
-        {
-            running = false;
-            return false;
 
-        } else if ((Input.GetButtonDown("Sneak")) && (sneaking == false)) {
+        if (Input.GetButton("Sneak") == true)
+        {
             running = false;
             return true;
-
         }
         else
         {
-            return sneaking;
+            anim.SetBool("Sneaking", false);
+            return false;
         }
     }
 
-    /// <summary>
-    /// This method modifies the size of the player. The method will maybe not needed in the future developing process.
-    /// </summary>
-    /// <param name="sneaking"></param>
-    private void modifySize(bool sneaking)
-    {
-        if (sneaking == true)
-        {
-            transform.Find("player_avatar").localScale += new Vector3(0, 0.5f, 0);
-            transform.GetComponent<BoxCollider>().size += new Vector3(0, 0.5f, 0);
-        }
-        else
-        {
-            transform.Find("player_avatar").localScale -= new Vector3(0, 0.5f, 0);
-            transform.GetComponent<BoxCollider>().size -= new Vector3(0, 0.5f, 0);
-        }
-    }
 
     /// <summary>
     /// This method checks via RayCast if the player is on the ground or not.
@@ -146,59 +122,81 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (moveVertical == 0)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Running", false);
-            anim.SetBool("Sneaking", false);
+            if ((sneaking == false) && (running == false)) {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", false);
+                anim.SetBool("Sneaking", false);
 
-            anim.SetBool("Idling", true);
+                anim.SetBool("Idling", true);
+                movementSpeed = Constants.WALKING_SPEED;
+                rotationSpeed = Constants.WALKING_ROTATION;
+
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+                transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+            }
         }
 
 
         if (moveVertical != 0)
         {
+            if ((sneaking == false) && (running == false)) {
             anim.SetBool("Walking", true);
             anim.SetBool("Idling", false);
-        }
-
-
-        if (sneaking == true)
-        {
-            movementSpeed = Constants.SNEAKING_SPEED;
-            rotationSpeed = Constants.SNEAKING_ROTATION;
-
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
-            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
-
-
-
-        } else if (running == true){
-            movementSpeed = Constants.RUNNING_SPEED;
-            rotationSpeed = Constants.RUNNING_ROTATION;
-
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
-            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
-        }
-
-
-        else
-        {
             movementSpeed = Constants.WALKING_SPEED;
             rotationSpeed = Constants.WALKING_ROTATION;
 
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+            }
+        }
 
 
+        if (moveVertical != 0)
+        {
+            if ((sneaking == true) && (running == false))
+            {
+                movementSpeed = Constants.SNEAKING_SPEED;
+                rotationSpeed = Constants.SNEAKING_ROTATION;
+
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", false);
+                anim.SetBool("Sneaking", true);
+                anim.SetBool("Idling", false);
+                //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+                transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+            }
+
+        }
+
+        if (moveVertical != 0)
+        {
+            if ((sneaking == false) && (running == true)) {
+
+                movementSpeed = Constants.RUNNING_SPEED;
+                rotationSpeed = Constants.RUNNING_ROTATION;
+
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", true);
+                anim.SetBool("Sneaking", false);
+                anim.SetBool("Idling", false);
+                //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+                transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+            }
         }
 
 
         if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
         {
-            rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
+            //rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
+            anim.SetBool("Jumping", true);
 
-            
+
+        }
+        else
+        {
+            anim.SetBool("Jumping", false);
         }
     }
 
