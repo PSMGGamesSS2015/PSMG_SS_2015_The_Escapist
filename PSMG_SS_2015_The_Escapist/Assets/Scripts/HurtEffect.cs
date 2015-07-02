@@ -6,6 +6,7 @@ public class HurtEffect : MonoBehaviour
 
     public Texture hurtEffect;
     private int counter = 0;
+    private AudioSource audio;
 
     private GUIStyle style;
 
@@ -15,6 +16,13 @@ public class HurtEffect : MonoBehaviour
     /// <summary>
     /// Check if enemy hit player
     /// </summary>
+    /// 
+
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+
+    }
     void OnTriggerEnter(Collider col)
     {
 
@@ -28,6 +36,8 @@ public class HurtEffect : MonoBehaviour
             else
             {
                 counter++;
+                audio.Play();
+
                 displayHurtEffect = true;
             }
         }
@@ -40,7 +50,10 @@ public class HurtEffect : MonoBehaviour
     {
         if (displayHurtEffect)
         {
+            
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
+            
+
             StartCoroutine(StopDisplayingEffect());
         }
 
@@ -62,7 +75,8 @@ public class HurtEffect : MonoBehaviour
     IEnumerator StopDisplayingEffect()
     {
         yield return new WaitForSeconds(Constants.DISPLAY_TIME);
-        
+     
+
         counter = 0;
         displayHurtEffect = false;
     }

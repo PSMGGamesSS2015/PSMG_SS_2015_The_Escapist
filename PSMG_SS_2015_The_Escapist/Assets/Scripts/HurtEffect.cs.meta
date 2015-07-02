@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: b1bcb4a7a0bee9043b5e75c192478fb0
-timeCreated: 1429700672
+timeCreated: 1435856254
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - hurtEffect: {fileID: 2800000, guid: a138ef2989d238e40a18fbaf85758520, type: 3}
+  - hurtEffect: {fileID: 2800000, guid: c53f3424141530a43a34ca563df3373a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

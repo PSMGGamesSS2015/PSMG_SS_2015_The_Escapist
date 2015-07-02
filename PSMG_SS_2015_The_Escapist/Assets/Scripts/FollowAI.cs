@@ -8,7 +8,6 @@ public enum EnemyBehavior
 }
 public class FollowAI : MonoBehaviour
 {
-    public GameObject testLightOne;
     private GameObject player;
 
     private Transform enemy;
@@ -19,7 +18,6 @@ public class FollowAI : MonoBehaviour
 
     private PlayerMovement playerMovement;
 
-    Shadow shadowLightOne;
 
     public Transform[] waypoint;
     public bool loop = true;
@@ -28,6 +26,8 @@ public class FollowAI : MonoBehaviour
     private float curTime;
     public int currentWaypoint = 0;
     private CharacterController character;
+
+    private GamingControl gamingControl;
 
     public EnemyBehavior currentBehavior = EnemyBehavior.patrol;
 
@@ -48,9 +48,10 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Start()
     {
+        gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
+
         character = GetComponent<CharacterController>();
         player = GameObject.FindWithTag("Player");
-        testLightOne = GameObject.Find("Sun");
 
         //Added by Chris
         anim = GetComponent<Animator>();
@@ -117,49 +118,15 @@ public class FollowAI : MonoBehaviour
 
         else if (currentBehavior == EnemyBehavior.search)
         {
-            InvokeRepeating("Search", 0, 2);
-            StartCoroutine("startRoutine");
+            
         }
     }
 
-    IEnumerator startRoutine()
-    {
-        yield return new WaitForSeconds(5f);
-        test = true;
-        nextState();
-    }
-
-    private void nextState()
-    {
-        if (test)
-        {
-            hasSeenPlayer = false;
-            CancelInvoke("Search");
-            StopCoroutine("startRoutine");
-            test = false;
-            patrol();
-            currentBehavior = EnemyBehavior.patrol;
-
-        }
-    }
-
-
-
-    private void Search()
-    {
-        Vector3 destination = startPosition - new Vector3(UnityEngine.Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE), 0, UnityEngine.Random.Range(-Constants.AI_PATROL_RANGE, Constants.AI_PATROL_RANGE));
-        NewDestination(destination);
-    }
-
-    private void NewDestination(Vector3 targetPoint)
-    {
-        agent.SetDestination(targetPoint);
-
-    }
+   
 
     private void chase()
     {
-        if (playerMovement.sneaking == false)// && shadowLightOne.safe == false)
+        if (playerMovement.sneaking == false)
         {
             float distance = Vector3.Distance(enemy.position, player.transform.position);
             if (distance == Constants.AI_RANGE && playerInSight)
@@ -227,25 +194,25 @@ public class FollowAI : MonoBehaviour
             startGoing = true;
         }
     }
-}
 
 
 
 
 
 
-    /*
+
+
     /// <summary>
     /// Check if player reaches the sight of the enemy 
     /// </summary>
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == player && shadowLightOne.safe == false)
+        if (other.gameObject == player)
         {
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
-            if (angle < Constants.AI_VIEW_ANGLE * 0.5f)
+            if (angle < Constants.AI_VIEW_ANGLE * 0.5f && gamingControl.getPlayerHiddenPercentage() < 70)
             {
                 CancelInvoke("patrol");
                 currentBehavior = EnemyBehavior.chase;
@@ -260,25 +227,18 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void OnTriggerExit(Collider other)
     {
-        
-            playerInSight = false;
 
-            if (hasSeenPlayer)
-            {
-                currentBehavior = EnemyBehavior.search;
-            }
-        
+        playerInSight = false;
+
+        if (hasSeenPlayer)
+        {
+            currentBehavior = EnemyBehavior.patrol;
+        }
+
     }
+}
 
 
 
-
-
-    /// <summary>
-    /// Wandering to a random destination point
-    /// </summary>
-
-
-    */
 
 
