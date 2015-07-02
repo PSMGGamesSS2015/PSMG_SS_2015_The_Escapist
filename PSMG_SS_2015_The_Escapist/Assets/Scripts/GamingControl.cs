@@ -12,10 +12,13 @@ public class GamingControl : MonoBehaviour {
     private bool playerGrounded = true;
     private bool movementDisabled = false;
 
+    private int playerHiddenPercentage;
+
     // Initialize the GameObject that shall deliver values.
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        
         
         //For Debugging! Finds all Audiolisteners.
         AudioListener[] myListeners = GameObject.FindObjectsOfType<AudioListener>();
@@ -23,7 +26,6 @@ public class GamingControl : MonoBehaviour {
         {
             //Debug.Log("Found:  " + hidden.gameObject);
         }
-
     }
 
     // All variables get their value here.
@@ -34,6 +36,11 @@ public class GamingControl : MonoBehaviour {
         runningActive = player.GetComponent<PlayerMovement>().runningIsActive();
         playerGrounded = player.GetComponent<PlayerMovement>().isPlayerGrounded();
         movementDisabled = player.GetComponent<PlayerMovement>().isMovementDisabled();
+    }
+
+    void Update()
+    {
+        playerHiddenPercentage = player.GetComponent<ShadowDetection>().getHiddenPercentage();
     }
 
 
@@ -62,4 +69,8 @@ public class GamingControl : MonoBehaviour {
         return movementDisabled;
     }
 
+    public int getPlayerHiddenPercentage()
+    {
+        return playerHiddenPercentage;
+    }
 }
