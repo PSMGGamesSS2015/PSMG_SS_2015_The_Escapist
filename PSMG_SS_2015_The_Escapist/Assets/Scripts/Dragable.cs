@@ -41,7 +41,7 @@ public class Dragable : MonoBehaviour
     void OnMouseDown()
     {
         canMove = true;
-        myTransform.Translate(Vector3.up * addHeightWhenClicked);
+        myTransform.Translate(Vector3.right * addHeightWhenClicked);
         gravitySetting = myRigidbody.useGravity;
         freezeRotationSetting = myRigidbody.freezeRotation;
         myRigidbody.useGravity = false;
