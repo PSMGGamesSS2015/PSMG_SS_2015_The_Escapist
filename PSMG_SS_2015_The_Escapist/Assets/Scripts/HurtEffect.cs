@@ -26,7 +26,7 @@ public class HurtEffect : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
 
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.CompareTag("Enemy") && col.GetType() == typeof(CapsuleCollider))
         {
             if (counter == 2)
             {

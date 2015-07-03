@@ -16344,8 +16344,8 @@ Transform:
   - {fileID: 1873824151}
   - {fileID: 1943916559}
   - {fileID: 1389693029}
-  - {fileID: 1755318746}
   - {fileID: 908030161}
+  - {fileID: 1755318746}
   - {fileID: 654024022}
   - {fileID: 355664936}
   m_Father: {fileID: 721407704}
@@ -53034,12 +53034,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79261ccaf29560e4e8fb6d651de426cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaceColor: {r: 0, g: 0, b: 0, a: 0}
-  brightness1: 0
-  brightness2: 0
+  brightnessApprox: 0
+  brightness: 0
+  hiddenPercentage: 0
+  avgSurfaceColor: {r: 0, g: 0, b: 0, a: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  debugMapMarker: {fileID: 0}
+  probes: 25
+  detectionRadius: 20
+  alphaFactor: 5
 --- !u!114 &1863345738
 MonoBehaviour:
   m_ObjectHideFlags: 0

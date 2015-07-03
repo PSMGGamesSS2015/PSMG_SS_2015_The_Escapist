@@ -92,6 +92,7 @@ public class Door : MonoBehaviour {
 
             openAnim.Play();
 
+
             audioSource.clip = openSound;
             audioSource.Play();
 

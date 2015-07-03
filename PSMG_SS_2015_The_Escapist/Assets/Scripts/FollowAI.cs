@@ -106,6 +106,7 @@ public class FollowAI : MonoBehaviour
 
     void checkState()
     {
+        
         if (currentBehavior == EnemyBehavior.patrol)
         {
             patrol();
@@ -126,7 +127,7 @@ public class FollowAI : MonoBehaviour
 
     private void chase()
     {
-        if (playerMovement.sneaking == false)
+        if (!playerMovement.sneaking)
         {
             float distance = Vector3.Distance(enemy.position, player.transform.position);
             if (distance == Constants.AI_RANGE && playerInSight)
@@ -163,7 +164,7 @@ public class FollowAI : MonoBehaviour
     void patrolWay()
     {
 
-
+        
         Vector3 target = waypoint[currentWaypoint].position;
         target.y = transform.position.y;
         Vector3 moveDirection = target - transform.position;
@@ -183,6 +184,7 @@ public class FollowAI : MonoBehaviour
 
             var rotation = Quaternion.LookRotation(target - transform.position);
             transform.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(target - enemy.position), dampingLook * Time.deltaTime);
+            Debug.Log("Miau");
         }
     }
 
@@ -191,16 +193,10 @@ public class FollowAI : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            Debug.Log("Yeah");
             startGoing = true;
         }
     }
-
-
-
-
-
-
-
 
     /// <summary>
     /// Check if player reaches the sight of the enemy 
