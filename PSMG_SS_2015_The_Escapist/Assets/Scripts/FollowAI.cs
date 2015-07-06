@@ -9,6 +9,7 @@ public enum EnemyBehavior
 public class FollowAI : MonoBehaviour
 {
     private GameObject player;
+    private GameObject sound;
 
     private Transform enemy;
 
@@ -52,6 +53,8 @@ public class FollowAI : MonoBehaviour
 
         character = GetComponent<CharacterController>();
         player = GameObject.FindWithTag("Player");
+
+        sound = GameObject.FindWithTag("Sound");
 
         //Added by Chris
         anim = GetComponent<Animator>();
@@ -127,7 +130,7 @@ public class FollowAI : MonoBehaviour
 
     private void chase()
     {
-        if (!playerMovement.sneaking)
+        if (gamingControl.getPlayerHiddenPercentage() < 70)
         {
             float distance = Vector3.Distance(enemy.position, player.transform.position);
             if (distance == Constants.AI_RANGE && playerInSight)
@@ -175,6 +178,8 @@ public class FollowAI : MonoBehaviour
                 curTime = Time.time;
             if ((Time.time - curTime) >= pauseDuration)
             {
+                anim.enabled = false;
+                StartCoroutine(StartWaiting());
                 currentWaypoint++;
                 curTime = 0;
             }
@@ -184,20 +189,19 @@ public class FollowAI : MonoBehaviour
 
             var rotation = Quaternion.LookRotation(target - transform.position);
             transform.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(target - enemy.position), dampingLook * Time.deltaTime);
-            Debug.Log("Miau");
         }
     }
 
 
-    void OnTriggerEnter(Collider other)
+    IEnumerator StartWaiting()
     {
-        if (other.gameObject == player)
-        {
-            Debug.Log("Yeah");
-            startGoing = true;
-        }
+        yield return new WaitForSeconds(pauseDuration);
+        Debug.Log("ze");
+        anim.enabled = true;
     }
 
+
+    
     /// <summary>
     /// Check if player reaches the sight of the enemy 
     /// </summary>
@@ -207,6 +211,7 @@ public class FollowAI : MonoBehaviour
         {
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
+            float distance = Vector3.Distance(enemy.position, player.transform.position);
 
             if (angle < Constants.AI_VIEW_ANGLE * 0.5f && gamingControl.getPlayerHiddenPercentage() < 70)
             {
@@ -214,6 +219,31 @@ public class FollowAI : MonoBehaviour
                 currentBehavior = EnemyBehavior.chase;
                 playerInSight = true;
                 hasSeenPlayer = true;
+            }
+            else if (gamingControl.getPlayerHiddenPercentage() < 70 && !gamingControl.isSneakingActive() && distance < 1.8f)
+            {
+                CancelInvoke("patrol");
+                currentBehavior = EnemyBehavior.chase;
+                playerInSight = true;
+                hasSeenPlayer = true;
+            }
+           
+
+         } 
+        else if (other.gameObject == sound)
+        {
+            if (gamingControl.getPlayerHiddenPercentage() < 70)
+            {
+                Debug.Log("HUI");
+                CancelInvoke("patrol");
+                currentBehavior = EnemyBehavior.chase;
+                playerInSight = true;
+                hasSeenPlayer = true;
+            }
+
+            else
+            {
+                currentBehavior = EnemyBehavior.patrol;
             }
         }
     }

@@ -9,6 +9,8 @@ TagManager:
   - GUI
   - Collider
   - Fire
+  - GROUND
+  - Sound
   layers:
   - Default
   - TransparentFX
