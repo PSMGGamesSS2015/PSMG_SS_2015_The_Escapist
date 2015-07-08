@@ -5,7 +5,7 @@ public class Spider : MonoBehaviour
 {
 
     private GameObject player;
-    private AudioSource audio;
+    private AudioSource audioSrc;
     // Use this for initialization
      private float fallSpeed = 6.0f;
      private bool spiderFalling = false;
@@ -13,7 +13,7 @@ public class Spider : MonoBehaviour
      void Start()
     {
         player = GameObject.FindWithTag("Player");
-        audio = GetComponent<AudioSource>();
+        audioSrc = GetComponent<AudioSource>();
     }
 
      void Update()
@@ -31,7 +31,7 @@ public class Spider : MonoBehaviour
         if (other.gameObject == player)
         {
             spiderFalling = true;
-            audio.Play();
+            audioSrc.Play();
         }
     }
 }

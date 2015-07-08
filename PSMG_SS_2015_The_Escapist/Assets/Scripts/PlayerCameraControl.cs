@@ -5,7 +5,7 @@ public class PlayerCameraControl : MonoBehaviour
 {
 
     private float rotationSpeed = Constants.WALKING_ROTATION;
-    Camera camera;
+    Camera playerCamera;
     private float leanAngle = 35f;
     private int counter = 0;
     private bool leftLeaning = false;
@@ -25,7 +25,7 @@ public class PlayerCameraControl : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        camera = gameObject.GetComponent<Camera>();
+        playerCamera = gameObject.GetComponent<Camera>();
     }
 
     void FixedUpdate()
@@ -63,7 +63,7 @@ public class PlayerCameraControl : MonoBehaviour
                 upAndDownAllowed = false;
                 if (counter == 0 && leftLeaning == false)
                 {
-                    startPos = camera.transform.position;
+                    startPos = playerCamera.transform.position;
                 }
 
                 leftLeaning = true;
@@ -88,7 +88,7 @@ public class PlayerCameraControl : MonoBehaviour
                 upAndDownAllowed = false;
                 if (counter == 0 && rightLeaning == false)
                 {
-                    startPos = camera.transform.position;
+                    startPos = playerCamera.transform.position;
                 }
 
                 rightLeaning = true;
@@ -193,7 +193,7 @@ public class PlayerCameraControl : MonoBehaviour
         if (rightLeaning == true || leftLeaning == true)
         {
             Vector3 velocity = Vector3.zero;
-            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, startPos, ref velocity, 0.05f);
+            playerCamera.transform.position = Vector3.SmoothDamp(playerCamera.transform.position, startPos, ref velocity, 0.05f);
 
             if ((Time.time - startTime) > 0.75)
             {
