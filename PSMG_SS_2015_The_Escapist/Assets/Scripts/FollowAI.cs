@@ -4,7 +4,7 @@ using System;
 
 public enum EnemyBehavior
 {
-    patrol, chase, search
+    patrol, chase, search, slowChase
 }
 public class FollowAI : MonoBehaviour
 {
@@ -120,9 +120,9 @@ public class FollowAI : MonoBehaviour
             chase();
         }
 
-        else if (currentBehavior == EnemyBehavior.search)
+        else if (currentBehavior == EnemyBehavior.slowChase)
         {
-            
+            slowChase();
         }
     }
 
@@ -144,6 +144,30 @@ public class FollowAI : MonoBehaviour
                 Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
                 enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
             }
+        }
+    }
+
+    private void slowChase()
+    {
+
+        if (gamingControl.getPlayerHiddenPercentage() < 70)
+        {
+            float distance = Vector3.Distance(enemy.position, player.transform.position);
+
+            if (distance <= Constants.AI_RANGE && distance > Constants.AI_RUN_RANGE && playerInSight)
+            {
+
+                enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                enemy.position += enemy.forward * Constants.AI_NORMAL_SPEED * Time.deltaTime;
+            }
+            else if (distance <= Constants.AI_RUN_RANGE && playerInSight)
+            {
+                enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
+            }
+            
         }
     }
 
@@ -236,7 +260,7 @@ public class FollowAI : MonoBehaviour
             {
                 Debug.Log("HUI");
                 CancelInvoke("patrol");
-                currentBehavior = EnemyBehavior.chase;
+                currentBehavior = EnemyBehavior.slowChase;
                 playerInSight = true;
                 hasSeenPlayer = true;
             }
