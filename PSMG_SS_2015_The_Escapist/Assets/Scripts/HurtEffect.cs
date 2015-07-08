@@ -6,7 +6,9 @@ public class HurtEffect : MonoBehaviour
 
     public Texture hurtEffect;
     private int counter = 0;
-    private AudioSource audio;
+    private AudioSource audioSrc;
+    private GamingControl gamingControl;
+    private GameObject enemy;
 
     private GUIStyle style;
 
@@ -20,13 +22,16 @@ public class HurtEffect : MonoBehaviour
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        audioSrc = GetComponent<AudioSource>();
+        gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
+
 
     }
     void OnTriggerEnter(Collider col)
     {
-
-        if (col.gameObject.CompareTag("Enemy") && col.GetType() == typeof(CapsuleCollider))
+        float distance = Vector3.Distance(enemy.transform.position, gamingControl.getPlayerPosition());
+        if (col.gameObject == enemy && distance < 1.5)
         {
             if (counter == 2)
             {
@@ -36,7 +41,7 @@ public class HurtEffect : MonoBehaviour
             else
             {
                 counter++;
-                audio.Play();
+                audioSrc.Play();
 
                 displayHurtEffect = true;
             }

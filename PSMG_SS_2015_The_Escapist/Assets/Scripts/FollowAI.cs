@@ -4,7 +4,7 @@ using System;
 
 public enum EnemyBehavior
 {
-    patrol, chase, search, slowChase
+    patrol, chase, search, slowChase, wait
 }
 public class FollowAI : MonoBehaviour
 {
@@ -124,6 +124,7 @@ public class FollowAI : MonoBehaviour
         {
             slowChase();
         }
+       
     }
 
    
@@ -171,6 +172,8 @@ public class FollowAI : MonoBehaviour
         }
     }
 
+    
+
     private void patrol()
     {
 
@@ -216,11 +219,10 @@ public class FollowAI : MonoBehaviour
         }
     }
 
-
+  
     IEnumerator StartWaiting()
     {
         yield return new WaitForSeconds(pauseDuration);
-        Debug.Log("ze");
         anim.enabled = true;
     }
 
@@ -258,7 +260,6 @@ public class FollowAI : MonoBehaviour
         {
             if (gamingControl.getPlayerHiddenPercentage() < 70)
             {
-                Debug.Log("HUI");
                 CancelInvoke("patrol");
                 currentBehavior = EnemyBehavior.slowChase;
                 playerInSight = true;
