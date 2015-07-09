@@ -10,10 +10,19 @@ public class FlyWayPoint : MonoBehaviour {
 	private float distanceNextWaypoint;
 	private int indexWaypoint = 0;
 	public Transform[] Waypoint;
+    private bool loop = false;
+
+    private GameObject bat1;
+    private GameObject bat2;
+    private GameObject bat3;
 	// Use this for initialization
 	void Start () {
 		//Goal = GameObject.Find("Waypoint1").transform;
 		Goal = Waypoint [0];
+
+        bat1 = GameObject.Find("bat1");
+        bat2 = GameObject.Find("bat2");
+        bat3 = GameObject.Find("bat3");
 	}
 	
 	// Update is called once per frame
@@ -28,7 +37,14 @@ public class FlyWayPoint : MonoBehaviour {
 		indexWaypoint += 1;
 			if ( Waypoint.Length < indexWaypoint )
 			{
-				indexWaypoint = 0;
+                if (loop)
+                    indexWaypoint = 0;
+                else
+                {
+                    bat1.SetActive(false);
+                    bat2.SetActive(false);
+                    bat3.SetActive(false);
+                }
 			}
 			if (indexWaypoint < Waypoint.Length)
 			Goal = Waypoint [indexWaypoint];
