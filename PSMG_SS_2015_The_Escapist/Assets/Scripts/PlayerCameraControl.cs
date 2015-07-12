@@ -18,6 +18,9 @@ public class PlayerCameraControl : MonoBehaviour
     private float startTime = 0;
     private int maxLookUp = 60;
     private int maxLookDown = 300;
+    GamingControl control;
+    private Vector3 currentPosition;
+    private Vector3 playersHeight = new Vector3 (0, 1.4f, 0);
 
     /// <summary>
     /// The cursor will be set to invisible and the camera of the player will be found.
@@ -26,17 +29,35 @@ public class PlayerCameraControl : MonoBehaviour
     {
         Cursor.visible = false;
         playerCamera = gameObject.GetComponent<Camera>();
+        control = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
+        
+        
     }
 
     void FixedUpdate()
     {
-        leanLeftAndRight();
+        setPosition();
+        //setRotation();
+        //leanLeftAndRight();
         lookUpAndDown();
         if (leftLeaning == true || rightLeaning == true)
         {
             freezeMovement();
         }
 
+    }
+
+    private void setRotation()
+    {
+        //transform.Rotate(0,(Input.GetAxis("Mouse X") * rotationSpeed), 0);
+
+    }
+
+    private void setPosition()
+    {
+        currentPosition = control.getPlayerPosition();
+        currentPosition += playersHeight;
+        transform.position = currentPosition;
     }
 
     /// <summary>
@@ -219,7 +240,10 @@ public class PlayerCameraControl : MonoBehaviour
             // This part handles the normal case of the camera, no limits for the movement are reached.
             if (transform.localEulerAngles.x < maxLookUp || transform.localEulerAngles.x > maxLookDown)
             {
-                GetComponent<Camera>().transform.Rotate(-(Input.GetAxis("Mouse Y") * rotationSpeed), 0, 0);
+                Vector3 rotation = new Vector3((-(Input.GetAxis("Mouse Y") * rotationSpeed)), ((Input.GetAxis("Mouse X") * rotationSpeed)), 0);
+                float x = Input.GetAxis("Mouse X") * rotationSpeed;
+                float y = Input.GetAxis("Mouse Y") * rotationSpeed;
+                GetComponent<Camera>().transform.Rotate(y, x, 0);
             }
 
             // This part handles the case that the camera is reaching one of the boundaries.

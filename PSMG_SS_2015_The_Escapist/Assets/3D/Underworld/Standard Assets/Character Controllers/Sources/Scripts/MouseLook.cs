@@ -19,8 +19,8 @@ public class MouseLook : MonoBehaviour {
 
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
-	public float sensitivityX = 15F;
-	public float sensitivityY = 15F;
+	public float sensitivityX = 1F;
+	public float sensitivityY = 1F;
 
 	public float minimumX = -360F;
 	public float maximumX = 360F;
@@ -30,8 +30,15 @@ public class MouseLook : MonoBehaviour {
 
 	float rotationY = 0F;
 
-	void Update ()
+    GamingControl control;
+    private Vector3 currentPosition;
+    private Vector3 playersHeight = new Vector3(0, 1.4f, 0);
+
+	void FixedUpdate ()
 	{
+        setPosition();
+
+
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
@@ -56,8 +63,16 @@ public class MouseLook : MonoBehaviour {
 	
 	void Start ()
 	{
+        control = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
 		// Make the rigid body not change rotation
 		if (GetComponent<Rigidbody>())
 			GetComponent<Rigidbody>().freezeRotation = true;
 	}
+
+    private void setPosition()
+    {
+        currentPosition = control.getPlayerPosition();
+        currentPosition += playersHeight;
+        transform.position = currentPosition;
+    }
 }
