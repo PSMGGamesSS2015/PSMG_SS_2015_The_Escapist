@@ -30,19 +30,22 @@ public class MouseLook : MonoBehaviour {
 
 	float rotationY = 0F;
 
+    Quaternion rotation;
+
     GamingControl control;
     private Vector3 currentPosition;
     private Vector3 playersHeight = new Vector3(0, 1.4f, 0);
 
 	void FixedUpdate ()
 	{
-        setPosition();
+        //setPosition();
 
 
 		if (axes == RotationAxes.MouseXAndY)
 		{
-			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-			
+			//float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+            float rotationX = 0;
+
 			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
@@ -69,9 +72,20 @@ public class MouseLook : MonoBehaviour {
 			GetComponent<Rigidbody>().freezeRotation = true;
 	}
 
+    void Awake()
+    {
+        //rotation = transform.rotation;
+        //transform.parent.rotation = rotation;
+    }
+
+    void LateUpdate()
+    {
+        //transform.rotation = rotation;
+    }
+
     private void setPosition()
     {
-        currentPosition = control.getPlayerPosition();
+        currentPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         currentPosition += playersHeight;
         transform.position = currentPosition;
     }
