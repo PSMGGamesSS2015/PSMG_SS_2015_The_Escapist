@@ -153,6 +153,15 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 'MuscleClip ''WithShild_SwordSlashes_Assorty'' conversion
+      warning: ''Hip/LowerSpine/MiddleSpine'' is between humanoid transforms and has
+      rotation animation. This might lower retargeting quality.
+
+
+'
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
@@ -961,7 +970,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
