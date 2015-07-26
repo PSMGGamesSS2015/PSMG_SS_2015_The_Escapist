@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 64: {fileID: 6405030}
   m_Layer: 0
   m_Name: Sew_Ruins_Pillar_2A
   m_TagString: Untagged
@@ -59,6 +60,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
+  m_Mesh: {fileID: 4300000, guid: eacd5b7888dd6b649b5bb5429e4223cc, type: 3}
+--- !u!64 &6405030
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: eacd5b7888dd6b649b5bb5429e4223cc, type: 3}
 --- !u!1001 &100100000
 Prefab:
