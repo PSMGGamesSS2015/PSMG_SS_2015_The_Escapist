@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6506866}
   m_Layer: 0
   m_Name: fi_vil_container_crate_big_onions01
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: dc56737c87bcc4146aa8dff2a2ee90f4, type: 3}
+--- !u!65 &6506866
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .682842255, y: .628214002, z: .682842731}
+  m_Center: {x: -7.4505806e-08, y: .314107001, z: 7.4505806e-08}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

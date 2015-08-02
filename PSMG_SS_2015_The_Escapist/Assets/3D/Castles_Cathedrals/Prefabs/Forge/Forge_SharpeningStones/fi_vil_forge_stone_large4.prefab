@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6538698}
   m_Layer: 0
   m_Name: fi_vil_forge_stone_large4
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: aa7300cf4b432df47a577454cc2357c8, type: 3}
+--- !u!65 &6538698
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.12739754, y: 1.41484773, z: 1.1360054}
+  m_Center: {x: .170174673, y: .706796229, z: .0438657999}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

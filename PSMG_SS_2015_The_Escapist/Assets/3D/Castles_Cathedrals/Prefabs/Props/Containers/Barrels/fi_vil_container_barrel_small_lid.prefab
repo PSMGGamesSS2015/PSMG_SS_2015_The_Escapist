@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6553016}
   m_Layer: 0
   m_Name: fi_vil_container_barrel_small_lid
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 8ad92c273198bd149ace4e8f8f80df40, type: 3}
+--- !u!65 &6553016
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .45256424, y: .044705987, z: .45255661}
+  m_Center: {x: -1.51246786e-06, y: .0223529935, z: 3.81469727e-06}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

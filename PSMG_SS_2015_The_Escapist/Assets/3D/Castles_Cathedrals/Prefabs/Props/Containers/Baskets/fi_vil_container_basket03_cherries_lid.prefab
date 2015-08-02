@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6556354}
   m_Layer: 0
   m_Name: fi_vil_container_basket03_cherries_lid
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 1c5d6e9f151872c47bf3e23ba8fbc981, type: 3}
+--- !u!65 &6556354
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .441429138, y: .286549628, z: .477142274}
+  m_Center: {x: .00874710083, y: .143274188, z: .0593414009}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6582710}
+  - 65: {fileID: 6589978}
   m_Layer: 0
   m_Name: fi_vil_container_crate_small_x3_02
   m_TagString: Untagged
@@ -60,6 +62,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 89db8abbd93168b4cb9491041eced7df, type: 3}
+--- !u!65 &6582710
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.27744222, y: .5, z: 1.6587584}
+  m_Center: {x: .0649596155, y: .25, z: .0513887703}
+--- !u!65 &6589978
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.27744222, y: .5, z: 1.6587584}
+  m_Center: {x: .0649596155, y: .25, z: .0513887703}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

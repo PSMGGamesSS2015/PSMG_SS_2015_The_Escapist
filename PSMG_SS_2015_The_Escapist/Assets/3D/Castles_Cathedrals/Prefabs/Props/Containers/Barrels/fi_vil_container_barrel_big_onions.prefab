@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6540348}
   m_Layer: 0
   m_Name: fi_vil_container_barrel_big_onions
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: e0fc62ebdbfeafd43ba88e5a0ea8706f, type: 3}
+--- !u!65 &6540348
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.05189514, y: 1.22006011, z: 1.05189705}
+  m_Center: {x: -5.96046448e-08, y: .610030055, z: -9.53674316e-07}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

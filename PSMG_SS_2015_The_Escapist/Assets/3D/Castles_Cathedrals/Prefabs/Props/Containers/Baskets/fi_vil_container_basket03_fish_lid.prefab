@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6583202}
   m_Layer: 0
   m_Name: fi_vil_container_basket03_fish_lid
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: cdf6f3a80aa3c8347a901601e1ad1831, type: 3}
+--- !u!65 &6583202
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .441429138, y: .286549628, z: .477142274}
+  m_Center: {x: .00875473022, y: .143274188, z: .0593414009}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

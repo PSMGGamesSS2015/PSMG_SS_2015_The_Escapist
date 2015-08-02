@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6560212}
   m_Layer: 0
   m_Name: fi_vil_container_sack03_fish
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 5d925557ec860e94d95a404767adf979, type: 3}
+--- !u!65 &6560212
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .385643005, y: .69542098, z: .627487183}
+  m_Center: {x: 7.4505806e-08, y: .34771049, z: -3.90410423e-06}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

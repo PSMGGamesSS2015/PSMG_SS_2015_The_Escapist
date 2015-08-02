@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6578254}
   m_Layer: 0
   m_Name: fi_vil_container_keg_with_stand
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: f984515ee94f9434e94fa2529c3654e5, type: 3}
+--- !u!65 &6578254
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.32864761, y: 1.12189698, z: 1.05189514}
+  m_Center: {x: .0542936325, y: .560948491, z: -1.93715096e-06}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
