@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6580196}
   m_Layer: 0
   m_Name: fi_vil_container_bucket03
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 7d5326ec426a3db408c583d230804b64, type: 3}
+--- !u!65 &6580196
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .349998474, y: .493732721, z: .394371033}
+  m_Center: {x: 5.96046448e-08, y: .24686636, z: .000292360783}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

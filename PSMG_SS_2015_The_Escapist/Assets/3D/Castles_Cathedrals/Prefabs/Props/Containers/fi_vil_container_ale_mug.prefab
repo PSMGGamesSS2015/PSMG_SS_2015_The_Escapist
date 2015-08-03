@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6580616}
   m_Layer: 0
   m_Name: fi_vil_container_ale_mug
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: e1fb696c3e4cd594695386441763e98b, type: 3}
+--- !u!65 &6580616
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .228683472, y: .292769998, z: .2905159}
+  m_Center: {x: 1.04308128e-07, y: .146384999, z: .030914966}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
