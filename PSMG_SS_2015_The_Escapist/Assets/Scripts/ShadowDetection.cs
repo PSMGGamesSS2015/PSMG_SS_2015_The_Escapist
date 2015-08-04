@@ -4,6 +4,9 @@ using System;
 
 public class ShadowDetection : MonoBehaviour
 {
+    public GameObject openeye;
+    public GameObject closedeye;
+
     public float brightnessApprox; // http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color 
     public float brightness; // http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-brightness-of-a-Color.aspx
     public float hiddenPercentage;
@@ -13,10 +16,12 @@ public class ShadowDetection : MonoBehaviour
     public float probes = 25;
     public float detectionRadius = 20;
     public float alphaFactor = 5;
-    
+
     private Texture2D lightmapTex;
     private Vector2 pixelUV;
     private bool debugMode = false;
+
+
 
     void Update()
     {
@@ -35,40 +40,20 @@ public class ShadowDetection : MonoBehaviour
 
     void OnGUI()
     {
-        if (debugMode) showDebugHUD();
-        else showHUD();
-    }
-
-    void showDebugHUD()
-    {
-        GUILayout.BeginArea(new Rect(10f, 10f, Screen.width, Screen.height));
-
-        GUILayout.Label("R = " + string.Format("{0:0.00}", avgSurfaceColor.r));
-        GUILayout.Label("G = " + string.Format("{0:0.00}", avgSurfaceColor.g));
-        GUILayout.Label("B = " + string.Format("{0:0.00}", avgSurfaceColor.b));
-        GUILayout.Label("A = " + string.Format("{0:0.00}", avgSurfaceColor.a));
-
-        GUILayout.Label("" + hiddenPercentage);
-
-        GUIStyle style = new GUIStyle();
-        style.normal.textColor = avgSurfaceColor;
-        GUILayout.Label("████████", style);
-
-        GUILayout.Label("brightness Approx = " + string.Format("{0:0.00}", brightnessApprox));
-        GUILayout.Label("brightness = " + string.Format("{0:0.00}", brightness));
-
-        GUI.DrawTexture(new Rect(300, -50, lightmapTex.width, lightmapTex.height), lightmapTex, ScaleMode.StretchToFill, true, 0);
-        GUI.DrawTexture(new Rect(pixelUV.x*1024 + 300 - 5, (lightmapTex.height - (pixelUV.y*1024)) - 50 - 5, 10, 10), debugMapMarker, ScaleMode.ScaleToFit, true, 0);
-
-        GUILayout.EndArea();
-    }
-
-    void showHUD()
-    {
         bool safe = (hiddenPercentage > 70) ? true : false;
 
-        GUI.Label(new Rect(10, 10, 120, 256), "Versteckt: " + (int)(hiddenPercentage) + "%");
-        GUI.Label(new Rect(10, 30, 100, 256), "Sicher: " + safe.ToString());
+        GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(hiddenPercentage) + "%");
+
+        if (!safe)
+        {
+            openeye.SetActive(true);
+            closedeye.SetActive(false);
+        }
+        else
+        {
+            closedeye.SetActive(true);
+            openeye.SetActive(false);
+        }
     }
 
     void Raycast()
@@ -124,7 +109,7 @@ public class ShadowDetection : MonoBehaviour
         {
             for (float y = yNorm - detectionRadius; y < (yNorm + detectionRadius) - 0.1; y += steps)
             {
-                Color avgSurfaceColor = lightmapTex.GetPixelBilinear(x/1024f, y/1024f);
+                Color avgSurfaceColor = lightmapTex.GetPixelBilinear(x / 1024f, y / 1024f);
                 r += avgSurfaceColor.r;
                 g += avgSurfaceColor.g;
                 b += avgSurfaceColor.b;
