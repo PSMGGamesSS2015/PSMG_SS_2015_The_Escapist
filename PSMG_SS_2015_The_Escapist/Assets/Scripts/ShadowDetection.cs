@@ -34,7 +34,6 @@ public class ShadowDetection : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(fai.isChasing());
         Raycast();
         calcDetectionValues();
 

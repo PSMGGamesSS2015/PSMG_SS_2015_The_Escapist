@@ -42,6 +42,17 @@ public class FollowAI : MonoBehaviour
     public bool test;
     public bool startGoing = false;
 
+    private bool running = true;
+
+    //isPatroling = 1;
+    //isSearching = 2;
+    //isWaiting = 3;
+    //isChasing = 4;
+    //isAttacking = 5;
+
+    private int state = 1;
+
+
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
 
@@ -77,63 +88,49 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (startGoing)
+        if (running)
         {
-            checkState();
 
-            //Added by Chris
-            animate();
-        }
+            switch (state)
+            {
+
+                case 1:
+                    anim.SetBool("IsPatroling", true);
+                    patrol();
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+                    anim.SetBool("IsIdling", true);
+                    StartCoroutine(StartWaiting());
+                    break;
+
+                case 4:
+                    anim.SetBool("IsChasing", true);
+                    slowChase();
+                    break;
+
+                case 5:
+                    anim.SetBool("IsAttacking", true);
+                    chase();
+                    break;
+
+                default:
+                    break;
+            }
+
+
+        }   
+        
     }
 
     public bool isChasing()
     {
         return playerInSight;
     }
-
-    //Added by Chris
-    private void animate()
-    {
-        bool patroling = true;
-        bool chasing = false;
-        bool searching = false;
-
-        if (currentBehavior == EnemyBehavior.patrol)
-        {
-            patroling = true;
-            anim.SetBool("IsPatroling", patroling);
-        }
-        else if (currentBehavior == EnemyBehavior.search)
-        {
-
-        }
-        else if (currentBehavior == EnemyBehavior.chase)
-        {
-
-        }
-    }
-
-    void checkState()
-    {
-        
-        if (currentBehavior == EnemyBehavior.patrol)
-        {
-            patrol();
-        }
-        else if (currentBehavior == EnemyBehavior.chase)
-        {
-
-            chase();
-        }
-
-        else if (currentBehavior == EnemyBehavior.slowChase)
-        {
-            slowChase();
-        }
-       
-    }
-
-   
 
     private void chase()
     {
@@ -214,10 +211,12 @@ public class FollowAI : MonoBehaviour
                 curTime = Time.time;
             if ((Time.time - curTime) >= pauseDuration)
             {
-                anim.enabled = false;
+                setAllBoolFalse();
+                anim.SetBool("IsIdling", true);
                 StartCoroutine(StartWaiting());
                 currentWaypoint++;
                 curTime = 0;
+                
             }
         }
         else
@@ -232,8 +231,18 @@ public class FollowAI : MonoBehaviour
     IEnumerator StartWaiting()
     {
         yield return new WaitForSeconds(pauseDuration);
-        anim.enabled = true;
+        setAllBoolFalse();
+        anim.Play("Walking");
+        
     }
+
+    private void setAllBoolFalse() {
+        anim.SetBool("IsPatroling", false);
+        anim.SetBool("IsChasing", false);
+        anim.SetBool("IsAttacking", false);
+        anim.SetBool("IsSearching", false);
+        anim.SetBool("IsIdling", false);
+   }
 
 
     
@@ -250,20 +259,18 @@ public class FollowAI : MonoBehaviour
 
             if (angle < Constants.AI_VIEW_ANGLE * 0.5f && gamingControl.getPlayerHiddenPercentage() < 70)
             {
-                CancelInvoke("patrol");
-                currentBehavior = EnemyBehavior.chase;
-                Debug.Log("i");
+                setAllBoolFalse();
                 playerInSight = true;
                 hasSeenPlayer = true;
+                state = 4;
             }
             else if (gamingControl.getPlayerHiddenPercentage() < 70 && !gamingControl.isSneakingActive() && distance < 1.8f)
             {
-                Debug.Log("i");
 
-                CancelInvoke("patrol");
-                currentBehavior = EnemyBehavior.chase;
+                setAllBoolFalse();
                 playerInSight = true;
                 hasSeenPlayer = true;
+                state = 5;
             }
            
 
@@ -273,17 +280,15 @@ public class FollowAI : MonoBehaviour
             if (gamingControl.getPlayerHiddenPercentage() < 70)
 
             {
-                Debug.Log("i");
-
-                CancelInvoke("patrol");
-                currentBehavior = EnemyBehavior.slowChase;
+                setAllBoolFalse();
+                state = 4;
                 playerInSight = true;
                 hasSeenPlayer = true;
             }
 
             else
             {
-                currentBehavior = EnemyBehavior.patrol;
+                state = 1;
             }
         }
     }
@@ -298,7 +303,10 @@ public class FollowAI : MonoBehaviour
 
         if (hasSeenPlayer)
         {
-            currentBehavior = EnemyBehavior.patrol;
+            setAllBoolFalse();
+            anim.SetBool("IsPatroling", true);
+            anim.Play("Walking");
+            state = 1;
         }
 
     }
