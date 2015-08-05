@@ -41,6 +41,7 @@ public class FollowAI : MonoBehaviour
 
     public bool test;
     public bool startGoing = false;
+
     // A simple AI that follows the player if he reaches the sight distance of the AI.
 
 
@@ -83,6 +84,11 @@ public class FollowAI : MonoBehaviour
             //Added by Chris
             animate();
         }
+    }
+
+    public bool isChasing()
+    {
+        return playerInSight;
     }
 
     //Added by Chris
@@ -132,7 +138,9 @@ public class FollowAI : MonoBehaviour
     private void chase()
     {
         if (gamingControl.getPlayerHiddenPercentage() < 70)
+
         {
+
             float distance = Vector3.Distance(enemy.position, player.transform.position);
             if (distance == Constants.AI_RANGE && playerInSight)
             {
@@ -152,6 +160,7 @@ public class FollowAI : MonoBehaviour
     {
 
         if (gamingControl.getPlayerHiddenPercentage() < 70)
+
         {
             float distance = Vector3.Distance(enemy.position, player.transform.position);
 
@@ -243,11 +252,14 @@ public class FollowAI : MonoBehaviour
             {
                 CancelInvoke("patrol");
                 currentBehavior = EnemyBehavior.chase;
+                Debug.Log("i");
                 playerInSight = true;
                 hasSeenPlayer = true;
             }
             else if (gamingControl.getPlayerHiddenPercentage() < 70 && !gamingControl.isSneakingActive() && distance < 1.8f)
             {
+                Debug.Log("i");
+
                 CancelInvoke("patrol");
                 currentBehavior = EnemyBehavior.chase;
                 playerInSight = true;
@@ -259,7 +271,10 @@ public class FollowAI : MonoBehaviour
         else if (other.gameObject == sound)
         {
             if (gamingControl.getPlayerHiddenPercentage() < 70)
+
             {
+                Debug.Log("i");
+
                 CancelInvoke("patrol");
                 currentBehavior = EnemyBehavior.slowChase;
                 playerInSight = true;

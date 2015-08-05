@@ -6,6 +6,9 @@ public class ShadowDetection : MonoBehaviour
 {
     public GameObject openeye;
     public GameObject closedeye;
+    public GameObject openeyered;
+
+    public GameObject enemy;
 
     public float brightnessApprox; // http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color 
     public float brightness; // http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-brightness-of-a-Color.aspx
@@ -21,10 +24,17 @@ public class ShadowDetection : MonoBehaviour
     private Vector2 pixelUV;
     private bool debugMode = false;
 
+    private FollowAI fai;
 
+    void Start()
+    {
+        
+        fai = enemy.GetComponent<FollowAI>();
+    }
 
     void Update()
     {
+        Debug.Log(fai.isChasing());
         Raycast();
         calcDetectionValues();
 
@@ -44,15 +54,24 @@ public class ShadowDetection : MonoBehaviour
 
         GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(hiddenPercentage) + "%");
 
-        if (!safe)
+   
+        if (fai.isChasing() == true) 
         {
-            openeye.SetActive(true);
             closedeye.SetActive(false);
+            openeye.SetActive(false);
+            openeyered.SetActive(true);
         }
-        else
+        else if (safe && fai.isChasing() == false)
         {
             closedeye.SetActive(true);
             openeye.SetActive(false);
+            openeyered.SetActive(false);
+        }
+        else if (!safe && fai.isChasing() == false)
+        {
+            openeye.SetActive(true);
+            closedeye.SetActive(false);
+            openeyered.SetActive(false);
         }
     }
 
