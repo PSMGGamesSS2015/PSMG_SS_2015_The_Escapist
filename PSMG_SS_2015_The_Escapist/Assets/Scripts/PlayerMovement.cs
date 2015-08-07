@@ -138,6 +138,8 @@ public class PlayerMovement : MonoBehaviour {
     /// <param name="sneaking"></param>
     private void manageMovement(float turn, float moveVertical, bool sneaking)
     {
+        anim.SetFloat("Speed", rb.velocity.magnitude);
+
         if (moveVertical == 0)
         {
             if ((sneaking == false) && (running == false)) {

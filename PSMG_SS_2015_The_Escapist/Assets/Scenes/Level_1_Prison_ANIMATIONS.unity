@@ -5006,7 +5006,6 @@ Transform:
   m_LocalPosition: {x: -3.49000001, y: .179000005, z: -47.9300003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 688977531}
   - {fileID: 661595691}
   - {fileID: 782177172}
   - {fileID: 846125757}
@@ -5040,6 +5039,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79261ccaf29560e4e8fb6d651de426cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openeye: {fileID: 0}
+  closedeye: {fileID: 0}
+  openeyered: {fileID: 0}
+  enemy: {fileID: 0}
   brightnessApprox: 0
   brightness: 0
   hiddenPercentage: 0
@@ -10238,7 +10241,7 @@ Transform:
   - {fileID: 477894992}
   - {fileID: 91924434}
   m_Father: {fileID: 323947430}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &670331347 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 2}
@@ -10598,8 +10601,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.52100003, z: .0290007889}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 323947430}
-  m_RootOrder: 0
+  m_Father: {fileID: 846125757}
+  m_RootOrder: 2
 --- !u!114 &688977532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11935,7 +11938,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 323947430}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!20 &782177173
 Camera:
   m_ObjectHideFlags: 0
@@ -12549,7 +12552,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400274, guid: 64aaa90e88543434a9f45078f93e0689, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 64aaa90e88543434a9f45078f93e0689, type: 3}
       propertyPath: m_RootBone
