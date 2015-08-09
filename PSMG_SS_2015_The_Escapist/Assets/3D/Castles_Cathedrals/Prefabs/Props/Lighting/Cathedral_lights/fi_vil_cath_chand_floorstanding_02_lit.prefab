@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6507900}
   m_Layer: 0
   m_Name: fi_vil_cath_chand_floorstanding_02_lit
   m_TagString: Untagged
@@ -988,6 +989,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 6311626e6db798849b687bc9236b4298, type: 3}
+--- !u!65 &6507900
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.16481829, y: 1.6478318, z: 1.16481829}
+  m_Center: {x: -8.46385956e-06, y: .823915899, z: -1.37686729e-05}
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1

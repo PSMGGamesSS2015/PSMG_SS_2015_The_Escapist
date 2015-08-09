@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6547962}
   m_Layer: 0
   m_Name: fi_vil_forge_toolsrack1a
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 6199df237f41dd3458376a3523509c89, type: 3}
+--- !u!65 &6547962
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000037, y: .935229659, z: 1.88427734}
+  m_Center: {x: -1.35451555e-05, y: .46761322, z: -4.76837158e-07}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
