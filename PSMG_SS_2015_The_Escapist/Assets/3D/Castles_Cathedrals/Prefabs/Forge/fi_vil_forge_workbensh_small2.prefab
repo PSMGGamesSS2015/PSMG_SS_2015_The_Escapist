@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 65: {fileID: 6531010}
   m_Layer: 0
   m_Name: fi_vil_forge_workbensh_small2
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: ba00b2452d1b2d34790a533ccbcc30e9, type: 3}
+--- !u!65 &6531010
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.00000381, y: .935229659, z: 1.15309334}
+  m_Center: {x: -8.04662704e-07, y: .467613995, z: .0354688764}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
