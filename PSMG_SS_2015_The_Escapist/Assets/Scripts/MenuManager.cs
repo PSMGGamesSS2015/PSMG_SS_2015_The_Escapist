@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
+    public Font myFont;
 
     public bool optionmenu = false;
     public bool menu = true;
@@ -17,16 +18,25 @@ public class MenuManager : MonoBehaviour
     public int ResX;
     public int ResY;
 
-
-    private GUIStyle textStyle;
+    private GUIStyle buttonStyle;
+    private GUIStyle titleStyle;
 
     public bool Fullscreen; //default...
 
     public void Start()
     {
-        textStyle = new GUIStyle();
+        buttonStyle = new GUIStyle();
+        buttonStyle.fontSize = 64;
+        buttonStyle.normal.textColor = Color.white;
+        buttonStyle.font = myFont;
+        buttonStyle.alignment = TextAnchor.MiddleCenter;
 
 
+        titleStyle = new GUIStyle();
+        titleStyle.normal.textColor = Color.white;
+        titleStyle.fontSize = 130;
+        titleStyle.font = myFont;
+        titleStyle.alignment = TextAnchor.MiddleCenter;
     }
 
     // Use this for initialization
@@ -53,13 +63,15 @@ public class MenuManager : MonoBehaviour
 
     public void OnGUI()
     {
-
+        
+        GUI.Label(new Rect(150, 130, 150, 30), "The" +"\n" + "Escapist", titleStyle);
 
         if (menu)
         {
 
+           
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 70, 200, 80), "Start Game"))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 300, 200, 80), "Start Game", buttonStyle))
             {
 
                 ChangeScene(1);
@@ -67,7 +79,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 30, 200, 80), "Options"))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 210, 200, 80), "Options", buttonStyle))
             {
 
 
@@ -76,7 +88,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 130, 200, 80), "Quit"))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 120, 200, 80), "Quit", buttonStyle))
             {
 
 
@@ -86,7 +98,7 @@ public class MenuManager : MonoBehaviour
         if (optionmenu)
         {
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 70, 200, 80), "Audio Settings"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 70, 200, 80), "Audio Settings", buttonStyle ))
             {
 
 
@@ -95,7 +107,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 30, 200, 80), "Video Settings"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 30, 200, 80), "Video Settings", buttonStyle))
             {
 
 
@@ -104,7 +116,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 130, 200, 80), "Back"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 130, 200, 80), "Back", buttonStyle))
             {
 
 
