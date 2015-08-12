@@ -63,9 +63,11 @@ public class MenuManager : MonoBehaviour
 
     public void OnGUI()
     {
-        
         GUI.Label(new Rect(150, 130, 150, 30), "The" +"\n" + "Escapist", titleStyle);
-
+        if (GUI.Toggle(new Rect(400, 400, 150, 30), false, "VSync"))
+        {
+            
+        }
         if (menu)
         {
 
@@ -98,7 +100,7 @@ public class MenuManager : MonoBehaviour
         if (optionmenu)
         {
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 70, 200, 80), "Audio Settings", buttonStyle ))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 300, 200, 80), "Audio Settings", buttonStyle ))
             {
 
 
@@ -107,7 +109,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 30, 200, 80), "Video Settings", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 210, 200, 80), "Video Settings", buttonStyle))
             {
 
 
@@ -116,7 +118,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 130, 200, 80), "Back", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 120, 200, 80), "Back", buttonStyle))
             {
 
 
@@ -138,7 +140,7 @@ public class MenuManager : MonoBehaviour
 
            
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 90, 100, 30), "Back"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 90, 100, 30), "Back", buttonStyle))
             {
                 sound = false;
                 optionmenu = true;
@@ -259,9 +261,9 @@ public class MenuManager : MonoBehaviour
               
 
             }
+            
 
-
-            if (GUI.Button(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 250, 220, 60), "Back"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 250, 220, 60), "Back", buttonStyle))
             {
 
 

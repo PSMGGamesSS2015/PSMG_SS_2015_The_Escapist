@@ -5,7 +5,6 @@ using System;
 public class ShadowDetection : MonoBehaviour
 {
     public GameObject openeye;
-    public GameObject closedeye;
     public GameObject openeyered;
 
     public GameObject enemy;
@@ -25,15 +24,19 @@ public class ShadowDetection : MonoBehaviour
     private bool debugMode = false;
 
     private FollowAI fai;
+    private Color color;
 
     void Start()
     {
-        
+        color = new Color(1f, 1f,1f);
+
         fai = enemy.GetComponent<FollowAI>();
     }
 
     void Update()
     {
+        
+        color.a = 0.9f - (hiddenPercentage / 100);
         Raycast();
         calcDetectionValues();
 
@@ -49,29 +52,29 @@ public class ShadowDetection : MonoBehaviour
 
     void OnGUI()
     {
-        bool safe = (hiddenPercentage > 70) ? true : false;
+        bool safe = (hiddenPercentage > 90) ? true : false;
 
         GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(hiddenPercentage) + "%");
 
    
         if (fai.isChasing() == true) 
         {
-            closedeye.SetActive(false);
             openeye.SetActive(false);
             openeyered.SetActive(true);
+           
         }
         else if (safe && fai.isChasing() == false)
         {
-            closedeye.SetActive(true);
-            openeye.SetActive(false);
+            openeye.SetActive(true);
             openeyered.SetActive(false);
         }
         else if (!safe && fai.isChasing() == false)
         {
             openeye.SetActive(true);
-            closedeye.SetActive(false);
             openeyered.SetActive(false);
         }
+        openeye.GetComponent<CanvasRenderer>().SetColor(color);
+
     }
 
     void Raycast()

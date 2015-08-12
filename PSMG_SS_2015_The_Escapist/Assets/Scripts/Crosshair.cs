@@ -12,6 +12,7 @@ public class Crosshair : MonoBehaviour {
 
         if (Time.timeScale != 0)
         {
+           
             if (crosshairTexture != null)
                 GUI.DrawTexture(new Rect((Screen.width - crosshairTexture.width * crosshairScale) / 2, (Screen.height - crosshairTexture.height * crosshairScale) / 2, crosshairTexture.width * crosshairScale, crosshairTexture.height * crosshairScale), crosshairTexture);
         }
