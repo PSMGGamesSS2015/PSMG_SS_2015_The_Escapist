@@ -10,11 +10,21 @@ public class HUD : MonoBehaviour {
     private bool showInv, showLock;
 
     public bool showText;
+
+    public Font myFont;
+    private GUIStyle textStyle;
+
 	// Use this for initialization
 	void Start () {
+
+        textStyle = new GUIStyle();
+        textStyle.normal.textColor = Color.white;
+        textStyle.fontSize = 40;
+        textStyle.font = myFont;
+
         showText = false;
         showInv = true;
-        showLock = true;
+        showLock = false;
         text = "Wo bin ich?";
         bottleText = "" + test;
         stoneText = "" + test;
@@ -24,13 +34,17 @@ public class HUD : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       
 
+        if (Input.GetButtonDown("Use Hairpin"))
+        {
+            showLock = !showLock;
+        }
        
 	}
 
     void OnGUI()
     {
+       
 
         inventory();
         lockpicking();
@@ -42,7 +56,8 @@ public class HUD : MonoBehaviour {
     {
         if (showText)
         {
-            GUI.TextArea(new Rect(Screen.width / 2 - 130, Screen.height / 2 + 200, 280, 50), text);
+            GUI.Box(new Rect(Screen.width / 2 - 130, Screen.height / 2 + 250, 280, 50), "");
+            GUI.TextArea(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 250, 50, 50), text, textStyle);
         }
     }
 
