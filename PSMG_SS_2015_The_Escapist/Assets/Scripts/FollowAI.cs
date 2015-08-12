@@ -2,10 +2,6 @@
 using System.Collections;
 using System;
 
-public enum EnemyBehavior
-{
-    patrol, chase, search, slowChase, wait
-}
 public class FollowAI : MonoBehaviour
 {
     private GameObject player;
@@ -29,8 +25,6 @@ public class FollowAI : MonoBehaviour
     private CharacterController character;
 
     private GamingControl gamingControl;
-
-    public EnemyBehavior currentBehavior = EnemyBehavior.patrol;
 
     //Added by Chris
     private Animator anim;
@@ -88,14 +82,16 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
+        Debug.Log(state);
         if (running)
         {
-
+            
             switch (state)
             {
 
                 case 1:
                     anim.SetBool("IsPatroling", true);
+                    anim.Play("Walking");
                     patrol();
                     break;
 
@@ -109,13 +105,13 @@ public class FollowAI : MonoBehaviour
                     break;
 
                 case 4:
-                    anim.SetBool("IsChasing", true);
-                    slowChase();
+                    
+                    
+                    chase();
                     break;
 
                 case 5:
-                    anim.SetBool("IsAttacking", true);
-                    chase();
+
                     break;
 
                 default:
@@ -132,48 +128,44 @@ public class FollowAI : MonoBehaviour
         return playerInSight;
     }
 
+    
     private void chase()
     {
-        if (gamingControl.getPlayerHiddenPercentage() < 70)
-
-        {
-
-            float distance = Vector3.Distance(enemy.position, player.transform.position);
-            if (distance == Constants.AI_RANGE && playerInSight)
-            {
-                enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
-            }
-            else if (distance <= Constants.AI_RANGE && distance > Constants.AI_STOP && playerInSight)
-            {
-                enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
-            }
-        }
-    }
-
-    private void slowChase()
-    {
 
         if (gamingControl.getPlayerHiddenPercentage() < 70)
 
         {
             float distance = Vector3.Distance(enemy.position, player.transform.position);
 
-            if (distance <= Constants.AI_RANGE && distance > Constants.AI_RUN_RANGE && playerInSight)
+            if (distance <= Constants.AI_RANGE && playerInSight && distance > 1.3f)
             {
+                if (anim.GetBool("IsAttacking"))
+                {
+                    anim.SetBool("IsAttacking", false);
+                    anim.StopPlayback();
+                }
+                   anim.SetBool("IsChasing", true);
+                    anim.Play("Chasing");
+                 
+                
+                enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+            }
+            else if (distance <= 1.3f && playerInSight)
+            {
+                if (anim.GetBool("IsChasing"))
+                {
+                    anim.SetBool("IsChasing", false);
+                    anim.StopPlayback();
+                }
+                    anim.SetBool("IsAttacking", true);
+                    anim.Play("Attacking");
+                
+                enemy.rotation = Quaternion.Slerp(enemy.rotation,
+                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
 
-                enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                enemy.position += enemy.forward * Constants.AI_NORMAL_SPEED * Time.deltaTime;
-            }
-            else if (distance <= Constants.AI_RUN_RANGE && playerInSight)
-            {
-                enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                enemy.position += enemy.forward * Constants.AI_CHASING_SPEED * Time.deltaTime;
-            }
+            } 
+            
             
         }
     }
@@ -259,31 +251,29 @@ public class FollowAI : MonoBehaviour
 
             if (angle < Constants.AI_VIEW_ANGLE * 0.5f && gamingControl.getPlayerHiddenPercentage() < 70)
             {
-                setAllBoolFalse();
-                playerInSight = true;
-                hasSeenPlayer = true;
-                state = 4;
-            }
-            else if (gamingControl.getPlayerHiddenPercentage() < 70 && !gamingControl.isSneakingActive() && distance < 1.8f)
-            {
+               
+                    anim.SetBool("IsPatroling", false);
+                    anim.StopPlayback();
+                    playerInSight = true;
+                    hasSeenPlayer = true;
 
-                setAllBoolFalse();
-                playerInSight = true;
-                hasSeenPlayer = true;
-                state = 5;
+                    state = 4;
+                
             }
-           
+            
 
-         } 
+        }
         else if (other.gameObject == sound)
         {
             if (gamingControl.getPlayerHiddenPercentage() < 70)
-
             {
-                setAllBoolFalse();
-                state = 4;
-                playerInSight = true;
-                hasSeenPlayer = true;
+                    state = 4;
+                    anim.SetBool("IsPatroling", false);
+                    anim.StopPlayback();
+                    playerInSight = true;
+                    hasSeenPlayer = true;
+                    
+                
             }
 
             else
@@ -291,6 +281,7 @@ public class FollowAI : MonoBehaviour
                 state = 1;
             }
         }
+        
     }
 
     /// <summary>
@@ -299,14 +290,14 @@ public class FollowAI : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
 
-        playerInSight = false;
+       playerInSight = false;
 
         if (hasSeenPlayer)
         {
-            setAllBoolFalse();
-            anim.SetBool("IsPatroling", true);
-            anim.Play("Walking");
             state = 1;
+            anim.SetBool("IsChasing", false);
+            anim.StopPlayback();
+            
         }
 
     }
