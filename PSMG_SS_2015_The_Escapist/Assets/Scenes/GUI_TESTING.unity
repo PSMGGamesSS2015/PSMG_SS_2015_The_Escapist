@@ -46095,6 +46095,7 @@ MonoBehaviour:
   pipe: {fileID: 2800000, guid: 238560ae4eb207648be91c6cab690b83, type: 3}
   closedlock: {fileID: 2800000, guid: 09d2d4adb6f91194097785f01ca67c87, type: 3}
   openlock: {fileID: 2800000, guid: f26a22285fdc6e64aa705b3f4a85735a, type: 3}
+  whiteBorder: {fileID: 2800000, guid: 65843257c68c8df409a747523edd0df2, type: 3}
   showText: 0
   myFont: {fileID: 12800000, guid: 2f731f0e1e8024746ab3490ef13b3312, type: 3}
 --- !u!1001 &2091087392

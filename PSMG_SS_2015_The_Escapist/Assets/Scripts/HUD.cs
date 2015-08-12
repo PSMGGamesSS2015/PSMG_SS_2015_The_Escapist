@@ -5,8 +5,8 @@ public class HUD : MonoBehaviour {
 
     private string bottleText, stoneText, gearwheelText, pipeText, text;
     private int test = 3;
-    public Texture2D bottle, stone, gearwheel, pipe, closedlock, openlock;
-
+    public Texture2D bottle, stone, gearwheel, pipe, closedlock, openlock, whiteBorder;
+    private int itemNr = 1;
     private bool showInv, showLock;
 
     public bool showText;
@@ -16,7 +16,7 @@ public class HUD : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        
         textStyle = new GUIStyle();
         textStyle.normal.textColor = Color.white;
         textStyle.fontSize = 40;
@@ -39,17 +39,59 @@ public class HUD : MonoBehaviour {
         {
             showLock = !showLock;
         }
+
+        itemKeyCheck();
+
        
 	}
+
+    private void itemKeyCheck()
+    {
+        if (Input.GetButtonDown("Bottle"))
+            itemNr = 1;
+        else if (Input.GetButtonDown("Stone"))
+            itemNr = 2;
+        else if (Input.GetButtonDown("Gearwheel"))
+            itemNr = 3;
+        else if (Input.GetButtonDown("Pipe"))
+            itemNr = 4;
+
+
+
+    }
+
+ 
 
     void OnGUI()
     {
        
+        checkSelectedItem();
 
         inventory();
         lockpicking();
         texting();
 
+    }
+
+    private void checkSelectedItem()
+    {
+        switch (itemNr)
+        {
+            case 1:
+                GUI.DrawTexture(new Rect(5, 595, 45, 60), whiteBorder);
+                break;
+            case 2:
+                GUI.DrawTexture(new Rect(50, 595, 45, 60), whiteBorder);
+                break;
+            case 3:
+                GUI.DrawTexture(new Rect(95, 595, 45, 60), whiteBorder);
+                break;
+            case 4:
+                GUI.DrawTexture(new Rect(140, 595, 45, 60), whiteBorder);
+                break;
+            default:
+                break;
+        }
     }
 
     private void texting()
@@ -77,17 +119,17 @@ public class HUD : MonoBehaviour {
     {
         if (showInv)
         {
-            GUI.Label(new Rect(10, 600, 50, 50), bottle);
-            GUI.Label(new Rect(35, 620, 50, 30), bottleText);
+            GUI.Label(new Rect(10, 603, 50, 40), bottle);
+            GUI.Label(new Rect(32, 620, 50, 30), bottleText);
 
-            GUI.Label(new Rect(50, 605, 50, 50), stone);
-            GUI.Label(new Rect(100, 620, 50, 30), stoneText);
+            GUI.Label(new Rect(50, 610, 30, 50), stone);
+            GUI.Label(new Rect(82, 620, 50, 30), stoneText);
 
-            GUI.Label(new Rect(120, 608, 35, 50), gearwheel);
-            GUI.Label(new Rect(165, 620, 50, 30), gearwheelText);
+            GUI.Label(new Rect(100, 615, 22, 50), gearwheel);
+            GUI.Label(new Rect(127, 620, 50, 30), gearwheelText);
 
-            GUI.Label(new Rect(180, 608, 35, 50), pipe);
-            GUI.Label(new Rect(220, 620, 50, 30), pipeText);
+            GUI.Label(new Rect(145, 613, 25, 30), pipe);
+            GUI.Label(new Rect(172, 620, 50, 30), pipeText);
         }
     }
 }
