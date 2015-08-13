@@ -30722,7 +30722,6 @@ MonoBehaviour:
   loop: 1
   dampingLook: 6
   currentWaypoint: 0
-  currentBehavior: 0
   playerInSight: 0
   hasSeenPlayer: 0
   test: 0
@@ -30968,7 +30967,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openeye: {fileID: 999842062}
-  closedeye: {fileID: 1886013020}
   openeyered: {fileID: 1935040721}
   enemy: {fileID: 1369262125}
   brightnessApprox: 0
