@@ -8,6 +8,7 @@ public class Door : MonoBehaviour {
     public AudioClip lockedSound;
     public AudioClip openSound;
     public AudioClip closeSound;
+    public bool doorInRange = false;
 
     private GameObject player;
     private GamingControl gamingControl;
@@ -16,7 +17,6 @@ public class Door : MonoBehaviour {
     private AudioSource audioSource;
     private float openAnimTime = 1f;
     private float nextTriggerTime;
-    private bool doorInRange = false;
     private bool doorOpen = false;
     private bool hasLockpickSystem;
 
@@ -30,12 +30,12 @@ public class Door : MonoBehaviour {
 
     void Update()
     {
-        if (doorInRange)
+        if (!doorInRange) return;
+
+        if (!Input.GetButtonDown("Use")) return;
         {
-            if (!locked && Input.GetButtonDown("Use"))
-            {
-                if (!doorOpen) open(); else close();
-            }
+            if (!doorOpen) open(); else close();
+        }
 
             if (locked)
             {
@@ -61,7 +61,6 @@ public class Door : MonoBehaviour {
                     audioSource.Play();
                 }
             }
-        }
     }
 
     void OnTriggerEnter(Collider other)
