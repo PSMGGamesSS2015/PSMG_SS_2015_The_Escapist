@@ -5039,10 +5039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79261ccaf29560e4e8fb6d651de426cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openeye: {fileID: 0}
-  closedeye: {fileID: 0}
-  openeyered: {fileID: 0}
-  enemy: {fileID: 0}
   brightnessApprox: 0
   brightness: 0
   hiddenPercentage: 0
@@ -5050,7 +5046,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  debugMapMarker: {fileID: 0}
+  mapMarkerTex: {fileID: 0}
   probes: 25
   detectionRadius: 20
   alphaFactor: 5
@@ -10662,7 +10658,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .00999999978
+  near clip plane: .200000003
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -10695,7 +10691,7 @@ MonoBehaviour:
   sensitivityY: 1
   minimumX: -360
   maximumX: 360
-  minimumY: -60
+  minimumY: -45
   maximumY: 60
 --- !u!54 &688977539
 Rigidbody:
@@ -14067,6 +14063,7 @@ MonoBehaviour:
   lockedSound: {fileID: 8300000, guid: 0f4ad1eb2772985488e2f9d7cdcf74ad, type: 3}
   openSound: {fileID: 0}
   closeSound: {fileID: 0}
+  doorInRange: 0
 --- !u!65 &939193375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26275,6 +26272,7 @@ MonoBehaviour:
   lockedSound: {fileID: 8300000, guid: 0f4ad1eb2772985488e2f9d7cdcf74ad, type: 3}
   openSound: {fileID: 0}
   closeSound: {fileID: 0}
+  doorInRange: 0
 --- !u!114 &1869886696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28091,6 +28089,7 @@ MonoBehaviour:
   lockedSound: {fileID: 8300000, guid: 0f4ad1eb2772985488e2f9d7cdcf74ad, type: 3}
   openSound: {fileID: 0}
   closeSound: {fileID: 0}
+  doorInRange: 0
 --- !u!114 &1982645470
 MonoBehaviour:
   m_ObjectHideFlags: 0
