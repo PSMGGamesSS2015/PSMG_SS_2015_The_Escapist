@@ -2,7 +2,92 @@ fileFormatVersion: 2
 guid: a903ad2960f7538468ca35d3ce5e8d8e
 ModelImporter:
   serializedVersion: 18
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: GIANT_RAT_
+    100004: GIANT_RAT_ Head
+    100006: GIANT_RAT_ L Calf
+    100008: GIANT_RAT_ L Clavicle
+    100010: GIANT_RAT_ L Finger0
+    100012: GIANT_RAT_ L Foot
+    100014: GIANT_RAT_ L Forearm
+    100016: GIANT_RAT_ L Hand
+    100018: GIANT_RAT_ L Thigh
+    100020: GIANT_RAT_ L Toe0
+    100022: GIANT_RAT_ L Toe01
+    100024: GIANT_RAT_ L Toe02
+    100026: GIANT_RAT_ L UpperArm
+    100028: GIANT_RAT_ Neck
+    100030: GIANT_RAT_ Neck1
+    100032: GIANT_RAT_ Pelvis
+    100034: GIANT_RAT_ Queue de cheval 1
+    100036: GIANT_RAT_ R Calf
+    100038: GIANT_RAT_ R Clavicle
+    100040: GIANT_RAT_ R Finger0
+    100042: GIANT_RAT_ R Foot
+    100044: GIANT_RAT_ R Forearm
+    100046: GIANT_RAT_ R Hand
+    100048: GIANT_RAT_ R Thigh
+    100050: GIANT_RAT_ R Toe0
+    100052: GIANT_RAT_ R Toe01
+    100054: GIANT_RAT_ R Toe02
+    100056: GIANT_RAT_ R UpperArm
+    100058: GIANT_RAT_ Spine
+    100060: GIANT_RAT_ Spine1
+    100062: GIANT_RAT_ Tail
+    100064: GIANT_RAT_ Tail1
+    100066: GIANT_RAT_ Tail2
+    100068: GIANT_RAT_ Tail3
+    100070: GIANT_RAT_ Tail4
+    100072: GIANT_RAT_ Tail5
+    100074: GIANT_RAT_ Tail6
+    100076: GIANT_RAT_ Tail7
+    100078: GIANT_RAT_ Tail8
+    100080: GIANT_RAT_ Tail9
+    400000: //RootNode
+    400002: GIANT_RAT_
+    400004: GIANT_RAT_ Head
+    400006: GIANT_RAT_ L Calf
+    400008: GIANT_RAT_ L Clavicle
+    400010: GIANT_RAT_ L Finger0
+    400012: GIANT_RAT_ L Foot
+    400014: GIANT_RAT_ L Forearm
+    400016: GIANT_RAT_ L Hand
+    400018: GIANT_RAT_ L Thigh
+    400020: GIANT_RAT_ L Toe0
+    400022: GIANT_RAT_ L Toe01
+    400024: GIANT_RAT_ L Toe02
+    400026: GIANT_RAT_ L UpperArm
+    400028: GIANT_RAT_ Neck
+    400030: GIANT_RAT_ Neck1
+    400032: GIANT_RAT_ Pelvis
+    400034: GIANT_RAT_ Queue de cheval 1
+    400036: GIANT_RAT_ R Calf
+    400038: GIANT_RAT_ R Clavicle
+    400040: GIANT_RAT_ R Finger0
+    400042: GIANT_RAT_ R Foot
+    400044: GIANT_RAT_ R Forearm
+    400046: GIANT_RAT_ R Hand
+    400048: GIANT_RAT_ R Thigh
+    400050: GIANT_RAT_ R Toe0
+    400052: GIANT_RAT_ R Toe01
+    400054: GIANT_RAT_ R Toe02
+    400056: GIANT_RAT_ R UpperArm
+    400058: GIANT_RAT_ Spine
+    400060: GIANT_RAT_ Spine1
+    400062: GIANT_RAT_ Tail
+    400064: GIANT_RAT_ Tail1
+    400066: GIANT_RAT_ Tail2
+    400068: GIANT_RAT_ Tail3
+    400070: GIANT_RAT_ Tail4
+    400072: GIANT_RAT_ Tail5
+    400074: GIANT_RAT_ Tail6
+    400076: GIANT_RAT_ Tail7
+    400078: GIANT_RAT_ Tail8
+    400080: GIANT_RAT_ Tail9
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -12,7 +97,11 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 0
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -54,9 +143,9 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: GIANT_RAT_
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
