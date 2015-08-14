@@ -9,8 +9,7 @@ TagManager:
   - GUI
   - Collider
   - Fire
-  - GROUND
-  - Sound
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -23,8 +22,8 @@ TagManager:
   - Player
   - Ground
   - Ceiling
-  - LightShadowFix
-  - 
+  - Dragable
+  - NoLight
   - 
   - 
   - 

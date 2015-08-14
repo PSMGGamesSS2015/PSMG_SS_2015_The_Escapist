@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: floorTile_A
   m_Shader: {fileID: 23, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: []
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -76,9 +78,9 @@ Material:
         second: {r: .226481393, g: .330867469, b: .433823526, a: 1}
       data:
         first:
-          name: _RimColor
-        second: {r: .0514496975, g: .0514705777, b: .0499567389, a: 0}
-      data:
-        first:
           name: _ReflectColor
         second: {r: 1, g: 1, b: 1, a: .501960814}
+      data:
+        first:
+          name: _RimColor
+        second: {r: .0514496975, g: .0514705777, b: .0499567389, a: 0}
