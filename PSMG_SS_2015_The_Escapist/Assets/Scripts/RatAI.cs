@@ -65,13 +65,15 @@ public class RatAI : MonoBehaviour
 
                 case 1:
                     anim.SetBool("IsWalking", true);
+                    anim.SetBool("IsAttacking", false);
                     walk();
                     break;
 
                 case 2:
                     enemy.rotation = Quaternion.Slerp(enemy.rotation,
                  Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
-                    anim.Play("jumpBite");
+                    anim.SetBool("IsWalking", false);
+                    anim.SetBool("IsAttacking", true);
                     StartCoroutine(StartHissing());
 
                     break;
