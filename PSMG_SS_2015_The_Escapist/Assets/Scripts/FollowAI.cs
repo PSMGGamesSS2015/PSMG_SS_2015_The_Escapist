@@ -88,7 +88,6 @@ public class FollowAI : MonoBehaviour
     void Update()
     {
         Debug.Log(state);
-        Debug.Log(anim);
         if (running)
         {
             

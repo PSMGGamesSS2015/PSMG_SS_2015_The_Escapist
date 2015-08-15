@@ -138,6 +138,7 @@ public class PlayerMovement : MonoBehaviour {
     /// <param name="sneaking"></param>
     private void manageMovement(float turn, float moveVertical, bool sneaking)
     {
+
         anim.SetFloat("Speed", rb.velocity.magnitude);
 
         if (moveVertical == 0)
@@ -285,7 +286,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
 
-        if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
+        if ((Input.GetButton("Jump")) == true && (playerIsGrounded() == true))
         {
             //rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
             anim.SetBool("Jumping", true);
