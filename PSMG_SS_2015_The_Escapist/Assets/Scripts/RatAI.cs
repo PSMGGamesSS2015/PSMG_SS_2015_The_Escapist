@@ -153,13 +153,15 @@ public class RatAI : MonoBehaviour
     /// <summary>
     /// Check if player reaches the sight of the enemy 
     /// </summary>
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider col)
     {
-        anim.SetBool("IsWalking", false);
-        anim.SetBool("IsAttacking", true);
-        anim.StopPlayback();
+        if (col.gameObject == player)
+        {
+            anim.SetBool("IsWalking", false);
+            anim.SetBool("IsAttacking", true);
+            anim.StopPlayback();
             state = 2;
-        
+        }
     }
 
     /// <summary>
