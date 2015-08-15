@@ -19,7 +19,6 @@ public class GamingControl : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         
-        
         //For Debugging! Finds all Audiolisteners.
         AudioListener[] myListeners = GameObject.FindObjectsOfType<AudioListener>();
         foreach (AudioListener hidden in myListeners)

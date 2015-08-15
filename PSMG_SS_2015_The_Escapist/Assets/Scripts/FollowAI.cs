@@ -62,8 +62,6 @@ public class FollowAI : MonoBehaviour
 
         sound = GameObject.FindWithTag("Sound");
 
-        //Added by Chris
-        anim = GetComponent<Animator>();
 
         agent = gameObject.GetComponent<NavMeshAgent>();
 
@@ -77,12 +75,20 @@ public class FollowAI : MonoBehaviour
 
     }
 
+    void Awake()
+    {
+        //Added by Chris
+        anim = GetComponent<Animator>();
+
+    }
+
     /// <summary>
     /// Describes the actions of the enemy when player is in sight or not in sight
     /// </summary>
     void Update()
     {
         Debug.Log(state);
+        Debug.Log(anim);
         if (running)
         {
             
