@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     bool video = false;
 
     int overallVol = 6;
+    float g = 0.5f;
     int musicVol = 6;
 
     int fieldOfView = 80;
@@ -53,6 +54,11 @@ public class MenuManager : MonoBehaviour
         smalloptionTextStyle.normal.textColor = Color.white;
         smalloptionTextStyle.fontSize = 32;
         smalloptionTextStyle.font = myFont;
+    }
+
+    private void Update()
+    {
+        RenderSettings.ambientLight = new Color(g, g, g, 1.0f);
     }
 
     // Use this for initialization
@@ -211,6 +217,7 @@ private void showVideoOptions()
             {
                 vsync = false;
                 QualitySettings.vSyncCount = 0;
+             
             }
         }
         else
@@ -218,6 +225,7 @@ private void showVideoOptions()
             if (GUI.Button(new Rect(Screen.width / 2 - 230, Screen.height / 2 + 95, 120, 30), off, buttonStyle))
             {
                 vsync = true;
+               
                 QualitySettings.vSyncCount = 1;
 
             }
@@ -237,7 +245,9 @@ private void showVideoOptions()
         {
             Screen.SetResolution(ResX, ResY, Fullscreen, 120);
         }
-         
+
+
+        g = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 235, 100, 30), g, 0f, 1.0f);
        
 
 
