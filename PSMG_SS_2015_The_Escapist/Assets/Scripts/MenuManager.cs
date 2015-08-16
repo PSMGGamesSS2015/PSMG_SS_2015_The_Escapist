@@ -79,7 +79,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnGUI()
     {
-        GUI.Label(new Rect(150, 130, 150, 30), "The" +"\n" + "Escapist", titleStyle);
+        GUI.Label(new Rect(150, Screen.height / 2 - 300, 150, 30), "The" + "\n" + "Escapist", titleStyle);
         showMenu();
         showOptionMenu();
         showSoundOptions();
@@ -91,7 +91,7 @@ private void showMenu()
  if (menu)
         {
 
-           if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 300, 200, 80), "Start Game", buttonStyle))
+           if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 320, 200, 80), "Start Game", buttonStyle))
             {
 
                 ChangeScene(1);
@@ -99,7 +99,7 @@ private void showMenu()
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 210, 200, 80), "Options", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 230, 200, 80), "Options", buttonStyle))
             {
 
 
@@ -108,7 +108,7 @@ private void showMenu()
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 120, 200, 80), "Quit", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 140, 200, 80), "Quit", buttonStyle))
             {
 
 
@@ -155,7 +155,7 @@ private void showVideoOptions()
     if (video)
     {
 
-
+    GUI.Box(new Rect(0,0,Screen.width, Screen.height),"");
         
         string[] qualities = QualitySettings.names;
 
@@ -301,7 +301,7 @@ private void showVideoOptions()
     {
         if (sound)
         {
-
+            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
 
             GUI.Label(new Rect(Screen.width / 2 - 110, Screen.height / 2 - 100, 100, 30), "Overall Volume", optionTextStyle);
             overallVol = (int)GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2 -35, 100, 30), overallVol, 0.0f, 10.0f);
