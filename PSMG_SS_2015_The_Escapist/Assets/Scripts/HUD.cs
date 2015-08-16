@@ -121,10 +121,27 @@ public class HUD : MonoBehaviour
         if (showLock)
         {
             GUI.Box(new Rect(Screen.width / 2 - 130, Screen.height / 2 + 50, 280, 50), "");
+
+           // if(GameController.getFirstLock())
             GUI.Label(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 50, 50, 50), openlock);
+           // else
+            GUI.Label(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 50, 50, 50), closedlock);
+
+          //  if (GameController.getSecondLock())
             GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 50, 50, 50), openlock);
+           // else
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 50, 50, 50), closedlock);
+
+           // if (GameController.getThirdLock())
             GUI.Label(new Rect(Screen.width / 2 + 20, Screen.height / 2 + 50, 50, 50), openlock);
+            //else
+            GUI.Label(new Rect(Screen.width / 2 + 20, Screen.height / 2 + 50, 50, 50), closedlock);
+
+           // if (GameController.getFourthLock())
             GUI.Label(new Rect(Screen.width / 2 + 90, Screen.height / 2 + 50, 50, 50), openlock);
+            //else
+            GUI.Label(new Rect(Screen.width / 2 + 90, Screen.height / 2 + 50, 50, 50), closedlock);
+
         }
     }
 
