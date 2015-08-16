@@ -12,6 +12,8 @@ public class HurtEffect : MonoBehaviour
 
     private GUIStyle style;
 
+    public Font myFont;
+
     public bool displayHurtEffect = false;
     public bool displayDead = false;
 
@@ -22,6 +24,12 @@ public class HurtEffect : MonoBehaviour
 
     void Start()
     {
+        style = new GUIStyle();
+        style.fontSize = 100;
+        style.normal.textColor = Color.white;
+        style.font = myFont;
+        style.alignment = TextAnchor.MiddleCenter;
+
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         audioSrc = GetComponent<AudioSource>();
         gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
@@ -64,10 +72,9 @@ public class HurtEffect : MonoBehaviour
 
         if (displayDead)
         {
-            style = new GUIStyle();
-            style.fontSize = 72;
+            
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
-            GUI.Label(new Rect(100, 100, 120, 256), "Du bist deinen Verletzungen erlegen!", style);
+            GUI.Label(new Rect(Screen.width/2, Screen.height/2, 120, 120), "Du bist deinen Verletzungen erlegen!", style);
 
         }
 
