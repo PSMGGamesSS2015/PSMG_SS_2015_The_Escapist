@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HUD : MonoBehaviour {
+public class HUD : MonoBehaviour
+{
 
     private string bottleText, stoneText, gearwheelText, pipeText, text;
     private int test = 3;
@@ -14,9 +15,20 @@ public class HUD : MonoBehaviour {
     public Font myFont;
     private GUIStyle textStyle;
 
-	// Use this for initialization
-	void Start () {
-        
+    private float ScreenWidthDefault = 1920;
+    private float ScreenHeightDefault = 1080;
+
+    private float ratioWidth;
+    private float ratioHeight;
+
+    // Use this for initialization
+    void Start()
+    {
+
+        ratioWidth = ScreenWidthDefault / Screen.width;
+        ratioHeight = ScreenHeightDefault / Screen.height;
+
+
         textStyle = new GUIStyle();
         textStyle.normal.textColor = Color.white;
         textStyle.fontSize = 40;
@@ -30,10 +42,11 @@ public class HUD : MonoBehaviour {
         stoneText = "" + test;
         gearwheelText = "" + test;
         pipeText = "" + test;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (Input.GetButtonDown("Use Hairpin"))
         {
@@ -42,8 +55,8 @@ public class HUD : MonoBehaviour {
 
         itemKeyCheck();
 
-       
-	}
+
+    }
 
     private void itemKeyCheck()
     {
@@ -60,11 +73,11 @@ public class HUD : MonoBehaviour {
 
     }
 
- 
+
 
     void OnGUI()
     {
-       
+
         checkSelectedItem();
 
         inventory();
@@ -78,16 +91,16 @@ public class HUD : MonoBehaviour {
         switch (itemNr)
         {
             case 1:
-                GUI.DrawTexture(new Rect(5, 595, 45, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.009f, Screen.height * 0.90f, 53, 60), whiteBorder);
                 break;
             case 2:
-                GUI.DrawTexture(new Rect(50, 595, 45, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth), Screen.height * 0.9f, 53, 60), whiteBorder);
                 break;
             case 3:
-                GUI.DrawTexture(new Rect(95, 595, 45, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth * 2), Screen.height * 0.9f, 53, 60), whiteBorder);
                 break;
             case 4:
-                GUI.DrawTexture(new Rect(140, 595, 45, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth * 3), Screen.height * 0.9f, 53, 60), whiteBorder);
                 break;
             default:
                 break;
@@ -108,7 +121,7 @@ public class HUD : MonoBehaviour {
         if (showLock)
         {
             GUI.Box(new Rect(Screen.width / 2 - 130, Screen.height / 2 + 50, 280, 50), "");
-            GUI.Label(new Rect(Screen.width/2 - 120, Screen.height/2 + 50, 50, 50), openlock);
+            GUI.Label(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 50, 50, 50), openlock);
             GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 50, 50, 50), openlock);
             GUI.Label(new Rect(Screen.width / 2 + 20, Screen.height / 2 + 50, 50, 50), openlock);
             GUI.Label(new Rect(Screen.width / 2 + 90, Screen.height / 2 + 50, 50, 50), openlock);
@@ -119,17 +132,17 @@ public class HUD : MonoBehaviour {
     {
         if (showInv)
         {
-            GUI.Label(new Rect(10, 603, 50, 40), bottle);
-            GUI.Label(new Rect(32, 620, 50, 30), bottleText);
+            GUI.Label(new Rect(Screen.width * 0.015f, Screen.height * 0.91f, 50, 40), bottle);
+            GUI.Label(new Rect(Screen.width * 0.03f, Screen.height * 0.92f, 50, 30), bottleText);
 
-            GUI.Label(new Rect(50, 610, 30, 50), stone);
-            GUI.Label(new Rect(82, 620, 50, 30), stoneText);
+            GUI.Label(new Rect(Screen.width * 0.015f + (Screen.width * 0.022f * ratioWidth), Screen.height * 0.91f, 50 , 40 ), stone);
+            GUI.Label(new Rect(Screen.width * 0.03f + (Screen.width * 0.025f * ratioWidth), Screen.height * 0.92f, 50, 30), stoneText);
 
-            GUI.Label(new Rect(100, 615, 22, 50), gearwheel);
-            GUI.Label(new Rect(127, 620, 50, 30), gearwheelText);
+            GUI.Label(new Rect(Screen.width * 0.015f + (Screen.width * 0.022f * ratioWidth * 2.1f), Screen.height * 0.91f, 30, 40), gearwheel);
+            GUI.Label(new Rect(Screen.width * 0.03f + (Screen.width * 0.025f * ratioWidth * 2), Screen.height * 0.92f, 50, 30), gearwheelText);
 
-            GUI.Label(new Rect(145, 613, 25, 30), pipe);
-            GUI.Label(new Rect(172, 620, 50, 30), pipeText);
+            GUI.Label(new Rect(Screen.width * 0.015f + (Screen.width * 0.022f * ratioWidth * 3.3f), Screen.height * 0.91f, 40 , 40 ), pipe);
+            GUI.Label(new Rect(Screen.width * 0.03f + (Screen.width * 0.025f * ratioWidth *3), Screen.height * 0.92f, 50, 30), pipeText);
         }
     }
 }
