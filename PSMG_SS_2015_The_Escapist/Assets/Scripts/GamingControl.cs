@@ -72,4 +72,26 @@ public class GamingControl : MonoBehaviour {
     {
         return playerHiddenPercentage;
     }
+
+
+
+    /* Methods for Julien
+     * 
+     * public bool getFirstLock(){
+     * return status of first lock
+     * }
+     * 
+     * public bool getSecondLock(){
+     * return status of second lock
+     * }
+     * 
+     * public bool getThirdLock(){
+     * return status of third lock
+     * }
+     * 
+     * public bool getFourthLock(){
+     * return status of fourth lock
+     * }
+     * 
+     * */
 }
