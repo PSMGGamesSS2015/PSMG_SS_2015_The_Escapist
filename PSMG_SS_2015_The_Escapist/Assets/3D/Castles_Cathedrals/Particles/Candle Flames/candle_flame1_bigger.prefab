@@ -125,7 +125,7 @@ Light:
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: .891608417, g: .772435963, b: .392573833, a: 1}
-  m_Intensity: 8
+  m_Intensity: 3
   m_Range: 1
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1247,7 +1247,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Intensity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100006}

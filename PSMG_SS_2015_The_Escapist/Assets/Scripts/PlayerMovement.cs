@@ -288,7 +288,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if ((Input.GetButton("Jump")) == true && (playerIsGrounded() == true))
         {
-            //rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
+            rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
             anim.SetBool("Jumping", true);
 
 
