@@ -166,6 +166,13 @@ private void showVideoOptions()
         string[] qualities = QualitySettings.names;
 
 
+        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 220, 100, 30), "Ambient Brightness", optionTextStyle);
+        g = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 165, 100, 30), g, 0f, 1.0f);
+        GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 170, 100, 30), "" + (int)(g*10), smalloptionTextStyle);
+
+
+
+
         GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 120, 100, 30), "Video Quality", optionTextStyle);
 
         for (int i = 0; i < qualities.Length; i++)
@@ -247,7 +254,6 @@ private void showVideoOptions()
         }
 
 
-        g = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 235, 100, 30), g, 0f, 1.0f);
        
 
 
