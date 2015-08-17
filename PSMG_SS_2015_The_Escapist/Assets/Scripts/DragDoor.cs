@@ -16,6 +16,7 @@ public class DragDoor : MonoBehaviour
     private GameObject player;
     private Camera firstPersonCam;
     private float offsetAngle = 0;
+    private 
     
     void Start()
     {
@@ -28,9 +29,12 @@ public class DragDoor : MonoBehaviour
         if (!Input.GetButton("Use")) { return; }
 
         GameObject focusedDoor = LookForDoorInPlayersFocus();
-        if (focusedDoor) Drag(focusedDoor);
-    }
 
+        LockpickSystem lockpickSystem;
+        if (focusedDoor || (lockpickSystem = focusedDoor.GetComponent<LockpickSystem>()) || lockpickSystem.isLocked()) return;
+
+        Drag(focusedDoor);
+    }
     private GameObject LookForDoorInPlayersFocus()
     {
         // RAYS POINTING AROUND PLAYER'S FOCUSPOINT WITHIN THE FOCUS FIELD

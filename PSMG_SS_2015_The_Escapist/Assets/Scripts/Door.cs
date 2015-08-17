@@ -33,9 +33,9 @@ public class Door : MonoBehaviour {
         if (!doorInRange) return;
 
         if (!Input.GetButtonDown("Use")) return;
-        {
-            if (!doorOpen) open(); else close();
-        }
+        
+        
+        if (!doorOpen) open(); else close();
 
             if (locked)
             {
@@ -76,46 +76,6 @@ public class Door : MonoBehaviour {
         if ("Player".Equals(other.gameObject.tag))
         {
             doorInRange = false;
-        }
-    }
-
-    public void open()
-    {
-        if (Time.time > nextTriggerTime)
-        {
-            foreach(AnimationState state in openAnim)
-            {
-                state.speed = 1;
-                state.time = 0;
-            }
-
-            openAnim.Play();
-
-
-            audioSource.clip = openSound;
-            audioSource.Play();
-
-            doorOpen = true;
-            nextTriggerTime = Time.time + openAnimTime;
-        }
-    }
-
-    public void close()
-    {
-        if (Time.time > nextTriggerTime)
-        {
-            foreach(AnimationState state in openAnim) {
-	            state.speed = -1;
-                state.time = state.length;
-            }
-
-            openAnim.Play();
-
-            audioSource.clip = closeSound;
-            audioSource.Play();
-
-            doorOpen = false;
-            nextTriggerTime = Time.time + openAnimTime;
         }
     }
 }

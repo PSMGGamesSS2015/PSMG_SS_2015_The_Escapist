@@ -8,26 +8,27 @@ public class LockpickSystem : MonoBehaviour {
     public AudioClip failSound;
 
     private Door door;
-    private List<int> pattern;
     private AudioSource audioSource;
-    private int LEFT = 0;
-    private int RIGHT = 1;
+    private enum Directions { Left = "left", Right = "right" }
+    private List<Directions> pattern;
     private int actualPos = 0;
+    private bool locked;
 
-	void Awake() {
+	void Awake() 
+    {
         door = GetComponent<Door>();
-
-	    pattern = new List<int>();
-        for(int i = 0; i < patternLength; i++) {
-            pattern.Add((int) (Random.value + 0.5));
-        }
-
         audioSource = GetComponent<AudioSource>();
+	    pattern = new List<Directions>();
+
+        for(int i = 0; i < patternLength; i++) {
+            Directions dir = (Random.value < 0.5) ? Directions.Left : Directions.Right;
+            pattern.Add(dir);
+        }
 	}
 
     public void newMove(string direction)
     {
-        if ((direction.Equals("left") && pattern[actualPos] == LEFT) || (direction.Equals("right") && pattern[actualPos] == RIGHT))
+        if (direction.Equals(pattern[actualPos]))
         {
             actualPos++;
             audioSource.clip = successSound;
@@ -51,4 +52,10 @@ public class LockpickSystem : MonoBehaviour {
             Debug.Log("Wrong Move!");
         }
     }
+
+    public bool isLocked()
+    {
+        return locked;
+    }
+
 }
