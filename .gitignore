@@ -23,3 +23,8 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# Unity3D Version Info / Snapshots
+*/ProjectSettings/ProjectVersion.txt
+*/Assets/Scenes/*/LightmapSnapshot.asset
+*/Assets/Scenes/*/LightmapSnapshot.asset.meta
