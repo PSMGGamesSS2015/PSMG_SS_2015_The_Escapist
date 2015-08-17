@@ -105,7 +105,7 @@ public class ShadowDetection : MonoBehaviour
             // STORE LIGHTMAP TEXTURE
             Texture2D lightmapTex = lightmapData.lightmapFar;
             this.lightmapTex = lightmapTex;
-            
+
             // GET LIGHTMAP COORDINATE WHERE RAYCAST HITS
             Vector2 pixelUV = hit.lightmapCoord;
             this.pixelUV = pixelUV;

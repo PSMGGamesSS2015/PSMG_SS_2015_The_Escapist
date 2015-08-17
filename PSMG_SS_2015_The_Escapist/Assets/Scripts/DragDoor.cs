@@ -31,7 +31,7 @@ public class DragDoor : MonoBehaviour
         GameObject focusedDoor = LookForDoorInPlayersFocus();
 
         LockpickSystem lockpickSystem;
-        if (focusedDoor || (lockpickSystem = focusedDoor.GetComponent<LockpickSystem>()) || lockpickSystem.isLocked()) return;
+        if (!focusedDoor || (lockpickSystem = focusedDoor.GetComponent<LockpickSystem>()) && lockpickSystem.isLocked()) return;
 
         Drag(focusedDoor);
     }
@@ -102,7 +102,7 @@ public class DragDoor : MonoBehaviour
         float relativePlayerOrientation = 180 - NormalizeAngle((playerRot - doorwayRot) + 180);
 
         // FACTOR TO REVERSE DRAG ROTATION IF PLAYER LOOKS IN NEGATIVE DIRECTION OF THE OPEN DOOR AXIS
-        int dragDirectionFactor = (relativePlayerOrientation < 0) ? -1 : 1;
+        int dragDirectionFactor = (relativePlayerOrientation < 0) ? 1 : -1;
 
         return dragDirectionFactor;
     }

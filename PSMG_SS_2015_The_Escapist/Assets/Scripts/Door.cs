@@ -35,7 +35,7 @@ public class Door : MonoBehaviour {
         if (!Input.GetButtonDown("Use")) return;
         
         
-        if (!doorOpen) open(); else close();
+        //if (!doorOpen) open(); else close();
 
             if (locked)
             {
@@ -43,8 +43,8 @@ public class Door : MonoBehaviour {
                 {
                     if (gamingControl.hairpinActive)
                     {
-                        if (Input.GetButtonDown("Move Hairpin Right")) lockpickSystem.newMove("right");
-                        if (Input.GetButtonDown("Move Hairpin Left")) lockpickSystem.newMove("left");
+                        //if (Input.GetButtonDown("Move Hairpin Right")) lockpickSystem.newMove("right");
+                        //if (Input.GetButtonDown("Move Hairpin Left")) lockpickSystem.newMove("left");
                     }
 
                     else if (Input.GetButtonDown("Use"))
