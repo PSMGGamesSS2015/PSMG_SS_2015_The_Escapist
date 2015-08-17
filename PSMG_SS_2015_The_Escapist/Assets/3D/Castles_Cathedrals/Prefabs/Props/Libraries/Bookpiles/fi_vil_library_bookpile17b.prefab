@@ -10,13 +10,13 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 65: {fileID: 6578552}
+  - 64: {fileID: 6441576}
   m_Layer: 0
   m_Name: fi_vil_library_bookpile17b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -24,8 +24,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -.719433606, z: 0, w: .694561303}
+  m_LocalPosition: {x: 20.862442, y: -10.7431831, z: 40.1538162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 3a523dac69806ca43a059d0b82e299a5, type: 3}
---- !u!65 &6578552
-BoxCollider:
+--- !u!64 &6441576
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.16958261, y: .534673333, z: .512189746}
-  m_Center: {x: .110736579, y: .267336667, z: .101608716}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 3a523dac69806ca43a059d0b82e299a5, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

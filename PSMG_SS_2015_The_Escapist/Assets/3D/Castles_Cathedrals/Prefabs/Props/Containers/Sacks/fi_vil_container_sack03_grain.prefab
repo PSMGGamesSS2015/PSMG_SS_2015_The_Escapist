@@ -10,13 +10,13 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 65: {fileID: 6564844}
+  - 64: {fileID: 6462492}
   m_Layer: 0
   m_Name: fi_vil_container_sack03_grain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -24,8 +24,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -.0925448388, w: .995708525}
+  m_LocalPosition: {x: 30.2013435, y: -11.637228, z: -14.3090496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: d4af397041465e0478ae1760cc9aec83, type: 3}
---- !u!65 &6564844
-BoxCollider:
+--- !u!64 &6462492
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .385635376, y: .69542098, z: .627487183}
-  m_Center: {x: -9.16421413e-07, y: .34771049, z: -6.70552254e-06}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: d4af397041465e0478ae1760cc9aec83, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

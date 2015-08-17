@@ -11,13 +11,13 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 65: {fileID: 6575034}
+  - 64: {fileID: 6481038}
   m_Layer: 0
   m_Name: fi_vil_container_basket02_closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -25,8 +25,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.6717758, y: -11.6431847, z: -8.4108963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,8 +62,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: b406fc355c981e54eb40f5fb9d60e7bc, type: 3}
---- !u!65 &6575034
-BoxCollider:
+--- !u!64 &6481038
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .656425476, y: .70946753, z: .594909549}
-  m_Center: {x: 3.81469727e-06, y: .354733765, z: 5.96046448e-08}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: b406fc355c981e54eb40f5fb9d60e7bc, type: 3}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3

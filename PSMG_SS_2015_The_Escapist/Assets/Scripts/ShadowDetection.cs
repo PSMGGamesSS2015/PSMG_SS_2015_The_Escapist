@@ -13,6 +13,7 @@ public class ShadowDetection : MonoBehaviour
     public float probes = 25;
     public float detectionRadius = 20;
     public float alphaFactor = 5;
+    public Texture whiteTex;
     
     private Texture2D lightmapTex;
     private Vector2 pixelUV;
@@ -64,9 +65,15 @@ public class ShadowDetection : MonoBehaviour
 
         Vector2 mapOffset = new Vector2(300, -50);
         int mapMarkerSize = 10;
-        GUI.DrawTexture(new Rect(mapOffset.x, mapOffset.y, lightmapTex.width, lightmapTex.height), lightmapTex, ScaleMode.StretchToFill, true, 0);
-        GUI.DrawTexture(new Rect((pixelUV.x * lightmapTex.width) + mapOffset.x - mapMarkerSize / 2, (lightmapTex.height - (pixelUV.y * lightmapTex.height)) + mapOffset.y - mapMarkerSize / 2, mapMarkerSize, mapMarkerSize), mapMarkerTex, ScaleMode.ScaleToFit, true, 0);
 
+
+        GUI.DrawTexture(new Rect(mapOffset.x, mapOffset.y, lightmapTex.width, lightmapTex.height), whiteTex, ScaleMode.StretchToFill, true, 0);
+
+        GUI.DrawTexture(new Rect(mapOffset.x, mapOffset.y, lightmapTex.width, lightmapTex.height), lightmapTex, ScaleMode.StretchToFill, false, 0);
+        GUI.DrawTexture(new Rect((pixelUV.x * lightmapTex.width) + mapOffset.x - mapMarkerSize / 2, (lightmapTex.height - (pixelUV.y * lightmapTex.height)) + mapOffset.y - mapMarkerSize / 2, mapMarkerSize, mapMarkerSize), mapMarkerTex, ScaleMode.ScaleToFit, false, 0);
+
+        //GUI.backgroundColor = new Color(255, 255, 255, 80); 
+        
         GUILayout.EndArea();
     }
 
@@ -98,7 +105,7 @@ public class ShadowDetection : MonoBehaviour
             // STORE LIGHTMAP TEXTURE
             Texture2D lightmapTex = lightmapData.lightmapFar;
             this.lightmapTex = lightmapTex;
-
+            
             // GET LIGHTMAP COORDINATE WHERE RAYCAST HITS
             Vector2 pixelUV = hit.lightmapCoord;
             this.pixelUV = pixelUV;
