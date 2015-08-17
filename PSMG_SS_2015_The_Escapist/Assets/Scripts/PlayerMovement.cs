@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour {
     private float rotationSpeed;
     public bool sneaking = false;
     public bool running = false;
-    private bool firstPersonActive = true;
     private bool movementDisabled = false;
     private float turn;
     private float moveVertical;
@@ -49,21 +48,11 @@ public class PlayerMovement : MonoBehaviour {
         moveVertical = Input.GetAxis("Vertical");
         sneaking = checkSneakMode();
         running = checkRunningMode();
-        firstPersonActive = isCameraFirstPerson();
 
         // All movement will be done here.
-        if (firstPersonActive == true)
+        if (movementDisabled == false)
         {
-            if (movementDisabled == false)
-            {
-                manageMovement(turn, moveVertical, sneaking);
-            }
-
-        }
-        else
-        {
-            //Only used in debug-mode (third-person).
-            debugMovement(turn, moveVertical, sneaking);
+            manageMovement(turn, moveVertical, sneaking);
         }
 
         
@@ -346,92 +335,6 @@ public class PlayerMovement : MonoBehaviour {
     public void disableMovement(bool disable)
     {
         movementDisabled = disable;
-    }
-
-    // CAUTION: This part contains only methods for debugging the levels. This part will be removed when the game is finished.
-
-    private bool isCameraFirstPerson()
-    {
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            return false;
-        }
-        else if (Input.GetKey(KeyCode.Alpha1))
-        {
-            return true;
-        }
-        else
-        {
-            return firstPersonActive;
-        }
-    }
-
-    // ONLY FOR DEBUGGING!!! Do not change.
-    private void debugMovement(float turn, float moveVertical, bool sneaking)
-    {
-        if (sneaking == true)
-        {
-            movementSpeed = Constants.SNEAKING_SPEED;
-            rotationSpeed = Constants.DEBUG_SNEAKING_ROTATION;
-
-
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-
-        }
-        else if (running == true)
-        {
-            movementSpeed = Constants.RUNNING_SPEED;
-            rotationSpeed = Constants.DEBUG_RUNNING_ROTATION;
-
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-        }
-
-        else
-        {
-            movementSpeed = Constants.WALKING_SPEED;
-            rotationSpeed = Constants.DEBUG_WALKING_ROTATION;
-
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-            }
-
-        }
-
-        if ((Input.GetButtonDown("Jump")) == true && (playerIsGrounded() == true))
-        {
-            rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
-        }
-
-
     }
 
 
