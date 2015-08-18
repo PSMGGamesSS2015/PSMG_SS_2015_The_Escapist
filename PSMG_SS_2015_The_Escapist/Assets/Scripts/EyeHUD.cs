@@ -8,6 +8,7 @@ public class EyeHUD : MonoBehaviour {
     private FollowAI fai;
     private Color color;
 
+    private float shadowPercentage;
 
     private GamingControl gc; 
         // Use this for initialization
@@ -18,11 +19,18 @@ public class EyeHUD : MonoBehaviour {
         fai = GameObject.FindWithTag("Enemy").GetComponent<FollowAI>();
     }
 
+    void Update()
+    {
+        shadowPercentage = gc.getPlayerHiddenPercentage();
+        color.a = 0.9f - shadowPercentage/100;
+    
+    }
+
     void OnGUI()
     {
-        bool safe = (gc.getPlayerHiddenPercentage() > 90) ? true : false;
+        bool safe = (shadowPercentage > 90) ? true : false;
 
-        GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(gc.getPlayerHiddenPercentage()) + "%");
+        GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(shadowPercentage) + "%");
 
 
         if (fai.isChasing() == true)
@@ -35,13 +43,16 @@ public class EyeHUD : MonoBehaviour {
         {
             openeye.SetActive(true);
             openeyered.SetActive(false);
+            openeye.GetComponent<CanvasRenderer>().SetColor(color);
+
         }
         else if (!safe && fai.isChasing() == false)
         {
             openeye.SetActive(true);
             openeyered.SetActive(false);
+            openeye.GetComponent<CanvasRenderer>().SetColor(color);
+
         }
-        openeye.GetComponent<CanvasRenderer>().SetColor(color);
         
     }
 }
