@@ -301,9 +301,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .0844073743
-  m_TransitionOffset: .0105508985
-  m_ExitTime: .857795596
+  m_TransitionDuration: .230065197
+  m_TransitionOffset: .0209150184
+  m_ExitTime: .732305586
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -331,9 +331,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .100000001
+  m_TransitionDuration: .0823062807
   m_TransitionOffset: 0
-  m_ExitTime: .899999976
+  m_ExitTime: .900000036
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -652,9 +652,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .100000001
+  m_TransitionDuration: .289407015
   m_TransitionOffset: 0
-  m_ExitTime: .760342062
+  m_ExitTime: .896732152
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1173,7 +1173,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Run
-  m_Speed: 1
+  m_Speed: .899999976
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110103788}
