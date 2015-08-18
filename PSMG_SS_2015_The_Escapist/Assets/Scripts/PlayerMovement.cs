@@ -168,7 +168,7 @@ public class PlayerMovement : MonoBehaviour {
             movementSpeed = Constants.WALKING_SPEED;
             rotationSpeed = Constants.WALKING_ROTATION;
 
-            //transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
 
@@ -209,7 +209,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Idling", false);
                 anim.SetBool("Walking Backwards", false);
                 //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-                //transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
                 if (axes == RotationAxes.MouseXAndY)
@@ -248,7 +248,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Sneaking", false);
                 anim.SetBool("Idling", false);
                 //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
-                //transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
                 if (axes == RotationAxes.MouseXAndY)
