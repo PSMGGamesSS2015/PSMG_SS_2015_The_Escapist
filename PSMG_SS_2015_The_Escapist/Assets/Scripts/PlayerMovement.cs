@@ -140,6 +140,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Sneaking", false);
                 anim.SetBool("Walking Backwards", false);
                 anim.SetBool("Idling", true);
+
                 movementSpeed = Constants.WALKING_SPEED;
                 rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
 
@@ -155,9 +156,11 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("Sneaking", false);
             anim.SetBool("Idling", false);
             anim.SetBool("Walking Backwards", true);
+
             rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+
         }
 
         if (moveVertical > 0.1)
@@ -166,6 +169,7 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("Walking", true);
             anim.SetBool("Idling", false);
             anim.SetBool("Walking Backwards", false);
+
             movementSpeed = Constants.WALKING_SPEED;
             rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
 
@@ -209,6 +213,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Sneaking", true);
                 anim.SetBool("Idling", false);
                 anim.SetBool("Walking Backwards", false);
+
                 //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
@@ -248,6 +253,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Running", true);
                 anim.SetBool("Sneaking", false);
                 anim.SetBool("Idling", false);
+
                 //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
