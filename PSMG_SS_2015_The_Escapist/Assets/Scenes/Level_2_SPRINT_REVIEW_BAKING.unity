@@ -8118,11 +8118,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400092, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -25
+      value: -23.7299995
       objectReference: {fileID: 0}
     - target: {fileID: 400092, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -14.4820004
+      value: -11.4300003
       objectReference: {fileID: 0}
     - target: {fileID: 400092, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8171,6 +8171,10 @@ Prefab:
     - target: {fileID: 100092, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
@@ -15996,13 +16000,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 445048569}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!82 &445048574
 AudioSource:
@@ -16123,6 +16127,19 @@ CapsuleCollider:
   m_Height: 4.32999992
   m_Direction: 1
   m_Center: {x: 0, y: 2.06999993, z: -.0599999987}
+--- !u!136 &445048579
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445048569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .889999986
+  m_Height: 4.36999989
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &446336089
 Prefab:
   m_ObjectHideFlags: 0
@@ -41398,7 +41415,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400092, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -14.5212984
+      value: -14.0100002
       objectReference: {fileID: 0}
     - target: {fileID: 400092, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -41447,6 +41464,18 @@ Prefab:
     - target: {fileID: 100092, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
+      propertyPath: m_Height
+      value: 3.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
+      propertyPath: m_Center.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
@@ -45621,11 +45650,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_AngularDrag: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1385915428
 SphereCollider:
@@ -45758,6 +45787,19 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!136 &1385915434
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1385915424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .889999986
+  m_Height: 4.36999989
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &1386281755
 Prefab:
   m_ObjectHideFlags: 0
