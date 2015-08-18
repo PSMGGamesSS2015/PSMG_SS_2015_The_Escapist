@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
 
+
     /// <summary>
     /// This method checks if the running button has been pressed. Depending on which button has been pressed, it will return true or false. It also modifiys the size of the player.
     /// </summary>
@@ -130,7 +131,7 @@ public class PlayerMovement : MonoBehaviour {
 
         anim.SetFloat("Speed", rb.velocity.magnitude);
 
-        if (moveVertical == 0)
+        if (moveVertical <= 0.1)
         {
             if ((sneaking == false) && (running == false)) {
                 anim.SetBool("Walking", false);
@@ -158,7 +159,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
         }
 
-        if (moveVertical > 0)
+        if (moveVertical > 0.1)
         {
             if ((sneaking == false) && (running == false)) {
             anim.SetBool("Walking", true);
@@ -195,7 +196,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
 
-        if (moveVertical > 0)
+        if (moveVertical > 0.1)
         {
             if ((sneaking == true) && (running == false))
             {
@@ -235,7 +236,7 @@ public class PlayerMovement : MonoBehaviour {
 
         }
 
-        if (moveVertical > 0)
+        if (moveVertical > 0.1)
         {
             if ((sneaking == false) && (running == true)) {
 

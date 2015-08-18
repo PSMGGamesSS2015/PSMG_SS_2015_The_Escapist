@@ -68,7 +68,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-  m_LightmapSnapshot: {fileID: 112000000, guid: c50e1f688764aea4594537e4e1126aba,
+  m_LightmapSnapshot: {fileID: 112000000, guid: 276ce87e913d52a448e9f82604502d58,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -1587,13 +1587,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: 0
-  patrolRoute: {fileID: 0}
-  loopPatrol: 1
+  waypoint: []
+  loop: 1
   dampingLook: 6
-  pauseDuration: 4
+  currentWaypoint: 0
   playerInSight: 0
   hasSeenPlayer: 0
+  test: 0
   startGoing: 0
 --- !u!135 &53109230
 SphereCollider:
@@ -15969,13 +15969,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: 0
-  patrolRoute: {fileID: 0}
-  loopPatrol: 1
+  waypoint: []
+  loop: 1
   dampingLook: 6
-  pauseDuration: 4
+  currentWaypoint: 0
   playerInSight: 0
   hasSeenPlayer: 0
+  test: 0
   startGoing: 0
 --- !u!135 &445048572
 SphereCollider:
@@ -45604,13 +45604,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: 0
-  patrolRoute: {fileID: 0}
-  loopPatrol: 1
+  waypoint: []
+  loop: 1
   dampingLook: 6
-  pauseDuration: 4
+  currentWaypoint: 0
   playerInSight: 0
   hasSeenPlayer: 0
+  test: 0
   startGoing: 0
 --- !u!54 &1385915427
 Rigidbody:
@@ -62715,7 +62715,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1913154053}
   m_LocalRotation: {x: -1.13118404e-11, y: .973044634, z: -2.27373675e-11, w: .230617076}
-  m_LocalPosition: {x: 4.62126637, y: .0499999523, z: -20.376442}
+  m_LocalPosition: {x: -18.8999996, y: .0499999523, z: 1.79999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 199070612}
