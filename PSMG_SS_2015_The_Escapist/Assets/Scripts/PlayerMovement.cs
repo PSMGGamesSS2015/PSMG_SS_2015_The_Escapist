@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private Animator anim;
 
-
+    private float rotationFactor = Constants.MOUSE_SENSITIVITY;
 
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        
 
     }
 
@@ -140,7 +141,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Walking Backwards", false);
                 anim.SetBool("Idling", true);
                 movementSpeed = Constants.WALKING_SPEED;
-                rotationSpeed = Constants.WALKING_ROTATION;
+                rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
 
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
@@ -154,7 +155,7 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("Sneaking", false);
             anim.SetBool("Idling", false);
             anim.SetBool("Walking Backwards", true);
-            rotationSpeed = Constants.WALKING_ROTATION;
+            rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
         }
@@ -166,7 +167,7 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("Idling", false);
             anim.SetBool("Walking Backwards", false);
             movementSpeed = Constants.WALKING_SPEED;
-            rotationSpeed = Constants.WALKING_ROTATION;
+            rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
 
             transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
             transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
@@ -201,7 +202,7 @@ public class PlayerMovement : MonoBehaviour {
             if ((sneaking == true) && (running == false))
             {
                 movementSpeed = Constants.SNEAKING_SPEED;
-                rotationSpeed = Constants.WALKING_ROTATION;
+                rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
 
                 anim.SetBool("Walking", false);
                 anim.SetBool("Running", false);
@@ -241,7 +242,7 @@ public class PlayerMovement : MonoBehaviour {
             if ((sneaking == false) && (running == true)) {
 
                 movementSpeed = Constants.RUNNING_SPEED;
-                rotationSpeed = Constants.WALKING_ROTATION;
+                rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
 
                 anim.SetBool("Walking", false);
                 anim.SetBool("Running", true);

@@ -12,6 +12,9 @@ public class MenuManager : MonoBehaviour
 
     int overallVol = 6;
     float g = 0.5f;
+
+    float ms = 5f;
+
     int musicVol = 6;
 
     int fieldOfView = 80;
@@ -58,6 +61,9 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
+        Constants.MOUSE_SENSITIVITY = ms;
+       
+        //Constants.TEST = g;
         RenderSettings.ambientLight = new Color(g, g, g, 1.0f);
     }
 
@@ -164,6 +170,11 @@ private void showVideoOptions()
     GUI.Box(new Rect(0,0,Screen.width, Screen.height),"");
         
         string[] qualities = QualitySettings.names;
+
+        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 320, 100, 30), "Mouse Sensitivity", optionTextStyle);
+        ms = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 265, 100, 30), ms, 1f, 20.0f);
+        GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 270, 100, 30), "" + (int)ms, smalloptionTextStyle);
+
 
 
         GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 220, 100, 30), "Ambient Brightness", optionTextStyle);

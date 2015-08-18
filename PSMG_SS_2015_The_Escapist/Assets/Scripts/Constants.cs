@@ -14,6 +14,7 @@ public class Constants : MonoBehaviour {
 
     public static float VERTICAL_ROTATION = 150f;
 
+   
     //This Constants will be removed (only for debugging).
     public static float DEBUG_SNEAKING_ROTATION = 40f;
     public static float DEBUG_WALKING_ROTATION = 50f;
@@ -48,4 +49,12 @@ public class Constants : MonoBehaviour {
 
     //Constants for LightSwitch
     public static float SWITCH_ANIM_TIME = 0.5f;
+
+
+    // Constants for options (temporary)
+    public static float MOUSE_SENSITIVITY = 5f;
+
+
+    //public static float TEST = 0.5f;
+
 }
