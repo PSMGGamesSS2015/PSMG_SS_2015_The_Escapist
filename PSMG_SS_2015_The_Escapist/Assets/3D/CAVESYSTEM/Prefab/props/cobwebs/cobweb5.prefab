@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400470
 Transform:
@@ -25,8 +25,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106240}
   m_LocalRotation: {x: .0517321825, y: -.688945949, z: -.0494135991, w: .721273541}
-  m_LocalPosition: {x: -0, y: 0, z: .419547647}
-  m_LocalScale: {x: 2.53999996, y: 2.53999996, z: 2.5400002}
+  m_LocalPosition: {x: -37.5634842, y: 59.7868996, z: 5.07502365}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,7 +68,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106240}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: d65ba1bdf7071b340b7547851250871c, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0

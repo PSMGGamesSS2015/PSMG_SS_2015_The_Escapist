@@ -10,13 +10,13 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 65: {fileID: 6500000}
+  - 64: {fileID: 6423086}
   m_Layer: 0
   m_Name: Sew_Ruins_Rubble_3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -24,8 +24,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -.707107008, z: 0, w: .70710665}
+  m_LocalPosition: {x: 16.9593182, y: 0, z: 15.8090048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 618b5b6f5c3df0d40aa932960f80952c, type: 3}
---- !u!65 &6500000
-BoxCollider:
+--- !u!64 &6423086
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .800000012, y: 1.5, z: 2.20000005}
-  m_Center: {x: 0, y: .75, z: .255174041}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 618b5b6f5c3df0d40aa932960f80952c, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
