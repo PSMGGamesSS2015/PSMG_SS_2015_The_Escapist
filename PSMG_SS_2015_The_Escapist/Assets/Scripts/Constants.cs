@@ -14,13 +14,6 @@ public class Constants : MonoBehaviour {
 
     public static float VERTICAL_ROTATION = 150f;
 
-   
-    //This Constants will be removed (only for debugging).
-    public static float DEBUG_SNEAKING_ROTATION = 40f;
-    public static float DEBUG_WALKING_ROTATION = 50f;
-    public static float DEBUG_RUNNING_ROTATION = 60f;
-    //End
-
     public static float JUMPING_SPEED = 5;
 
     //Constants for the FollowAI
@@ -53,7 +46,7 @@ public class Constants : MonoBehaviour {
 
 
     // Constants for options (temporary)
-    public static float MOUSE_SENSITIVITY = 5f;
+    public static float MOUSE_SENSITIVITY = 1f;
 
 
     //public static float TEST = 0.5f;

@@ -33,13 +33,14 @@ public class MouseLook : MonoBehaviour {
     Quaternion rotation;
 
     GamingControl control;
-    private Vector3 currentPosition;
-    private Vector3 playersHeight = new Vector3(0, 1.4f, 0);
+    private Vector3 sneakingHeight = new Vector3(0, 0.3f, 0);
+    private Vector3 sneakingVector;
+    private Vector3 walkingVector;
+    private Vector3 targetPosition;
 
 	void FixedUpdate ()
 	{
-        //setPosition();
-
+        setPosition();
 
 		if (axes == RotationAxes.MouseXAndY)
 		{
@@ -77,6 +78,10 @@ public class MouseLook : MonoBehaviour {
     {
         //rotation = transform.rotation;
         //transform.parent.rotation = rotation;
+
+        walkingVector = transform.position;
+        sneakingVector = transform.position - sneakingHeight;
+
     }
 
     void LateUpdate()
@@ -86,8 +91,20 @@ public class MouseLook : MonoBehaviour {
 
     private void setPosition()
     {
-        currentPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        currentPosition += playersHeight;
-        transform.position = currentPosition;
+
+        if ((control.isSneakingActive()) && (transform.position.y >= sneakingVector.y))
+        {
+            targetPosition = transform.position - sneakingHeight;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 1);
+
+        }
+
+        if (!(control.isSneakingActive()) && (transform.position.y <= walkingVector.y))
+        {
+            targetPosition = transform.position + sneakingHeight;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 1);
+
+        }
+
     }
 }
