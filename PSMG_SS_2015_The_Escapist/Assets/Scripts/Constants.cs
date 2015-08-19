@@ -49,6 +49,6 @@ public class Constants : MonoBehaviour {
     public static float MOUSE_SENSITIVITY = 1f;
 
 
-    //public static float TEST = 0.5f;
+    public static float BRIGHTNESS = 1f;
 
 }

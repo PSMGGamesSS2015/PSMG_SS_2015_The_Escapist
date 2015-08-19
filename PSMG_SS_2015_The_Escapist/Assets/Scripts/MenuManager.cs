@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     bool video = false;
 
     int overallVol = 6;
-    float g = 0.5f;
+    float brightness = 0.5f;
 
     float ms = 5f;
 
@@ -62,9 +62,11 @@ public class MenuManager : MonoBehaviour
     private void Update()
     {
         Constants.MOUSE_SENSITIVITY = ms;
-       
-        //Constants.TEST = g;
-        RenderSettings.ambientLight = new Color(g, g, g, 1.0f);
+
+        Constants.BRIGHTNESS = brightness;
+
+        Debug.Log(Constants.BRIGHTNESS);
+
     }
 
     // Use this for initialization
@@ -98,12 +100,12 @@ public class MenuManager : MonoBehaviour
         showVideoOptions();
     }
 
-private void showMenu()
-{
- if (menu)
+    private void showMenu()
+    {
+        if (menu)
         {
 
-           if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 320, 200, 80), "Start Game", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 320, 200, 80), "Start Game", buttonStyle))
             {
 
                 ChangeScene(1);
@@ -127,14 +129,14 @@ private void showMenu()
                 CloseGame();
             }
         }
-}
+    }
 
-private void showOptionMenu()
-{
- 	if (optionmenu)
+    private void showOptionMenu()
+    {
+        if (optionmenu)
         {
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 300, 200, 80), "Audio Settings", buttonStyle ))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 300, 200, 80), "Audio Settings", buttonStyle))
             {
 
 
@@ -160,169 +162,169 @@ private void showOptionMenu()
                 menu = true;
             }
         }
-}
+    }
 
-private void showVideoOptions()
-{
-    if (video)
+    private void showVideoOptions()
     {
-
-    GUI.Box(new Rect(0,0,Screen.width, Screen.height),"");
-        
-        string[] qualities = QualitySettings.names;
-
-        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 320, 100, 30), "Mouse Sensitivity", optionTextStyle);
-        ms = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 265, 100, 30), ms, 1f, 20.0f);
-        GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 270, 100, 30), "" + (int)ms, smalloptionTextStyle);
-
-
-
-        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 220, 100, 30), "Ambient Brightness", optionTextStyle);
-        g = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 165, 100, 30), g, 0f, 1.0f);
-        GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 170, 100, 30), "" + (int)(g*10), smalloptionTextStyle);
-
-
-
-
-        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 120, 100, 30), "Video Quality", optionTextStyle);
-
-        for (int i = 0; i < qualities.Length; i++)
+        if (video)
         {
 
+            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 270 + i * 100, Screen.height / 2 - 70, 80, 40), qualities[i], smalloptionTextStyle))
+            string[] qualities = QualitySettings.names;
+
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 320, 100, 30), "Mouse Sensitivity", optionTextStyle);
+            ms = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 265, 100, 30), ms, 1f, 20.0f);
+            GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 270, 100, 30), "" + (int)ms, smalloptionTextStyle);
+
+
+
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 220, 100, 30), "Brightness", optionTextStyle);
+            brightness = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 165, 100, 30), brightness, 0.5f, 2.0f);
+            GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 170, 100, 30), "" + (int)(brightness * 10), smalloptionTextStyle);
+
+
+
+
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 120, 100, 30), "Video Quality", optionTextStyle);
+
+            for (int i = 0; i < qualities.Length; i++)
             {
-               QualitySettings.SetQualityLevel(i, true);
+
+
+                if (GUI.Button(new Rect(Screen.width / 2 - 270 + i * 100, Screen.height / 2 - 70, 80, 40), qualities[i], smalloptionTextStyle))
+                {
+                    QualitySettings.SetQualityLevel(i, true);
+                }
             }
-        }
-        
-
-
-        
-
-        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 20, 120, 30), "Antialiasing", optionTextStyle);
-
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 30, 120, 40), "No AA", smalloptionTextStyle))
-        {
-            QualitySettings.antiAliasing = 0;
-        }
-        //2 X AA SETTINGS
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 200, Screen.height / 2 + 30, 120, 40), "2x AA", smalloptionTextStyle))
-        {
-            QualitySettings.antiAliasing = 2;
-        }
-        //4 X AA SETTINGS
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 300, Screen.height / 2 + 30, 120, 40), "4x AA", smalloptionTextStyle))
-        {
-            QualitySettings.antiAliasing = 4;
-        }
-        //8 x AA SETTINGS
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 400, Screen.height / 2 + 30, 120, 40), "8x AA", smalloptionTextStyle))
-        {
-            QualitySettings.antiAliasing = 8;
-        }
 
 
 
 
 
-        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 80, 120, 30), "Vsync", optionTextStyle);
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 20, 120, 30), "Antialiasing", optionTextStyle);
 
-
-        if (vsync)
-        {
-            if (GUI.Button(new Rect(Screen.width / 2 - 230, Screen.height / 2 + 95, 120, 30), on, buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 30, 120, 40), "No AA", smalloptionTextStyle))
             {
-                vsync = false;
-                QualitySettings.vSyncCount = 0;
-             
+                QualitySettings.antiAliasing = 0;
             }
-        }
-        else
-        {
-            if (GUI.Button(new Rect(Screen.width / 2 - 230, Screen.height / 2 + 95, 120, 30), off, buttonStyle))
+            //2 X AA SETTINGS
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 200, Screen.height / 2 + 30, 120, 40), "2x AA", smalloptionTextStyle))
             {
-                vsync = true;
-               
-                QualitySettings.vSyncCount = 1;
+                QualitySettings.antiAliasing = 2;
+            }
+            //4 X AA SETTINGS
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 300, Screen.height / 2 + 30, 120, 40), "4x AA", smalloptionTextStyle))
+            {
+                QualitySettings.antiAliasing = 4;
+            }
+            //8 x AA SETTINGS
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 400, Screen.height / 2 + 30, 120, 40), "8x AA", smalloptionTextStyle))
+            {
+                QualitySettings.antiAliasing = 8;
+            }
+
+
+
+
+
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 80, 120, 30), "Vsync", optionTextStyle);
+
+
+            if (vsync)
+            {
+                if (GUI.Button(new Rect(Screen.width / 2 - 230, Screen.height / 2 + 95, 120, 30), on, buttonStyle))
+                {
+                    vsync = false;
+                    QualitySettings.vSyncCount = 0;
+
+                }
+            }
+            else
+            {
+                if (GUI.Button(new Rect(Screen.width / 2 - 230, Screen.height / 2 + 95, 120, 30), off, buttonStyle))
+                {
+                    vsync = true;
+
+                    QualitySettings.vSyncCount = 1;
+
+                }
+            }
+
+
+
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 80, 120, 30), "Refresh Rate", optionTextStyle);
+
+
+            if (GUI.Button(new Rect(Screen.width / 2 + 120, Screen.height / 2 + 90, 120, 40), "60Hz", smalloptionTextStyle))
+            {
+                Screen.SetResolution(ResX, ResY, Fullscreen, 60);
+            }
+            //120Hz
+            if (GUI.Button(new Rect(Screen.width / 2 + 200, Screen.height / 2 + 90, 120, 40), "120Hz", smalloptionTextStyle))
+            {
+                Screen.SetResolution(ResX, ResY, Fullscreen, 120);
+            }
+
+
+
+
+
+
+
+
+
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 150, 120, 30), "Resolution", optionTextStyle);
+
+
+            //1080p
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 200, 120, 40), "1080p", smalloptionTextStyle))
+            {
+                Screen.SetResolution(1920, 1080, Fullscreen);
+                ResX = 1920;
+                ResY = 1080;
 
             }
-        }
+            //720p
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 200, Screen.height / 2 + 200, 120, 40), "720p", smalloptionTextStyle))
+            {
+                Screen.SetResolution(1280, 720, Fullscreen);
+                ResX = 1280;
+                ResY = 720;
 
-        
-
-        GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 80, 120, 30), "Refresh Rate", optionTextStyle);
-
-
-        if (GUI.Button(new Rect(Screen.width / 2 + 120, Screen.height / 2 + 90, 120, 40), "60Hz", smalloptionTextStyle))
-        {
-            Screen.SetResolution(ResX, ResY, Fullscreen, 60);
-        }
-        //120Hz
-        if (GUI.Button(new Rect(Screen.width / 2 + 200, Screen.height / 2 + 90, 120, 40), "120Hz", smalloptionTextStyle))
-        {
-            Screen.SetResolution(ResX, ResY, Fullscreen, 120);
-        }
+            }
+            //480p
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 300, Screen.height / 2 + 200, 120, 40), "480p", smalloptionTextStyle))
+            {
+                Screen.SetResolution(640, 480, Fullscreen);
+                ResX = 640;
+                ResY = 480;
 
 
-       
+            }
+
+            //360p
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 400, Screen.height / 2 + 200, 120, 40), "360p", smalloptionTextStyle))
+            {
+                Screen.SetResolution(640, 360, Fullscreen);
+                ResX = 640;
+                ResY = 360;
 
 
-
-
-
-        
-        GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 150, 120, 30), "Resolution", optionTextStyle);
-
-
-        //1080p
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 200, 120, 40), "1080p", smalloptionTextStyle))
-        {
-            Screen.SetResolution(1920, 1080, Fullscreen);
-            ResX = 1920;
-            ResY = 1080;
-
-        }
-        //720p
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 200, Screen.height / 2 + 200, 120, 40), "720p", smalloptionTextStyle))
-        {
-            Screen.SetResolution(1280, 720, Fullscreen);
-            ResX = 1280;
-            ResY = 720;
-
-        }
-        //480p
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 300, Screen.height / 2 + 200, 120, 40), "480p", smalloptionTextStyle))
-        {
-            Screen.SetResolution(640, 480, Fullscreen);
-            ResX = 640;
-            ResY = 480;
-
-
-        }
-
-        //360p
-        if (GUI.Button(new Rect(Screen.width / 2 - 280 + 400, Screen.height / 2 + 200, 120, 40), "360p", smalloptionTextStyle))
-        {
-            Screen.SetResolution(640, 360, Fullscreen);
-            ResX = 640;
-            ResY = 360;
-
-
-        }
-         
+            }
 
 
 
-        if (GUI.Button(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 260, 220, 60), "Back", buttonStyle))
-        {
+
+            if (GUI.Button(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 260, 220, 60), "Back", buttonStyle))
+            {
 
 
-            video = false;
-            optionmenu = true;
+                video = false;
+                optionmenu = true;
+            }
         }
     }
-}
 
     private void showSoundOptions()
     {
@@ -331,8 +333,8 @@ private void showVideoOptions()
             GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
 
             GUI.Label(new Rect(Screen.width / 2 - 110, Screen.height / 2 - 100, 100, 30), "Overall Volume", optionTextStyle);
-            overallVol = (int)GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2 -35, 100, 30), overallVol, 0.0f, 10.0f);
-            GUI.Label(new Rect(Screen.width / 2 -5, Screen.height / 2 -20, 100, 30), "" + overallVol, smalloptionTextStyle);
+            overallVol = (int)GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 35, 100, 30), overallVol, 0.0f, 10.0f);
+            GUI.Label(new Rect(Screen.width / 2 - 5, Screen.height / 2 - 20, 100, 30), "" + overallVol, smalloptionTextStyle);
             AudioListener.volume = overallVol / 10.0f;
 
 
@@ -345,8 +347,3 @@ private void showVideoOptions()
         }
     }
 }
-
-
-            
-
-         

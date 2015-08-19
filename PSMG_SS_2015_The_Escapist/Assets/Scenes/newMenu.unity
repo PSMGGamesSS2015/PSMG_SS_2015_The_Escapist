@@ -4583,6 +4583,7 @@ GameObject:
   - 124: {fileID: 1053391931}
   - 81: {fileID: 1053391930}
   - 82: {fileID: 1053391935}
+  - 114: {fileID: 1053391936}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4725,6 +4726,19 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1053391936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053391929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb31a78fe849c54d983f346c2c55df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDerp: {fileID: 4800000, guid: b0d68b107c1e873439f9adb97caa16b3, type: 3}
+  brightness: 2
 --- !u!4 &1059531477 stripped
 Transform:
   m_PrefabParentObject: {fileID: 468814, guid: 62f525a5c612fb04d9041a1e55c345c4, type: 2}
