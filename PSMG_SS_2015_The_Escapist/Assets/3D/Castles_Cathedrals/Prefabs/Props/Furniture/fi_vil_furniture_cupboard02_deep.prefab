@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 65: {fileID: 6500000}
+  - 64: {fileID: 6436382}
   m_Layer: 0
   m_Name: fi_vil_furniture_cupboard02_deep
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.4552078, y: 56.3628998, z: 9.43748474}
+  m_LocalPosition: {x: .459603041, y: .0199999996, z: 5.88247871}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 925802329f0f70d418c77db87a98ef34, type: 3}
---- !u!65 &6500000
-BoxCollider:
+--- !u!64 &6436382
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .63369751, y: 2, z: 1.57999802}
-  m_Center: {x: .316875458, y: 1, z: -4.61935997e-06}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 925802329f0f70d418c77db87a98ef34, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

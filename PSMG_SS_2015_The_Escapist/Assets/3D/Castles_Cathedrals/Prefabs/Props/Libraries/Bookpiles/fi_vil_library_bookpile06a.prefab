@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 65: {fileID: 6561794}
+  - 64: {fileID: 6404508}
   m_Layer: 0
   m_Name: fi_vil_library_bookpile06a
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.1614647, y: -11.6431847, z: 14.832634}
+  m_LocalPosition: {x: 13.0206261, y: .00100040459, z: 9.0500927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,8 +61,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: da4a83ccae32acb44bc74307fdb493eb, type: 3}
---- !u!65 &6561794
-BoxCollider:
+--- !u!64 &6404508
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .522815764, y: .534673333, z: .369390488}
-  m_Center: {x: -.111771114, y: .267336667, z: .00473701954}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: da4a83ccae32acb44bc74307fdb493eb, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
