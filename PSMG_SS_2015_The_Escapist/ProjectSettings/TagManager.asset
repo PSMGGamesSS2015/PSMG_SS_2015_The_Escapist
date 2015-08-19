@@ -10,6 +10,7 @@ TagManager:
   - Collider
   - Fire
   - Door
+  - AI Boundary
   - Sound
   layers:
   - Default
@@ -26,7 +27,7 @@ TagManager:
   - Dragable
   - NoLight
   - NoGround
-  - 
+  - AI Boundaries
   - 
   - 
   - 

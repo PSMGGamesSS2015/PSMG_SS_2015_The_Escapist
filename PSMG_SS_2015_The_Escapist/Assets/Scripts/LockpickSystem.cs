@@ -7,7 +7,6 @@ public class LockpickSystem : MonoBehaviour {
     public AudioClip successSound;
     public AudioClip failSound;
 
-
     private Door door;
     private AudioSource audioSource;
     private List<Directions> pattern;

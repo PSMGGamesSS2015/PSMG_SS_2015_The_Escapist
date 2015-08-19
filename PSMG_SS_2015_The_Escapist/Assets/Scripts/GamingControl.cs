@@ -73,6 +73,11 @@ public class GamingControl : MonoBehaviour {
         return playerHiddenPercentage;
     }
 
+    public float getPlayerVisibilityFactor()
+    {
+        return (1 - (playerHiddenPercentage / 100));
+    }
+
 
 
     /* Methods for Julien

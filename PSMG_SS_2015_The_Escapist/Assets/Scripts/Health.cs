@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class HurtEffect : MonoBehaviour
+public class Health : MonoBehaviour
 {
 
     public Texture hurtEffect;
@@ -33,13 +33,12 @@ public class HurtEffect : MonoBehaviour
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         audioSrc = GetComponent<AudioSource>();
         gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
-
-
     }
-    void OnTriggerEnter(Collider col)
+    
+    void OnTriggerEnter(Collider coll)
     {
         float distance = Vector3.Distance(enemy.transform.position, gamingControl.getPlayerPosition());
-        if (col.gameObject == enemy && distance < 1.5)
+        if (coll.gameObject == enemy && distance < 1.5f)
         {
             if (counter == 2)
             {
@@ -48,10 +47,10 @@ public class HurtEffect : MonoBehaviour
             }
             else
             {
-                counter++;
                 audioSrc.Play();
-
                 displayHurtEffect = true;
+
+                counter++;
             }
         }
     }
@@ -63,22 +62,15 @@ public class HurtEffect : MonoBehaviour
     {
         if (displayHurtEffect)
         {
-            
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
-            
-
             StartCoroutine(StopDisplayingEffect());
         }
 
         if (displayDead)
         {
-            
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), hurtEffect, ScaleMode.StretchToFill);
             GUI.Label(new Rect(Screen.width/2, Screen.height/2, 120, 120), "Du bist deinen Verletzungen erlegen!", style);
-
         }
-
-
     }
 
     /// <summary>
@@ -87,8 +79,6 @@ public class HurtEffect : MonoBehaviour
     IEnumerator StopDisplayingEffect()
     {
         yield return new WaitForSeconds(Constants.DISPLAY_TIME);
-     
-
         counter = 0;
         displayHurtEffect = false;
     }
@@ -97,7 +87,5 @@ public class HurtEffect : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         Application.LoadLevel(Application.loadedLevel);
-        
-       
     }
 }

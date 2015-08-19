@@ -1,72 +1,61 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FootStep : MonoBehaviour {
-
+public class FootStep : MonoBehaviour 
+{
+    private GamingControl gameController;
     private GameObject player;
-    private GameObject sound;
-    private SphereCollider scol;
-    private GamingControl gc;
+    private Rigidbody playerRb;
     private AudioSource audioSrc;
-    private Rigidbody rb;
 
-    private Vector3 lastPos;
-
-	// Use this for initialization
-	void Start () {
-        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
+	void Start () 
+    {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
         player = GameObject.FindGameObjectWithTag("Player");
-        sound = GameObject.Find("Sound");
-        rb = player.GetComponent<Rigidbody>();
-        scol = sound.GetComponent<SphereCollider>();
-        audioSrc = sound.GetComponent<AudioSource>();
+        playerRb = player.GetComponent<Rigidbody>();
 
-        lastPos = gc.getPlayerPosition();
+        audioSrc = GameObject.Find("player_noise").GetComponent<AudioSource>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
+       if (!gameController.isPlayerGrounded() || audioSrc.isPlaying) return;
 
+        float minVolume = 0f;
+        float maxVolume = 0f;
+        float pitch = 1f;
 
-        if (gc.isSneakingActive())
+        //Sneaking
+        if (gameController.isSneakingActive() && playerRb.velocity.magnitude > 0.4f && playerRb.velocity.magnitude < 1.0f)
         {
-
-            scol.radius = 0.36f;
-        }
-        else if (gc.isRunningActive())
-        {
-            scol.radius = 4.0f;
-        }
-        else
-        {
-
-            scol.radius = 2.0f;
+            minVolume = 0.01f;
+            maxVolume = 0.03f;
+            pitch = 1f;
         }
 
-      
-            if (gc.isSneakingActive() && gc.isPlayerGrounded() && audioSrc.isPlaying == false && rb.velocity.magnitude > 0.4f && rb.velocity.magnitude < 1.0f)
-            {
-                audioSrc.volume = Random.Range(0.02f, 0.04f);
-                audioSrc.pitch = 1f;
-                audioSrc.Play();
-            }
-
-
-            else if (gc.isPlayerGrounded() && audioSrc.isPlaying == false && rb.velocity.magnitude > 1.0f && rb.velocity.magnitude < 1.5f)
-            {
-                audioSrc.volume = Random.Range(0.04f, 0.06f);
-                audioSrc.pitch = 1f;
-                audioSrc.Play();
-            }
-
-            else if (gc.isRunningActive() && gc.isPlayerGrounded() && audioSrc.isPlaying == false && rb.velocity.magnitude > 1.5f)
-            {
-                audioSrc.volume = Random.Range(0.07f, 0.1f);
-                audioSrc.pitch = 1.3f;
-                audioSrc.Play();
-            }
+        // Walking
+        else if (playerRb.velocity.magnitude > 1.0f && playerRb.velocity.magnitude < 1.5f)
+        {
+            minVolume = 0.04f;
+            maxVolume = 0.06f;
+            pitch = 1f;
+        }
         
-	}
+        //Running
+        else if (gameController.isRunningActive() && playerRb.velocity.magnitude > 1.5f)
+        {
+            minVolume = 0.07f;
+            maxVolume = 0.1f;
+            pitch = 1.3f;
+        }
 
-    
+        if(minVolume > 0) adjustAudioSrc(minVolume, maxVolume, pitch);
+    }
+        
+    private void adjustAudioSrc(float minVolume, float maxVolume, float pitch)
+    {
+        audioSrc.volume = Random.Range(minVolume, maxVolume);
+        audioSrc.pitch = pitch;
+        audioSrc.Play();
+    }
 }

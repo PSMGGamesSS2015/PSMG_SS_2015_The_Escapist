@@ -35,6 +35,7 @@ public class DragDoor : MonoBehaviour
 
         Drag(focusedDoor);
     }
+
     private GameObject LookForDoorInPlayersFocus()
     {
         // RAYS POINTING AROUND PLAYER'S FOCUSPOINT WITHIN THE FOCUS FIELD

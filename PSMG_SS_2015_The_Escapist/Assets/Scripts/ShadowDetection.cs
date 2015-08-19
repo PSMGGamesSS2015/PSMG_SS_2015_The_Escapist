@@ -70,7 +70,8 @@ public class ShadowDetection : MonoBehaviour
         GUI.DrawTexture(new Rect(mapOffset.x, mapOffset.y, lightmapTex.width, lightmapTex.height), whiteTex, ScaleMode.StretchToFill, true, 0);
 
         GUI.DrawTexture(new Rect(mapOffset.x, mapOffset.y, lightmapTex.width, lightmapTex.height), lightmapTex, ScaleMode.StretchToFill, false, 0);
-        GUI.DrawTexture(new Rect((pixelUV.x * lightmapTex.width) + mapOffset.x - mapMarkerSize / 2, (lightmapTex.height - (pixelUV.y * lightmapTex.height)) + mapOffset.y - mapMarkerSize / 2, mapMarkerSize, mapMarkerSize), mapMarkerTex, ScaleMode.ScaleToFit, false, 0);
+        GUI.DrawTexture(new Rect((pixelUV.x * lightmapTex.width) + mapOffset.x - mapMarkerSize / 2,(lightmapTex.height - (pixelUV.y * lightmapTex.height)) + mapOffset.y - mapMarkerSize / 2, mapMarkerSize, mapMarkerSize),
+            mapMarkerTex, ScaleMode.ScaleToFit, false, 0);
 
         //GUI.backgroundColor = new Color(255, 255, 255, 80); 
         

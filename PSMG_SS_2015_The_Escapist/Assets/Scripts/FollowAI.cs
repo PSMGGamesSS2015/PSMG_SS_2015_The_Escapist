@@ -4,311 +4,309 @@ using System;
 
 public class FollowAI : MonoBehaviour
 {
+    public int startWaypoint = 1;
+    public GameObject patrolRoute;
+    public GameObject alternateRoute;
+    public AITrigger patrolTrigger;
+    public bool loopPatrol = true;
+    public bool reverseRouteForLoop = false;
+    public float searchActualisationTime = 4.0f;
+    public float waitingTime = 3.0f;
+    public float postDiscoverySearchDuration = 10.0f;
+
     private GameObject player;
-    private GameObject sound;
-
-    private Transform enemy;
-
+    private PlayerMovement playerMovement;
+    private Animator anim;
+    private CharacterController character;
     private NavMeshAgent agent;
 
-    private Vector3 startPosition;
+    private int currentWaypoint;
+    private bool routeReversed = false;
+    private Transform[] wayPoints;
+    private Transform[] alternateWayPoints;
 
-    private PlayerMovement playerMovement;
+    private Vector3 playerLastSeenPos;
+    private Vector3 approxTargetPos;
+    private bool patrolFinished;
+    private bool waiting = false;
+    private float waitStartTime;
+    private bool searchHasBeenUpdated = false;
+    private bool playerHasBeenDiscovered = false;
+    private float detectionStartTime;
+    private float searchStartTime;
+    private float searchUpdateStartTime;
+    private float chasingTimeOut = 20f;
+    private float playerLostTime;
+    private bool postSearchStarted = false;
 
+    private AIDetection aiDetection;
 
-    public Transform[] waypoint;
-    public bool loop = true;
-    public float dampingLook = 6.0f;
-    private float pauseDuration = 4.0f;
-    private float curTime;
-    public int currentWaypoint = 0;
-    private CharacterController character;
-
-    private GamingControl gamingControl;
-
-    //Added by Chris
-    private Animator anim;
-
-    public bool playerInSight = false;
-
-    public bool hasSeenPlayer = false;
-
-    public bool test;
-    public bool startGoing = false;
-
-    private bool running = true;
-
-    //isPatroling = 1;
-    //isSearching = 2;
-    //isWaiting = 3;
-    //isChasing = 4;
-    //isAttacking = 5;
-
-    private int state = 1;
-
-
-    // A simple AI that follows the player if he reaches the sight distance of the AI.
-
+    private enum States { Patroling, Waiting, Searching, Chasing, Attacking };
+    private States currentState = States.Patroling;
+    
 
     /// <summary>
     /// Initialisation
     /// </summary>
-    void Start()
-    {
-        gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
-
-        character = GetComponent<CharacterController>();
-        player = GameObject.FindWithTag("Player");
-
-        sound = GameObject.FindWithTag("Sound");
-
-
-        agent = gameObject.GetComponent<NavMeshAgent>();
-
-        playerMovement = player.GetComponent<PlayerMovement>();
-
-        //shadowLightOne = testLightOne.GetComponent<Shadow>();
-
-        enemy = transform;
-        //agent.speed = Constants.AI_NORMAL_SPEED;
-        startPosition = character.transform.position;
-
-    }
-
     void Awake()
     {
-        //Added by Chris
+        player = GameObject.FindWithTag("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
+        character = GetComponent<CharacterController>();
+        agent = GetComponent<NavMeshAgent>();
+        aiDetection = GetComponentInChildren<AIDetection>();
 
+        currentWaypoint = startWaypoint - 1;
+        wayPoints = createWayPoints(patrolRoute);
+        if (alternateRoute) { alternateWayPoints = createWayPoints(alternateRoute); }
     }
 
+
     /// <summary>
-    /// Describes the actions of the enemy when player is in sight or not in sight
+    /// State Machine for all AI States
+    /// Conditions are checked here and the current AI State is updated
     /// </summary>
     void Update()
     {
-        Debug.Log(state);
-        if (running)
+        Debug.Log(currentState);
+
+        //PLAYER REACHED ATTACK RANGE
+        if (aiDetection.isPlayerInAttackRange())
         {
-            
-            switch (state)
-            {
+            attack(player.transform.position);
+        }
 
-                case 1:
-                    anim.SetBool("IsPatroling", true);
-                    anim.Play("Walking");
-                    patrol();
-                    break;
-
-                case 2:
-
-                    break;
-
-                case 3:
-                    anim.SetBool("IsIdling", true);
-                    StartCoroutine(StartWaiting());
-                    break;
-
-                case 4:
-                    
-                    
-                    chase();
-                    break;
-
-                case 5:
-
-                    break;
-
-                default:
-                    break;
-            }
-
-
-        }   
-        
-    }
-
-    public bool isChasing()
-    {
-        return playerInSight;
-    }
-
-    
-    private void chase()
-    {
-
-        if (gamingControl.getPlayerHiddenPercentage() < 70)
-
+        //PLAYER WITHIN DISCOVERY RANGE
+        else if (aiDetection.playerDiscovered())
         {
-            float distance = Vector3.Distance(enemy.position, player.transform.position);
+            playerHasBeenDiscovered = true;
+            playerLastSeenPos = player.transform.position;
 
-            if (distance <= Constants.AI_RANGE && playerInSight && distance > 1.3f)
+            chase(playerLastSeenPos);
+        }
+
+        //PLAYER WITHIN DETECTION RANGE
+        else if (aiDetection.playerDetected())
+        {
+            if (playerHasBeenDiscovered)
             {
-                if (anim.GetBool("IsAttacking"))
-                {
-                    anim.SetBool("IsAttacking", false);
-                    anim.StopPlayback();
-                }
-                   anim.SetBool("IsChasing", true);
-                    anim.Play("Chasing");
-                 
-                
-                enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                playerLastSeenPos = player.transform.position;
+                playerLostTime = Time.time;
+                chase(playerLastSeenPos);
             }
-            else if (distance <= 1.3f && playerInSight)
+            else
             {
-                if (anim.GetBool("IsChasing"))
-                {
-                    anim.SetBool("IsChasing", false);
-                    anim.StopPlayback();
-                }
-                    anim.SetBool("IsAttacking", true);
-                    anim.Play("Attacking");
-                
-                enemy.rotation = Quaternion.Slerp(enemy.rotation,
-                Quaternion.LookRotation(player.transform.position - enemy.position), Constants.AI_ROTATION_SPEED * Time.deltaTime);
+                search(player.transform.position);
+            }
+        }
 
-            } 
-            
-            
+        //PLAYER NOT IN SIGHT
+        else if (!patrolTrigger || patrolTrigger.playerTriggered())
+        {
+            if (playerHasBeenDiscovered)
+            {
+                chase(playerLastSeenPos);
+
+                if (targetReached(playerLastSeenPos, 1f) || isTimeLimitReached(playerLostTime, chasingTimeOut))
+                {
+                    playerHasBeenDiscovered = false;
+                    searchStartTime = Time.time;
+                    postSearchStarted = true;
+                }
+            }
+            else if (postSearchStarted)
+            {
+                search(playerLastSeenPos);
+                if (isTimeLimitReached(searchStartTime, postDiscoverySearchDuration)) { postSearchStarted = false; }
+            }
+            else
+            {
+                patrol();
+            }
+        }
+
+        //WAITING FOR TRIGGER FROM PLAYER
+        else
+        {
+            wait();
         }
     }
 
-    
 
+    
+    // STATE METHODS
     private void patrol()
     {
 
-        if (currentWaypoint < waypoint.Length)
-        {
-            patrolWay();
+        Vector3 nextWayPointPos = wayPoints[currentWaypoint].position;
+        nextWayPointPos.y = transform.position.y;
 
+        if (!targetReached(nextWayPointPos, 0.5f) && !waiting)
+        {
+            walkTo(nextWayPointPos, 6f);
+            currentState = States.Patroling;
         }
         else
         {
-            if (loop)
+            
+            if(!waiting)
             {
-                currentWaypoint = 0;
+                wait();
+                waitStartTime = Time.time;
+                waiting = true;
+            }
+            else
+            {
+                wait();
+
+                if (patrolFinished) return;
+
+                if ((Time.time - waitStartTime) > waitingTime) 
+                {
+                    waiting = false;
+
+                    checkPatrolRouteEnd();
+
+                    if (!routeReversed) currentWaypoint++;
+                    else currentWaypoint--; 
+                }
             }
         }
-
     }
-    void patrolWay()
+
+    private void wait()
     {
+        setAllAnimBoolsFalseExcept("IsIdling");
+        currentState = States.Waiting;
+    }
 
-        
-        Vector3 target = waypoint[currentWaypoint].position;
-        target.y = transform.position.y;
-        Vector3 moveDirection = target - transform.position;
-
-        if (moveDirection.magnitude < 0.5)
+    private void search(Vector3 target)
+    {
+        if (searchHasBeenUpdated)
         {
-            if (curTime == 0)
-                curTime = Time.time;
-            if ((Time.time - curTime) >= pauseDuration)
-            {
-                setAllBoolFalse();
-                anim.SetBool("IsIdling", true);
-                StartCoroutine(StartWaiting());
-                currentWaypoint++;
-                curTime = 0;
-                
-            }
+            if ((Time.time - searchUpdateStartTime) > searchActualisationTime) { searchHasBeenUpdated = false; }
         }
         else
         {
+            approxTargetPos = target;
+            approxTargetPos.x += UnityEngine.Random.Range(-15f, 15f);
+            approxTargetPos.z += UnityEngine.Random.Range(-15f, 15f);
 
-            var rotation = Quaternion.LookRotation(target - transform.position);
-            transform.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(target - enemy.position), dampingLook * Time.deltaTime);
+            searchUpdateStartTime = Time.time;
+            searchHasBeenUpdated = true;
         }
+
+        if (!postSearchStarted) { walkTo(approxTargetPos, 1f); }
+        else { runTo(approxTargetPos, 3f); }
+
+        currentState = States.Searching;
     }
 
-  
-    IEnumerator StartWaiting()
+    private void chase(Vector3 target)
     {
-        yield return new WaitForSeconds(pauseDuration);
-        setAllBoolFalse();
+        runTo(target, 6f);
+        currentState = States.Chasing;
+    }
+
+    private void attack(Vector3 target)
+    {
+        setAllAnimBoolsFalseExcept("IsAttacking");
+        agent.destination = target;
+
+        //alignTo(target, 8f);
+        currentState = States.Attacking;
+    }
+
+
+    private void walkTo(Vector3 target, float alignSpeed)
+    {
+        setAllAnimBoolsFalseExcept("IsPatroling");
         anim.Play("Walking");
-        
+        agent.destination = target;
+
+        //alignTo(target, alignSpeed);
     }
 
-    private void setAllBoolFalse() {
+    private void runTo(Vector3 target, float alignSpeed)
+    {
+        setAllAnimBoolsFalseExcept("IsChasing");
+        agent.destination = target;
+
+        //alignTo(target, alignSpeed);
+    }
+
+    private void checkPatrolRouteEnd()
+    {
+        if (!routeReversed && currentWaypoint == wayPoints.Length-1)
+        {
+            if (!loopPatrol) { patrolFinished = true; return; }
+
+            if (!reverseRouteForLoop)
+            {
+                currentWaypoint = -1;
+            }
+            else
+            {
+                routeReversed = true;
+            }
+        } 
+        else if (routeReversed && currentWaypoint == 0)
+        {
+            routeReversed = false;
+        }
+    }
+
+    private void alignTo(Vector3 targetPos, float rotationSpeed)
+    {
+        var rotation = Quaternion.LookRotation(targetPos - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), rotationSpeed * Time.deltaTime);
+    }
+
+    private float getDistanceTo(Vector3 targetPos)
+    {
+        Vector3 direction = targetPos - transform.position;
+        return direction.magnitude;
+    }
+
+    private bool targetReached(Vector3 target, float reachDistance)
+    {
+        if (getDistanceTo(target) < reachDistance) { return true; }
+
+        return false;
+    }
+
+    private bool isTimeLimitReached(float startTime, float timeLimit)
+    {
+        return (Time.time - startTime) > timeLimit;
+    }
+
+    private void setAllAnimBoolsFalseExcept(string boolName)
+    {
         anim.SetBool("IsPatroling", false);
         anim.SetBool("IsChasing", false);
         anim.SetBool("IsAttacking", false);
         anim.SetBool("IsSearching", false);
         anim.SetBool("IsIdling", false);
-   }
 
-
-    
-    /// <summary>
-    /// Check if player reaches the sight of the enemy 
-    /// </summary>
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject == player)
-        {
-            Vector3 direction = other.transform.position - transform.position;
-            float angle = Vector3.Angle(direction, transform.forward);
-            float distance = Vector3.Distance(enemy.position, player.transform.position);
-
-            if (angle < Constants.AI_VIEW_ANGLE * 0.5f && gamingControl.getPlayerHiddenPercentage() < 70)
-            {
-               
-                    anim.SetBool("IsPatroling", false);
-                    anim.StopPlayback();
-                    playerInSight = true;
-                    hasSeenPlayer = true;
-
-                    state = 4;
-                
-            }
-            
-
-        }
-        else if (other.gameObject == sound)
-        {
-            if (gamingControl.getPlayerHiddenPercentage() < 70)
-            {
-                    state = 4;
-                    anim.SetBool("IsPatroling", false);
-                    anim.StopPlayback();
-                    playerInSight = true;
-                    hasSeenPlayer = true;
-                    
-                
-            }
-
-            else
-            {
-                state = 1;
-            }
-        }
-        
+        anim.SetBool(boolName, true);
     }
 
-    /// <summary>
-    /// Check if player leaves the sight of the enemy
-    /// </summary>
-    void OnTriggerExit(Collider other)
+    private Transform[] createWayPoints(GameObject route)
     {
-
-       playerInSight = false;
-
-        if (hasSeenPlayer)
+        Transform[] points = new Transform[route.transform.childCount];
+        for (int i = 0; i < points.Length; i++)
         {
-            state = 1;
-            anim.SetBool("IsChasing", false);
-            anim.StopPlayback();
-            
+            points[i] = route.transform.GetChild(i);
+            Debug.Log(i + " " + points[i]);
         }
 
+        return points;
+    }
+
+    //PUBLIC METHODS
+    public bool isChasing()
+    {
+        return (currentState == States.Chasing);
     }
 }
-
-
-
-
-
