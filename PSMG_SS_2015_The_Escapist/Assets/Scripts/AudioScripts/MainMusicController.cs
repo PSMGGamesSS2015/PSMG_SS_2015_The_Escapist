@@ -4,6 +4,10 @@ using System.Collections;
 public class MainMusicController : MonoBehaviour {
 
     public AudioClip theme1;
+    public AudioClip lockpickingSuccessSound;
+    public AudioClip lockpickingFailSound;
+    public AudioClip doorUnlockedSound;
+    public AudioClip doorLockedSound;
     private AudioSource audioSrc;
 
 
@@ -25,4 +29,24 @@ public class MainMusicController : MonoBehaviour {
 
 
 	}
+
+    public AudioClip getLockpickingSuccesSound()
+    {
+        return lockpickingSuccessSound;
+    }
+
+    public AudioClip getLockpickingFailSound()
+    {
+        return lockpickingFailSound;
+    }
+
+    public AudioClip getDoorUnlockedSound()
+    {
+        return doorUnlockedSound;
+    }
+
+    public AudioClip getDoorLockedSound()
+    {
+        return doorLockedSound;
+    }
 }
