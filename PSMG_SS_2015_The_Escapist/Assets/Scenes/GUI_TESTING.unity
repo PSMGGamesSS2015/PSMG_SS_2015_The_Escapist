@@ -20199,6 +20199,7 @@ MonoBehaviour:
   lockedSound: {fileID: 8300000, guid: 4a5bb23e982390d4487f8b7b6d304463, type: 3}
   openSound: {fileID: 8300000, guid: d999fae60950f8349a4207d2b53e27cc, type: 3}
   closeSound: {fileID: 8300000, guid: 38e3cbfb6e767154b8aa13f7781eb9f2, type: 3}
+  doorInRange: 0
 --- !u!111 &912276016
 Animation:
   m_ObjectHideFlags: 0
@@ -22429,6 +22430,7 @@ MonoBehaviour:
   lockedSound: {fileID: 8300000, guid: 4a5bb23e982390d4487f8b7b6d304463, type: 3}
   openSound: {fileID: 8300000, guid: d999fae60950f8349a4207d2b53e27cc, type: 3}
   closeSound: {fileID: 8300000, guid: 38e3cbfb6e767154b8aa13f7781eb9f2, type: 3}
+  doorInRange: 0
 --- !u!114 &984282906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30761,22 +30763,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897074c213a1edd44a92223816f38fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoint:
-  - {fileID: 276359725}
-  - {fileID: 723492179}
-  - {fileID: 1455185423}
-  - {fileID: 661204506}
-  - {fileID: 565584612}
-  - {fileID: 1698486993}
-  - {fileID: 612403716}
-  - {fileID: 433320279}
-  loop: 1
-  dampingLook: 6
-  currentWaypoint: 0
-  playerInSight: 0
-  hasSeenPlayer: 0
-  test: 0
-  startGoing: 0
+  startWaypoint: 1
+  patrolRoute: {fileID: 0}
+  alternateRoute: {fileID: 0}
+  patrolTrigger: {fileID: 0}
+  loopPatrol: 1
+  reverseRouteForLoop: 0
+  searchActualisationTime: 4
+  waitingTime: 3
+  postDiscoverySearchDuration: 10
 --- !u!54 &1369262127
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31017,9 +31012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79261ccaf29560e4e8fb6d651de426cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openeye: {fileID: 999842062}
-  openeyered: {fileID: 1935040721}
-  enemy: {fileID: 1369262125}
   brightnessApprox: 0
   brightness: 0
   hiddenPercentage: 0
@@ -31027,10 +31019,11 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  debugMapMarker: {fileID: 2800000, guid: 8a9312eb7c16d05468315e6aad46a76b, type: 3}
+  mapMarkerTex: {fileID: 0}
   probes: 25
   detectionRadius: 20
   alphaFactor: 5
+  whiteTex: {fileID: 0}
 --- !u!114 &1373948522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31043,6 +31036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtEffect: {fileID: 2800000, guid: c53f3424141530a43a34ca563df3373a, type: 3}
+  myFont: {fileID: 0}
   displayHurtEffect: 0
   displayDead: 0
 --- !u!114 &1373948523
@@ -46058,6 +46052,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2090869154}
   - 114: {fileID: 2090869155}
+  - 114: {fileID: 2090869156}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -46097,6 +46092,18 @@ MonoBehaviour:
   openlock: {fileID: 2800000, guid: f26a22285fdc6e64aa705b3f4a85735a, type: 3}
   whiteBorder: {fileID: 2800000, guid: 65843257c68c8df409a747523edd0df2, type: 3}
   showText: 0
+  myFont: {fileID: 12800000, guid: 2f731f0e1e8024746ab3490ef13b3312, type: 3}
+--- !u!114 &2090869156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2090869153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be8faaf957f36f4b943654c4b8c4a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   myFont: {fileID: 12800000, guid: 2f731f0e1e8024746ab3490ef13b3312, type: 3}
 --- !u!1001 &2091087392
 Prefab:

@@ -82,7 +82,7 @@ public class HUD : MonoBehaviour
 
         inventory();
         lockpicking();
-        texting();
+        //texting();
 
     }
 
