@@ -33,13 +33,15 @@ public class MouseLook : MonoBehaviour {
     Quaternion rotation;
 
     GamingControl control;
-    private Vector3 sneakingHeight = new Vector3(0, 0.3f, 0);
+    private GameObject headSensor;
+    private GameObject breastSensor;
     private Vector3 sneakingVector;
     private Vector3 walkingVector;
-    private Vector3 targetPosition;
 
 	void FixedUpdate ()
 	{
+
+        getPositions();
         setPosition();
 
 		if (axes == RotationAxes.MouseXAndY)
@@ -65,9 +67,18 @@ public class MouseLook : MonoBehaviour {
 		}
 	}
 
+    private void getPositions()
+    {
+        sneakingVector = breastSensor.transform.position;
+        walkingVector = headSensor.transform.position;
+
+    }
+
 
 	void Start ()
 	{
+        headSensor = GameObject.FindGameObjectWithTag("Head Sensor");
+        breastSensor = GameObject.FindGameObjectWithTag("Breast Sensor");
         control = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
 		// Make the rigid body not change rotation
 		if (GetComponent<Rigidbody>())
@@ -76,17 +87,13 @@ public class MouseLook : MonoBehaviour {
 
     void Awake()
     {
-        //rotation = transform.rotation;
-        //transform.parent.rotation = rotation;
 
-        walkingVector = transform.position;
-        sneakingVector = transform.position - sneakingHeight;
 
     }
 
     void LateUpdate()
     {
-        //transform.rotation = rotation;
+
     }
 
     private void setPosition()
@@ -94,15 +101,13 @@ public class MouseLook : MonoBehaviour {
 
         if ((control.isSneakingActive()) && (transform.position.y >= sneakingVector.y))
         {
-            targetPosition = transform.position - sneakingHeight;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 1);
+            transform.position = Vector3.Lerp(transform.position, sneakingVector, Time.deltaTime * 2);
 
         }
 
         if (!(control.isSneakingActive()) && (transform.position.y <= walkingVector.y))
         {
-            targetPosition = transform.position + sneakingHeight;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 1);
+            transform.position = Vector3.Lerp(transform.position, walkingVector, Time.deltaTime * 2);
 
         }
 

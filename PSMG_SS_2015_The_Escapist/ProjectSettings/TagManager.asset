@@ -12,6 +12,8 @@ TagManager:
   - Door
   - AI Boundary
   - Sound
+  - Head Sensor
+  - Breast Sensor
   layers:
   - Default
   - TransparentFX
