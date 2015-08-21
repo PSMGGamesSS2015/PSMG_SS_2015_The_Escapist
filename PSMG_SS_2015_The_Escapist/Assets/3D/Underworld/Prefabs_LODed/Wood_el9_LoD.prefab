@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 205: {fileID: 20500000}
+  - 64: {fileID: 6449074}
   m_Layer: 0
   m_Name: Wood_el9_LoD
   m_TagString: Untagged
@@ -82,8 +83,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: -6.3492012, y: -2.47040033, z: -.677352905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -152,6 +153,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Mesh: {fileID: 4300000, guid: 0064e53c941d6e14194daa2bb46e5866, type: 3}
+--- !u!64 &6449074
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -182,16 +195,17 @@ LODGroup:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
+  serializedVersion: 2
   m_LocalReferencePoint: {x: -.0871479511, y: 0, z: -5.57303429e-06}
   m_Size: 8.6297884
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
   m_LODs:
   - screenRelativeHeight: .434205085
-    fadeMode: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2300002}
   - screenRelativeHeight: .0682504326
-    fadeMode: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2300000}
