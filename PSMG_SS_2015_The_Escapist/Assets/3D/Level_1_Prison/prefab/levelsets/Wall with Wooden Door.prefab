@@ -85,7 +85,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &196312
 GameObject:
@@ -126,8 +126,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.95240688, y: 2.21830726, z: -67.7213135}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -156.140778, y: 7.71069193, z: -60.0730057}
+  m_LocalScale: {x: 1, y: 1, z: 1.0125823}
   m_Children:
   - {fileID: 477946}
   - {fileID: 452082}
@@ -467,11 +467,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
-  lockedSound: {fileID: 8300000, guid: 0f4ad1eb2772985488e2f9d7cdcf74ad, type: 3}
-  openSound: {fileID: 0}
-  closeSound: {fileID: 0}
-  doorInRange: 0
+  pullToOpen: 0
+  deactivated: 0
+  inverted: 0
+  maxOpenAngle: 90
 --- !u!114 &11432296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,9 +482,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43229460feee13849a1883658365760b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: {fileID: 0}
+  keyNeeded: 0
   patternLength: 4
-  successSound: {fileID: 8300000, guid: b25abd054eb862d458cfa2062af6c52d, type: 3}
-  failSound: {fileID: 8300000, guid: 2d1b8fc81f7ec1c4da19be02a90ec2cf, type: 3}
+  maxIdenticalRowLength: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

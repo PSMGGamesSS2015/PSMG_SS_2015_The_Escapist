@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 65: {fileID: 6556792}
+  - 64: {fileID: 6446176}
   m_Layer: 0
   m_Name: fi_vil_container_basket02_fish_lid
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.5244446, y: 16.603302, z: 116.337982}
+  m_LocalPosition: {x: -3.75734282, y: -10.4399996, z: -71.990036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,8 +62,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 39c4987baf9d5fb47b8fb8c2617ec0bb, type: 3}
---- !u!65 &6556792
-BoxCollider:
+--- !u!64 &6446176
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .746917725, y: .61312598, z: .911529541}
-  m_Center: {x: .0452423096, y: .30656299, z: .158309937}
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 39c4987baf9d5fb47b8fb8c2617ec0bb, type: 3}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
