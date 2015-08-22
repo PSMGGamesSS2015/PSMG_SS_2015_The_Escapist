@@ -42,7 +42,7 @@ public class ShadowDetection : MonoBehaviour
     void OnGUI()
     {
         if (debugMode) showDebugHUD();
-        else showHUD();
+        //else showHUD();
     }
 
     void showDebugHUD()
@@ -65,7 +65,6 @@ public class ShadowDetection : MonoBehaviour
 
         Vector2 mapOffset = new Vector2(300, -50);
         int mapMarkerSize = 10;
-
 
         GUI.DrawTexture(new Rect(mapOffset.x, mapOffset.y, lightmapTex.width, lightmapTex.height), whiteTex, ScaleMode.StretchToFill, true, 0);
 

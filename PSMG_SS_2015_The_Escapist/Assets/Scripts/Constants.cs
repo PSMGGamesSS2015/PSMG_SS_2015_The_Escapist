@@ -51,4 +51,6 @@ public class Constants : MonoBehaviour {
 
     public static float BRIGHTNESS = 1f;
 
+    //Constants for items
+    public static float ITEM_FOCUS_ANGLE = 70f;
 }

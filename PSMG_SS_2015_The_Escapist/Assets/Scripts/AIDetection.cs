@@ -90,17 +90,14 @@ public class AIDetection : MonoBehaviour
     }
 
 
-    private void setAllAIBoolsFalse()
-    {
-        playerVisibilityDetected = false;
-        playerNoiseDetected = false;
-        playerVisibilityDiscovered = false;
-        playerNoiseDiscovered = false;
-    }
-
     private bool isPlayerInFOV()
     {
-        Vector3 direction = player.transform.position - transform.position;
+        Vector3 aiPos = transform.GetComponentInChildren<Renderer>().bounds.center;
+        Vector3 playerPos = player.transform.GetComponentInChildren<Renderer>().bounds.center;
+        aiPos.y = 1;
+        playerPos.y = 1;
+
+        Vector3 direction = playerPos - aiPos;
         float angle = Vector3.Angle(direction, transform.forward);
 
         if (angle < Constants.AI_VIEW_ANGLE * 0.5f)
@@ -137,6 +134,14 @@ public class AIDetection : MonoBehaviour
     {
         Vector3 direction = targetPos - transform.position;
         return direction.magnitude;
+    }
+
+    private void setAllAIBoolsFalse()
+    {
+        playerVisibilityDetected = false;
+        playerNoiseDetected = false;
+        playerVisibilityDiscovered = false;
+        playerNoiseDiscovered = false;
     }
 
 

@@ -26,10 +26,10 @@ TagManager:
   - Player
   - Ground
   - Ceiling
-  - Dragable
+  - Interactive
   - NoLight
   - NoGround
-  - AI Boundaries
+  - 
   - 
   - 
   - 

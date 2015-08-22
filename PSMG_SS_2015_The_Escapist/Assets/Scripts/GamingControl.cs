@@ -12,6 +12,10 @@ public class GamingControl : MonoBehaviour {
     private bool playerGrounded = true;
     private bool movementDisabled = false;
 
+    private int lockPickingTotalLayerNum;
+    private int lockPickingUnlockedLayerNum;
+    private bool showLockPickingHud = false;
+
     private int playerHiddenPercentage;
 
     // Initialize the GameObject that shall deliver values.
@@ -35,11 +39,32 @@ public class GamingControl : MonoBehaviour {
         runningActive = player.GetComponent<PlayerMovement>().runningIsActive();
         playerGrounded = player.GetComponent<PlayerMovement>().isPlayerGrounded();
         movementDisabled = player.GetComponent<PlayerMovement>().isMovementDisabled();
+
+        
     }
 
     void Update()
     {
         playerHiddenPercentage = player.GetComponent<ShadowDetection>().getHiddenPercentage();
+
+        GameObject focusedObj = player.GetComponent<PlayerDetection>().getFocusedObj();
+
+        if (focusedObj && focusedObj.tag == "Door")
+        {
+            Door doorControl = focusedObj.GetComponent<Door>();
+            if (doorControl.hasLockPickSystem() && doorControl.isLocked() && !doorControl.isKeyNeeded())
+            {
+                showLockPickingHud = true;
+                lockPickingTotalLayerNum = focusedObj.GetComponentInParent<LockpickSystem>().getTotalLayerNum();
+                lockPickingUnlockedLayerNum = focusedObj.GetComponentInParent<LockpickSystem>().getUnlockedLayerNum();
+                Debug.Log(showLockPickingHud + " " + lockPickingTotalLayerNum + " " + lockPickingUnlockedLayerNum);
+            }
+            else
+            {
+                showLockPickingHud = false;
+            }
+        }
+
     }
 
 
@@ -78,25 +103,18 @@ public class GamingControl : MonoBehaviour {
         return (1 - (playerHiddenPercentage / 100));
     }
 
+    public int getTotalLayerNumOfFocusedDoorLock()
+    {
+        return lockPickingTotalLayerNum;
+    }
 
+    public int getUnlockedLayerNumOfFocusedDoorLock()
+    {
+        return lockPickingUnlockedLayerNum;
+    }
 
-    /* Methods for Julien
-     * 
-     * public bool getFirstLock(){
-     * return status of first lock
-     * }
-     * 
-     * public bool getSecondLock(){
-     * return status of second lock
-     * }
-     * 
-     * public bool getThirdLock(){
-     * return status of third lock
-     * }
-     * 
-     * public bool getFourthLock(){
-     * return status of fourth lock
-     * }
-     * 
-     * */
+    public bool isLockPickingHudNeeded()
+    {
+        return showLockPickingHud;
+    }
 }

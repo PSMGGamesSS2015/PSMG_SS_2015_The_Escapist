@@ -14,17 +14,14 @@
 *.pidb
 *.booproj
 
-#Further annoying UnityVS files
-*/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll
-*/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll.meta
-
 # Unity3D generated meta files
 *.pidb.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
-# Unity3D Version Info / Snapshots
+# Other files
 */ProjectSettings/ProjectVersion.txt
-*/Assets/Scenes/*/LightmapSnapshot.asset
-*/Assets/Scenes/*/LightmapSnapshot.asset.meta
+*/Assets/Scenes/Level_2_SPRINT_REVIEW
+*/Assets/Scenes/Level_2_SPRINT_REVIEW_BAKING
+*/Assets/UnityVS

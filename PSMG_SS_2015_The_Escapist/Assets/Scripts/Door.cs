@@ -2,80 +2,130 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Door : MonoBehaviour {
+public class Door : MonoBehaviour 
+{
+    public bool pullToOpen = false;
+    public bool deactivated = false;
+    public bool inverted = false;
+    public float maxOpenAngle = 90f;
 
-    public bool locked = false;
-    public AudioClip lockedSound;
-    public AudioClip openSound;
-    public AudioClip closeSound;
-    public bool doorInRange = false;
+    private LockpickSystem lockSystem;
+    private DoorAudioController doorAudio;
 
-    private GameObject player;
-    private GamingControl gamingControl;
-    private LockpickSystem lockpickSystem;
-    private Animation openAnim;
-    private AudioSource audioSource;
-    private float openAnimTime = 1f;
-    private float nextTriggerTime;
-    private bool doorOpen = false;
-    private bool hasLockpickSystem;
+    private bool locked = false;
+    private bool keyNeeded = false;
+    private bool hasLockSystem = false;
+    private bool unlockSoundPlayed = false;
 
+    private float defaultRotation = 0f;
+    private bool inPlayersFocus = false;
+
+    
     void Awake()
     {
-        openAnim = GetComponent<Animation>();
-        gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
-        lockpickSystem = GetComponent<LockpickSystem>();
-        audioSource = GetComponent<AudioSource>();
+        doorAudio = GetComponentInParent<DoorAudioController>();
+
+        if (lockSystem = GetComponentInParent<LockpickSystem>()) 
+        { 
+            hasLockSystem = true;
+            keyNeeded = lockSystem.isKeyNeeded();
+        }
+
+        defaultRotation = transform.eulerAngles.y;
     }
 
     void Update()
     {
-        if (!doorInRange) return;
+        if (deactivated) { return; }
 
-        if (!Input.GetButtonDown("Use")) return;
-        
-        
-        //if (!doorOpen) open(); else close();
+        if (hasLockSystem) { locked = lockSystem.isLocked(); }
 
-            if (locked)
+        if (inPlayersFocus && locked)
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                if (lockpickSystem)
+                if (hasLockSystem)
                 {
-                    if (gamingControl.hairpinActive)
+                    if(!keyNeeded)
                     {
-                        //if (Input.GetButtonDown("Move Hairpin Right")) lockpickSystem.newMove("right");
-                        //if (Input.GetButtonDown("Move Hairpin Left")) lockpickSystem.newMove("left");
-                    }
+                        //check players inventroy for key
 
-                    else if (Input.GetButtonDown("Use"))
+                        if (lockSystem.moveLeft()) { doorAudio.playLockSystemSuccesSound(); }
+                        else { doorAudio.playLockSystemFailSound(); }
+                    }
+                    else
                     {
-                        Debug.Log("This Door is locked! Press F to use your hairpin!");
-                        audioSource.clip = lockedSound;
-                        audioSource.Play();
+                        Debug.Log("Key Needed!!");
                     }
                 }
-                else if (Input.GetButtonDown("Use"))
+
+                else
                 {
-                    Debug.Log("You need a Key for this door!");
-                    audioSource.clip = lockedSound;
-                    audioSource.Play();
+                    doorAudio.playDoorLockedSound();
                 }
             }
-    }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if ("Player".Equals(other.gameObject.tag))
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (hasLockSystem && !keyNeeded)
+                {
+                    if (lockSystem.moveRight()) { doorAudio.playLockSystemSuccesSound(); }
+                    else { doorAudio.playLockSystemFailSound(); }
+                }
+            }
+        }
+
+        if (!locked && hasLockSystem && !unlockSoundPlayed)
         {
-            doorInRange = true;
+            doorAudio.playDoorUnlockedSound();
         }
     }
 
-    void OnTriggerExit(Collider other)
+
+    //PUBLIC SETTER METHODS
+    public void setFocused(bool b)
     {
-        if ("Player".Equals(other.gameObject.tag))
-        {
-            doorInRange = false;
-        }
+        inPlayersFocus = b;
+    }
+
+    // PUBLIC GETTER METHODS
+    public bool isLocked()
+    {
+        return locked;
+    }
+
+    public bool isDeactivated()
+    {
+        return deactivated;
+    }
+
+    public bool hasLockPickSystem()
+    {
+        return hasLockSystem;
+    }
+
+    public bool isKeyNeeded()
+    {
+        return keyNeeded;
+    }
+
+    public float getMaxOpenAngle()
+    {
+        return maxOpenAngle;
+    }
+
+    public float getDefaultRotation()
+    {
+        return defaultRotation;
+    }
+
+    public bool isPulledOpen()
+    {
+        return pullToOpen;
+    }
+
+    public bool isInverted()
+    {
+        return inverted;
     }
 }

@@ -134,7 +134,6 @@ public class FollowAI : MonoBehaviour
     }
 
 
-    
     // STATE METHODS
     private void patrol()
     {
@@ -149,7 +148,6 @@ public class FollowAI : MonoBehaviour
         }
         else
         {
-            
             if(!waiting)
             {
                 wait();
@@ -162,7 +160,7 @@ public class FollowAI : MonoBehaviour
 
                 if (patrolFinished) return;
 
-                if ((Time.time - waitStartTime) > waitingTime) 
+                if (isTimeLimitReached(waitStartTime, waitingTime) )
                 {
                     waiting = false;
 
@@ -178,6 +176,7 @@ public class FollowAI : MonoBehaviour
     private void wait()
     {
         setAllAnimBoolsFalseExcept("IsIdling");
+        agent.Stop();
         currentState = States.Waiting;
     }
 
@@ -298,7 +297,6 @@ public class FollowAI : MonoBehaviour
         for (int i = 0; i < points.Length; i++)
         {
             points[i] = route.transform.GetChild(i);
-            Debug.Log(i + " " + points[i]);
         }
 
         return points;
