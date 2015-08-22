@@ -8,9 +8,9 @@ public class Constants : MonoBehaviour {
     public static float WALKING_SPEED = 2f;
     public static float RUNNING_SPEED = 3.5f;
 
-    public static float SNEAKING_ROTATION = 1f;
-    public static float WALKING_ROTATION = 1f;
-    public static float RUNNING_ROTATION = 1f;
+    public static float SNEAKING_ROTATION = 0.5f;
+    public static float WALKING_ROTATION = 0.5f;
+    public static float RUNNING_ROTATION = 0.5f;
 
     public static float VERTICAL_ROTATION = 150f;
 
