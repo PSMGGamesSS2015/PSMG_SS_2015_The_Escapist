@@ -5,79 +5,50 @@ using System.Collections.Generic;
 public class Door : MonoBehaviour 
 {
     public bool pullToOpen = false;
-    public bool deactivated = false;
     public bool inverted = false;
+    public bool deactivated = false;
     public float maxOpenAngle = 90f;
 
-    private LockpickSystem lockSystem;
-    private DoorAudioController doorAudio;
+    private DoorLock doorLock;
+    private LockpickSystem lockPickSystem;
 
     private bool locked = false;
-    private bool keyNeeded = false;
-    private bool hasLockSystem = false;
-    private bool unlockSoundPlayed = false;
+    private bool lockPickSystemActive = false;
+    private bool doorLockActive = false;
 
     private float defaultRotation = 0f;
-    private bool inPlayersFocus = false;
+    private bool focused = false;
 
     
     void Awake()
     {
-        doorAudio = GetComponentInParent<DoorAudioController>();
-
-        if (lockSystem = GetComponentInParent<LockpickSystem>()) 
-        { 
-            hasLockSystem = true;
-            keyNeeded = lockSystem.isKeyNeeded();
-        }
+        doorLock = GetComponentInParent<DoorLock>();
+        lockPickSystem = GetComponentInParent<LockpickSystem>();
 
         defaultRotation = transform.eulerAngles.y;
     }
 
-    void Update()
+    void Start()
     {
-        if (deactivated) { return; }
-
-        if (hasLockSystem) { locked = lockSystem.isLocked(); }
-
-        if (inPlayersFocus && locked)
+        if (lockPickSystem && lockPickSystem.isActive())
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (hasLockSystem)
-                {
-                    if(!keyNeeded)
-                    {
-                        //check players inventroy for key
-
-                        if (lockSystem.moveLeft()) { doorAudio.playLockSystemSuccesSound(); }
-                        else { doorAudio.playLockSystemFailSound(); }
-                    }
-                    else
-                    {
-                        Debug.Log("Key Needed!!");
-                    }
-                }
-
-                else
-                {
-                    doorAudio.playDoorLockedSound();
-                }
-            }
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                if (hasLockSystem && !keyNeeded)
-                {
-                    if (lockSystem.moveRight()) { doorAudio.playLockSystemSuccesSound(); }
-                    else { doorAudio.playLockSystemFailSound(); }
-                }
-            }
+            lockPickSystemActive = true;
         }
 
-        if (!locked && hasLockSystem && !unlockSoundPlayed)
+        if (doorLock && doorLock.isActive())
         {
-            doorAudio.playDoorUnlockedSound();
+            doorLockActive = true;
+
+            if (doorLock.isKeyNeeded())
+            {
+                lockPickSystem.deactivate();
+                lockPickSystemActive = false;
+            }
+
+            else if (!lockPickSystemActive)
+            {
+                doorLock.setKeyNeeded(true);
+            }
         }
     }
 
@@ -85,7 +56,17 @@ public class Door : MonoBehaviour
     //PUBLIC SETTER METHODS
     public void setFocused(bool b)
     {
-        inPlayersFocus = b;
+        focused = b;
+
+        if (deactivated) { return; }
+
+        if (lockPickSystemActive) { lockPickSystem.setFocused(focused); }
+        if (doorLockActive) { doorLock.setFocused(focused); }
+    }
+
+    public void setLocked(bool b)
+    {
+        locked = b;
     }
 
     // PUBLIC GETTER METHODS
@@ -94,21 +75,22 @@ public class Door : MonoBehaviour
         return locked;
     }
 
-    public bool isDeactivated()
+    public bool isActive()
     {
-        return deactivated;
+        return !deactivated;
     }
 
-    public bool hasLockPickSystem()
+    internal bool isLockPickSystemActive()
     {
-        return hasLockSystem;
+        return lockPickSystemActive;
     }
 
-    public bool isKeyNeeded()
+    public LockpickSystem getLockPickSystem()
     {
-        return keyNeeded;
+        return lockPickSystem;
     }
 
+    //FOR DRAG DOOR
     public float getMaxOpenAngle()
     {
         return maxOpenAngle;

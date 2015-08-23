@@ -5,13 +5,12 @@ public class DoorAudioController : MonoBehaviour
 {
     public AudioClip lockedSound;
     public AudioClip unlockSound;
-    public AudioClip lockSystemSuccesSound;
-    public AudioClip lockSystemFailSound;
+    public AudioClip lockPickingSuccesSound;
+    public AudioClip lockPickingFailSound;
 
     private AudioSource audioSource;
 
     private bool unlockSoundPlayed = false;
-
 
     void Awake()
     {
@@ -19,15 +18,15 @@ public class DoorAudioController : MonoBehaviour
     }
 
 
-    public void playLockSystemSuccesSound()
+    public void playLockPickingSuccesSound()
     {
-        audioSource.clip = lockSystemSuccesSound;
+        audioSource.clip = lockPickingSuccesSound;
         audioSource.Play();
     }
 
-    public void playLockSystemFailSound()
+    public void playLockPickingFailSound()
     {
-        audioSource.clip = lockSystemFailSound;
+        audioSource.clip = lockPickingFailSound;
         audioSource.Play();
     }
 
