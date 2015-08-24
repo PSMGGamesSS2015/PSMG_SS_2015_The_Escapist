@@ -10,7 +10,7 @@ public class FlyWayPoint : MonoBehaviour {
 	private float distanceNextWaypoint;
 	private int indexWaypoint = 0;
 	public Transform[] Waypoint;
-    private bool loop = false;
+    private bool loop = true;
 
     private GameObject bat1;
     private GameObject bat2;

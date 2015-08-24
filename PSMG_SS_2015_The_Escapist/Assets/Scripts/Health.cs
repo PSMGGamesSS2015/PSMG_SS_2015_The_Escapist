@@ -88,4 +88,10 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         Application.LoadLevel(Application.loadedLevel);
     }
+
+    public void jumpDead()
+    {
+        displayDead = true;
+        StartCoroutine(WaitForRestart());
+    }
 }
