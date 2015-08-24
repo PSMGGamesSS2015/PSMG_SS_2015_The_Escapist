@@ -172,6 +172,12 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "MuscleClip 'Idle_Neutral_1' conversion warning: Bone
+      length is different in avatar and animation\n\n     'LeftLeg' : position error
+      = 7.696520 mm\n\n     'LeftFoot' : position error = 15.233778 mm\n\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -182,15 +188,15 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle_Neutral_1
       takeName: _87_88_a_U1_M_P_idle_Neutral__Fb_p0_No_0_PJ_1
-      firstFrame: 50
-      lastFrame: 3275
+      firstFrame: 107
+      lastFrame: 209
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
