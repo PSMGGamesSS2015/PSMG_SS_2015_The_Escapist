@@ -151,35 +151,38 @@ public class PlayerMovement : MonoBehaviour {
 
         if (moveVertical < 0)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Running", false);
-            anim.SetBool("Sneaking", false);
-            anim.SetBool("Idling", false);
-            anim.SetBool("Walking Backwards", true);
-
-            rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
-            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
-            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
-
-            if (axes == RotationAxes.MouseXAndY)
+            if ((sneaking == false) && (running == false))
             {
-                float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", false);
+                anim.SetBool("Sneaking", false);
+                anim.SetBool("Idling", false);
+                anim.SetBool("Walking Backwards", true);
 
-                //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+                rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+                transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
-                transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-            }
-            else if (axes == RotationAxes.MouseX)
-            {
-                transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
-            }
-            else
-            {
-                //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+                if (axes == RotationAxes.MouseXAndY)
+                {
+                    float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
-                transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+
+                    transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+                }
+                else if (axes == RotationAxes.MouseX)
+                {
+                    transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+                }
+                else
+                {
+                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+
+                    transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+                }
             }
 
         }
@@ -187,37 +190,39 @@ public class PlayerMovement : MonoBehaviour {
         if (moveVertical > 0.1)
         {
             if ((sneaking == false) && (running == false)) {
-            anim.SetBool("Walking", true);
-            anim.SetBool("Idling", false);
-            anim.SetBool("Walking Backwards", false);
+                anim.SetBool("Walking", true);
+                anim.SetBool("Running", false);
+                anim.SetBool("Sneaking", false);
+                anim.SetBool("Idling", false);
+                anim.SetBool("Walking Backwards", false);
 
-            movementSpeed = Constants.WALKING_SPEED;
-            rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
+                movementSpeed = Constants.WALKING_SPEED;
+                rotationSpeed = Constants.WALKING_ROTATION * rotationFactor;
 
-            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
-            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
+                transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
 
-            if (axes == RotationAxes.MouseXAndY)
-            {
-                float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+                if (axes == RotationAxes.MouseXAndY)
+                {
+                    float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
-                //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
-                transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-            }
-            else if (axes == RotationAxes.MouseX)
-            {
-                transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
-            }
-            else
-            {
-                //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+                    transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+                }
+                else if (axes == RotationAxes.MouseX)
+                {
+                    transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+                }
+                else
+                {
+                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
-                transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
-            }
+                    transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+                }
             }
         }
 
@@ -313,6 +318,7 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Running", true);
                 anim.SetBool("Sneaking", false);
                 anim.SetBool("Idling", false);
+                anim.SetBool("Walking Backwards", false);
 
                 //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
