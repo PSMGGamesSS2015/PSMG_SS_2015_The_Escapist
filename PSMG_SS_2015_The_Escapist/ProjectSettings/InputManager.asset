@@ -182,7 +182,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Move Hairpin Right
+    m_Name: Move Hairpin Left
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -198,7 +198,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Move Hairpin Left
+    m_Name: Move Hairpin Right
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

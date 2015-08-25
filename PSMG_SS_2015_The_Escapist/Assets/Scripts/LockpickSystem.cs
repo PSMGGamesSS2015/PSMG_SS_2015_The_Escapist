@@ -1,58 +1,71 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class LockpickSystem : MonoBehaviour {
-
-    public GameObject key;
-    public bool keyNeeded = false;
+public class LockpickSystem : MonoBehaviour 
+{
     public int patternLength = 4;
     public int maxIdenticalRowLength = 3;
+    public bool deactivated = false;
 
-    private MainMusicController musicController;
-    private AudioSource audioSource;
+    private Door[] doorControls;
+    private DoorAudioController doorAudio;
 
     private List<Directions> lockPattern;
     private enum Directions { Left, Right }
 
     private int actualPos = 0;
     private bool locked = true;
-    private bool inPlayersRange = false;
+    private bool focused = false;
 
 	void Awake() 
     {
-        musicController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MainMusicController>();
-        audioSource = GetComponent<AudioSource>();
+        doorControls = GetComponentsInChildren<Door>();
+        doorAudio = GetComponentInParent<DoorAudioController>();
 
-        if (!keyNeeded) { lockPattern = createNewPattern(); }
+        lockPattern = createNewPattern();
 	}
 
-    private bool newMove(Directions dir)
+    void Start()
     {
-        bool succes = false;
+        if (!deactivated)
+        {
+            setAllChildDoorsLocked(true);
+        }
+    }
 
-        if (keyNeeded) { return false; }
+    void Update()
+    {
+        if (deactivated || !focused || !locked) { return; }
 
+        if (Input.GetButtonDown("Move Hairpin Left")) { newMove(Directions.Left); }
+        if (Input.GetButtonDown("Move Hairpin Right")) { newMove(Directions.Right); }
+    }
+
+
+    private void newMove(Directions dir)
+    {
         if (dir.Equals(lockPattern[actualPos]))
         {
             actualPos++;
-            succes = true;
-            Debug.Log("Succes");
+            doorAudio.playLockPickingSuccesSound();
+            //Debug.Log("Succes");
         }
         else
         {
             actualPos = 0;
-            Debug.Log("Fail");
+            doorAudio.playLockPickingFailSound();
+            //Debug.Log("Fail");
         }
 
         if (actualPos == patternLength)
         {
             locked = false;
-            Debug.Log("Unlocked");
+            setAllChildDoorsLocked(false);
+
+            doorAudio.playDoorUnlockedSound();
+            //Debug.Log("Unlocked");
         }
-
-        return succes;
     }
-
 
     private List<Directions> createNewPattern()
     {
@@ -80,6 +93,7 @@ public class LockpickSystem : MonoBehaviour {
         return pattern;
     }
 
+
     private Directions getRandomDirection()
     {
         return (Random.value < 0.5) ? Directions.Left : Directions.Right;
@@ -90,43 +104,29 @@ public class LockpickSystem : MonoBehaviour {
         return (direction == Directions.Left) ? Directions.Right : Directions.Left;
     }
 
-
-    // PUBLIC METHODS
-
-    public bool moveLeft()
+    private void setAllChildDoorsLocked(bool b)
     {
-        return newMove(Directions.Left);
-    }
-
-    public bool moveRight()
-    {
-        return newMove(Directions.Right);
-    }
-
-    public bool checkKey(GameObject insertedKey)
-    {
-        if (key == insertedKey)
+        foreach (Door doorControl in doorControls)
         {
-            locked = false;
-            return true;
+            doorControl.setLocked(b);
         }
-
-        return false;
     }
 
+    // PUBLIC SETTER METHODS
+    public void setFocused(bool b)
+    {
+        focused = b;
+    }
+
+    public void deactivate()
+    {
+        deactivated = true;
+    }
+
+    // PUBLIC GETTER METHODS
     public bool isLocked()
     {
         return locked;
-    }
-
-    public bool isKeyNeeded()
-    {
-        return keyNeeded;
-    }
-
-    public bool isInPlayersRange()
-    {
-        return inPlayersRange;
     }
 
     public int getTotalLayerNum()
@@ -137,5 +137,10 @@ public class LockpickSystem : MonoBehaviour {
     public int getUnlockedLayerNum()
     {
         return actualPos;
+    }
+
+    public bool isActive()
+    {
+        return !deactivated;
     }
 }
