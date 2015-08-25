@@ -16,9 +16,6 @@ public class UIText : MonoBehaviour {
         textStyle.fontSize = 40;
         textStyle.font = myFont;
                textStyle.alignment = TextAnchor.MiddleCenter;
-
-       
-       StartCoroutine("test"); 
    
    }
 
@@ -38,14 +35,7 @@ IEnumerator AnimateText(string strComplete) {
         
     }
 
-    IEnumerator test() {
-        
-            StartCoroutine( AnimateText("Umpf...What happened?") );
-            yield return new WaitForSeconds(5F);
-            StartCoroutine(AnimateText("Where am I?"));
-            yield return new WaitForSeconds(5F);
-            StartCoroutine(AnimateText("What is this place?"));
-
-
-        }
+	public void showText(string text){
+		StartCoroutine (AnimateText(text));
+	}
  }
