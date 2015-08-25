@@ -9,18 +9,18 @@ public class OutroGUIText : MonoBehaviour
 
     private string text_0 = "";
 
-    private string text_1 = "Gerlin finally found out why all of this happened.";
-    private string text_2 = "She should have been part in an experiment...";
-    private string text_3 = "... an insane experiment of the crazy knights from the Gnarlekh' Clan.";
-    private string text_4 = "The more she read in the book the better she knew there is only thing to do:";
-    private string text_5 = "To get the hell out of here!";
-    private string text_6 = "She saw the opening doors flooded by divine light.";
-    private string text_7 = "It seemed she was all alone.";
-    private string text_8 = "Gerlin did one silent step after another.";
-    private string text_9 = "A warm, smooth feeling came up on her skin as she saw the doors wide open.";
-    private string text_10 = "Hope! There was finally hope to escape this madness!";
-    private string text_11 = "Nobody recognized her - the way was free";
-    private string text_12 = "Now go, Gerlin, go! You can finally ESCAPE !";
+    private string text_1 = "Endlich, endlich fand Gerlin heraus, was passiert war.";
+    private string text_2 = "Sie sollte Teil eines Experiments werden...";
+    private string text_3 = "... Teil eines abscheulichen Experiments der Ritter des Gnarlekh' Clan.";
+    private string text_4 = "Je mehr sie in dem Buch las, desto mehr verstand sie, dass es nur eine Sache zu tun gab:";
+    private string text_5 = "So schnell es ging zu verschwinden!";
+    private string text_6 = "Sie sah durch die langsam aufschwingenden Tore das Licht der Freiheit.";
+    private string text_7 = "Sie blickte sich um. Sie schien allein zu sein.";
+    private string text_8 = "Einen Schritt nach dem anderen schlich sie durch die Kirche.";
+    private string text_9 = "Warm und weich war das Licht auf ihrer Haut, das durch die Tore fiel.";
+    private string text_10 = "Hoffnung! Es gab wirklich Hoffnung, diesem Wahnsinn zu entkommen!";
+    private string text_11 = "Es schien niemand sie bemerkt zu haben.";
+    private string text_12 = "Lauf, Gerlin! Entkomme! Endlich!";
 
     private string credits_1 = "CREDITS:";
     private string credits_2 = "... developed by ...";
