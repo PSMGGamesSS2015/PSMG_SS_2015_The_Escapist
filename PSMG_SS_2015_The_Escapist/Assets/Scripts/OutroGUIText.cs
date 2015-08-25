@@ -9,30 +9,30 @@ public class OutroGUIText : MonoBehaviour
 
     private string text_0 = "";
 
-    private string text_1 = "Gerlin finally found out why all of this happened...";
-    private string text_2 = "She should have been part in an insane experiment";
-    private string text_3 = "An evil experiment of the crazy knights from the Gnarlekh' Clan";
-    private string text_4 = "The more she read in the book the better she knew there is only thing to do...:";
+    private string text_1 = "Gerlin finally found out why all of this happened.";
+    private string text_2 = "She should have been part in an experiment...";
+    private string text_3 = "... an insane experiment of the crazy knights from the Gnarlekh' Clan.";
+    private string text_4 = "The more she read in the book the better she knew there is only thing to do:";
     private string text_5 = "To get the hell out of here!";
-    private string text_6 = "She saw the opening doors flooded by divine light";
-    private string text_7 = "Gerlin had to get there without attracting any attention";
-    private string text_8 = "So Gerlin did one step after another and tried to be as silent as possible";
-    private string text_9 = "By watching the opening doors a warm smooth feeling came up on her body";
-    private string text_10 = "Hope! There is finally hope to escape this madness!";
-    private string text_11 = "Nobody recognized her - the way is free";
+    private string text_6 = "She saw the opening doors flooded by divine light.";
+    private string text_7 = "It seemed she was all alone.";
+    private string text_8 = "Gerlin did one silent step after another.";
+    private string text_9 = "A warm, smooth feeling came up on her skin as she saw the doors wide open.";
+    private string text_10 = "Hope! There was finally hope to escape this madness!";
+    private string text_11 = "Nobody recognized her - the way was free";
     private string text_12 = "Now go, Gerlin, go! You can finally ESCAPE !";
 
     private string credits_1 = "CREDITS:";
     private string credits_2 = "... developed by ...";
 
-    private string credits_3 = "... Cristoph Herbert ...";
+    private string credits_3 = "... Christoph Herbert ...";
     private string credits_4 = "... Julien Wachter ...";
     private string credits_5 = "... Tobias Zirngibl ...";
     private string credits_6 = "... Daniel Hecht ...";
     private string credits_7 = "... Oliver Poeppel ...";
     private string credits_8 = "... Benedikt Hierl ...";
 
-    private string credits_9 = "Thank you for playing";
+    private string credits_9 = "Thank you for playing!";
     private string credits_10 = "... Game development @ Uni Regensburg in SS15 ...";
     private string credits_11 = "GAME OVER";
 
