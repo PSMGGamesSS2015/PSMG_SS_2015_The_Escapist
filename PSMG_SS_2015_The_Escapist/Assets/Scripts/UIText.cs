@@ -9,8 +9,10 @@ public class UIText : MonoBehaviour {
     public Font myFont;
     private GUIStyle textStyle;
     private string str;
+    private bool showStoryText;
    
-   void Start() { 
+   void Start() {
+       showStoryText = false;
        textStyle = new GUIStyle();
         textStyle.normal.textColor = Color.white;
         textStyle.fontSize = 40;
@@ -20,22 +22,27 @@ public class UIText : MonoBehaviour {
    }
 
 IEnumerator AnimateText(string strComplete) { 
+    
     int i = 0; 
     str = ""; 
     while( i < strComplete.Length ) { 
         str += strComplete[i++]; 
         yield return new WaitForSeconds(0.1F);
-    } 
+    }
+    yield return new WaitForSeconds(2F);
+    showStoryText = false;
 }
 
     void OnGUI() {
-
-        GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 + 250, 350, 50), "");
-        GUI.TextArea(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 250, 50, 50), str, textStyle);
-        
+        if (showStoryText)
+        {
+            GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 + 250, 350, 50), "");
+            GUI.TextArea(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 250, 50, 50), str, textStyle);
+        }
     }
 
 	public void showText(string text){
+        showStoryText = true;
 		StartCoroutine (AnimateText(text));
 	}
  }
