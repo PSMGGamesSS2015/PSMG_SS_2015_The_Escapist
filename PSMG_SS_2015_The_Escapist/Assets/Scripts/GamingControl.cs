@@ -40,32 +40,26 @@ public class GamingControl : MonoBehaviour {
         runningActive = player.GetComponent<PlayerMovement>().runningIsActive();
         playerGrounded = player.GetComponent<PlayerMovement>().isPlayerGrounded();
         movementDisabled = player.GetComponent<PlayerMovement>().isMovementDisabled();
-
-        
     }
 
     void Update()
     {
         playerHiddenPercentage = player.GetComponent<ShadowDetection>().getHiddenPercentage();
 
-        GameObject focusedObj = player.GetComponent<PlayerDetection>().getFocusedObj();
+        GameObject focusedObj = player.GetComponent<PlayerDetection>().getObjAtFocusPoint();
 
         if (focusedObj && focusedObj.tag == "Door")
         {
             Door doorControl = focusedObj.GetComponent<Door>();
-            if (doorControl.hasLockPickSystem() && doorControl.isLocked() && !doorControl.isKeyNeeded())
-            {
-                showLockPickingHud = true;
-                lockPickingTotalLayerNum = focusedObj.GetComponentInParent<LockpickSystem>().getTotalLayerNum();
-                lockPickingUnlockedLayerNum = focusedObj.GetComponentInParent<LockpickSystem>().getUnlockedLayerNum();
-                Debug.Log(showLockPickingHud + " " + lockPickingTotalLayerNum + " " + lockPickingUnlockedLayerNum);
-            }
-            else
-            {
-                showLockPickingHud = false;
-            }
+
+            lockPickingTotalLayerNum = doorControl.getLockPickSystem().getTotalLayerNum();
+            lockPickingUnlockedLayerNum = doorControl.getLockPickSystem().getUnlockedLayerNum();
+
+            if (doorControl.isActive() && doorControl.isLockPickSystemActive() && doorControl.isLocked()) { showLockPickingHud = true; }
+            else { showLockPickingHud = false; }
         }
 
+        Debug.Log(showLockPickingHud + " " + lockPickingTotalLayerNum + " " + lockPickingUnlockedLayerNum);
     }
 
 

@@ -40,11 +40,14 @@ public class DragDoor : MonoBehaviour
     {
         if (!Input.GetButton("Use")) { focusedDoor = null; lastFocusedDoor = null; return; }
 
+        //GameObject focusedObj = player.GetComponent<PlayerDetection>().getBestMatchObjInFOV();
+        //validate(focusedObj);
+
         LookForDoorInPlayersFocus();
 
         if (!focusedDoor) { return; }
 
-        if (!focusedDoorControl.isLocked() && !focusedDoorControl.isDeactivated()) { Drag(); }
+        if (focusedDoorControl.isActive() && !focusedDoorControl.isLocked()) { Drag(); }
     }
 
     private void LookForDoorInPlayersFocus()
@@ -58,37 +61,64 @@ public class DragDoor : MonoBehaviour
         for (int i = 0; i <= middle; i++)
         {
             float playerViewXPos = leftBorder + ((middle + i) * stepSize);
-            lookForDoorAt(playerViewXPos);
-            if (focusedDoor) { return; }
-            
+            if (lookForValidDoorAt(playerViewXPos)) { return; }
+
             if ((middle - i - 1) >= 0)
             {
                 playerViewXPos = leftBorder + ((middle - i - 1) * stepSize);
-                lookForDoorAt(playerViewXPos);
-                if (focusedDoor) { return; }
+                if (lookForValidDoorAt(playerViewXPos)) { return; }
             }
         }
     }
 
-    private void lookForDoorAt(float playerViewXPos)
+    private bool lookForValidDoorAt(float playerViewXPos)
     {
         GameObject door = raycastForDoorAt(playerViewXPos);
+        validate(door);
+        if (focusedDoor) { return true; }
 
-        if (!door)
+        return false;
+    }
+
+    private GameObject raycastForDoorAt(float xPos)
+    {
+        GameObject hitDoor = null;
+
+        Ray ray = firstPersonCam.ViewportPointToRay(new Vector3(xPos, 0.5f, 0));
+        Debug.DrawRay(ray.origin, ray.direction * maxDragDistance, Color.magenta);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, maxDragDistance, dragableObjects))
+        {
+            Renderer hitRenderer = hit.collider.GetComponent<Renderer>();
+
+            if (hitRenderer.tag == "Door")
+            {
+                hitDoor = hit.collider.gameObject;
+            }
+        }
+
+        return hitDoor;
+    }
+
+    private void validate(GameObject focusedObj)
+    {
+        if (!focusedObj || focusedObj.tag != "Door")
         {
             focusedDoor = null;
         }
-        
+
         else if (!focusedDoor)
         {
             if (!lastFocusedDoor)
             {
-                initializeFocusedDoorVariables(door);
-            }   
+                initializeFocusedDoorVariables(focusedObj);
+            }
 
-            if (door == lastFocusedDoor)
+            if (focusedObj == lastFocusedDoor)
             {
-                focusedDoor = door;
+                focusedDoor = focusedObj;
             }
         }
     }
@@ -106,37 +136,19 @@ public class DragDoor : MonoBehaviour
         maxOpenAngle = focusedDoorControl.getMaxOpenAngle();
     }
 
-    private GameObject raycastForDoorAt(float xPos)
-    {
-        GameObject hitDoor = null;
-
-        Ray ray = firstPersonCam.ViewportPointToRay(new Vector3(xPos, 0.5f, 0));
-        Debug.DrawRay(ray.origin, ray.direction * maxDragDistance, Color.magenta);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, maxDragDistance, dragableObjects))
-        {
-            Renderer hitRenderer = hit.collider.GetComponent<Renderer>();
-
-            if (hitRenderer.tag == "Door") 
-            {
-                hitDoor = hit.collider.gameObject;
-            }
-        }
-
-        return hitDoor;
-    }
-
     private void Drag()
     {
         float angle = calcDragRotationAngle();
-
         angle = limitMaxSpeed(angle);
-        angle *= getRotationLimitReverseFactor(angle);
+
+        // IF THE DRAG ANGLE WOULD MOVE THE DOOR OUTSIDE ITS BOUNDARIES, IT WILL BE REVERSED TO ROTATE THE DOOR IN THE INVERSE DIRECTION.
+        // IN THIS WAY WE CAN ENSURE THAT THE BOUNDARIES ARE NOT VIOLATED TO MUCH, 
+        // WHILE IT IS STILL GUARANTEED, THAT THE PLAYER CAN DRAG THE DOOR IF IT MOVES OUTSIDE THE BOUNDARIES
+        if (outsideBoundaries(angle)) { angle *= -boundaryLimiterDampingFactor; }
 
         focusedDoor.transform.Rotate(Vector3.up, angle);
     }
+
 
     // CALC ANGLE FROM MOUSE MOVEMENT AND PLAYER ORIENTATION
     private float calcDragRotationAngle()
@@ -192,12 +204,10 @@ public class DragDoor : MonoBehaviour
         return angle;
     }
 
-    // CHECK IF ROTATION IS INSIDE DEFINED BOUNDARIES. IF NOT THE DRAG ANGLE WILL BE REVERSED TO ROTATE THE DOOR IN THE INVERSE DIRECTION.
-    // IN THIS WAY WE CAN ENSURE THAT THE BOUNDARIES ARE NOT VIOLATED TO MUCH, 
-    // WHILE IT IS STILL GUARANTEED, THAT THE PLAYER CAN DRAG THE DOOR IF IT MOVES OUTSIDE THE BOUNDARIES
-    private float getRotationLimitReverseFactor(float currentDragAngle)
+    // CHECK IF THE GIVEN ANGLE WILL MOVE THE DOOR OUTSIDE ITS PREDEFINED BOUNDARIES. 
+    private bool outsideBoundaries(float currentDragAngle)
     {
-        float reverseFactor = 1;
+        bool outsideBoundaries = false;
 
         float doorwayRot = focusedDoor.transform.parent.eulerAngles.y;
         float defaultDoorRot = focusedDoorControl.getDefaultRotation();
@@ -219,28 +229,28 @@ public class DragDoor : MonoBehaviour
             {
                 if (((doorRot < minDoorAngle || doorRot > turningAngle) && currentDragAngle < 0) || ((doorRot > maxDoorAngle && doorRot < turningAngle) && currentDragAngle > 0))
                 {
-                    reverseFactor = -boundaryLimiterDampingFactor;
+                    outsideBoundaries = true;
                 }
             }
             else
             {
                 if ((doorRot < minDoorAngle && doorRot > turningAngle && currentDragAngle < 0) || ((doorRot > maxDoorAngle || doorRot < turningAngle) && currentDragAngle > 0))
                 {
-                    reverseFactor = -boundaryLimiterDampingFactor;
+                    outsideBoundaries = true;
                 }
             }
         }
         else
         {
-                if ((doorRot < minDoorAngle && doorRot > turningAngle && currentDragAngle < 0) || (doorRot > maxDoorAngle && doorRot < turningAngle && currentDragAngle > 0))
-                {
-                    reverseFactor = -boundaryLimiterDampingFactor;
-                }
+            if ((doorRot < minDoorAngle && doorRot > turningAngle && currentDragAngle < 0) || (doorRot > maxDoorAngle && doorRot < turningAngle && currentDragAngle > 0))
+            {
+                outsideBoundaries = true;
+            }
         }
 
         //Debug.Log(minDoorAngle + " " + maxDoorAngle + " " + turningAngle + " " + doorRot + " " + reverseFactor + " " + currentDragAngle * reverseFactor);
 
-        return reverseFactor;
+        return outsideBoundaries;
     }
 
     private float NormalizeAngle(float angle)
