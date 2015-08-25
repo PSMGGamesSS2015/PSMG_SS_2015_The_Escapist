@@ -145,7 +145,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 210, 200, 80), "Video Settings", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 210, 200, 80), "Video / Misc Settings", buttonStyle))
             {
 
 
@@ -250,28 +250,6 @@ public class MenuManager : MonoBehaviour
 
                 }
             }
-
-
-
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 80, 120, 30), "Refresh Rate", optionTextStyle);
-
-
-            if (GUI.Button(new Rect(Screen.width / 2 + 120, Screen.height / 2 + 90, 120, 40), "60Hz", smalloptionTextStyle))
-            {
-                Screen.SetResolution(ResX, ResY, Fullscreen, 60);
-            }
-            //120Hz
-            if (GUI.Button(new Rect(Screen.width / 2 + 200, Screen.height / 2 + 90, 120, 40), "120Hz", smalloptionTextStyle))
-            {
-                Screen.SetResolution(ResX, ResY, Fullscreen, 120);
-            }
-
-
-
-
-
-
-
 
 
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 150, 120, 30), "Resolution", optionTextStyle);
