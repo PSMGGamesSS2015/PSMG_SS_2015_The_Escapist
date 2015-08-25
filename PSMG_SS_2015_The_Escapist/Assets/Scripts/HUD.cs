@@ -3,14 +3,15 @@ using System.Collections;
 
 public class HUD : MonoBehaviour
 {
+    private GameObject gameControl;
 
     private string bottleText, stoneText, gearwheelText, pipeText, text;
-    private int test = 3;
+    private int testAmount = 3;
     public Texture2D bottle, stone, gearwheel, pipe, closedlock, openlock, whiteBorder;
     private int itemNr = 1;
     private bool showInv, showLock;
 
-    public bool showText;
+    public bool showText, showInteraction;
 
     public Font myFont;
     private GUIStyle textStyle;
@@ -18,40 +19,43 @@ public class HUD : MonoBehaviour
     private float ScreenWidthDefault = 1920;
     private float ScreenHeightDefault = 1080;
 
-    private float ratioWidth;
-    private float ratioHeight;
+    private float ratioWidth, ratioHeight;
+
+    private int lockCount, unlockedLocks;
 
     // Use this for initialization
     void Start()
     {
 
+        gameControl = GameObject.Find("GameController");
+    
         ratioWidth = ScreenWidthDefault / Screen.width;
         ratioHeight = ScreenHeightDefault / Screen.height;
-
 
         textStyle = new GUIStyle();
         textStyle.normal.textColor = Color.white;
         textStyle.fontSize = 40;
         textStyle.font = myFont;
+        textStyle.alignment = TextAnchor.MiddleCenter;
 
         showText = false;
+        showInteraction = false;
         showInv = true;
         showLock = false;
         text = "Wo bin ich?";
-        bottleText = "" + test;
-        stoneText = "" + test;
-        gearwheelText = "" + test;
-        pipeText = "" + test;
+        bottleText = "" + testAmount;
+        stoneText = "" + testAmount;
+        gearwheelText = "" + testAmount;
+        pipeText = "" + testAmount;
     }
 
     // Update is called once per frame
     void Update()
     {
+        unlockedLocks = gameControl.GetComponent<GamingControl>().getUnlockedLayerNumOfFocusedDoorLock();
+        lockCount = gameControl.GetComponent<GamingControl>().getTotalLayerNumOfFocusedDoorLock();
 
-        if (Input.GetButtonDown("Use Hairpin"))
-        {
-            showLock = !showLock;
-        }
+        showLock = gameControl.GetComponent<GamingControl>().isLockPickingHudNeeded();
 
         itemKeyCheck();
 
@@ -82,7 +86,7 @@ public class HUD : MonoBehaviour
 
         inventory();
         lockpicking();
-        //texting();
+    
 
     }
 
@@ -107,40 +111,26 @@ public class HUD : MonoBehaviour
         }
     }
 
-    private void texting()
-    {
-        if (showText)
-        {
-            GUI.Box(new Rect(Screen.width / 2 - 130, Screen.height / 2 + 250, 280, 50), "");
-            GUI.TextArea(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 250, 50, 50), text, textStyle);
-        }
-    }
+  
 
     private void lockpicking()
     {
         if (showLock)
         {
-            GUI.Box(new Rect(Screen.width / 2 - 130, Screen.height / 2 + 50, 280, 50), "");
 
-           // if(GameController.getFirstLock())
-            GUI.Label(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 50, 50, 50), openlock);
-           // else
-            GUI.Label(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 50, 50, 50), closedlock);
 
-          //  if (GameController.getSecondLock())
-            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 50, 50, 50), openlock);
-           // else
-            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 50, 50, 50), closedlock);
+            GUI.Box(new Rect(Screen.width / 2 - 160, Screen.height / 2 + 50, 60 + ((lockCount-1) * 60), 50), "");
 
-           // if (GameController.getThirdLock())
-            GUI.Label(new Rect(Screen.width / 2 + 20, Screen.height / 2 + 50, 50, 50), openlock);
-            //else
-            GUI.Label(new Rect(Screen.width / 2 + 20, Screen.height / 2 + 50, 50, 50), closedlock);
+            for (int i = 0; i < lockCount; i++)
+            {
+                if (unlockedLocks > i)
+                GUI.Label(new Rect(Screen.width / 2 - 150 + i * 60, Screen.height / 2 + 50, 50, 50), openlock);
+                else
+                GUI.Label(new Rect(Screen.width / 2 - 150 + i * 60, Screen.height / 2 + 50, 50, 50), closedlock);
+               
+            }
 
-           // if (GameController.getFourthLock())
-            GUI.Label(new Rect(Screen.width / 2 + 90, Screen.height / 2 + 50, 50, 50), openlock);
-            //else
-            GUI.Label(new Rect(Screen.width / 2 + 90, Screen.height / 2 + 50, 50, 50), closedlock);
+            
 
         }
     }
