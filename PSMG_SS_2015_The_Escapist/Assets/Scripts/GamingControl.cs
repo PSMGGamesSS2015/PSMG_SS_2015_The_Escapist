@@ -11,6 +11,7 @@ public class GamingControl : MonoBehaviour {
     private bool runningActive = false;
     private bool playerGrounded = true;
     private bool movementDisabled = false;
+    private bool slowlyMovement = false;
 
     private int lockPickingTotalLayerNum;
     private int lockPickingUnlockedLayerNum;
@@ -116,5 +117,15 @@ public class GamingControl : MonoBehaviour {
     public bool isLockPickingHudNeeded()
     {
         return showLockPickingHud;
+    }
+
+    public bool isSlowMovementActive()
+    {
+        return slowlyMovement;
+    }
+
+    public void setSlowMovement(bool active)
+    {
+        slowlyMovement = active;
     }
 }

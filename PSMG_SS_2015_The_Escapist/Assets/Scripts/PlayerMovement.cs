@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private Animator anim;
 
+    private GamingControl control;
+    private float movementFactor = 1f;
+
     private float rotationFactor = Constants.MOUSE_SENSITIVITY;
 
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        control = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
         
 
     }
@@ -49,6 +53,11 @@ public class PlayerMovement : MonoBehaviour {
         moveVertical = Input.GetAxis("Vertical");
         sneaking = checkSneakMode();
         running = checkRunningMode();
+
+        if (control.isSlowMovementActive())
+        {
+            movementFactor = 0.5f;
+        }
 
         // All movement will be done here.
         if (movementDisabled == false)
@@ -129,6 +138,8 @@ public class PlayerMovement : MonoBehaviour {
     /// <param name="sneaking"></param>
     private void manageMovement(float turn, float moveVertical, bool sneaking)
     {
+
+        setAnimationSpeed(movementFactor);
 
         anim.SetFloat("Speed", rb.velocity.magnitude);
 
@@ -360,6 +371,12 @@ public class PlayerMovement : MonoBehaviour {
         {
             anim.SetBool("Jumping", false);
         }
+    }
+
+    private void setAnimationSpeed(float movementFactor)
+    {
+
+        anim.speed = movementFactor;
     }
 
 
