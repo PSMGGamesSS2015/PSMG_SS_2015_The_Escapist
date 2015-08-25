@@ -18,9 +18,10 @@ public class OutroGUIText : MonoBehaviour
     private string text_7 = "Sie blickte sich um. Sie schien allein zu sein.";
     private string text_8 = "Einen Schritt nach dem anderen schlich sie durch die Kirche.";
     private string text_9 = "Warm und weich war das Licht auf ihrer Haut, das durch die Tore fiel.";
-    private string text_10 = "Hoffnung! Es gab wirklich Hoffnung, diesem Wahnsinn zu entkommen!";
+    private string text_10 = "Hoffnung! Gab es wirklich Hoffnung, diesem Wahnsinn zu entkommen?";
     private string text_11 = "Es schien niemand sie bemerkt zu haben.";
-    private string text_12 = "Lauf, Gerlin! Entkomme! Endlich!";
+    private string text_12 = "Zum Greifen nahe, endlich entkommen!";
+    private string text_13 = "Oder?";
 
     private string credits_1 = "CREDITS:";
     private string credits_2 = "... developed by ...";
@@ -121,7 +122,12 @@ public class OutroGUIText : MonoBehaviour
         txtRef.text = text_12;
         yield return new WaitForSeconds(6.0f);
         txtRef.text = text_0;
-        yield return new WaitForSeconds(16.5f);
+        yield return new WaitForSeconds(6.0f);
+        txtRef.material.color = Color.black;
+        txtRef.text = text_13;
+        yield return new WaitForSeconds (6.0f);
+        txtRef.text = text_0;
+        yield return new WaitForSeconds(4.5f);
 
 
         //Display credits texts here
