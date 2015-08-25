@@ -105,7 +105,7 @@ public class MenuManager : MonoBehaviour
         if (menu)
         {
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 320, 200, 80), "Start Game", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 320, 200, 80), "Start", buttonStyle))
             {
 
                 ChangeScene(1);
@@ -113,7 +113,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 230, 200, 80), "Options", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 230, 200, 80), "Optionen", buttonStyle))
             {
 
 
@@ -122,7 +122,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 140, 200, 80), "Quit", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 140, 200, 80), "Beenden", buttonStyle))
             {
 
 
@@ -136,7 +136,7 @@ public class MenuManager : MonoBehaviour
         if (optionmenu)
         {
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 300, 200, 80), "Audio Settings", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 300, 200, 80), "Audio", buttonStyle))
             {
 
 
@@ -145,7 +145,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 210, 200, 80), "Video / Misc Settings", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 210, 200, 80), "Video / Sonstiges", buttonStyle))
             {
 
 
@@ -154,7 +154,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 120, 200, 80), "Back", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 + 500, Screen.height / 2 - 120, 200, 80), "Zurueck", buttonStyle))
             {
 
 
@@ -173,20 +173,20 @@ public class MenuManager : MonoBehaviour
 
             string[] qualities = QualitySettings.names;
 
-            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 320, 100, 30), "Mouse Sensitivity", optionTextStyle);
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 320, 100, 30), "Maus Empfindlichkeit", optionTextStyle);
             ms = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 265, 100, 30), ms, 1f, 20.0f);
             GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 270, 100, 30), "" + (int)ms, smalloptionTextStyle);
 
 
 
-            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 220, 100, 30), "Brightness", optionTextStyle);
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 220, 100, 30), "Helligkeit", optionTextStyle);
             brightness = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 165, 100, 30), brightness, 0.5f, 2.0f);
             GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 170, 100, 30), "" + (int)(brightness * 10), smalloptionTextStyle);
 
 
 
 
-            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 120, 100, 30), "Video Quality", optionTextStyle);
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 120, 100, 30), "Video Qualitaet", optionTextStyle);
 
             for (int i = 0; i < qualities.Length; i++)
             {
@@ -204,7 +204,7 @@ public class MenuManager : MonoBehaviour
 
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 20, 120, 30), "Antialiasing", optionTextStyle);
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 30, 120, 40), "No AA", smalloptionTextStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 30, 120, 40), "Kein AA", smalloptionTextStyle))
             {
                 QualitySettings.antiAliasing = 0;
             }
@@ -252,7 +252,7 @@ public class MenuManager : MonoBehaviour
             }
 
 
-            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 150, 120, 30), "Resolution", optionTextStyle);
+            GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 150, 120, 30), "Aufloesung", optionTextStyle);
 
 
             //1080p
@@ -294,7 +294,7 @@ public class MenuManager : MonoBehaviour
 
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 260, 220, 60), "Back", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 - 120, Screen.height / 2 + 260, 220, 60), "Zurueck", buttonStyle))
             {
 
 
@@ -310,14 +310,14 @@ public class MenuManager : MonoBehaviour
         {
             GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
 
-            GUI.Label(new Rect(Screen.width / 2 - 110, Screen.height / 2 - 100, 100, 30), "Overall Volume", optionTextStyle);
+            GUI.Label(new Rect(Screen.width / 2 - 110, Screen.height / 2 - 100, 100, 30), "Gesamtlautstaerke", optionTextStyle);
             overallVol = (int)GUI.HorizontalSlider(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 35, 100, 30), overallVol, 0.0f, 10.0f);
             GUI.Label(new Rect(Screen.width / 2 - 5, Screen.height / 2 - 20, 100, 30), "" + overallVol, smalloptionTextStyle);
             AudioListener.volume = overallVol / 10.0f;
 
 
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 90, 100, 30), "Back", buttonStyle))
+            if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 90, 100, 30), "Zurueck", buttonStyle))
             {
                 sound = false;
                 optionmenu = true;
