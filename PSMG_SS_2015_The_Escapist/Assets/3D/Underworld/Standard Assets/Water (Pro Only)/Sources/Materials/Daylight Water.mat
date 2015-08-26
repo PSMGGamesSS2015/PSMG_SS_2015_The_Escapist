@@ -68,7 +68,7 @@ Material:
       data:
         first:
           name: _WaveScale
-        second: .063000001
+        second: .112999998
       data:
         first:
           name: _ReflDistort
@@ -93,7 +93,11 @@ Material:
       data:
         first:
           name: _RefrColor
+<<<<<<< Updated upstream
         second: {r: .20784314, g: .278431386, b: .0156862754, a: 1}
+=======
+        second: {r: 1, g: 0, b: 0, a: 1}
+>>>>>>> Stashed changes
       data:
         first:
           name: _Fresnel_ST
