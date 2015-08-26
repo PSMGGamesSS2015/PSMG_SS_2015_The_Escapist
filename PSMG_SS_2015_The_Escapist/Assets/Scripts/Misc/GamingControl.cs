@@ -55,8 +55,18 @@ public class GamingControl : MonoBehaviour {
             lockPickingTotalLayerNum = doorControl.getLockPickSystem().getTotalLayerNum();
             lockPickingUnlockedLayerNum = doorControl.getLockPickSystem().getUnlockedLayerNum();
 
-            if (doorControl.isActive() && doorControl.isLockPickSystemActive() && doorControl.isLocked()) { showLockPickingHud = true; }
-            else { showLockPickingHud = false; }
+            if (doorControl.isActive() && doorControl.isLockPickSystemActive() && doorControl.isLocked()) 
+            { 
+                showLockPickingHud = true; 
+            }
+            else 
+            { 
+                showLockPickingHud = false;
+            }
+        }
+        else 
+        { 
+            showLockPickingHud = false;
         }
 
         Debug.Log(showLockPickingHud + " " + lockPickingTotalLayerNum + " " + lockPickingUnlockedLayerNum);
