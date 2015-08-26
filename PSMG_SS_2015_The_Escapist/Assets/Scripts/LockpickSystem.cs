@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class LockpickSystem : MonoBehaviour 
 {
     public int patternLength = 4;
     public int maxIdenticalRowLength = 3;
+    public float wrongMoveCooldownTime = 1f;
     public bool deactivated = false;
 
     private Door[] doorControls;
@@ -16,6 +18,7 @@ public class LockpickSystem : MonoBehaviour
     private int actualPos = 0;
     private bool locked = true;
     private bool focused = false;
+    private bool cooldownActive = false;
 
 	void Awake() 
     {
@@ -35,7 +38,7 @@ public class LockpickSystem : MonoBehaviour
 
     void Update()
     {
-        if (deactivated || !focused || !locked) { return; }
+        if (deactivated || !focused || !locked || cooldownActive) { return; }
 
         if (Input.GetButtonDown("Move Hairpin Left")) { newMove(Directions.Left); }
         if (Input.GetButtonDown("Move Hairpin Right")) { newMove(Directions.Right); }
@@ -54,6 +57,7 @@ public class LockpickSystem : MonoBehaviour
         {
             actualPos = 0;
             doorAudio.playLockPickingFailSound();
+            StartCoroutine("startCooldown");
             //Debug.Log("Fail");
         }
 
@@ -93,6 +97,12 @@ public class LockpickSystem : MonoBehaviour
         return pattern;
     }
 
+    IEnumerator startCooldown()
+    {
+        cooldownActive = true;
+        yield return new WaitForSeconds (wrongMoveCooldownTime);
+        cooldownActive = false;
+    }
 
     private Directions getRandomDirection()
     {
