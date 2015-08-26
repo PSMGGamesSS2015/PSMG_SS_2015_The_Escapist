@@ -51,6 +51,7 @@ public class Constants : MonoBehaviour {
 
     public static float BRIGHTNESS = 1f;
 
-    //Constants for items
-    public static float ITEM_FOCUS_ANGLE = 70f;
+    //Constants for Player Detetction
+    public static float DRAG_DOOR_FOCUS_ANGLE = 70f;
+    public static float ITEM_FOCUS_ANGLE = 40f;
 }
