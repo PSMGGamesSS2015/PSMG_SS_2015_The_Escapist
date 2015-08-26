@@ -18,13 +18,15 @@ public class DragDoor : MonoBehaviour
     private GameObject focusedDoor = null;
     private GameObject lastFocusedDoor = null;
     private Door focusedDoorControl;
+    private PlayerDetection playerDetection;
     private LayerMask dragableObjects;
 
     private bool pullToOpen;
     private float maxOpenAngle;
+    private bool doorMirrored;
     private bool zAxisInverted;
 
-    private float dragDirectionFactor;
+    private int dragDirectionFactor;
     private float totalDragRotation = 0;
     private float dragDirectionChangeLimit = 5f;
 
@@ -32,6 +34,7 @@ public class DragDoor : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         firstPersonCam = player.GetComponentInChildren<Camera>();
+        playerDetection = player.GetComponent<PlayerDetection>();
 
         dragableObjects = (1 << LayerMask.NameToLayer(layerMaskName));
     }
@@ -40,7 +43,7 @@ public class DragDoor : MonoBehaviour
     {
         if (!Input.GetButton("Use")) { focusedDoor = null; lastFocusedDoor = null; return; }
 
-        //GameObject focusedObj = player.GetComponent<PlayerDetection>().getBestMatchObjInFOV();
+        //GameObject focusedObj = playerDetection.getBestMatchObjInFOV();
         //validate(focusedObj);
 
         LookForDoorInPlayersFocus();
@@ -131,9 +134,21 @@ public class DragDoor : MonoBehaviour
 
         focusedDoorControl = focusedDoor.GetComponentInParent<Door>();
 
+        doorMirrored = isDoorMirrored();
         zAxisInverted = focusedDoorControl.isInverted();
         pullToOpen = focusedDoorControl.isPulledOpen();
         maxOpenAngle = focusedDoorControl.getMaxOpenAngle();
+    }
+
+    private bool isDoorMirrored()
+    {
+        float doorwayRot = focusedDoor.transform.parent.eulerAngles.y;
+        float defaultDoorRot = focusedDoorControl.getDefaultRotation();
+
+        float defaultOffsetRotation = Mathf.Abs(doorwayRot - defaultDoorRot);
+        bool doorMirrored = (defaultOffsetRotation >= 179.9f) ? true : false;
+
+        return doorMirrored;
     }
 
     private void Drag()
@@ -153,7 +168,10 @@ public class DragDoor : MonoBehaviour
     // CALC ANGLE FROM MOUSE MOVEMENT AND PLAYER ORIENTATION
     private float calcDragRotationAngle()
     {
-        float mouseAcceleration = ((Input.GetAxis("Mouse X") * xSensitivity) + (Input.GetAxis("Mouse Y") * ySensitivity));
+        int yDragDirectionFactor = 1;
+        if (doorMirrored) { yDragDirectionFactor = -1; }
+
+        float mouseAcceleration = ((Input.GetAxis("Mouse X") * xSensitivity) + (Input.GetAxis("Mouse Y") * ySensitivity * yDragDirectionFactor));
 
         if (Mathf.Abs(totalDragRotation) < dragDirectionChangeLimit) { dragDirectionFactor = calcDragDirectionFactor(); }
 
@@ -209,15 +227,11 @@ public class DragDoor : MonoBehaviour
     {
         bool outsideBoundaries = false;
 
-        float doorwayRot = focusedDoor.transform.parent.eulerAngles.y;
         float defaultDoorRot = focusedDoorControl.getDefaultRotation();
 
-        float defaultOffsetRotation = Mathf.Abs(doorwayRot - defaultDoorRot);
-        bool doorMirrored = (defaultOffsetRotation >= 179.9f) ? true : false;
-
         float doorRot = focusedDoor.transform.eulerAngles.y;
-        float minDoorAngle = NormalizeAngle((pullToOpen == doorMirrored) ? defaultDoorRot : defaultDoorRot - maxOpenAngle) - 1;
-        float maxDoorAngle = NormalizeAngle((pullToOpen == doorMirrored) ? (defaultDoorRot + maxOpenAngle) : defaultDoorRot) - 1;
+        float minDoorAngle = NormalizeAngle((pullToOpen == doorMirrored) ? defaultDoorRot : defaultDoorRot - maxOpenAngle);
+        float maxDoorAngle = NormalizeAngle((pullToOpen == doorMirrored) ? (defaultDoorRot + maxOpenAngle) : defaultDoorRot);
 
         float middleAngle = minDoorAngle + (maxOpenAngle / 2);
         float turningAngle = NormalizeAngle(middleAngle + 180);

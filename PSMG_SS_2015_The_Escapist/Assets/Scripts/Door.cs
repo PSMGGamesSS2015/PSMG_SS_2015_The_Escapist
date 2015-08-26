@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Door : MonoBehaviour 
 {
     public bool pullToOpen = false;
-    public bool inverted = false;
+    public bool zAxisInverted = false;
     public bool deactivated = false;
     public float maxOpenAngle = 90f;
 
@@ -108,6 +108,6 @@ public class Door : MonoBehaviour
 
     public bool isInverted()
     {
-        return inverted;
+        return zAxisInverted;
     }
 }
