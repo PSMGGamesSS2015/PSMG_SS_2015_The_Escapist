@@ -2,17 +2,22 @@
 using System.Collections;
 
 public class EyeHUD : MonoBehaviour {
-    public GameObject openeye;
-    public GameObject openeyered;
 
+    //
+    // Script for displaying EyeTexture
+    //
+
+    public GameObject openeye, openeyered;
     private FollowAI fai;
     private Color color;
-
+    private GamingControl gc;
+ 
     private float shadowPercentage;
 
-    private GamingControl gc; 
-        // Use this for initialization
+    
+      
 	void Start () {
+
         color = new Color(1f, 1f, 1f);
 
         gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
@@ -22,17 +27,20 @@ public class EyeHUD : MonoBehaviour {
     void Update()
     {
         shadowPercentage = gc.getPlayerHiddenPercentage();
-        color.a = 0.9f - shadowPercentage/100;
-    
+
+        // Change Alpha of Texture
+        color.a = 0.9f - shadowPercentage / 100;
+
     }
 
     void OnGUI()
     {
+
         bool safe = (shadowPercentage > 90) ? true : false;
 
         GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(shadowPercentage) + "%");
 
-
+        // States for Eye Texture
         if (fai.isChasing() == true)
         {
             openeye.SetActive(false);

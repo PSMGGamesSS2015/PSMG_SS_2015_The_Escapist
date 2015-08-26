@@ -3,31 +3,37 @@ using System.Collections;
 
 public class HUD : MonoBehaviour
 {
+
+    //
+    // Script for displaying HUD
+    //
+
     private GameObject gameControl;
+    private GUIStyle textStyle;
+    public Texture2D bottle, stone, gearwheel, pipe, closedlock, openlock, whiteBorder;
+    public Font myFont;
 
     private string bottleText, stoneText, gearwheelText, pipeText, text;
-    private int testAmount = 3;
-    public Texture2D bottle, stone, gearwheel, pipe, closedlock, openlock, whiteBorder;
+
+    public int amount = 3;
     private int itemNr = 1;
+    private int lockCount, unlockedLocks;
+
     private bool showInv, showLock;
-
     public bool showText, showInteraction;
-
-    public Font myFont;
-    private GUIStyle textStyle;
 
     private float ScreenWidthDefault = 1920;
     private float ScreenHeightDefault = 1080;
-
     private float ratioWidth, ratioHeight;
 
-    private int lockCount, unlockedLocks;
-
-    // Use this for initialization
+    
+    
     void Start()
     {
 
         gameControl = GameObject.Find("GameController");
+
+        // For right Scaling -- doesn't work correctly
     
         ratioWidth = ScreenWidthDefault / Screen.width;
         ratioHeight = ScreenHeightDefault / Screen.height;
@@ -43,10 +49,10 @@ public class HUD : MonoBehaviour
         showInv = true;
         showLock = false;
         text = "Wo bin ich?";
-        bottleText = "" + testAmount;
-        stoneText = "" + testAmount;
-        gearwheelText = "" + testAmount;
-        pipeText = "" + testAmount;
+        bottleText = "" + amount;
+        stoneText = "" + amount;
+        gearwheelText = "" + amount;
+        pipeText = "" + amount;
     }
 
     // Update is called once per frame
@@ -54,11 +60,8 @@ public class HUD : MonoBehaviour
     {
         unlockedLocks = gameControl.GetComponent<GamingControl>().getUnlockedLayerNumOfFocusedDoorLock();
         lockCount = gameControl.GetComponent<GamingControl>().getTotalLayerNumOfFocusedDoorLock();
-
         showLock = gameControl.GetComponent<GamingControl>().isLockPickingHudNeeded();
-
         itemKeyCheck();
-
 
     }
 
@@ -73,8 +76,6 @@ public class HUD : MonoBehaviour
         else if (Input.GetButtonDown("Pipe"))
             itemNr = 4;
 
-
-
     }
 
 
@@ -83,7 +84,6 @@ public class HUD : MonoBehaviour
     {
 
         checkSelectedItem();
-
         inventory();
         lockpicking();
     
@@ -95,16 +95,16 @@ public class HUD : MonoBehaviour
         switch (itemNr)
         {
             case 1:
-                GUI.DrawTexture(new Rect(Screen.width * 0.009f, Screen.height * 0.90f, 53, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.009f, Screen.height * 0.90f , 53, 60), whiteBorder);
                 break;
             case 2:
-                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth), Screen.height * 0.9f, 53, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth), Screen.height * 0.9f, 53 , 60 ), whiteBorder);
                 break;
             case 3:
-                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth * 2), Screen.height * 0.9f, 53, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth * 2), Screen.height * 0.9f, 53 , 60 ), whiteBorder);
                 break;
             case 4:
-                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth * 3), Screen.height * 0.9f, 53, 60), whiteBorder);
+                GUI.DrawTexture(new Rect(Screen.width * 0.01f + (Screen.width * 0.025f * ratioWidth * 3), Screen.height * 0.9f, 53 , 60 ), whiteBorder);
                 break;
             default:
                 break;

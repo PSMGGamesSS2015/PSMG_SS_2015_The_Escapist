@@ -3,10 +3,13 @@ using System.Collections;
 
 public class Crosshair : MonoBehaviour {
 
+    //
+    // Script for displaying crosshair
+    //
 
     public Texture2D crosshairTexture;
     public float crosshairScale = 0.1f;
-	// Use this for initialization
+	
     void OnGUI()
     {
 

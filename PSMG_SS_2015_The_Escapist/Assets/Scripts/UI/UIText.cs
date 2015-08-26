@@ -3,25 +3,32 @@ using System.Collections;
 
 public class UIText : MonoBehaviour {
 
-    
-	// Use this for initialization
+
+    //
+    // Script displaying UIText
+    //
 
     public Font myFont;
     private GUIStyle textStyle;
+
     private string str;
+
     private bool showStoryText;
    
    void Start() {
        showStoryText = false;
+
+       //Define Style
+
        textStyle = new GUIStyle();
-        textStyle.normal.textColor = Color.white;
-        textStyle.fontSize = 40;
-        textStyle.font = myFont;
-               textStyle.alignment = TextAnchor.MiddleCenter;
+       textStyle.normal.textColor = Color.white;
+       textStyle.fontSize = 40;
+       textStyle.font = myFont;
+       textStyle.alignment = TextAnchor.MiddleCenter;
    
    }
 
-IEnumerator AnimateText(string strComplete) { 
+    IEnumerator AnimateText(string strComplete) { 
     
     int i = 0; 
     str = ""; 
@@ -31,7 +38,7 @@ IEnumerator AnimateText(string strComplete) {
     }
     yield return new WaitForSeconds(2F);
     showStoryText = false;
-}
+    }
 
     void OnGUI() {
         if (showStoryText)

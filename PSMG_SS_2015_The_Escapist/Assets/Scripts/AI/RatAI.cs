@@ -5,61 +5,43 @@ using System;
 public class RatAI : MonoBehaviour
 {
     public  GameObject player;
-
     private Transform enemy;
-
-
-
-
-
     public Transform[] waypoint;
+    private Animator anim;
+
     public bool loop = true;
+
     public float dampingLook = 6.0f;
     private float pauseDuration = 0f;
     private float attackingPauseDuration = 1f;
     private float curTime;
+
     public int currentWaypoint = 0;
-
-
-    private Animator anim;
-
-
+    private int state = 1;
+    
     //isWalking = 1;
     //isHissing = 2;
   
-    private int state = 1;
+    //
+    // A simple AI that makes the rat hissing if the player reaches the sight distance of the rat.
+    //
 
 
-    // A simple AI that follows the player if he reaches the sight distance of the AI.
-
-
-    /// <summary>
-    /// Initialisation
-    /// </summary>
     void Start()
     {
-
-
-
         player = GameObject.Find("Player");
-        //Added by Chris
         anim = GetComponent<Animator>();
-
-
-
-
         enemy = transform;
-
     }
 
     /// <summary>
-    /// Describes the actions of the enemy when player is in sight or not in sight
+    /// State Machine
     /// </summary>
+    /// 
+
     void Update()
     {
-       
-        
-            
+              
             switch (state)
             {
 
@@ -121,6 +103,7 @@ public class RatAI : MonoBehaviour
         }
 
     }
+
     void patrolWay()
     {
 
@@ -150,9 +133,11 @@ public class RatAI : MonoBehaviour
         }
     }
         
+
     /// <summary>
     /// Check if player reaches the sight of the enemy 
     /// </summary>
+    
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject == player)
@@ -164,10 +149,7 @@ public class RatAI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Check if player leaves the sight of the enemy
-    /// </summary>
-  
+ 
 }
 
 

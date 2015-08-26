@@ -3,38 +3,35 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
+    //
+    // Script for displaying MainMenu
+    //
+
+    private GUIStyle buttonStyle, titleStyle, optionTextStyle, smalloptionTextStyle;
+    public Texture on, off;
     public Font myFont;
 
-    public bool optionmenu = false;
-    public bool menu = true;
-    bool sound = false;
-    bool video = false;
-
-    int overallVol = 6;
-    float brightness = 0.5f;
-
-    float ms = 5f;
-
-    int musicVol = 6;
-
-    int fieldOfView = 80;
-
-    public int ResX;
-    public int ResY;
-
-    private GUIStyle buttonStyle;
-    private GUIStyle titleStyle;
-    private GUIStyle optionTextStyle;
-    private GUIStyle smalloptionTextStyle;
-
-    public Texture on, off;
-
-    public bool Fullscreen; //default...
-
+    private bool optionmenu = false;
+    private bool menu = true;
+    private bool sound = false;
+    private bool video = false;
+    private bool fullscreen = true;
     public bool vsync = true;
+
+    private int overallVol = 6;
+    private int musicVol = 6;
+    private int fieldOfView = 80;
+    private int ResX, ResY;
+
+    private float brightness = 0.5f;
+    private float ms = 5f;
 
     public void Start()
     {
+
+        // Define Styles
+
+
         buttonStyle = new GUIStyle();
         buttonStyle.fontSize = 64;
         buttonStyle.normal.textColor = Color.white;
@@ -61,24 +58,29 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
+
+
+        // Settings for following Levels
+
+
         Constants.MOUSE_SENSITIVITY = ms;
-
         Constants.BRIGHTNESS = brightness;
-
-        Debug.Log(Constants.BRIGHTNESS);
 
     }
 
-    // Use this for initialization
+
     public void ChangeScene(int sceneNum)
     {
         Application.LoadLevel(sceneNum);
     }
 
+
+
     public void CloseGame()
     {
         Application.Quit();
     }
+
 
     public void playSound(AudioSource audiosrc)
     {
@@ -102,6 +104,7 @@ public class MenuManager : MonoBehaviour
 
     private void showMenu()
     {
+
         if (menu)
         {
 
@@ -130,6 +133,7 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
+
 
     private void showOptionMenu()
     {
@@ -173,19 +177,20 @@ public class MenuManager : MonoBehaviour
 
             string[] qualities = QualitySettings.names;
 
+            //Mouse Sensitivity
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 320, 100, 30), "Maus Empfindlichkeit", optionTextStyle);
             ms = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 265, 100, 30), ms, 1f, 20.0f);
             GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 270, 100, 30), "" + (int)ms, smalloptionTextStyle);
 
 
-
+            // Brightness
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 220, 100, 30), "Helligkeit", optionTextStyle);
             brightness = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 165, 100, 30), brightness, 0.5f, 2.0f);
             GUI.Label(new Rect(Screen.width / 2 - 160, Screen.height / 2 - 170, 100, 30), "" + (int)(brightness * 10), smalloptionTextStyle);
 
 
 
-
+            //Quality Settings
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 120, 100, 30), "Video Qualitaet", optionTextStyle);
 
             for (int i = 0; i < qualities.Length; i++)
@@ -201,9 +206,10 @@ public class MenuManager : MonoBehaviour
 
 
 
-
+            // Antialiasing
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 - 20, 120, 30), "Antialiasing", optionTextStyle);
 
+            // Kein AA
             if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 30, 120, 40), "Kein AA", smalloptionTextStyle))
             {
                 QualitySettings.antiAliasing = 0;
@@ -227,7 +233,7 @@ public class MenuManager : MonoBehaviour
 
 
 
-
+            //Vsync
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 80, 120, 30), "Vsync", optionTextStyle);
 
 
@@ -252,13 +258,15 @@ public class MenuManager : MonoBehaviour
             }
 
 
+            //Auflösung
+
             GUI.Label(new Rect(Screen.width / 2 - 275, Screen.height / 2 + 150, 120, 30), "Aufloesung", optionTextStyle);
 
 
             //1080p
             if (GUI.Button(new Rect(Screen.width / 2 - 280 + 100, Screen.height / 2 + 200, 120, 40), "1080p", smalloptionTextStyle))
             {
-                Screen.SetResolution(1920, 1080, Fullscreen);
+                Screen.SetResolution(1920, 1080, fullscreen);
                 ResX = 1920;
                 ResY = 1080;
 
@@ -266,7 +274,7 @@ public class MenuManager : MonoBehaviour
             //720p
             if (GUI.Button(new Rect(Screen.width / 2 - 280 + 200, Screen.height / 2 + 200, 120, 40), "720p", smalloptionTextStyle))
             {
-                Screen.SetResolution(1280, 720, Fullscreen);
+                Screen.SetResolution(1280, 720, fullscreen);
                 ResX = 1280;
                 ResY = 720;
 
@@ -274,7 +282,7 @@ public class MenuManager : MonoBehaviour
             //480p
             if (GUI.Button(new Rect(Screen.width / 2 - 280 + 300, Screen.height / 2 + 200, 120, 40), "480p", smalloptionTextStyle))
             {
-                Screen.SetResolution(640, 480, Fullscreen);
+                Screen.SetResolution(640, 480, fullscreen);
                 ResX = 640;
                 ResY = 480;
 
@@ -284,7 +292,7 @@ public class MenuManager : MonoBehaviour
             //360p
             if (GUI.Button(new Rect(Screen.width / 2 - 280 + 400, Screen.height / 2 + 200, 120, 40), "360p", smalloptionTextStyle))
             {
-                Screen.SetResolution(640, 360, Fullscreen);
+                Screen.SetResolution(640, 360, fullscreen);
                 ResX = 640;
                 ResY = 360;
 

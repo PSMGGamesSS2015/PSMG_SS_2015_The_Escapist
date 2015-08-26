@@ -4,11 +4,14 @@ using System.Collections;
 public class PauseMenu : MonoBehaviour
 {
 
-    private bool paused = false;
-    private GUIStyle textStyle;
-    private GUIStyle titleStyle;
+    //
+    // Script for displaying PauseMenu
+    //
 
+    private GUIStyle textStyle, titleStyle;
     public Font myFont;
+
+    private bool paused = false;
 
     void Start()
     {

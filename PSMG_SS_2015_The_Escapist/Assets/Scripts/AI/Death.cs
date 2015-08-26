@@ -3,7 +3,11 @@ using System.Collections;
 
 public class Death : MonoBehaviour {
 
-	// Use this for initialization
+
+    //
+    // Script for displaying GameOver screen of player reaches collider
+    //
+
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject == GameObject.FindGameObjectWithTag("Player"))
