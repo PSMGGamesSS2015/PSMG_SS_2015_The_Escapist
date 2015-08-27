@@ -22,6 +22,10 @@ public class EnemyKnightAudioController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    /// <summary>
+    /// Gets the Boolean from the AnimatorController of the knight and checks, if the knight is attacking or chasing the player.
+    /// If he does, he will play one sound out of four if he chases or one sound if he attacks.
+    /// </summary>
 	void FixedUpdate () {
 
 
@@ -48,7 +52,7 @@ public class EnemyKnightAudioController : MonoBehaviour {
                         break;
                 }
                 audioSrc.Play();
-                yield return new WaitForSeconds(5.0f);
+                StartCoroutine(Wait());
 
             }
             else if (anim.GetBool("IsAttacking") == true)
@@ -60,4 +64,9 @@ public class EnemyKnightAudioController : MonoBehaviour {
             }
         }
 	}
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(5.0f);
+    }
 }

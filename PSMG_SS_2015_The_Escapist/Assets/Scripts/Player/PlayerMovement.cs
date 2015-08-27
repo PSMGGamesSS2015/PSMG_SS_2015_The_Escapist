@@ -49,8 +49,10 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //Gets the WASD-Input.
         turn = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
+
         sneaking = checkSneakMode();
         running = checkRunningMode();
 
@@ -143,6 +145,8 @@ public class PlayerMovement : MonoBehaviour {
 
         anim.SetFloat("Speed", rb.velocity.magnitude);
 
+        // Idle-state
+
         if (moveVertical <= 0.1)
         {
             if ((sneaking == false) && (running == false)) {
@@ -159,6 +163,8 @@ public class PlayerMovement : MonoBehaviour {
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
             }
         }
+
+        //Walking-backwards-state
 
         if (moveVertical < 0)
         {
@@ -178,9 +184,6 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
                     transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
                 }
                 else if (axes == RotationAxes.MouseX)
@@ -189,14 +192,14 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 else
                 {
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
                     transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
                 }
             }
 
         }
+
+        //Walking-state
 
         if (moveVertical > 0.1)
         {
@@ -218,9 +221,6 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
                     transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
                 }
                 else if (axes == RotationAxes.MouseX)
@@ -229,14 +229,13 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 else
                 {
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
                     transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
                 }
             }
         }
 
+
+        //Sneaking-state
 
         if (moveVertical > 0.1)
         {
@@ -251,16 +250,12 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Idling", false);
                 anim.SetBool("Walking Backwards", false);
 
-                //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
                 if (axes == RotationAxes.MouseXAndY)
                 {
                     float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
                     transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
                 }
@@ -270,9 +265,6 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 else
                 {
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
                     transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
                 }
             }
@@ -280,6 +272,9 @@ public class PlayerMovement : MonoBehaviour {
         }
         else
         {
+
+            //Enables movement to sides if sneaking active but not moving forward.
+
             if ((sneaking == true) && (running == false))
             {
                 movementSpeed = Constants.SNEAKING_SPEED;
@@ -291,17 +286,12 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Idling", false);
                 anim.SetBool("Walking Backwards", false);
 
-                //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
                 if (axes == RotationAxes.MouseXAndY)
                 {
                     float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
                     transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
                 }
                 else if (axes == RotationAxes.MouseX)
@@ -310,13 +300,13 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 else
                 {
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
                     transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
                 }
             }
         }
+
+
+        //Running-state
 
         if (moveVertical > 0.1)
         {
@@ -331,16 +321,12 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Idling", false);
                 anim.SetBool("Walking Backwards", false);
 
-                //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * moveVertical);
                 transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed), 0);
                 transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * turn);
 
                 if (axes == RotationAxes.MouseXAndY)
                 {
                     float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
                     transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
                 }
@@ -350,8 +336,6 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 else
                 {
-                    //rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-                    //rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
                     transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
                 }
@@ -359,6 +343,7 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
+        //Jumping-state
 
         if ((Input.GetButton("Jump")) == true && (playerIsGrounded() == true))
         {
@@ -373,6 +358,10 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// If the GameController returns that the player is carrying something heavy, movement will be slowed down by the animator.
+    /// </summary>
+    /// <param name="movementFactor"></param>
     private void setAnimationSpeed(float movementFactor)
     {
 
@@ -409,11 +398,19 @@ public class PlayerMovement : MonoBehaviour {
         return running;
     }
 
+    /// <summary>
+    /// Returns if the player is on the ground or not.
+    /// </summary>
+    /// <returns></returns>
     public bool isPlayerGrounded()
     {
         return playerGrounded;
     }
 
+    /// <summary>
+    /// Gets if the player's movement is disabled.
+    /// </summary>
+    /// <returns></returns>
     public bool isMovementDisabled()
     {
         return movementDisabled;

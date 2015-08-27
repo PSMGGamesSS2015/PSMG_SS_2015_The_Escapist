@@ -67,6 +67,9 @@ public class MouseLook : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// This method returns the current position of the breast sensor and of the head sensor.
+    /// </summary>
     private void getPositions()
     {
         sneakingVector = breastSensor.transform.position;
@@ -74,7 +77,10 @@ public class MouseLook : MonoBehaviour {
 
     }
 
-
+    /// <summary>
+    /// When the game starts, the player gets the head sensor and the breast sensor
+    /// as a reference of the positon of the camera. This will be needed when the player is crouching.
+    /// </summary>
 	void Start ()
 	{
         headSensor = GameObject.FindGameObjectWithTag("Head Sensor");
@@ -96,6 +102,9 @@ public class MouseLook : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// In case of switching the state walking to sneaking, the positon of the camera will be changed (and vice versa).
+    /// </summary>
     private void setPosition()
     {
 

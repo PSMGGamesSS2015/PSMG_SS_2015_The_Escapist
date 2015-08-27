@@ -73,21 +73,36 @@ public class GamingControl : MonoBehaviour {
     }
 
 
-    //Returns the current position of the player.
+    /// <summary>
+    /// Returns the current position of the player.
+    /// </summary>
+    /// <returns></returns>
     public Vector3 getPlayerPosition() {
         return currentPosition;
     }
 
+    /// <summary>
+    /// Gets if the player is sneaking at the moment.
+    /// </summary>
+    /// <returns></returns>
     public bool isSneakingActive()
     {
         return sneakingActive;
     }
 
+    /// <summary>
+    /// Gets if the player is running at the moment.
+    /// </summary>
+    /// <returns></returns>
     public bool isRunningActive()
     {
         return runningActive;
     }
 
+    /// <summary>
+    /// Gets if the player is grounded at the moment.
+    /// </summary>
+    /// <returns></returns>
     public bool isPlayerGrounded()
     {
         return playerGrounded;
@@ -123,11 +138,19 @@ public class GamingControl : MonoBehaviour {
         return showLockPickingHud;
     }
 
+    /// <summary>
+    /// Gets if the player is carrying something heavy.
+    /// </summary>
+    /// <returns></returns>
     public bool isSlowMovementActive()
     {
         return slowlyMovement;
     }
 
+    /// <summary>
+    /// Sets that the player is carrying something heavy.
+    /// </summary>
+    /// <returns></returns>
     public void setSlowMovement(bool active)
     {
         slowlyMovement = active;
