@@ -48,6 +48,7 @@ public class EnemyKnightAudioController : MonoBehaviour {
                         break;
                 }
                 audioSrc.Play();
+                yield return new WaitForSeconds(5.0f);
 
             }
             else if (anim.GetBool("IsAttacking") == true)
