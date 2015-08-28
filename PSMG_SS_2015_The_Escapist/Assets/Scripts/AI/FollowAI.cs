@@ -222,8 +222,9 @@ public class FollowAI : MonoBehaviour
     {
         setAllAnimBoolsFalseExcept("IsPatroling");
         anim.Play("Walking");
-        agent.destination = target;
 
+        agent.destination = target;
+        agent.Resume();
         //alignTo(target, alignSpeed);
     }
 
@@ -231,6 +232,7 @@ public class FollowAI : MonoBehaviour
     {
         setAllAnimBoolsFalseExcept("IsChasing");
         agent.destination = target;
+        agent.Resume();
 
         //alignTo(target, alignSpeed);
     }

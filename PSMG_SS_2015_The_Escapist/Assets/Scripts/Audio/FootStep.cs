@@ -3,10 +3,14 @@ using System.Collections;
 
 public class FootStep : MonoBehaviour 
 {
+    public AudioClip footStepOnStone;
+
     private GamingControl gameController;
     private GameObject player;
     private Rigidbody playerRb;
     private AudioSource audioSrc;
+
+    private bool jumping = false;
 
 	void Start () 
     {
@@ -14,12 +18,12 @@ public class FootStep : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerRb = player.GetComponent<Rigidbody>();
 
-        audioSrc = GameObject.Find("player_noise").GetComponent<AudioSource>();
+        audioSrc = GetComponent<AudioSource>();
 	}
 	
 	void Update () 
     {
-       if (!gameController.isPlayerGrounded() || audioSrc.isPlaying) return;
+        if(!gameController.isPlayerGrounded() || audioSrc.isPlaying) { return; }
 
         float minVolume = 0f;
         float maxVolume = 0f;
@@ -28,24 +32,24 @@ public class FootStep : MonoBehaviour
         //Sneaking
         if (gameController.isSneakingActive() && playerRb.velocity.magnitude > 0.4f && playerRb.velocity.magnitude < 1.0f)
         {
-            minVolume = 0.01f;
-            maxVolume = 0.03f;
+            minVolume = 0.07f;
+            maxVolume = 0.09f;
             pitch = 1f;
         }
 
         // Walking
         else if (playerRb.velocity.magnitude > 1.0f && playerRb.velocity.magnitude < 1.5f)
         {
-            minVolume = 0.04f;
-            maxVolume = 0.06f;
+            minVolume = 0.1f;
+            maxVolume = 0.2f;
             pitch = 1f;
         }
         
         //Running
         else if (gameController.isRunningActive() && playerRb.velocity.magnitude > 1.5f)
         {
-            minVolume = 0.07f;
-            maxVolume = 0.1f;
+            minVolume = 0.4f;
+            maxVolume = 0.6f;
             pitch = 1.3f;
         }
 
@@ -54,6 +58,7 @@ public class FootStep : MonoBehaviour
         
     private void adjustAudioSrc(float minVolume, float maxVolume, float pitch)
     {
+        audioSrc.clip = footStepOnStone;
         audioSrc.volume = Random.Range(minVolume, maxVolume);
         audioSrc.pitch = pitch;
         audioSrc.Play();

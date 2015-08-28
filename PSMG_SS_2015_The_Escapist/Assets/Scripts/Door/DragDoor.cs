@@ -96,7 +96,7 @@ public class DragDoor : MonoBehaviour
         {
             Renderer hitRenderer = hit.collider.GetComponent<Renderer>();
 
-            if (hitRenderer.tag == "Door")
+            if (hitRenderer && hitRenderer.tag == "Door")
             {
                 hitDoor = hit.collider.gameObject;
             }
