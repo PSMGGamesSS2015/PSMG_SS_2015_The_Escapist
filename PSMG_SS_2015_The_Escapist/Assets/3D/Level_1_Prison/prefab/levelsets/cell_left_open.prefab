@@ -92,7 +92,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &146304
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -255,11 +255,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.80025387, y: .0217697527, z: -.438163757}
-  m_LocalScale: {x: .600000024, y: .577423453, z: .600000024}
+  m_LocalPosition: {x: .348383576, y: .0484657288, z: 1.16806042}
+  m_LocalScale: {x: 1, y: .962372422, z: 1}
   m_Children: []
-  m_Father: {fileID: 493092}
-  m_RootOrder: 9
+  m_Father: {fileID: 446392}
+  m_RootOrder: 0
 --- !u!4 &446392
 Transform:
   m_ObjectHideFlags: 1
@@ -269,7 +269,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.59122467, y: -.00730991364, z: -1.13900006}
   m_LocalScale: {x: .600000024, y: .600000024, z: .600000024}
-  m_Children: []
+  m_Children:
+  - {fileID: 446008}
   m_Father: {fileID: 493092}
   m_RootOrder: 0
 --- !u!4 &451112
@@ -326,8 +327,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191544}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 6.77099991, y: -3.13899994, z: -1.02999997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.47499084, y: 7.13200092, z: 34.4349213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 446392}
@@ -339,7 +340,6 @@ Transform:
   - {fileID: 418146}
   - {fileID: 435208}
   - {fileID: 474624}
-  - {fileID: 446008}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2304252
@@ -880,11 +880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
-  lockedSound: {fileID: 8300000, guid: 0f4ad1eb2772985488e2f9d7cdcf74ad, type: 3}
-  openSound: {fileID: 0}
-  closeSound: {fileID: 0}
-  doorInRange: 0
+  pullToOpen: 0
+  zAxisInverted: 0
+  deactivated: 0
+  maxOpenAngle: 90
 --- !u!114 &11491778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,8 +896,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patternLength: 4
-  successSound: {fileID: 8300000, guid: b25abd054eb862d458cfa2062af6c52d, type: 3}
-  failSound: {fileID: 8300000, guid: 2d1b8fc81f7ec1c4da19be02a90ec2cf, type: 3}
+  maxIdenticalRowLength: 3
+  wrongMoveCooldownTime: 1
+  deactivated: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

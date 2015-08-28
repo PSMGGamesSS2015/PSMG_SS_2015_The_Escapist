@@ -31,9 +31,9 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ReflectionTex
+          name: _ReflectiveColorCube
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 8900000, guid: 9cda328e4b6954d70841a8a66f42ec08, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -52,23 +52,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _RefractionTex
+          name: _ReflectionTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ReflectiveColorCube
+          name: _RefractionTex
         second:
-          m_Texture: {fileID: 8900000, guid: 9cda328e4b6954d70841a8a66f42ec08, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _WaveScale
-        second: .112999998
+        second: .063000001
       data:
         first:
           name: _ReflDistort
@@ -88,23 +88,23 @@ Material:
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
-          name: WaveSpeed
-        second: {r: 9, g: 4.5, b: -8, a: -3.5}
-      data:
-        first:
           name: _RefrColor
-<<<<<<< Updated upstream
-        second: {r: .20784314, g: .278431386, b: .0156862754, a: 1}
-=======
-        second: {r: 1, g: 0, b: 0, a: 1}
->>>>>>> Stashed changes
+        second: {r: .355983764, g: .375, b: .0303308889, a: 1}
       data:
         first:
           name: _Fresnel_ST
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
+          name: WaveSpeed
+        second: {r: 9, g: 4.5, b: -8, a: -3.5}
+      data:
+        first:
           name: _ReflectiveColor_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _ReflectiveColorCube_ST
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
@@ -117,10 +117,6 @@ Material:
       data:
         first:
           name: _RefractionTex_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
-          name: _ReflectiveColorCube_ST
         second: {r: 1, g: 1, b: 0, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:

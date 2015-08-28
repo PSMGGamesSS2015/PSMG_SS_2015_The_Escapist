@@ -394,7 +394,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!1 &131873566
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +543,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &174845570
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585d58f824d0e464d8e5c66f1f09625a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footStepOnStone: {fileID: 0}
 --- !u!135 &238276822
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -889,10 +890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 0}
-  keyNeeded: 0
   pullToOpen: 0
-  inverted: 0
+  zAxisInverted: 0
+  deactivated: 0
   maxOpenAngle: 90
 --- !u!59 &282492751
 HingeJoint:
@@ -1153,7 +1153,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!1001 &506737009
 Prefab:
   m_ObjectHideFlags: 0
@@ -1298,7 +1298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &673322537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1550,7 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &820800738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,9 +2197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c5bbdf503cac94fa53135bd605a527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
+  layerMaskName: Interactive
   boundaryLimiterDampingFactor: .300000012
   dragAcceleration: 8
   dragSpeedLimit: 5
@@ -2220,6 +2218,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theme1: {fileID: 0}
+  lockpickingSuccessSound: {fileID: 0}
+  lockpickingFailSound: {fileID: 0}
+  doorUnlockedSound: {fileID: 0}
+  doorLockedSound: {fileID: 0}
 --- !u!114 &1067950496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2449,10 +2451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 0}
-  keyNeeded: 0
   pullToOpen: 0
-  inverted: 0
+  zAxisInverted: 0
+  deactivated: 0
   maxOpenAngle: 90
 --- !u!59 &1115024416
 HingeJoint:
@@ -2835,12 +2836,12 @@ Transform:
   m_PrefabParentObject: {fileID: 412792, guid: 17bc98cda36aeee44bf3a017920e376e, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1222387096}
-  m_LocalRotation: {x: -.00152774202, y: -.707104921, z: -.00118369237, w: .707105994}
-  m_LocalPosition: {x: 4.15016031, y: .0602628253, z: 2.91997862}
-  m_LocalScale: {x: .599999964, y: .575614333, z: .600000143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .399998844, y: .0666666031, z: 1.18333137}
+  m_LocalScale: {x: 1, y: .959357202, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1597778103}
+  m_RootOrder: 0
 --- !u!114 &1222387098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2853,10 +2854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 0}
-  keyNeeded: 0
   pullToOpen: 0
-  inverted: 1
+  zAxisInverted: 0
+  deactivated: 0
   maxOpenAngle: 90
 --- !u!59 &1222387099
 HingeJoint:
@@ -2869,7 +2869,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 2.01999998, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 4.15461874, y: 1.22299516, z: 2.91941309}
+  m_ConnectedAnchor: {x: 4.15461874, y: 1.22299504, z: 2.91941285}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -3079,7 +3079,7 @@ Transform:
   m_Children:
   - {fileID: 1610131919}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!1 &1246942369
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,9 +3619,10 @@ Transform:
   m_LocalRotation: {x: -.00152774202, y: -.707104921, z: -.00118369237, w: .707105994}
   m_LocalPosition: {x: 4.86000013, y: .0174238682, z: 2.6799984}
   m_LocalScale: {x: .599999964, y: .600000024, z: .600000083}
-  m_Children: []
+  m_Children:
+  - {fileID: 1222387097}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!64 &1597778104
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3768,10 +3769,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 0}
-  keyNeeded: 0
   pullToOpen: 0
-  inverted: 0
+  zAxisInverted: 0
+  deactivated: 0
   maxOpenAngle: 90
 --- !u!114 &1610131921
 MonoBehaviour:
@@ -3784,10 +3784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 0}
-  keyNeeded: 0
   pullToOpen: 0
-  inverted: 0
+  zAxisInverted: 0
+  deactivated: 0
   maxOpenAngle: 90
 --- !u!1 &1611378678
 GameObject:
@@ -3828,7 +3827,7 @@ Transform:
   - {fileID: 1575318879}
   - {fileID: 691972955}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1622185809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,7 +3917,7 @@ Transform:
   m_LocalScale: {x: .209999993, y: .119999997, z: .209999993}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!1 &1704609939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3967,10 +3966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43906c6dd3dbca4b8ea79d0e550d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 0}
-  keyNeeded: 0
   pullToOpen: 0
-  inverted: 0
+  zAxisInverted: 0
+  deactivated: 0
   maxOpenAngle: 90
 --- !u!59 &1704609942
 HingeJoint:
@@ -3999,7 +3997,7 @@ HingeJoint:
     min: 0
     max: 90
     bounciness: 0
-    bounceMinVelocity: .200000003
+    bounceMinVelocity: Infinity
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -4508,4 +4506,4 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12

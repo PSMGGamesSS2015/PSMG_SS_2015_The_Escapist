@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585d58f824d0e464d8e5c66f1f09625a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footStepOnStone: {fileID: 0}
 --- !u!135 &141364907
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -665,6 +666,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theme1: {fileID: 0}
+  lockpickingSuccessSound: {fileID: 0}
+  lockpickingFailSound: {fileID: 0}
+  doorUnlockedSound: {fileID: 0}
+  doorLockedSound: {fileID: 0}
 --- !u!114 &993369914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,6 +1120,19 @@ CapsuleCollider:
   m_Height: 4.32999992
   m_Direction: 1
   m_Center: {x: 0, y: 2.06999993, z: -.0599999987}
+--- !u!136 &1250492937
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250492932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.14999998
+  m_Height: 4.32999992
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.06999993, z: -.0599999987}
 --- !u!54 &1250492938
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1125,10 +1143,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!1 &1258284488
 GameObject:
@@ -1757,5 +1775,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
+    - {fileID: 14300000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 35424e977ba25c041b626dbd68aefa68, type: 2}
   m_IsPrefabParent: 0

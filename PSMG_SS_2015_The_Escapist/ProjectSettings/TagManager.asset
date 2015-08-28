@@ -10,10 +10,12 @@ TagManager:
   - Collider
   - Fire
   - Door
-  - AI Boundary
   - Sound
   - Head Sensor
   - Breast Sensor
+  - GROUND
+  - Item
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -29,7 +31,7 @@ TagManager:
   - Interactive
   - NoLight
   - NoGround
-  - NonStatic
+  - 
   - 
   - 
   - 
