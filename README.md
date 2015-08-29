@@ -21,6 +21,7 @@
 
 ### Audio
 * Provision of sound sets       (Julien-ur, Toby3011, Chris-shari, C0rvus)
+
 ### Coding
 * Movement behaviour of player  (Chris-shari)
 * Environment interaction       (Julien-ur)
