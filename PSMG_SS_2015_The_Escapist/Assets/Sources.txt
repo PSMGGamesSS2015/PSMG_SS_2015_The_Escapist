@@ -1,0 +1,53 @@
+File | Source | AccessDate
+
+2D
+
++ \bloodHD\ 						[https://www.assetstore.unity3d.com/en/#!/content/7766]		[29.06.2015 @ 08:13]
+
+3D
+
++ \Castles_Cathedrals\*					[https://www.assetstore.unity3d.com/en/#!/content/21410]	[20.06.2015 @ 17:41]
++ \CAVESYSTEM\*						[https://www.assetstore.unity3d.com/en/#!/content/32024]	[13.06.2015 @ 21:39]
++ \DCK_Assets\*						[https://www.assetstore.unity3d.com/en/#!/content/179]		[21.06.2015 @ 07:20]
++ \DecrepitDungeon\*					[https://www.assetstore.unity3d.com/en/#!/content/33936]	[06.06.2015 @ 18:00]
++ \Level_1_Prison\prefab\creatures\GIANT_RAT\*		[https://www.assetstore.unity3d.com/en/#!/content/5730]		[13.06.2015 @ 21:32]
++ \Level_1_Prison\prefab\creatures\LIZARD WARRIOR\*	[https://www.assetstore.unity3d.com/en/#!/content/5730]		[13.06.2015 @ 21:32]
++ \Level_1_Prison\prefab\creatures\KnightInChainMail\*	[https://www.assetstore.unity3d.com/en/#!/content/5730]		[10.06.2015 @ 08:20]
++ \Level_2_Dungeon\prefab\creatures\*			[https://www.assetstore.unity3d.com/en/#!/content/5730]		[13.06.2015 @ 21:32]
++ \Level_3_Cathedral\prefab\creatues\*			[https://www.assetstore.unity3d.com/en/#!/content/20805]	[20.06.2015 @ 14:27]
++ \Mothership_ServiceRooms\*				[https://www.assetstore.unity3d.com/en/#!/content/26299]	[28.06.2015 @ 16:20]
++ \SewerKit\*						[https://www.assetstore.unity3d.com/en/#!/content/12867]	[20.06.2015 @ 16:50]
++ \Underworld\*						[https://www.assetstore.unity3d.com/en/#!/content/10875]	[13.06.2015 @ 21:33]
+
+Animations
+
++ *							[???]
+
+Audio
+
++ \Alarm\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
++ \Ambient\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20.00]
++ \Breaking\*						[??]
++ \DigitalAudio Julien\*				[Digital-Audio Kurs]						[15.08.2015 @ 16:47]
++ \Door\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
++ \Electric\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
++ \Elevator\*						[??]
++ \Enemy\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
++ \Fire\*						[??]
++ \Mechanic\*						[??]
++ \Misc\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
++ \Moves\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
++ \PickUpSounds\*					[??]
++ \Water\*						[??]
++ \*.*							[??]
+
+Textures
+
++ \Level_1_Prison\					[http://www.cgtextures.com]					[22.04.2015 @ 20:00]
+
+
+
+
+
+
+
