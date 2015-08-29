@@ -42,16 +42,16 @@ ParticleAnimator:
     rgba: 16777215
   colorAnimation[1]:
     serializedVersion: 2
-    rgba: 2601288849
+    rgba: 2609876879
   colorAnimation[2]:
     serializedVersion: 2
-    rgba: 4278561168
+    rgba: 4281940538
   colorAnimation[3]:
     serializedVersion: 2
     rgba: 3028162850
   colorAnimation[4]:
     serializedVersion: 2
-    rgba: 169901177
+    rgba: 167772160
   worldRotationAxis: {x: 0, y: 0, z: 0}
   localRotationAxis: {x: 0, y: 0, z: 0}
   sizeGrow: 0
@@ -127,7 +127,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: colorAnimation[2].rgba
+      value: 4281940538
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: colorAnimation[1].rgba
+      value: 2609876879
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: colorAnimation[4].rgba
+      value: 167772160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
