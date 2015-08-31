@@ -20,8 +20,9 @@ public class GeneratorsPipeSteam : MonoBehaviour {
 
         if(visibleSteam)
         {
-            if (activeOvenNum > 0) { visibleSteam.SetActive(true); }
-            else { visibleSteam.SetActive(false); }
+
+            if (activeOvenNum > 0) { visibleSteam.GetComponent<ParticleSystem>().loop = true; }
+            else { visibleSteam.GetComponent<ParticleSystem>().loop = false; }
         }
     }
 

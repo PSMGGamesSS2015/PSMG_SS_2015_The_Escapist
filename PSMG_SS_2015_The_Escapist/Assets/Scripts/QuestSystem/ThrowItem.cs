@@ -4,7 +4,7 @@ using System.Collections;
 public class ThrowItem : MonoBehaviour {
 
     public float forceUp = 300;
-    public float forceForward = 300;
+    public float forceForward = 400;
     public ParticleSystem impactFx;
 
     private GameObject player;

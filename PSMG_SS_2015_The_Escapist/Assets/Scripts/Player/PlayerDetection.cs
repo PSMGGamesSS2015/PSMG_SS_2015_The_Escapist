@@ -48,6 +48,7 @@ public class PlayerDetection : MonoBehaviour {
                 setFocusedObject(true);
             }
         }
+        Debug.Log(actualFocusedObj);
     }
 
 
@@ -92,9 +93,11 @@ public class PlayerDetection : MonoBehaviour {
                 break;
 
             case "Object":
-                FocusTrigger focusTrigger = actualFocusedObj.GetComponent<FocusTrigger>();
-                if (focusTrigger) { focusTrigger.setFocused(b); }
- 
+                actualFocusedObj.GetComponent<FocusTrigger>().setFocused(b);
+                setHighlightPartsFocused(actualFocusedObj, b);
+                break;
+
+            default:
                 setHighlightPartsFocused(actualFocusedObj, b);
                 break;
         }

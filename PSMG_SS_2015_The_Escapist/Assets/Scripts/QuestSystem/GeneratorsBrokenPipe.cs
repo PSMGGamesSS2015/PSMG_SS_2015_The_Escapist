@@ -14,7 +14,7 @@ public class GeneratorsBrokenPipe : InteractiveObject {
         if (state == States.broken)
         {
             missingPart.SetActive(true);
-            steam.GetComponent<ParticleSystem>().loop = false;
+            steam.SetActive(false);
             state = States.repaired;
         }
     }

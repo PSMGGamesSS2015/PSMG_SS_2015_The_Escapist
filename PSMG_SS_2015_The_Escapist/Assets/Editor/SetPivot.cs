@@ -20,7 +20,7 @@
 using UnityEngine;
 using UnityEditor;
 
-public class SetPivot : EditorWindow {
+public class SetPivot : ScriptableWizard {
 	
 	Vector3 p; //Pivot value -1..1, calculated from Mesh bounds
 	Vector3 last_p; //Last used pivot
