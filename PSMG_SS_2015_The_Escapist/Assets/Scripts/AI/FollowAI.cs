@@ -71,7 +71,6 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Debug.Log(currentState);
         if(questAlcohol.GetComponent<ThrowItem>().wasThrown() && !alcoholReached)
         {
             agent.destination = questAlcohol.transform.position;

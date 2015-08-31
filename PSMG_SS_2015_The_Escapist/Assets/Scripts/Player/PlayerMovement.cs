@@ -55,6 +55,8 @@ public class PlayerMovement : MonoBehaviour {
 
         sneaking = checkSneakMode();
         running = checkRunningMode();
+        playerGrounded = playerIsGrounded();
+
 
         if (control.isSlowMovementActive())
         {
@@ -118,7 +120,7 @@ public class PlayerMovement : MonoBehaviour {
     /// <returns>Bool: Player on ground or not.</returns>
     public bool playerIsGrounded()
     {
-        float maxDistanceToGround = 0.1f;
+        float maxDistanceToGround = 0.15f;
         Vector3 down = transform.TransformDirection(Vector3.down);
         if (Physics.Raycast(transform.position, down, maxDistanceToGround))
         {
@@ -349,6 +351,8 @@ public class PlayerMovement : MonoBehaviour {
         {
             rb.velocity = new Vector3(0, Constants.JUMPING_SPEED, 0);
             anim.SetBool("Jumping", true);
+
+            
 
 
         }

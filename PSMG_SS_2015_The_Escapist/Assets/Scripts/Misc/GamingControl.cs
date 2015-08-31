@@ -40,6 +40,8 @@ public class GamingControl : MonoBehaviour {
         runningActive = player.GetComponent<PlayerMovement>().runningIsActive();
         playerGrounded = player.GetComponent<PlayerMovement>().isPlayerGrounded();
         movementDisabled = player.GetComponent<PlayerMovement>().isMovementDisabled();
+
+        Debug.Log(playerGrounded);
     }
 
     void Update()
