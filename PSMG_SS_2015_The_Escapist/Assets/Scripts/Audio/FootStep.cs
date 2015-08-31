@@ -4,6 +4,7 @@ using System.Collections;
 public class FootStep : MonoBehaviour 
 {
     public AudioClip footStepOnStone;
+    private float jumpDuration = 2f;
 
     private GamingControl gameController;
     private GameObject player;
@@ -23,7 +24,12 @@ public class FootStep : MonoBehaviour
 	
 	void Update () 
     {
-        if(!gameController.isPlayerGrounded() || audioSrc.isPlaying) { return; }
+        if (Input.GetButtonDown("Jump") && !jumping)
+        {
+            StartCoroutine("startJumpTimer");
+        }
+
+        if(jumping|| audioSrc.isPlaying) { return; }
 
         float minVolume = 0f;
         float maxVolume = 0f;
@@ -62,5 +68,12 @@ public class FootStep : MonoBehaviour
         audioSrc.volume = Random.Range(minVolume, maxVolume);
         audioSrc.pitch = pitch;
         audioSrc.Play();
+    }
+
+    IEnumerator startJumpTimer()
+    {
+        jumping = true;
+        yield return new WaitForSeconds(jumpDuration);
+        jumping = false;
     }
 }
