@@ -3,8 +3,9 @@ using System.Collections;
 
 public class AIDetection : MonoBehaviour 
 {
-    public float visibilityDiscoveryDistanceFactor = 0.7f;
-    public float noiseDiscoveryDistanceFactor = 0.7f;
+    private float maxNoiseDetectionDistance = 16f;
+    private float maxVisibilityDetectionDistance = 20f;
+    private float maxDiscoveryDistance = 5f;
     public float attackRange = 1.0f;
 
     public LayerMask opaqueLayers;
@@ -12,88 +13,63 @@ public class AIDetection : MonoBehaviour
 
     private GamingControl gameController;
     private GameObject player;
+    private PlayerVisibility playerVisibility;
+    private PlayerNoise playerNoise;
 
-    private bool playerVisibilityDetected = false;
     private bool playerNoiseDetected = false;
-    private bool playerVisibilityDiscovered = false;
-    private bool playerNoiseDiscovered = false;
+    private bool playerVisibilityDetected = false;
+    private bool playerDiscovered = false;
     private bool playerInAttackRange = false;
 
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerVisibility = player.GetComponent<PlayerVisibility>();
+        playerNoise = player.GetComponent<PlayerNoise>();
     }
 
     void Update()
     {
+        setAllAIBoolsFalse();
+
+        float discoveryDistance = maxDiscoveryDistance * playerVisibility.getVisibilityFactor();
+        float visibilityDetectionDistance = maxVisibilityDetectionDistance * playerVisibility.getVisibilityFactor();
+        float noiseDetectionDistance = maxNoiseDetectionDistance * playerNoise.getNoiseFactor();
+        //Debug.Log(noiseDetectionDistance + " " + getDistanceTo(player.transform.position));
+
+        if (isPlayerInFOV())
+        {
+            if (getDistanceTo(player.transform.position) < attackRange)
+            {
+                playerVisibilityDetected = true;
+                playerDiscovered = true;
+                playerInAttackRange = true;
+            }
+            else if (getDistanceTo(player.transform.position) < discoveryDistance) 
+            {
+                playerVisibilityDetected = true;
+                playerDiscovered = true;
+            }
+            else if(getDistanceTo(player.transform.position) < visibilityDetectionDistance)
+            {
+                playerVisibilityDetected = true;
+            }
+        }
+        else
+        {
+            if (getDistanceTo(player.transform.position) < noiseDetectionDistance)
+            {
+                playerNoiseDetected = true;
+            }
+        }
         //Debug.Log(name + " noise: " + playerNoiseDetected + " visible: " + playerVisibilityDetected);
     }
 
-    void OnTriggerStay(Collider coll)
-    {
-        if (coll.name == "player_visibility" || coll.name == "player_noise")
-        {
-            checkAttackRange();
-        }
-
-        if (coll.name == "player_visibility")
-        {
-            checkVisibility(coll);
-        }
-
-        else if (coll.name == "player_noise") 
-        {
-            checkNoise(coll);
-        }
-    }
-
-
-    void OnTriggerExit()
-    {
-        setAllAIBoolsFalse();
-    }
-
-
-    private void checkVisibility(Collider playerVisibility)
-    {
-        if (!isPlayerInFOV()) { return; }
-
-        if (!isPlayerInDiscoveryDistance(playerVisibility, visibilityDiscoveryDistanceFactor))
-        {
-            playerVisibilityDetected = true;
-            playerVisibilityDiscovered = false;
-        }
-        else
-        {
-            playerVisibilityDiscovered = true;
-        }
-    }
-
-    private void checkAttackRange()
-    {
-        if (getDistanceTo(player.transform.position) < attackRange) { playerInAttackRange = true; }
-        else { playerInAttackRange = false; }
-    }
-
-    private void checkNoise(Collider playerNoise)
-    {
-        if (!isPlayerInDiscoveryDistance(playerNoise, noiseDiscoveryDistanceFactor))
-        {
-            playerNoiseDetected = true;
-            playerNoiseDiscovered = false;
-        }
-        else
-        {
-            playerNoiseDiscovered = true;
-        }
-    }
-
-
     private bool isPlayerInFOV()
     {
-        Vector3 aiPos = transform.GetComponentInChildren<Renderer>().bounds.center;
-        Vector3 playerPos = player.transform.GetComponentInChildren<Renderer>().bounds.center;
+        Vector3 aiPos = transform.position;
+        Vector3 playerPos = player.transform.position;
         aiPos.y = 1;
         playerPos.y = 1;
 
@@ -125,11 +101,6 @@ public class AIDetection : MonoBehaviour
         return false;
     }
 
-    private bool isPlayerInDiscoveryDistance(Collider detectionColl, float distanceFactor)
-    {
-        return (getDistanceTo(player.transform.position) <= detectionColl.gameObject.GetComponent<SphereCollider>().radius * distanceFactor);
-    }
-
     private float getDistanceTo(Vector3 targetPos)
     {
         Vector3 direction = targetPos - transform.position;
@@ -140,20 +111,20 @@ public class AIDetection : MonoBehaviour
     {
         playerVisibilityDetected = false;
         playerNoiseDetected = false;
-        playerVisibilityDiscovered = false;
-        playerNoiseDiscovered = false;
+        playerDiscovered = false;
+        playerInAttackRange = false;
     }
 
 
     //PUBLIC METHODS
-    public bool playerDetected()
+    public bool isPlayerDetected()
     {
-        return (playerNoiseDetected || playerVisibilityDetected);
+        return (playerVisibilityDetected || playerNoiseDetected);
     }
 
-    public bool playerDiscovered()
+    public bool isPlayerDiscovered()
     {
-        return (playerNoiseDiscovered || playerVisibilityDiscovered);
+        return playerDiscovered;
     }
 
     public bool isPlayerInAttackRange()

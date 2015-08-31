@@ -13,6 +13,7 @@ public class FollowAI : MonoBehaviour
     public float searchActualisationTime = 4.0f;
     public float waitingTime = 3.0f;
     public float postDiscoverySearchDuration = 10.0f;
+    public GameObject questAlcohol;
 
     private GameObject player;
     private PlayerMovement playerMovement;
@@ -43,6 +44,7 @@ public class FollowAI : MonoBehaviour
 
     private enum States { Patroling, Waiting, Searching, Chasing, Attacking };
     private States currentState = States.Patroling;
+    private bool alcoholReached = false;
     
 
     /// <summary>
@@ -70,6 +72,20 @@ public class FollowAI : MonoBehaviour
     void Update()
     {
         Debug.Log(currentState);
+        if(questAlcohol.GetComponent<ThrowItem>().wasThrown() && !alcoholReached)
+        {
+            agent.destination = questAlcohol.transform.position;
+            
+            if(targetReached(questAlcohol.transform.position, 2f))
+            {
+                wayPoints = alternateWayPoints;
+                patrolFinished = false;
+                currentWaypoint = 0;
+                alcoholReached = true;
+            }
+
+            return;
+        }
 
         //PLAYER REACHED ATTACK RANGE
         if (aiDetection.isPlayerInAttackRange())
@@ -78,7 +94,7 @@ public class FollowAI : MonoBehaviour
         }
 
         //PLAYER WITHIN DISCOVERY RANGE
-        else if (aiDetection.playerDiscovered())
+        else if (aiDetection.isPlayerDiscovered())
         {
             playerHasBeenDiscovered = true;
             playerLastSeenPos = player.transform.position;
@@ -87,7 +103,7 @@ public class FollowAI : MonoBehaviour
         }
 
         //PLAYER WITHIN DETECTION RANGE
-        else if (aiDetection.playerDetected())
+        else if (aiDetection.isPlayerDetected())
         {
             if (playerHasBeenDiscovered)
             {
@@ -137,7 +153,6 @@ public class FollowAI : MonoBehaviour
     // STATE METHODS
     private void patrol()
     {
-
         Vector3 nextWayPointPos = wayPoints[currentWaypoint].position;
         nextWayPointPos.y = transform.position.y;
 
@@ -188,6 +203,8 @@ public class FollowAI : MonoBehaviour
         }
         else
         {
+            alignTo(player.transform.position, 12f);
+
             approxTargetPos = target;
             approxTargetPos.x += UnityEngine.Random.Range(-15f, 15f);
             approxTargetPos.z += UnityEngine.Random.Range(-15f, 15f);
@@ -195,6 +212,7 @@ public class FollowAI : MonoBehaviour
             searchUpdateStartTime = Time.time;
             searchHasBeenUpdated = true;
         }
+        if (currentState == States.Waiting) { agent.Resume(); }
 
         if (!postSearchStarted) { walkTo(approxTargetPos, 1f); }
         else { runTo(approxTargetPos, 3f); }
@@ -204,6 +222,7 @@ public class FollowAI : MonoBehaviour
 
     private void chase(Vector3 target)
     {
+        if (currentState == States.Waiting) { agent.Resume(); }
         runTo(target, 6f);
         currentState = States.Chasing;
     }
@@ -211,28 +230,28 @@ public class FollowAI : MonoBehaviour
     private void attack(Vector3 target)
     {
         setAllAnimBoolsFalseExcept("IsAttacking");
-        agent.destination = target;
+        if (currentState == States.Waiting) { agent.Resume(); }
 
-        //alignTo(target, 8f);
+        agent.destination = target;
+        agent.speed = 1f;
         currentState = States.Attacking;
     }
-
 
     private void walkTo(Vector3 target, float alignSpeed)
     {
         setAllAnimBoolsFalseExcept("IsPatroling");
         anim.Play("Walking");
-
+        if (currentState == States.Waiting) { agent.Resume(); }
+        agent.speed = 0.3f;
         agent.destination = target;
-        agent.Resume();
         //alignTo(target, alignSpeed);
     }
 
     private void runTo(Vector3 target, float alignSpeed)
     {
         setAllAnimBoolsFalseExcept("IsChasing");
+        agent.speed = 1f;
         agent.destination = target;
-        agent.Resume();
 
         //alignTo(target, alignSpeed);
     }
