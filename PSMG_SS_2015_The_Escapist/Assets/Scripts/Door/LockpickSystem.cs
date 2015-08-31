@@ -7,7 +7,7 @@ public class LockpickSystem : MonoBehaviour
     public int patternLength = 4;
     public int maxIdenticalRowLength = 3;
     public float wrongMoveCooldownTime = 1f;
-    public bool deactivated = false;
+    public bool active = true;
 
     private Door[] doorControls;
     private DoorAudioController doorAudio;
@@ -17,8 +17,10 @@ public class LockpickSystem : MonoBehaviour
 
     private int actualPos = 0;
     private bool locked = true;
+    private bool blocked = false;
     private bool focused = false;
     private bool cooldownActive = false;
+    private bool unlockedProcessFinished = false;
 
 	void Awake() 
     {
@@ -30,7 +32,7 @@ public class LockpickSystem : MonoBehaviour
 
     void Start()
     {
-        if (!deactivated)
+        if (active)
         {
             setAllChildDoorsLocked(true);
         }
@@ -38,7 +40,14 @@ public class LockpickSystem : MonoBehaviour
 
     void Update()
     {
-        if (deactivated || !focused || !locked || cooldownActive) { return; }
+        if (Input.GetButtonDown("Use") && !locked && !blocked && !unlockedProcessFinished)
+        {
+            setAllChildDoorsLocked(false);
+            unlockedProcessFinished = true;
+            //Debug.Log("Unlocked");
+        }
+
+        if (!active || !focused || !locked || cooldownActive) { return; }
 
         if (Input.GetButtonDown("Move Hairpin Left")) { newMove(Directions.Left); }
         if (Input.GetButtonDown("Move Hairpin Right")) { newMove(Directions.Right); }
@@ -47,26 +56,34 @@ public class LockpickSystem : MonoBehaviour
 
     private void newMove(Directions dir)
     {
-        if (dir.Equals(lockPattern[actualPos]))
+        if (actualPos < patternLength)
         {
-            actualPos++;
-            doorAudio.playLockPickingSuccesSound();
-            //Debug.Log("Succes");
-        }
-        else
-        {
-            actualPos = 0;
-            doorAudio.playLockPickingFailSound();
-            StartCoroutine("startCooldown");
-            //Debug.Log("Fail");
+            if (dir.Equals(lockPattern[actualPos]))
+            {
+                actualPos++;
+                doorAudio.playLockPickingSuccesSound();
+                //Debug.Log("Succes");
+            }
+            else
+            {
+                actualPos = 0;
+                doorAudio.playLockPickingFailSound();
+                StartCoroutine("startCooldown");
+                //Debug.Log("Fail");
+            }
         }
 
-        if (actualPos == patternLength)
+        if(actualPos == patternLength)
         {
-            locked = false;
-            setAllChildDoorsLocked(false);
-
             doorAudio.playDoorUnlockedSound();
+
+            if (locked && !blocked) 
+            { 
+                setAllChildDoorsLocked(false);
+                unlockedProcessFinished = true;
+            }
+            
+            locked = false;
             //Debug.Log("Unlocked");
         }
     }
@@ -104,6 +121,11 @@ public class LockpickSystem : MonoBehaviour
         cooldownActive = false;
     }
 
+    private void finishUnlockProcess()
+    {
+        
+    }
+
     private Directions getRandomDirection()
     {
         return (Random.value < 0.5) ? Directions.Left : Directions.Right;
@@ -128,10 +150,16 @@ public class LockpickSystem : MonoBehaviour
         focused = b;
     }
 
-    public void deactivate()
+    public void setActive(bool b)
     {
-        deactivated = true;
+        active = b;
     }
+
+    public void setBlocked(bool b)
+    {
+        blocked = b;
+    }
+
 
     // PUBLIC GETTER METHODS
     public bool isLocked()
@@ -151,6 +179,6 @@ public class LockpickSystem : MonoBehaviour
 
     public bool isActive()
     {
-        return !deactivated;
+        return active;
     }
 }

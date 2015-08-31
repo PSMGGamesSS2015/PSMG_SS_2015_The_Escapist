@@ -4,54 +4,102 @@ using System.Collections.Generic;
 
 public class DoorLock : MonoBehaviour {
 
-	public GameObject key;
+	public Item key;
+    public DoorBarricade[] barricades;
+
     public bool keyNeeded = false;
-    public bool deactivated = false;
-    
+    public bool active = true;
+
+    private PlayerInventory inventory;
+    private LockpickSystem lockPickSystem;
     private DoorAudioController doorAudio;
     private Door[] doorControls;
 
     private bool locked = true;
     private bool focused = false;
+    private bool blocked = false;
 
 	void Awake()
     {
         doorControls = GetComponentsInChildren<Door>();
-        doorAudio = GetComponentInParent<DoorAudioController>();
+        doorAudio = GetComponent<DoorAudioController>();
+        lockPickSystem = GetComponent<LockpickSystem>();
+
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
 	}
 
     void Start()
     {
-        if (!deactivated)
+        if (active)
         {
-            setAllChildDoorsLocked(true);
+            setLockedStatusOfChildDoors(true);
+        }
+
+        if (keyNeeded && lockPickSystem)
+        {
+            lockPickSystem.setActive(false);
+        }
+
+        if (!lockPickSystem)
+        {
+            keyNeeded = true;
         }
     }
 
     void Update()
     {
-        if (deactivated || !focused || !locked) { return; }
+        if (!active || !focused || !locked) { return; }
+
+        checkBarricades();
 
         if(Input.GetButtonDown("Use"))
         {
-            if (hasPlayerKey())
+            if(blocked)
+            {
+                if (!lockPickSystem || !lockPickSystem.isLocked()) 
+                { 
+                    Debug.Log("Diese Tür scheint von irgendetwas blockiert zu werden.");
+                    doorAudio.playDoorLockedSound();
+                }
+                return;
+            }
+
+            if (key && hasPlayerKey())
             {
                 locked = false;
-                setAllChildDoorsLocked(false);
+                setLockedStatusOfChildDoors(false);
 
                 doorAudio.playDoorUnlockedSound();
             }
-            else if (keyNeeded)
+            else if (key && keyNeeded)
             {
                 doorAudio.playDoorLockedSound();
             }
         }
     }
 
+    private void checkBarricades()
+    {
+        if (barricades.Length == 0) { return; }
+
+        foreach(DoorBarricade barricade in barricades)
+        {
+            if (barricade.getState() == 0)
+            {
+                lockPickSystem.setBlocked(true);
+                blocked = true;
+                return;
+            }
+        }
+
+        lockPickSystem.setBlocked(false);
+        blocked = false;
+    }
+
     private bool hasPlayerKey()
     {
-        // Lukki, lukki
-        return false;
+        if (inventory.getItemCount(key.name) > 0) { return true; }
+        else { return false; }
     }
 
     private bool checkKey(GameObject insertedKey)
@@ -65,13 +113,14 @@ public class DoorLock : MonoBehaviour {
         return false;
     }
 
-    private void setAllChildDoorsLocked(bool b)
+    private void setLockedStatusOfChildDoors(bool b)
     {
         foreach (Door doorControl in doorControls)
         {
             doorControl.setLocked(b);
         }
     }
+
 
     // PUBLIC SETTER METHODS
     public void setFocused(bool b)
@@ -97,6 +146,6 @@ public class DoorLock : MonoBehaviour {
 
     public bool isActive()
     {
-        return !deactivated;
+        return active;
     }
 }
