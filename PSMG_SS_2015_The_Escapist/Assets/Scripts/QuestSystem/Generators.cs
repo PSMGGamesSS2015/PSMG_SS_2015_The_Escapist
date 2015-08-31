@@ -3,45 +3,50 @@ using System.Collections;
 
 public class Generators : MonoBehaviour {
 
-    public GameObject rightLightRows;
-    public GameObject leftLightRows;
+    public GameObject statusLights;
 
-    private int state = 0;
+    private Light[] lights;
+    string inactiveHexColor;
 
-	void Start () {
-	    
+    public enum States { inactive = 0, active = 1 }
+    public States state = States.inactive;
+
+	void Start () 
+    {
+        lights = statusLights.GetComponentsInChildren<Light>();
+        inactiveHexColor = lights[0].color.ToHexStringRGBA();
 	}
 
-    public void trigger() 
+    public void trigger(int triggeredState) 
     {
-        switch (state)
+        switch ((States)(triggeredState))
         {
-            case 0:
-                rightLightRows.SetActive(true);
-                leftLightRows.SetActive(true);
-                state ++;
+            case States.inactive:
+                switchLightsColorTo(inactiveHexColor);
                 break;
 
-            case 1:
-                Light[] lightsRight = rightLightRows.GetComponentsInChildren<Light>();
-                switchLightColorToGreen(lightsRight);
-                state ++;
-                break;
-
-            case 2:
-                Light[] lightsLeft = leftLightRows.GetComponentsInChildren<Light>();
-                switchLightColorToGreen(lightsLeft);
-                state ++;
+            case States.active:
+                switchLightsColorTo("#0DC80EFF");
                 break;
         }
 	}
 
-    private void switchLightColorToGreen(Light[] lights)
+    private void switchLightsColorTo(string hexColor)
     {
         foreach (Light light in lights)
         {
-            Color greenColor;
-            if (Color.TryParseHexString("#0DC80EFF", out greenColor)) { light.color = greenColor; }
+            Color newColor;
+            if (Color.TryParseHexString(hexColor, out newColor)) { light.color = newColor; }
         }
+    }
+
+    public int getState()
+    {
+        return (int)(state);
+    }
+
+    public bool hasInteractions()
+    {
+        return false;
     }
 }

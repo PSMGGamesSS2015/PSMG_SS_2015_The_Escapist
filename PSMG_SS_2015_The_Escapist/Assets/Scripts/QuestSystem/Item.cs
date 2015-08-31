@@ -5,6 +5,9 @@ public class Item : MonoBehaviour {
 
     public string name;
 
+    public enum ItemClass { Normal, Heavy, Throwable };
+    public ItemClass itemClass;
+
     private GameObject player;
     private PlayerInventory playerInventory;
     private Material originalMaterial;
@@ -14,38 +17,29 @@ public class Item : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerInventory = player.GetComponent<PlayerInventory>();
-
-        Material actualMaterial = GetComponent<Renderer>().material;
-        originalMaterial = UnityEngine.Object.Instantiate(actualMaterial);
     }
 
     void Update()
     {
-        if (focused)
+        if (focused && Input.GetButtonDown("Use"))
         {
-            changeMaterialToFocused();
-
-            if (Input.GetButtonDown("Use"))
-            {
-                transform.gameObject.SetActive(false);
-                playerInventory.addItem(this);
-            }
+            transform.gameObject.SetActive(false);
+            playerInventory.addItem(this);
         }
-        else
-        {
-            GetComponent<Renderer>().material = originalMaterial;
-        }
-    }
-
-    private void changeMaterialToFocused()
-    {
-        Material actualMaterial = GetComponent<Renderer>().material;
-        actualMaterial.SetColor("_Color", new Color(225f / 255f, 229f / 255f, 161f / 255f, 1));
-        actualMaterial.shader = Shader.Find("Toon/Lit Outline");
     }
 
     public void setFocused(bool b)
     {
         focused = b;
+    }
+
+    public string getName()
+    {
+        return name;
+    }
+
+    public int getClass()
+    {
+        return (int)(itemClass);
     }
 }

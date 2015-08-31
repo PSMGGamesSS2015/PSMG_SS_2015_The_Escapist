@@ -11,8 +11,9 @@ public class PlayerDetection : MonoBehaviour {
     private LayerMask interactiveObjects;
 
     private List<GameObject> detectedObjects;
-    private GameObject focusedObj = null;
+    private GameObject centerRaycastObj = null;
     private GameObject bestFOVMatchObj = null;
+    private GameObject actualFocusedObj = null;
 
     void Awake()
     {
@@ -25,27 +26,30 @@ public class PlayerDetection : MonoBehaviour {
         detectedObjects = new List<GameObject>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         unfocusAllObj();
+
         checkFocusPoint();
 
-        if (focusedObj) { bestFOVMatchObj = focusedObj; return; }
-
-        checkFOV();
-        Debug.Log(focusedObj + " " + bestFOVMatchObj);
-    }
-
-    private void unfocusAllObj()
-    {
-        if (focusedObj) 
-        { 
-            setFocused(focusedObj, false);
-            focusedObj = null;
+        if (centerRaycastObj)
+        {
+            Debug.Log(centerRaycastObj);
+            actualFocusedObj = centerRaycastObj;
+            setFocusedObject(true);
         }
+        else
+        {
+            checkFOV();
 
-        bestFOVMatchObj = null;
+            if (bestFOVMatchObj)
+            {
+                actualFocusedObj = bestFOVMatchObj;
+                setFocusedObject(true);
+            }
+        }
     }
+
 
     private void checkFocusPoint()
     {
@@ -53,27 +57,9 @@ public class PlayerDetection : MonoBehaviour {
 
         if (hitObj)
         {
-            focusedObj = hitObj;
-            setFocused(focusedObj, true);
+            centerRaycastObj = hitObj;
             return;
         }
-    }
-
-    private GameObject raycastAtFocusPoint()
-    {
-        GameObject hitObj = null;
-
-        Ray ray = firstPersonCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Debug.DrawRay(ray.origin, ray.direction * detectionRadius, Color.magenta);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, detectionRadius, interactiveObjects))
-        {
-            hitObj = hit.collider.gameObject;
-        }
-
-        return hitObj;
     }
 
     private void checkFOV()
@@ -90,6 +76,55 @@ public class PlayerDetection : MonoBehaviour {
         {
             bestFOVMatchObj = tempBestMatch;
         }
+    }
+
+    private void setFocusedObject(bool b)
+    {
+        switch (actualFocusedObj.tag)
+        {
+            case "Door":
+                actualFocusedObj.GetComponent<Door>().setFocused(b);
+                break;
+
+            case "Item":
+                actualFocusedObj.GetComponent<Item>().setFocused(b);
+                setHighlightPartsFocused(actualFocusedObj, b);
+                break;
+
+            case "Object":
+                FocusTrigger focusTrigger = actualFocusedObj.GetComponent<FocusTrigger>();
+                if (focusTrigger) { focusTrigger.setFocused(b); }
+ 
+                setHighlightPartsFocused(actualFocusedObj, b);
+                break;
+        }
+    }
+
+    private void setHighlightPartsFocused(GameObject obj, bool b)
+    {
+        HighlightObject[] highlightScripts = obj.GetComponentsInChildren<HighlightObject>();
+        foreach (HighlightObject highlightScript in highlightScripts)
+        {
+            highlightScript.setFocused(b);
+        }
+    }
+
+
+    private GameObject raycastAtFocusPoint()
+    {
+        GameObject hitObj = null;
+
+        Ray ray = firstPersonCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Debug.DrawRay(ray.origin, ray.direction * detectionRadius, Color.magenta);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, detectionRadius, interactiveObjects))
+        {
+            hitObj = hit.collider.gameObject;
+        }
+
+        return hitObj;
     }
 
     private GameObject getBestMatch()
@@ -111,13 +146,24 @@ public class PlayerDetection : MonoBehaviour {
         return bestMatch;
     }
 
+    private void unfocusAllObj()
+    {
+        if (actualFocusedObj)
+        {
+            setFocusedObject(false);
+            actualFocusedObj = null;
+        }
+
+        centerRaycastObj = null;
+        bestFOVMatchObj = null;
+    }
+
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(layerMaskName))
         {
             detectedObjects.Add(other.gameObject);
-            getAngleTo(other.gameObject);
         }
     }
 
@@ -125,7 +171,6 @@ public class PlayerDetection : MonoBehaviour {
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(layerMaskName))
         {
-            setFocused(other.gameObject, false);
             detectedObjects.Remove(other.gameObject);
         }
     }
@@ -139,34 +184,16 @@ public class PlayerDetection : MonoBehaviour {
 
         Vector3 direction = targetPos - playerPos;
         float angle = Vector3.Angle(direction, firstPersonCam.transform.forward);
+
         //Debug.Log(angle);
         return angle;
     }
 
-    private void setFocused(GameObject obj, bool b)
-    {
-        switch(obj.tag)
-        {
-            case "Door":
-                obj.GetComponent<Door>().setFocused(b);
-                break;
-
-            case "Item":
-                obj.GetComponent<Item>().setFocused(b);
-                break;
-
-            case "Object":
-                obj.GetComponent<ActionTrigger>().setFocused(b);
-                obj.GetComponent<InteractiveObject>().setFocused(b);
-                break;
-        }
-    }
-   
 
     //PUBLIC GETTER METHODS
     public GameObject getObjAtFocusPoint()
     {
-        return focusedObj;
+        return centerRaycastObj;
     }
 
     public GameObject getBestMatchObjInFOV()

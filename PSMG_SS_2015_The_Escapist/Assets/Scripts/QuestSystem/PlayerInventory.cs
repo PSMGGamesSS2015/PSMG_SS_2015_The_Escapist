@@ -7,14 +7,21 @@ public class PlayerInventory : MonoBehaviour {
     private GameObject player;
     private List<Item> inventory;
 
+    private enum ItemClass { Normal, Heavy, Throwable };
+
+
 	void Awake () {
         player = GameObject.FindGameObjectWithTag("Player");
         inventory = new List<Item>();
 	}
 
-    public void addItem(Item newItem)
+    public void addItem(Item item)
     {
-        inventory.Add(newItem);
+        inventory.Add(item);
+        if(item.getClass() == (int)(ItemClass.Heavy))
+        {
+            //Slow down Player!
+        }
     }
 
     public int getItemCount(string itemName)
@@ -30,5 +37,22 @@ public class PlayerInventory : MonoBehaviour {
         }
 
         return itemCount;
+    }
+
+    public void removeItem(string name, int count)
+    {
+        foreach (Item inventoryItem in inventory)
+        {
+            if (inventoryItem.name == name)
+            {
+                inventory.Remove(inventoryItem);
+
+                if (inventoryItem.getClass() == (int)(ItemClass.Heavy))
+                {
+                    //Remove Slowdown From Player!
+                }
+
+            }
+        }
     }
 }

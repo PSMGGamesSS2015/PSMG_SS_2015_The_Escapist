@@ -3,38 +3,35 @@ using System.Collections;
 
 public class GeneratorsOvenValve : InteractiveObject {
 
-    public float maxRotation = 180f;
-    public float duration = 2f;
-    public bool open = false;
+    public float speed = 0.5f;
+    public float duration = 1f;
+
+    public enum States { closed = 0, open = 1 }
+    public States state = States.closed;
 
     private bool rotationStarted = false;
     private int revereseFactor = 1;
 
-    private enum States { closed = 0, open = 1 }
-    private States state = States.closed;
-
     void Start()
     {
-        if (open) 
-        { 
-            state = States.open;
-            revereseFactor = -1;
-        }
+        if (state == States.open) { revereseFactor = -1; }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (rotationStarted)
         {
-            transform.Rotate(Vector3.up * (maxRotation / duration) * revereseFactor * Time.time);
+            transform.Rotate(Vector3.up * speed * revereseFactor);
         }
     }
 
     public override void trigger()
     {
-        StartCoroutine("startRotation");
-        revereseFactor *= -1;
-        switchState();
+        if (!rotationStarted)
+        {
+            StartCoroutine("startRotation");
+            switchState();
+        }
     }
 
     IEnumerator startRotation()
@@ -42,6 +39,7 @@ public class GeneratorsOvenValve : InteractiveObject {
         rotationStarted = true;
         yield return new WaitForSeconds(duration);
         rotationStarted = false;
+        revereseFactor *= -1;
     }
 
     private void switchState()
@@ -52,5 +50,10 @@ public class GeneratorsOvenValve : InteractiveObject {
     public override int getState()
     {
         return (int)(state);
+    }
+
+    public override bool hasInteractions()
+    {
+        return true;
     }
 }
