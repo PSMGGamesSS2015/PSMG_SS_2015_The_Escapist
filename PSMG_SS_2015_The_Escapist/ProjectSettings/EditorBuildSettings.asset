@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/newMenu.unity
+  - enabled: 1
     path: Assets/Scenes/aaa Level_1_Prison_FINAL.unity
   - enabled: 1
     path: Assets/Scenes/aaa Level_2_Sewer_FINAL.unity
+  - enabled: 1
+    path: Assets/Scenes/aaa Outro_Cathedral_FINAL.unity
