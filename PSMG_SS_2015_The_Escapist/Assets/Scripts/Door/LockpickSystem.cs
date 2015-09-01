@@ -11,6 +11,7 @@ public class LockpickSystem : MonoBehaviour
 
     private Door[] doorControls;
     private DoorAudioController doorAudio;
+    private PlayerInventory inventory;
 
     private List<Directions> lockPattern;
     private enum Directions { Left, Right }
@@ -26,6 +27,8 @@ public class LockpickSystem : MonoBehaviour
     {
         doorControls = GetComponentsInChildren<Door>();
         doorAudio = GetComponentInParent<DoorAudioController>();
+
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
 
         lockPattern = createNewPattern();
 	}
@@ -47,7 +50,7 @@ public class LockpickSystem : MonoBehaviour
             //Debug.Log("Unlocked");
         }
 
-        if (!active || !focused || !locked || cooldownActive) { return; }
+        if (!active || !inventory.isHairpinActive() || !focused || !locked || cooldownActive) { return; }
 
         if (Input.GetButtonDown("Move Hairpin Left")) { newMove(Directions.Left); }
         if (Input.GetButtonDown("Move Hairpin Right")) { newMove(Directions.Right); }

@@ -48,8 +48,6 @@ public class DoorLock : MonoBehaviour {
 
     void Update()
     {
-        //if(!inventory.isHairpinActive())
-
         if (!active || !focused || !locked ) { return; }
 
         checkBarricades();
@@ -74,7 +72,7 @@ public class DoorLock : MonoBehaviour {
                 doorAudio.playDoorUnlockedSound();
             }
 
-            else if (key && keyNeeded || !lockPickSystem || !lockPickSystem.isActive())
+            else if (key && keyNeeded || !lockPickSystem || !lockPickSystem.isActive() || !inventory.isHairpinActive())
             {
                 doorAudio.playDoorLockedSound();
             }

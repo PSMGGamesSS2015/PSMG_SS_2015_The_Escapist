@@ -77,7 +77,9 @@ public class DragDoor : MonoBehaviour
     private bool lookForValidDoorAt(float playerViewXPos)
     {
         GameObject door = raycastForDoorAt(playerViewXPos);
+
         validate(door);
+
         if (focusedDoor) { return true; }
 
         return false;

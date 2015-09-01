@@ -6,6 +6,7 @@ public class GamingControl : MonoBehaviour {
     public bool hairpinActive = false;
 
     private GameObject player;
+    private PlayerInventory inventory;
     private Vector3 currentPosition = new Vector3(0f, 0f, 0f);
     private bool sneakingActive = false;
     private bool runningActive = false;
@@ -48,6 +49,8 @@ public class GamingControl : MonoBehaviour {
     {
         playerHiddenPercentage = player.GetComponent<ShadowDetection>().getHiddenPercentage();
 
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+
         GameObject focusedObj = player.GetComponent<PlayerDetection>().getObjAtFocusPoint();
 
         if (focusedObj && focusedObj.tag == "Door")
@@ -57,7 +60,7 @@ public class GamingControl : MonoBehaviour {
             lockPickingTotalLayerNum = doorControl.getLockPickSystem().getTotalLayerNum();
             lockPickingUnlockedLayerNum = doorControl.getLockPickSystem().getUnlockedLayerNum();
 
-            if (doorControl.isActive() && doorControl.isLockPickSystemActive() && doorControl.isLocked()) 
+            if (doorControl.isActive() && doorControl.isLockPickSystemActive() && doorControl.isLocked() && inventory.isHairpinActive()) 
             { 
                 showLockPickingHud = true; 
             }

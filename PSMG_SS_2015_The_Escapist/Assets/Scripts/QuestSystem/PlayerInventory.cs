@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 public class PlayerInventory : MonoBehaviour {
 
+    public bool hairpinActive = false;
+
     private GameObject player;
     private List<Item> inventory;
-    private bool hairpinActive = false;
 
     private enum ItemClass { Normal, Heavy, Throwable };
 

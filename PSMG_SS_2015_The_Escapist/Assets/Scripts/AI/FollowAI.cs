@@ -237,6 +237,7 @@ public class FollowAI : MonoBehaviour
         if (currentState == States.Waiting) { agent.Resume(); }
 
         agent.destination = target;
+
         agent.speed = runSpeed;
         currentState = States.Attacking;
     }
