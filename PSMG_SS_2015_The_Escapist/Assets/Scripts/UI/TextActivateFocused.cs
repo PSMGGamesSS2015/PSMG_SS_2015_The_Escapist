@@ -7,7 +7,7 @@ public class TextActivateFocused : InteractiveObject {
     // Script for displaying story text
     //
 
-    public string text;
+    public string[] texts;
 
     private enum States { active = 0, inactive = 1 }
     private States state = States.active;
@@ -16,7 +16,7 @@ public class TextActivateFocused : InteractiveObject {
     {
         if(state == States.active)
         {
-            GameObject.Find("HUD").GetComponent<UIText>().showText(text);
+            GameObject.Find("HUD").GetComponent<UIText>().showText(texts);
             state = States.inactive;
         }
     }

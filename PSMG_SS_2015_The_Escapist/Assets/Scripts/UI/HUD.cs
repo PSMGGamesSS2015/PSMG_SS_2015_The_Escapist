@@ -10,16 +10,17 @@ public class HUD : MonoBehaviour
 
     private GameObject gameControl;
     private GUIStyle textStyle;
-    public Texture2D bottle, stone, gearwheel, pipe, closedlock, openlock, whiteBorder;
+    //public Texture2D bottle, stone, gearwheel, pipe, whiteBorder;
+    public Texture2D closedlock, openlock;
     public Font myFont;
 
-    private string bottleText, stoneText, gearwheelText, pipeText, text;
 
-    public int amount = 3;
-    private int itemNr = 1;
+   // public int amount = 3;
+   // private int itemNr = 1;
     private int lockCount, unlockedLocks;
 
-    private bool showInv, showLock;
+   // private bool showInv;
+    private bool showLock;
     public bool showText, showInteraction;
 
     private float ScreenWidthDefault = 1920;
@@ -46,13 +47,13 @@ public class HUD : MonoBehaviour
 
         showText = false;
         showInteraction = false;
-        showInv = true;
+        //showInv = true;
         showLock = false;
-        text = "Wo bin ich?";
-        bottleText = "" + amount;
-        stoneText = "" + amount;
-        gearwheelText = "" + amount;
-        pipeText = "" + amount;
+        //text = "Wo bin ich?";
+        //bottleText = "" + amount;
+        //stoneText = "" + amount;
+        //gearwheelText = "" + amount;
+        //pipeText = "" + amount;
     }
 
     // Update is called once per frame
@@ -61,11 +62,11 @@ public class HUD : MonoBehaviour
         unlockedLocks = gameControl.GetComponent<GamingControl>().getUnlockedLayerNumOfFocusedDoorLock();
         lockCount = gameControl.GetComponent<GamingControl>().getTotalLayerNumOfFocusedDoorLock();
         showLock = gameControl.GetComponent<GamingControl>().isLockPickingHudNeeded();
-        itemKeyCheck();
+       // itemKeyCheck();
 
     }
 
-    private void itemKeyCheck()
+    /*private void itemKeyCheck()
     {
         if (Input.GetButtonDown("Bottle"))
             itemNr = 1;
@@ -76,21 +77,21 @@ public class HUD : MonoBehaviour
         else if (Input.GetButtonDown("Pipe"))
             itemNr = 4;
 
-    }
+    }*/
 
 
 
     void OnGUI()
     {
 
-        checkSelectedItem();
-        inventory();
+        //checkSelectedItem();
+        //inventory();
         lockpicking();
     
 
     }
 
-    private void checkSelectedItem()
+   /* private void checkSelectedItem()
     {
         switch (itemNr)
         {
@@ -109,7 +110,7 @@ public class HUD : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
 
   
 
@@ -135,7 +136,7 @@ public class HUD : MonoBehaviour
         }
     }
 
-    private void inventory()
+   /* private void inventory()
     {
         if (showInv)
         {
@@ -151,5 +152,5 @@ public class HUD : MonoBehaviour
             GUI.Label(new Rect(Screen.width * 0.015f + (Screen.width * 0.022f * ratioWidth * 3.3f), Screen.height * 0.91f, 40 , 40 ), pipe);
             GUI.Label(new Rect(Screen.width * 0.03f + (Screen.width * 0.025f * ratioWidth *3), Screen.height * 0.92f, 50, 30), pipeText);
         }
-    }
+    }*/
 }

@@ -9,12 +9,12 @@ public class TextActivate : MonoBehaviour {
 
     public bool enabled = true;
 
-	public string text;
+	public string[] texts;
 
 	void OnTriggerEnter(Collider col){
-		if (enabled && col.gameObject == GameObject.FindGameObjectWithTag("Player"))
+        if (enabled && col.gameObject == GameObject.FindGameObjectWithTag("Player"))
 		{
-			GameObject.Find ("HUD").GetComponent<UIText> ().showText (text);
+			GameObject.Find ("HUD").GetComponent<UIText> ().showText (texts);
             enabled = false;
 		}
 	}
