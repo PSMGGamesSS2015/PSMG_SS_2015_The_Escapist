@@ -21,25 +21,28 @@ File | Source | AccessDate
 
 Animations
 
-+ *							[???]
++ *							[https://www.assetstore.unity3d.com/en/#!/content/19991]
+							[https://www.assetstore.unity3d.com/en/#!/content/20282]
+							[https://www.assetstore.unity3d.com/en/#!/content/20285]
 
 Audio
 
 + \Alarm\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
 + \Ambient\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20.00]
-+ \Breaking\*						[??]
++ \Breaking\*						[https://www.youtube.com/watch?v=3uvc5tm65Yc] 				[27.08.2015 @23:00] ->nachbearbeitet
+									[https://www.youtube.com/watch?v=Z0vDUNCGW20]				[27.08.2015 @23:00] ->nachbearbeitet
 + \DigitalAudio Julien\*				[Digital-Audio Kurs]						[15.08.2015 @ 16:47]
 + \Door\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
 + \Electric\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
-+ \Elevator\*						[??]
++ \Elevator\*						[https://www.youtube.com/audiolibrary/music]
 + \Enemy\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
-+ \Fire\*						[??]
-+ \Mechanic\*						[??]
++ \Fire\*						[https://www.youtube.com/audiolibrary/music]
++ \Mechanic\*						[https://www.youtube.com/audiolibrary/music]
 + \Misc\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
 + \Moves\*						[http://store.steampowered.com/agecheck/app/211740/?l=german]	[07.06.2015 @ 20:00]
-+ \PickUpSounds\*					[??]
-+ \Water\*						[??]
-+ \*.*							[??]
++ \PickUpSounds\*					[https://www.youtube.com/audiolibrary/music]
++ \Water\*						[https://www.youtube.com/audiolibrary/music]
++ \*.*							[https://www.youtube.com/audiolibrary/music]
 
 Textures
 
