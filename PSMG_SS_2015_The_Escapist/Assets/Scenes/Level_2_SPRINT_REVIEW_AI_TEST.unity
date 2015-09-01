@@ -1595,7 +1595,11 @@ MonoBehaviour:
   reverseRouteForLoop: 0
   searchActualisationTime: 4
   waitingTime: 3
+  walkSpeed: .400000006
+  runSpeed: 1
   postDiscoverySearchDuration: 10
+  questAlcohol: {fileID: 0}
+  forcedState: 5
 --- !u!135 &53109230
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3619,6 +3623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585d58f824d0e464d8e5c66f1f09625a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footStepOnStone: {fileID: 0}
 --- !u!82 &98970557
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13481,7 +13486,11 @@ MonoBehaviour:
   reverseRouteForLoop: 0
   searchActualisationTime: 4
   waitingTime: 3
+  walkSpeed: .400000006
+  runSpeed: 1
   postDiscoverySearchDuration: 5
+  questAlcohol: {fileID: 0}
+  forcedState: 5
 --- !u!136 &343481838
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17030,7 +17039,11 @@ MonoBehaviour:
   reverseRouteForLoop: 0
   searchActualisationTime: 4
   waitingTime: 3
+  walkSpeed: .400000006
+  runSpeed: 1
   postDiscoverySearchDuration: 10
+  questAlcohol: {fileID: 0}
+  forcedState: 5
 --- !u!135 &445048572
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21673,7 +21686,7 @@ MonoBehaviour:
   patternLength: 4
   maxIdenticalRowLength: 3
   wrongMoveCooldownTime: 1
-  deactivated: 0
+  active: 1
 --- !u!114 &579508761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40263,8 +40276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3aa3c3e80b5ba44493cf945819b6e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibilityDiscoveryDistanceFactor: .5
-  noiseDiscoveryDistanceFactor: .300000012
   attackRange: 1
   opaqueLayers:
     serializedVersion: 2
@@ -47062,7 +47073,11 @@ MonoBehaviour:
   reverseRouteForLoop: 0
   searchActualisationTime: 4
   waitingTime: 3
+  walkSpeed: .400000006
+  runSpeed: 1
   postDiscoverySearchDuration: 10
+  questAlcohol: {fileID: 0}
+  forcedState: 5
 --- !u!54 &1385915427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64297,7 +64312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1913154054
 Transform:
   m_ObjectHideFlags: 0
@@ -72276,9 +72291,10 @@ MonoBehaviour:
   closedlock: {fileID: 0}
   openlock: {fileID: 0}
   whiteBorder: {fileID: 0}
+  myFont: {fileID: 0}
+  amount: 3
   showText: 0
   showInteraction: 0
-  myFont: {fileID: 0}
 --- !u!1001 &2110603040
 Prefab:
   m_ObjectHideFlags: 0

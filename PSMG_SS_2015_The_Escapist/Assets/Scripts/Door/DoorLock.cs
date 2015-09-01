@@ -35,7 +35,7 @@ public class DoorLock : MonoBehaviour {
             setLockedStatusOfChildDoors(true);
         }
 
-        if ((keyNeeded || !inventory.isHairpinActive()) && lockPickSystem)
+        if (keyNeeded)
         {
             lockPickSystem.setActive(false);
         }
@@ -48,7 +48,9 @@ public class DoorLock : MonoBehaviour {
 
     void Update()
     {
-        if (!active || !focused || !locked) { return; }
+        //if(!inventory.isHairpinActive())
+
+        if (!active || !focused || !locked ) { return; }
 
         checkBarricades();
 
