@@ -5,7 +5,8 @@ public class ElevatorTrigger : FocusTrigger {
 
     public Generators[] generatorSides;
     public Elevator elevator;
-    public bool trigger = false;
+
+    public bool insideElevator = false;
 
     void Update()
     {
@@ -17,16 +18,13 @@ public class ElevatorTrigger : FocusTrigger {
                 if (generatorSide.getState() == 1) { activeGeneratorSidesNum++; }
             }
 
-            if(activeGeneratorSidesNum == 2)
+            if(true)//activeGeneratorSidesNum == 2)
             {
+                if (insideElevator) {elevator.setPlayerInside(true); }
+                else { elevator.setPlayerInside(false); }
+
                 elevator.trigger();
             }
-        }
-
-        if (trigger) 
-        {
-            trigger = false; 
-            elevator.trigger(); 
         }
     }
 }

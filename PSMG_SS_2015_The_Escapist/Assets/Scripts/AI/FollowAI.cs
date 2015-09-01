@@ -12,6 +12,8 @@ public class FollowAI : MonoBehaviour
     public bool reverseRouteForLoop = false;
     public float searchActualisationTime = 4.0f;
     public float waitingTime = 3.0f;
+    public float walkSpeed = 0.4f;
+    public float runSpeed = 1f;
     public float postDiscoverySearchDuration = 10.0f;
     public GameObject questAlcohol;
 
@@ -42,8 +44,9 @@ public class FollowAI : MonoBehaviour
 
     private AIDetection aiDetection;
 
-    private enum States { Patroling, Waiting, Searching, Chasing, Attacking };
+    public enum States { Patroling, Waiting, Searching, Chasing, Attacking, Default };
     private States currentState = States.Patroling;
+    public States forcedState = States.Default;
     private bool alcoholReached = false;
     
 
@@ -71,7 +74,7 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(questAlcohol.GetComponent<ThrowItem>().wasThrown() && !alcoholReached)
+        if(questAlcohol && questAlcohol.GetComponent<ThrowItem>().wasThrown() && !alcoholReached)
         {
             agent.destination = questAlcohol.transform.position;
             
@@ -83,6 +86,12 @@ public class FollowAI : MonoBehaviour
                 alcoholReached = true;
             }
 
+            return;
+        }
+
+        if(forcedState != States.Default)
+        {
+            currentState = forcedState;
             return;
         }
 
@@ -232,7 +241,7 @@ public class FollowAI : MonoBehaviour
         if (currentState == States.Waiting) { agent.Resume(); }
 
         agent.destination = target;
-        agent.speed = 1f;
+        agent.speed = runSpeed;
         currentState = States.Attacking;
     }
 
@@ -241,7 +250,7 @@ public class FollowAI : MonoBehaviour
         setAllAnimBoolsFalseExcept("IsPatroling");
         anim.Play("Walking");
         if (currentState == States.Waiting) { agent.Resume(); }
-        agent.speed = 0.3f;
+        agent.speed = walkSpeed;
         agent.destination = target;
         //alignTo(target, alignSpeed);
     }
@@ -249,7 +258,7 @@ public class FollowAI : MonoBehaviour
     private void runTo(Vector3 target, float alignSpeed)
     {
         setAllAnimBoolsFalseExcept("IsChasing");
-        agent.speed = 1f;
+        agent.speed = runSpeed;
         agent.destination = target;
 
         //alignTo(target, alignSpeed);

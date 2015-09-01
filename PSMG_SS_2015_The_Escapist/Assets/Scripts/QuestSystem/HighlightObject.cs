@@ -10,6 +10,7 @@ public class HighlightObject : MonoBehaviour
 
     private Material originalMaterial;
     private bool focused = false;
+    private bool active = true;
 
     void Start()
     {
@@ -25,6 +26,8 @@ public class HighlightObject : MonoBehaviour
 
     void Update()
     {
+        if (!active) { return; }
+
         if (focused && !(interactiveObj && !interactiveObj.hasInteractions()))
         {
             changeMaterialToFocused();
@@ -45,5 +48,11 @@ public class HighlightObject : MonoBehaviour
     public void setFocused(bool b)
     {
         focused = b;
+    }
+
+    public void setActive(bool p)
+    {
+        active = p;
+        if (!active) { GetComponent<Renderer>().material = originalMaterial; }
     }
 }
