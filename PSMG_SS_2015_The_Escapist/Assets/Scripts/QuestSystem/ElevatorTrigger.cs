@@ -18,7 +18,7 @@ public class ElevatorTrigger : FocusTrigger {
                 if (generatorSide.getState() == 1) { activeGeneratorSidesNum++; }
             }
 
-            if(true)//activeGeneratorSidesNum == 2)
+            if(activeGeneratorSidesNum == 2)
             {
                 if (insideElevator) {elevator.setPlayerInside(true); }
                 else { elevator.setPlayerInside(false); }
