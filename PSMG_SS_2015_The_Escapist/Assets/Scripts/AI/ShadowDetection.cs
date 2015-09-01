@@ -41,7 +41,7 @@ public class ShadowDetection : MonoBehaviour
 
     void OnGUI()
     {
-        if (debugMode) showDebugHUD();
+        //if (debugMode) showDebugHUD();
         //else showHUD();
     }
 

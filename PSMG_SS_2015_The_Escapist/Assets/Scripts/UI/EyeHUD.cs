@@ -38,7 +38,7 @@ public class EyeHUD : MonoBehaviour {
 
         bool safe = (shadowPercentage > 90) ? true : false;
 
-        GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(shadowPercentage) + "%");
+        //GUI.Label(new Rect(20, 80, 120, 256), "Versteckt: " + (int)(shadowPercentage) + "%");
 
         // States for Eye Texture
         if (fai.isChasing() == true)
