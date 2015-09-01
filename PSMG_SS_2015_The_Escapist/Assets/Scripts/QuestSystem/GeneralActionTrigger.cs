@@ -7,6 +7,8 @@ public class GeneralActionTrigger : FocusTrigger {
     public string inputButtonName = "Use";
     public bool needsItem = false;
     public string itemName;
+    public string name;
+    public bool nameShowed = false;
     public int itemCount;
     public InteractiveObject[] interactiveObjects;
     public int[] neededStates;
@@ -40,7 +42,18 @@ public class GeneralActionTrigger : FocusTrigger {
     {
         bool b = true;
         if (needsInput) { b &= Input.GetButtonDown(inputButtonName); }
-        if (needsItem) { b &= (playerInventory.getItemCount(itemName) >= itemCount); }
+        if (needsItem) 
+        { 
+            b &= (playerInventory.getItemCount(itemName) >= itemCount);
+
+            if(!nameShowed)
+            {
+                string[] texts = new string[1];
+                texts[0] = "Noch " + (itemCount - playerInventory.getItemCount(itemName)) + name + " benoetigt!";
+                GameObject.Find("HUD").GetComponent<UIText>().showText(texts);
+                nameShowed = true;
+            }
+        }
 
         for (int i = 0; i < interactiveObjects.Length; i++)
         {

@@ -2025,7 +2025,7 @@ GameObject:
   - 23: {fileID: 2377720}
   m_Layer: 0
   m_Name: leftBreast
-  m_TagString: Untagged
+  m_TagString: Breast Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2118,7 +2118,7 @@ GameObject:
   - 23: {fileID: 2339346}
   m_Layer: 0
   m_Name: faceLeft
-  m_TagString: Untagged
+  m_TagString: Head Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2336,8 +2336,6 @@ GameObject:
   - 124: {fileID: 12436660}
   - 92: {fileID: 9228244}
   - 81: {fileID: 8147096}
-  - 114: {fileID: 11474618}
-  - 114: {fileID: 11479048}
   - 114: {fileID: 11405436}
   - 54: {fileID: 5419032}
   m_Layer: 0
@@ -5446,28 +5444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerMaskName: Interactive
---- !u!114 &11474618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194702}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80bb853d2fff2824d8877995f534a57a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11479048
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194702}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f550a568f08aa948a471a5b9f5fce76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11482618
 MonoBehaviour:
   m_ObjectHideFlags: 1
