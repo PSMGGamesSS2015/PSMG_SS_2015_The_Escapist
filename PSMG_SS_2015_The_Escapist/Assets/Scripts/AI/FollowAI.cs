@@ -74,6 +74,8 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
+        Debug.Log(currentState);
+
         if(questAlcohol && questAlcohol.GetComponent<ThrowItem>().wasThrown() && !alcoholReached)
         {
             agent.destination = questAlcohol.transform.position;
@@ -86,12 +88,6 @@ public class FollowAI : MonoBehaviour
                 alcoholReached = true;
             }
 
-            return;
-        }
-
-        if(forcedState != States.Default)
-        {
-            currentState = forcedState;
             return;
         }
 

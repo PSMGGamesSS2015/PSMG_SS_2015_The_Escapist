@@ -36,7 +36,7 @@ public class AIDetection : MonoBehaviour
         float discoveryDistance = maxDiscoveryDistance * playerVisibility.getVisibilityFactor();
         float visibilityDetectionDistance = maxVisibilityDetectionDistance * playerVisibility.getVisibilityFactor();
         float noiseDetectionDistance = maxNoiseDetectionDistance * playerNoise.getNoiseFactor();
-        //Debug.Log(noiseDetectionDistance + " " + getDistanceTo(player.transform.position));
+        //Debug.Log(noiseDetectionDistance + " " + visibilityDetectionDistance + " " + getDistanceTo(player.transform.position));
 
         if (isPlayerInFOV())
         {
@@ -63,7 +63,7 @@ public class AIDetection : MonoBehaviour
                 playerNoiseDetected = true;
             }
         }
-        //Debug.Log(name + " noise: " + playerNoiseDetected + " visible: " + playerVisibilityDetected);
+        //Debug.Log(name + " noise: " + playerNoiseDetected + " visible: " + playerVisibilityDetected );
     }
 
     private bool isPlayerInFOV()

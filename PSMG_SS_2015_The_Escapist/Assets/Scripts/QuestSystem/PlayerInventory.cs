@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour {
 
     private GameObject player;
     private List<Item> inventory;
+    private bool hairpinActive = false;
 
     private enum ItemClass { Normal, Heavy, Throwable };
 
@@ -54,5 +55,15 @@ public class PlayerInventory : MonoBehaviour {
 
             }
         }
+    }
+
+    public void pickedUpHairpin()
+    {
+        hairpinActive = true;
+    }
+
+    public bool isHairpinActive()
+    {
+        return hairpinActive;
     }
 }

@@ -35,7 +35,7 @@ public class DoorLock : MonoBehaviour {
             setLockedStatusOfChildDoors(true);
         }
 
-        if (keyNeeded && lockPickSystem)
+        if ((keyNeeded || !inventory.isHairpinActive()) && lockPickSystem)
         {
             lockPickSystem.setActive(false);
         }
@@ -71,7 +71,8 @@ public class DoorLock : MonoBehaviour {
 
                 doorAudio.playDoorUnlockedSound();
             }
-            else if (key && keyNeeded)
+
+            else if (key && keyNeeded || !lockPickSystem || !lockPickSystem.isActive())
             {
                 doorAudio.playDoorLockedSound();
             }
