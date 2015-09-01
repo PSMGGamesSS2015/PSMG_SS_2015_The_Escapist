@@ -45,6 +45,9 @@ Textures
 
 + \Level_1_Prison\					[http://www.cgtextures.com]					[22.04.2015 @ 20:00]
 
+UI
++ \Brightness.cs,Brightness.shader\			[http://forum.unity3d.com/threads/is-there-a-standard-way-of-implementing-a-brightness-gamma-slider-in-unity.343527/]			[19.08.2015 @ 14:00]
+
 
 
 
