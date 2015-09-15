@@ -84,16 +84,19 @@ public class PlayerDetection : MonoBehaviour {
         switch (actualFocusedObj.tag)
         {
             case "Door":
-                actualFocusedObj.GetComponent<Door>().setFocused(b);
+                Door door = actualFocusedObj.GetComponent<Door>();
+                if(door) { door.setFocused(b); }
                 break;
 
             case "Item":
-                actualFocusedObj.GetComponent<Item>().setFocused(b);
+                Item item = actualFocusedObj.GetComponent<Item>();
+                if (item) { item.setFocused(b); }
                 setHighlightPartsFocused(actualFocusedObj, b);
                 break;
 
             case "Object":
-                actualFocusedObj.GetComponent<FocusTrigger>().setFocused(b);
+                FocusTrigger trigger = actualFocusedObj.GetComponent<FocusTrigger>();
+                if (trigger) { trigger.setFocused(b); }
                 setHighlightPartsFocused(actualFocusedObj, b);
                 break;
 

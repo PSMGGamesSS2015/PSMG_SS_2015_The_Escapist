@@ -10,6 +10,7 @@ public class CentralPowerSupply : MonoBehaviour {
     public AudioSource audioSrc;
     public Color alertColor;
     public float alertPulseSpeed = 0.01f;
+    public FollowAI[] guards;
 
     private CentralPowerSupplyFuseBox[] fuseBoxes;
     private int deactivatedFuseBoxNum = 0;
@@ -37,6 +38,11 @@ public class CentralPowerSupply : MonoBehaviour {
         if (deactivatedFuseBoxNum >= fuseBoxes.Length)
         {
             changeLightColor(alertLights);
+
+            foreach (FollowAI guardAI in guards)
+            {
+                guardAI.walkSpeed = 3;
+            }
             
             if (!audioSrc.isPlaying) 
             { 

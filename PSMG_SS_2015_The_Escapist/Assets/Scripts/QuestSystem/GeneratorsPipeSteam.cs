@@ -6,7 +6,19 @@ public class GeneratorsPipeSteam : MonoBehaviour {
     public GeneratorsOven[] ovens;
     public GameObject visibleSteam;
 
+    private ParticleSystem steamParticles;
+    private SphereCollider steamCollider;
+
     private int activeOvenNum = 0;
+
+    void Start()
+    {
+        if (visibleSteam)
+        {
+            steamParticles = visibleSteam.GetComponent<ParticleSystem>();
+            steamCollider = visibleSteam.GetComponent<SphereCollider>();
+        }
+    }
 
     void Update()
     {
@@ -21,8 +33,16 @@ public class GeneratorsPipeSteam : MonoBehaviour {
         if(visibleSteam)
         {
 
-            if (activeOvenNum > 0) { visibleSteam.GetComponent<ParticleSystem>().loop = true; }
-            else { visibleSteam.GetComponent<ParticleSystem>().loop = false; }
+            if (activeOvenNum > 0) 
+            {
+                if (!steamParticles.isPlaying) { steamParticles.Play(); }
+                steamCollider.enabled = true;
+            }
+            else 
+            {
+                steamParticles.Stop();
+                steamCollider.enabled = false;
+            }
         }
     }
 

@@ -5,6 +5,7 @@ public class Elevator : InteractiveObject {
 
     public GameObject elevator;
     public GameObject coverPlattform;
+
     public HighlightObject buttonHighlight;
     public HighlightObject leverHighlight;
 

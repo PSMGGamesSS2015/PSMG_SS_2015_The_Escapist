@@ -41,8 +41,6 @@ public class GamingControl : MonoBehaviour {
         runningActive = player.GetComponent<PlayerMovement>().runningIsActive();
         playerGrounded = player.GetComponent<PlayerMovement>().isPlayerGrounded();
         movementDisabled = player.GetComponent<PlayerMovement>().isMovementDisabled();
-
-        Debug.Log(playerGrounded);
     }
 
     void Update()
@@ -74,7 +72,7 @@ public class GamingControl : MonoBehaviour {
             showLockPickingHud = false;
         }
 
-        Debug.Log(showLockPickingHud + " " + lockPickingTotalLayerNum + " " + lockPickingUnlockedLayerNum);
+        //Debug.Log(showLockPickingHud + " " + lockPickingTotalLayerNum + " " + lockPickingUnlockedLayerNum);
     }
 
 

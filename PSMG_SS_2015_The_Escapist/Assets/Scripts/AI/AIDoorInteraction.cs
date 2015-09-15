@@ -37,11 +37,15 @@ public class AIDoorInteraction : MonoBehaviour {
         if(coll.tag == "Door")
         {
             Rigidbody rb = coll.gameObject.GetComponent<Rigidbody>();
-            Debug.Log(rb.constraints == RigidbodyConstraints.FreezeRotationY);
+
             if (rb.constraints == RigidbodyConstraints.FreezeRotationY)
             {
                 freezedRotation = true;
                 rb.constraints = RigidbodyConstraints.None;
+            }
+            else
+            {
+                freezedRotation = false;
             }
         }
     }

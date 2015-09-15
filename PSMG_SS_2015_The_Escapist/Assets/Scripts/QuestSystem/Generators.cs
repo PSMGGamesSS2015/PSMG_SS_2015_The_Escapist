@@ -19,7 +19,8 @@ public class Generators : MonoBehaviour {
 
     public void trigger(int triggeredState) 
     {
-        switch ((States)(triggeredState))
+        state = (States)(triggeredState);
+        switch (state)
         {
             case States.inactive:
                 switchLightsColorTo(inactiveHexColor);

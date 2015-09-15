@@ -13,18 +13,21 @@ public class ElevatorTrigger : FocusTrigger {
         if(focused && Input.GetButtonDown("Use"))
         {
             int activeGeneratorSidesNum = 0;
+
             foreach (Generators generatorSide in generatorSides)
             {
                 if (generatorSide.getState() == 1) { activeGeneratorSidesNum++; }
             }
 
-            if(activeGeneratorSidesNum == 2)
+            if(activeGeneratorSidesNum == generatorSides.Length)
             {
                 if (insideElevator) {elevator.setPlayerInside(true); }
                 else { elevator.setPlayerInside(false); }
 
                 elevator.trigger();
             }
+
+            Debug.Log(activeGeneratorSidesNum);
         }
     }
 }

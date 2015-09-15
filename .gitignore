@@ -20,11 +20,11 @@
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
-# Other files
-*/ProjectSettings/ProjectVersion.txt
-*/Scenes/Level_1_Prison_Details_Oli/
-*/Assets/Scenes/Level_2_SPRINT_REVIEW
-*/Assets/Scenes/Level_2_SPRINT_REVIEW_BAKING
+# Lightmaps
+Lightmap-*_comp_*.exr
+Lightmap-*_comp_*.exr.meta
+LightmapSnapshot.asset
+LightmapSnapshot.asset.meta
 
-PSMG_SS_2015_The_Escapist/Assets/Scenes/Level_1_Prison_copy_türen/
-PSMG_SS_2015_The_Escapist/Assets/Scenes/Level_1_Prison_FINAL/
+#Other files
+*/ProjectSettings/ProjectVersion.txt

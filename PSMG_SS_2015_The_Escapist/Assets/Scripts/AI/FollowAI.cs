@@ -27,6 +27,7 @@ public class FollowAI : MonoBehaviour
     private bool routeReversed = false;
     private Transform[] wayPoints;
     private Transform[] alternateWayPoints;
+    private Vector3 nextWayPointPos;
 
     private Vector3 playerLastSeenPos;
     private Vector3 approxTargetPos;
@@ -65,6 +66,8 @@ public class FollowAI : MonoBehaviour
         currentWaypoint = startWaypoint - 1;
         wayPoints = createWayPoints(patrolRoute);
         if (alternateRoute) { alternateWayPoints = createWayPoints(alternateRoute); }
+
+        nextWayPointPos = wayPoints[currentWaypoint].position;
     }
 
 
@@ -74,21 +77,23 @@ public class FollowAI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
 
         if(questAlcohol && questAlcohol.GetComponent<ThrowItem>().wasThrown() && !alcoholReached)
         {
-            agent.destination = questAlcohol.transform.position;
+            waiting = false;
+            nextWayPointPos = questAlcohol.transform.position;
+            currentState = States.Patroling;
+            agent.Resume();
             
             if(targetReached(questAlcohol.transform.position, 2f))
             {
                 wayPoints = alternateWayPoints;
                 patrolFinished = false;
+                loopPatrol = true;
                 currentWaypoint = 0;
                 alcoholReached = true;
             }
-
-            return;
         }
 
         //PLAYER REACHED ATTACK RANGE
@@ -157,7 +162,6 @@ public class FollowAI : MonoBehaviour
     // STATE METHODS
     private void patrol()
     {
-        Vector3 nextWayPointPos = wayPoints[currentWaypoint].position;
         nextWayPointPos.y = transform.position.y;
 
         if (!targetReached(nextWayPointPos, 0.5f) && !waiting)
@@ -177,16 +181,16 @@ public class FollowAI : MonoBehaviour
             {
                 wait();
 
-                if (patrolFinished) return;
+                checkPatrolRouteEnd();
 
-                if (isTimeLimitReached(waitStartTime, waitingTime) )
+                if (!patrolFinished && isTimeLimitReached(waitStartTime, waitingTime) )
                 {
                     waiting = false;
 
-                    checkPatrolRouteEnd();
-
                     if (!routeReversed) currentWaypoint++;
-                    else currentWaypoint--; 
+                    else currentWaypoint--;
+
+                    nextWayPointPos = wayPoints[currentWaypoint].position;
                 }
             }
         }
@@ -249,7 +253,6 @@ public class FollowAI : MonoBehaviour
         if (currentState == States.Waiting) { agent.Resume(); }
         agent.speed = walkSpeed;
         agent.destination = target;
-        //alignTo(target, alignSpeed);
     }
 
     private void runTo(Vector3 target, float alignSpeed)
@@ -257,8 +260,6 @@ public class FollowAI : MonoBehaviour
         setAllAnimBoolsFalseExcept("IsChasing");
         agent.speed = runSpeed;
         agent.destination = target;
-
-        //alignTo(target, alignSpeed);
     }
 
     private void checkPatrolRouteEnd()
@@ -290,6 +291,7 @@ public class FollowAI : MonoBehaviour
 
     private float getDistanceTo(Vector3 targetPos)
     {
+        //Debug.Log(transform.position);
         Vector3 direction = targetPos - transform.position;
         return direction.magnitude;
     }

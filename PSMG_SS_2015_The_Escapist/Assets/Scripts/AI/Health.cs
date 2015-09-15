@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     private int counter = 0;
     private AudioSource audioSrc;
     private GamingControl gamingControl;
-    private GameObject enemy;
+    private GameObject player;
 
     private GUIStyle style;
 
@@ -30,15 +30,16 @@ public class Health : MonoBehaviour
         style.font = myFont;
         style.alignment = TextAnchor.MiddleCenter;
 
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        player = GameObject.FindGameObjectWithTag("Player");
         audioSrc = GetComponent<AudioSource>();
         gamingControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GamingControl>();
     }
     
     void OnTriggerEnter(Collider coll)
     {
-        float distance = Vector3.Distance(enemy.transform.position, gamingControl.getPlayerPosition());
-        if (coll.gameObject == enemy && distance < 1.5f)
+        float distance = getDistanceTo(coll.gameObject.transform.position);
+
+        if (coll.tag == "Enemy" && distance < 1.5f)
         {
             if (counter == 2)
             {
@@ -87,6 +88,12 @@ public class Health : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    private float getDistanceTo(Vector3 targetPos)
+    {
+        Vector3 direction = targetPos - transform.position;
+        return direction.magnitude;
     }
 
     public void jumpDead()
