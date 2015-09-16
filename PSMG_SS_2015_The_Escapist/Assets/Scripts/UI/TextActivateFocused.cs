@@ -9,15 +9,21 @@ public class TextActivateFocused : InteractiveObject {
 
     public string[] texts;
 
-    private enum States { active = 0, inactive = 1 }
+     private enum States { active = 0, inactive = 1 }
     private States state = States.active;
+
+    public GameObject nextCollider;
 
     public override void trigger()
     {
         if(state == States.active)
         {
-            GameObject.Find("HUD").GetComponent<UIText>().showText(texts);
-            state = States.inactive;
+            UIText uiText = GameObject.Find("HUD").GetComponent<UIText>();
+            if (!uiText.showsText())
+            {
+                uiText.showText(texts);
+                state = States.inactive;
+            }
         }
     }
 

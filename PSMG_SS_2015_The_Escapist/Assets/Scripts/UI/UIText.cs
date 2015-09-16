@@ -14,7 +14,8 @@ public class UIText : MonoBehaviour {
     private string str;
 
     private bool showStoryText;
-   
+
+    
    void Start() {
        showStoryText = false;
 
@@ -43,7 +44,7 @@ public class UIText : MonoBehaviour {
            yield return new WaitForSeconds(1F);
        }
        showStoryText = false;
-       
+      
    }
 
     void OnGUI() {
@@ -59,5 +60,11 @@ public class UIText : MonoBehaviour {
         showStoryText = true;
         StartCoroutine(AnimateText(texts));
     }
+
+    public bool showsText()
+    {
+        return showStoryText;
+    }
+    
         
  }
