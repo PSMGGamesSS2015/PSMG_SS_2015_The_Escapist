@@ -4,12 +4,14 @@ using System.Collections;
 public class Item : MonoBehaviour {
 
     public string name;
+    public AudioClip pickUpSound;
 
     public enum ItemClass { Normal, Heavy, Throwable };
     public ItemClass itemClass;
 
     private GameObject player;
     private PlayerInventory playerInventory;
+    private AudioSource audioSrc;
     private Material originalMaterial;
     private bool focused = false;
 
@@ -17,14 +19,20 @@ public class Item : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerInventory = player.GetComponent<PlayerInventory>();
+        audioSrc = player.GetComponents<AudioSource>()[1];
     }
 
     void Update()
     {
         if (focused && Input.GetButtonDown("Use"))
         {
+            if(audioSrc && pickUpSound)
+            {
+                audioSrc.clip = pickUpSound;
+                audioSrc.Play();
+            }
+            
             transform.gameObject.SetActive(false);
-            playerInventory.addItem(this);
         }
     }
 

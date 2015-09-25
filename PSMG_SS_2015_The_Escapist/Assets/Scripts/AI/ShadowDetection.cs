@@ -14,6 +14,8 @@ public class ShadowDetection : MonoBehaviour
     public float detectionRadius = 20;
     public float alphaFactor = 5;
     public Texture whiteTex;
+
+    private float lightPercentage = 0;
     
     private Texture2D lightmapTex;
     private Vector2 pixelUV;
@@ -21,11 +23,12 @@ public class ShadowDetection : MonoBehaviour
 
     void Update()
     {
+        lightPercentage = 0;
         RaycastAndUpdateLightmapData();
         this.avgSurfaceColor = calcAverageColorAroundPlayer();
         calcDetectionValues();
 
-        if (Input.GetKeyUp(KeyCode.U)) { debugMode = !debugMode; }
+        //if (Input.GetKeyUp(KeyCode.U)) { debugMode = !debugMode; }
     }
 
     void calcDetectionValues()
@@ -72,7 +75,7 @@ public class ShadowDetection : MonoBehaviour
         GUI.DrawTexture(new Rect((pixelUV.x * lightmapTex.width) + mapOffset.x - mapMarkerSize / 2,(lightmapTex.height - (pixelUV.y * lightmapTex.height)) + mapOffset.y - mapMarkerSize / 2, mapMarkerSize, mapMarkerSize),
             mapMarkerTex, ScaleMode.ScaleToFit, false, 0);
 
-        //GUI.backgroundColor = new Color(255, 255, 255, 80); 
+        //GUI.backgroundColor = new Color(255, 255, 255, 80);
         
         GUILayout.EndArea();
     }
@@ -153,6 +156,12 @@ public class ShadowDetection : MonoBehaviour
 
     public int getHiddenPercentage()
     {
-        return (int)(hiddenPercentage);
+        Debug.Log(hiddenPercentage + " " + lightPercentage);
+        return (int)(hiddenPercentage - lightPercentage);
+    }
+
+    public void addLight(float percentage)
+    {
+        lightPercentage += percentage;
     }
 }

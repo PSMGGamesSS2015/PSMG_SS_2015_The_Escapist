@@ -15,6 +15,7 @@ public class GeneralActionTrigger : FocusTrigger {
 
     private GameObject player;
     private PlayerInventory playerInventory;
+    private UIText uiText;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class GeneralActionTrigger : FocusTrigger {
         {
             player = GameObject.FindGameObjectWithTag("Player");
             playerInventory = player.GetComponent<PlayerInventory>();
-            Debug.Log(playerInventory);
+            uiText = GameObject.Find("HUD").GetComponent<UIText>();
         }
     }
 
@@ -46,13 +47,9 @@ public class GeneralActionTrigger : FocusTrigger {
         { 
             b &= (playerInventory.getItemCount(itemName) >= itemCount);
 
-            if(!nameShowed)
-            {
-                string[] texts = new string[1];
-                texts[0] = "Noch " + (itemCount - playerInventory.getItemCount(itemName)) + name + " benoetigt!";
-                GameObject.Find("HUD").GetComponent<UIText>().showText(texts);
-                nameShowed = true;
-            }
+            string[] texts = new string[1];
+            texts[0] = "Noch " + (itemCount - playerInventory.getItemCount(itemName)) + " " + name + " benoetigt!";
+            if (!uiText.showsText()) { uiText.showText(texts); }
         }
 
         for (int i = 0; i < interactiveObjects.Length; i++)

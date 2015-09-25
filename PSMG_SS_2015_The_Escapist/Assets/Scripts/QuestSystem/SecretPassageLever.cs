@@ -4,6 +4,7 @@ using System.Collections;
 public class SecretPassageLever : InteractiveObject {
 
     public GameObject moveableWall;
+
     public Light auxiliaryFireLight;
     public HighlightObject bookShelfHighlight;
 
@@ -13,15 +14,20 @@ public class SecretPassageLever : InteractiveObject {
     public override void trigger()
     {
         Animation anim = moveableWall.GetComponent<Animation>();
+        AudioSource audioSrc = GetComponent<AudioSource>();
 
         if (state == States.closed)
         {
             anim.Play();
+            audioSrc.Play();
+
             auxiliaryFireLight.enabled = false;
             bookShelfHighlight.enabled = true;
+
             state = States.open;
         }
     }
+
 
     public override int getState()
     {
