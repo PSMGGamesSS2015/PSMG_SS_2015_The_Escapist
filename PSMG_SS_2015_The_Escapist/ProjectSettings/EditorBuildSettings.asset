@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/newMenu.unity
   - enabled: 1
-    path: Assets/Scenes/__Level_1_Prison_FINAL.unity
+    path: Assets/Scenes/__Level_1_Prison_FINAL_realtimeBug.unity
   - enabled: 1
-    path: Assets/Scenes/__Level_2_Sewer_FINAL.unity
+    path: Assets/Scenes/zzz FINAL LEVELS/Level_2_Sewer_FINAL.unity
   - enabled: 1
-    path: Assets/Scenes/__Outro_Cathedral_FINAL.unity
+    path: Assets/Scenes/zzz FINAL LEVELS/Outro_Cathedral_FINAL.unity

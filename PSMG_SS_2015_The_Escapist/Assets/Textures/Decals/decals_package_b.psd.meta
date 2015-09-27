@@ -1,7 +1,23 @@
 fileFormatVersion: 2
 guid: 23c5619a3ba9a7f4381fe9b64caab0d6
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: decals_package_b_0
+    21300002: decals_package_b_1
+    21300004: decals_package_b_2
+    21300006: decals_package_b_3
+    21300008: decals_package_b_4
+    21300010: decals_package_b_5
+    21300012: decals_package_b_6
+    21300014: decals_package_b_7
+    21300016: decals_package_b_8
+    21300018: decals_package_b_9
+    21300020: decals_package_b_10
+    21300022: decals_package_b_11
+    21300024: decals_package_b_12
+    21300026: decals_package_b_13
+    21300028: decals_package_b_14
+    21300030: decals_package_b_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +51,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

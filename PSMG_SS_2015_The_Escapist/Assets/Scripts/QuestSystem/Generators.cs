@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 
 public class Generators : MonoBehaviour {
 
@@ -14,7 +14,7 @@ public class Generators : MonoBehaviour {
 	void Start () 
     {
         lights = statusLights.GetComponentsInChildren<Light>();
-        inactiveHexColor = lights[0].color.ToHexStringRGBA();
+        inactiveHexColor = ColorUtility.ToHtmlStringRGBA(lights[0].color);
 	}
 
     public void trigger(int triggeredState) 
@@ -37,7 +37,7 @@ public class Generators : MonoBehaviour {
         foreach (Light light in lights)
         {
             Color newColor;
-            if (Color.TryParseHexString(hexColor, out newColor)) { light.color = newColor; }
+            if (ColorUtility.TryParseHtmlString(hexColor, out newColor)) { light.color = newColor; }
         }
     }
 

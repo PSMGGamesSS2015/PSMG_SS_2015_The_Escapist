@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -171,6 +169,7 @@ AudioSource:
   m_Pitch: 3
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -776,6 +775,10 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400274, guid: 64aaa90e88543434a9f45078f93e0689, type: 3}
   m_PrefabInternal: {fileID: 761188402}
+--- !u!4 &761188405 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 761188402}
 --- !u!1 &859283460
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +888,7 @@ Transform:
   m_Children:
   - {fileID: 1613825828}
   - {fileID: 141364904}
-  - {fileID: 761188404}
+  - {fileID: 761188405}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &993369913
@@ -990,6 +993,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 47
   DopplerLevel: 1
   MinDistance: 1
@@ -1123,7 +1127,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 761188404}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!114 &1065853371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1226,6 +1230,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -1318,8 +1323,11 @@ MonoBehaviour:
   reverseRouteForLoop: 0
   searchActualisationTime: 3
   waitingTime: 4
+  walkSpeed: .400000006
+  runSpeed: 1
   postDiscoverySearchDuration: 10
   questAlcohol: {fileID: 149502203}
+  forcedState: 5
 --- !u!195 &1250492935
 NavMeshAgent:
   m_ObjectHideFlags: 0
