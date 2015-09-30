@@ -4,12 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/newMenu.unity
-  - enabled: 1
-    path: Assets/Scenes/__Level_1_Prison_FINAL_realtimeBug.unity
-  - enabled: 1
-    path: Assets/Scenes/zzz FINAL LEVELS/Level_2_Sewer_FINAL.unity
-  - enabled: 1
-    path: Assets/Scenes/zzz FINAL LEVELS/Outro_Cathedral_FINAL.unity
+  m_Scenes: []
