@@ -10,6 +10,7 @@ public class GeneratorsPipeSteam : MonoBehaviour {
     private SphereCollider steamCollider;
 
     private int activeOvenNum = 0;
+    private AudioSource audioSrc;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class GeneratorsPipeSteam : MonoBehaviour {
         {
             steamParticles = visibleSteam.GetComponent<ParticleSystem>();
             steamCollider = visibleSteam.GetComponent<SphereCollider>();
+            audioSrc = visibleSteam.GetComponent<AudioSource>();
         }
     }
 
@@ -37,11 +39,13 @@ public class GeneratorsPipeSteam : MonoBehaviour {
             {
                 if (!steamParticles.isPlaying) { steamParticles.Play(); }
                 steamCollider.enabled = true;
+                if (!audioSrc.isPlaying) { audioSrc.Play(); }
             }
             else 
             {
                 steamParticles.Stop();
                 steamCollider.enabled = false;
+                if (audioSrc.isPlaying) { audioSrc.Stop(); }
             }
         }
     }

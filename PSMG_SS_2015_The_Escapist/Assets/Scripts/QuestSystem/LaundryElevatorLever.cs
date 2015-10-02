@@ -19,7 +19,8 @@ public class LaundryElevatorLever : InteractiveObject {
             anim[animationClipName].speed = 1;
             anim[animationClipName].time = 0;
             anim.Play();
-            audioSrc.Play();
+
+            if (audioSrc) { audioSrc.Play(); }
 
             state = States.open;
         }
@@ -28,7 +29,8 @@ public class LaundryElevatorLever : InteractiveObject {
             anim[animationClipName].speed = -1;
             anim[animationClipName].time = anim[animationClipName].length;
             anim.Play();
-            audioSrc.Play();
+
+            if (audioSrc) { audioSrc.Play(); }
 
             state = States.closed;
         }

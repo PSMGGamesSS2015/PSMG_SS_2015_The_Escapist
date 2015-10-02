@@ -19,7 +19,7 @@ public class SecretPassageLever : InteractiveObject {
         if (state == States.closed)
         {
             anim.Play();
-            audioSrc.Play();
+            if (audioSrc) { audioSrc.Play(); }
 
             auxiliaryFireLight.enabled = false;
             bookShelfHighlight.enabled = true;

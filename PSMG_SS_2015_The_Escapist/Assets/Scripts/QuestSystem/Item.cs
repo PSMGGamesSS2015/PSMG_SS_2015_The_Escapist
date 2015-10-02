@@ -11,7 +11,7 @@ public class Item : MonoBehaviour {
 
     private GameObject player;
     private PlayerInventory playerInventory;
-    private AudioSource[] audioSources;
+    private AudioSource audioSource;
     private Material originalMaterial;
     private bool focused = false;
 
@@ -19,19 +19,24 @@ public class Item : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerInventory = player.GetComponent<PlayerInventory>();
-        audioSources = player.GetComponents<AudioSource>();
+
+        AudioSource[] audioSources = player.GetComponents<AudioSource>();
+        if(audioSources.Length > 1)
+        {
+            audioSource = audioSources[1];
+        }
     }
 
     void Update()
     {
         if (focused && Input.GetButtonDown("Use"))
         {
-            if(audioSources[1] && pickUpSound)
+            if(audioSource && pickUpSound)
             {
-                audioSources[1].clip = pickUpSound;
-                audioSources[1].Play();
+                audioSource.clip = pickUpSound;
+                audioSource.Play();
             }
-            
+            playerInventory.addItem(this);
             transform.gameObject.SetActive(false);
         }
     }

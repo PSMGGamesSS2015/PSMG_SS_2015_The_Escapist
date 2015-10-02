@@ -21,9 +21,8 @@ public class ShadowDetection : MonoBehaviour
     private Vector2 pixelUV;
     private bool debugMode = false;
 
-    void Update()
+    void FixedUpdate()
     {
-        lightPercentage = 0;
         RaycastAndUpdateLightmapData();
         this.avgSurfaceColor = calcAverageColorAroundPlayer();
         calcDetectionValues();
@@ -156,12 +155,13 @@ public class ShadowDetection : MonoBehaviour
 
     public int getHiddenPercentage()
     {
-        Debug.Log(hiddenPercentage + " " + lightPercentage);
-        return (int)(hiddenPercentage - lightPercentage);
+        //Debug.Log("hidden: " + hiddenPercentage + " light: " + lightPercentage + " combined: " + (int)(Math.Max(0, hiddenPercentage - lightPercentage)));
+        return (int)(Math.Max(0, hiddenPercentage - lightPercentage));
     }
 
-    public void addLight(float percentage)
+    public void addLightDelta(float percentageDelta)
     {
-        lightPercentage += percentage;
+        lightPercentage += percentageDelta;
+        lightPercentage = Mathf.Max(0, lightPercentage);
     }
 }

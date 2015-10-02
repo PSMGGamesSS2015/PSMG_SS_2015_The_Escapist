@@ -14,12 +14,14 @@ public class SecretPassageFuseBox : InteractiveObject {
         if (state == States.active)
         {
             electricLight.enabled = false;
+            electricLight.GetComponent<LightDetection>().active = false;
             fireLight.enabled = true;
             state = States.deactivated;
         }
         else
         {
             electricLight.enabled = true;
+            electricLight.GetComponent<LightDetection>().active = true;
             fireLight.enabled = false;
             state = States.active;
         }

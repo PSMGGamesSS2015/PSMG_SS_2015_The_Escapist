@@ -9,12 +9,14 @@ public class DoorAudioController : MonoBehaviour
     public AudioClip lockPickingFailSound;
 
     private AudioSource audioSource;
+    private float volume = 0.2f;
 
     private bool unlockSoundPlayed = false;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = volume;
     }
 
 
